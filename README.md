@@ -13,10 +13,9 @@ SPF(Sender Policy Framework) records are DNS TXT records published by a domain o
 NOTE: SPF does not prevent spoofing as it specifically relates to the domain name in the 'ENVELOPE FROM:' address and according to the RFC the EHLO domain. The recipient of the e-mail will most likley never see these addresses so it is possible to PASS SPF but still spoof the HEADER FROM: address that the recipient will see. A newer protocol called DMARC relies heavily on the SPF protocol to prevent spoofing.
 
 # The problem
-SPF records are publicly visible, prone to misconfiguration and limited to include 10 hostnames which could be A records, MX records or other TXT records called INCCLUDES. This includes nested records. 
+SPF records are publicly visible, prone to misconfiguration and limited to include 10 hostnames which could be A records, MX records or other TXT records called INCLUDE's. While you may only INCLUDE: one other domain e.g. _spf.google.com this may very well link to 2 or 3 other hostnames which all count toward the RFC limit of 10.
 
 Like all DNS records, TXT records are also limited to 255 chars per line meaning you not only have to juggle the hostname lookups but the length of each TXT record.
-
 
 
 With the focus over the past 5 years for organisations adopting DMARC that rely on SPF and DKIM to prevent domain spoofing, as well as the average Enterprises using 110 Cloud/SaaS applications of which many need to spoof your domain, there has never been more reason for an organisation to exceed the 10 host resolution lookup limit
