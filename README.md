@@ -71,7 +71,7 @@ Copy your current domains SPF record to the subdomain which will be set in `SOUR
     docker run -t -v /xpg8/rbldnsd-configs:/spf-resolver/output -e DELAY=300 -e MY_DOMAINS='xpg8.tk' -e SOURCE_PREFIX="_sd6sdyfn" --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver
 
 ### Step 4 - Run expurgate-rbldnsd
-      docker run -t -p 53:53/udp -v /xpg8/rbldnsd-configs:/var/lib/rbldnsd/:ro -e OPTIONS='-e -t 5m -l -' -e TYPE=combined -e ZONE=_spf.xpg8.tk smck83/expurgate-rbldnsd
+      docker run -t -p 53:53/udp -v /xpg8/rbldnsd-configs:/var/lib/rbldnsd/:ro -e OPTIONS='-e -t 5m -l -' -e TYPE=combined -e ZONE=_spf.yourdomain.com smck83/expurgate-rbldnsd
 ### Step 5 - Replace your old SPF record with a macro pointing to expurgate
     "v=spf1 include:%{ir}.%{d}._spf.yourdomain.com -all"
 ## Environment Variables
