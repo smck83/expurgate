@@ -45,7 +45,7 @@ Expurgate resolves hostnames to IP address and subnets every X seconds and creat
 There are two seperate services running, with the 3rd being optional:
  1. The expurgate-resolver container is responsible for dynamically generating the rbldsnd config files
  2. The expurgate-rblsdnsd container is the DNS server listening on UDP/53
- 3. \(OPTIONAL\) Use dnsdist as a load balancer in front of rbldnsd to handle DDoS and support both UDP/53 + TCP/53
+ 3. \(OPTIONAL\) Use [dnsdist](https://dnsdist.org/) as a load balancer in front of rbldnsd to handle DDoS and support both UDP/53 + TCP/53
 
 # How do I run it?
 
