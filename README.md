@@ -47,6 +47,8 @@ There are two seperate services running, with a third service being optional:
  2. The expurgate-rblsdnsd container is the DNS server listening on UDP/53
  3. \(OPTIONAL\) Use [dnsdist](https://dnsdist.org/) as a load balancer in front of rbldnsd to handle DDoS and support both UDP/53 + TCP/53
 
+To keep the solution lightweight, no database is used to track changes and source records are stored in another obfuscated or hidden TXT record. This also means when the expurgate-resolver script runs it will regenerate ALL config files which rbldnsd will automatically pickup.
+
 # How do I run it?
 
 ## Docker-compose.yaml
@@ -100,6 +102,8 @@ The recieving e-mail server will respond to the macro in you domains SPF record 
     The response from expurgate:
     1.217.130.195.mimecast.com._spf.xpg8.tk. 300 IN	TXT "v=spf1 ip4:195.130.217.1 -all"
 
+NOTE(above): The response only includes the IP checked, and not every other vendor or provider in your `{SOURCE_PREFIX}.yourdomain.com' DNS TXT record.
+
 ## An SPF fail checking 127.0.0.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.0.0.127.mimecast.com._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
 
     ${ir} - the sending servers IP address in reverse. So 127.0.0.1 will be 1.0.0.127
@@ -110,7 +114,7 @@ The recieving e-mail server will respond to the macro in you domains SPF record 
     The response from expurgate:
     1.0.0.127.mimecast.com._spf.xpg8.tk. 300 IN	TXT "v=spf1 -all"
 
-NOTE: The response only includes the IP checked, and not every other vendor or provider in your config.
+
 
 # Cloud hosted SPF solutions
 There are a number of vendors that offer SPF management capability. Each with pro's and con's. Some services use terms like SPF flattening and SPF compression.
