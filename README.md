@@ -58,7 +58,7 @@ Create an A record e.g. spf-ns.yourdomain.com and point it to the public IP that
 
     spf-ns.yourdomain.com. IN A 192.0.2.1
    
-Then point your NS records of _spf.yourdomain.com to the A record e.g.
+Then point your NS records of _spf.yourdomain.com to the A record, this will be what you set for `ZONE=` for expurgate-rbldnsd e.g.
 
     _spf.yourdomain.com. IN NS spf-ns.yourdomain.com
 
