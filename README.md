@@ -42,7 +42,7 @@ The old SPF record not only gives away the names of all the cloud providers you 
 Expurgate resolves hostnames to IP address and subnets every X seconds and creates an RBLSDND configuration file. With only 1 INCLUDE: in your SPF record you never need to worry about exceeding the 10 lookup limit or the 255 character limit per line.
 
 # How does it work?
-There are two seperate services running, with the 3rd being optional:
+There are two seperate services running, with a third service being optional:
  1. The expurgate-resolver container is responsible for dynamically generating the rbldsnd config files
  2. The expurgate-rblsdnsd container is the DNS server listening on UDP/53
  3. \(OPTIONAL\) Use [dnsdist](https://dnsdist.org/) as a load balancer in front of rbldnsd to handle DDoS and support both UDP/53 + TCP/53
