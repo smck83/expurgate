@@ -41,10 +41,13 @@ The old SPF record not only gives away the names of all the cloud providers you 
 ### Exceed SPF Limits
 Expurgate resolves hostnames to IP address and subnets every X seconds and creates an RBLSDND configuration file. With only 1 INCLUDE: in your SPF record you never need to worry about exceeding the 10 lookup limit or the 255 character limit per line.
 
-# How to run it?
-There are two seperate services running. 
- 1. The resolver container is responsible for dynamically generating the rbldsnd config files
- 2. The rblsdnsd container is the DNS server
+# How does it work?
+There are two seperate services running, with the 3rd being optional:
+ 1. The expurgate-resolver container is responsible for dynamically generating the rbldsnd config files
+ 2. The expurgate-rblsdnsd container is the DNS server listening on UDP/53
+ 3. \(OPTIONAL\) Use dnsdist as a load balancer in front of rbldnsd to handle DDoS and support both UDP/53 + TCP/53
+
+# How do I run it?
 
 ## Docker-compose.yaml
 You can simply use the docker-compose.yaml file hosted here.
