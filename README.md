@@ -23,7 +23,7 @@ With the focus over the past 5 years for organisations adopting DMARC that rely 
 
 # The solution
 ### Simplify
-Expurgate simplifies DNS management by using a single record with variabeles. This removes the chance of human error and isolates issues with loops and broken upstream SPF records.
+Expurgate simplifies DNS management for SPF by using a single record with variabeles. This removes the chance of human error and isolates issues with loops and broken upstream SPF records.
 
 ### Hide
 Replace your old SPF record that might look something like this:
@@ -38,7 +38,6 @@ https://emailstuff.org/spf/check/macro.xpg8.tk
 
 The old SPF record not only gives away the names of all the cloud providers you may use that spoof your domain, but this record [exceeds the 10 lookup limit](https://emailstuff.org/spf/check/10plus.xpg8.tk).
 
-The expurgate SPF record 
 
 ### Exceed SPF Limits
 Expurgate resolves hostnames to IP address every X seconds and creates an RBLSDND configuration file. With only 1 INCLUDE: in your SPF record you never need to worry about exceeding the 10 lookup limit or the 255 character limit per line.
@@ -66,6 +65,8 @@ The recieving e-mail server will respond to the macro in you domains SPF record 
     1.0.0.127.mimecast.com._spf.xpg8.tk
     The response from expurgate:
     1.0.0.127.mimecast.com._spf.xpg8.tk. 300 IN	TXT "v=spf1 -all"
+
+NOTE: The response only includes the IP checked, and not every other vendor or provider in your config.
 
 # Cloud hosted SPF solutions
 There are a number of vendors that offer SPF management capability. Each with pro's and con's. Some services use terms like SPF flattening and SPF compression.
