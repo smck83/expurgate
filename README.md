@@ -25,7 +25,7 @@ With the focus over the past 5 years for organisations adopting DMARC that rely 
 Expurgate simplifies DNS management for SPF by using a single record with variabeles. This removes the chance of human error and isolates issues with loops and broken upstream SPF records.
 
 ### Hide
-Copy your old SPF record to a less visible subdomain defined in `SOURCE_PREFIX=`. Your old SPF record might look something like this:
+Copy your old SPF record to unused subdomain defined in `SOURCE_PREFIX=`. Your old SPF record might look something like this:
 
     "v=spf1 include:sendgrid.net include:_spf.google.com include:mailgun.org include:spf.protection.outlook.com include:_netblocks.mimecast.com -all"
 
@@ -35,11 +35,11 @@ https://emailstuff.org/spf/check/macro.xpg8.tk
 
     "v=spf1 include:%{ir}.%{d}._spf.yourdomain.com -all"
 
-The old SPF record not only gives away the names of all the cloud providers you may use that spoof your domain, but this record [exceeds the 10 lookup limit](https://emailstuff.org/spf/check/10plus.xpg8.tk).
+The old SPF record not only gives away the names of all the service providers you use that need to legitimately spoof your domain, but this sample record [exceeds the 10 lookup limit](https://emailstuff.org/spf/check/10plus.xpg8.tk).
 
 
 ### Exceed SPF Limits
-Expurgate resolves hostnames to IP address and subnets every X seconds and creates an RBLSDND configuration file. With only 1 INCLUDE: in your SPF record you never need to worry about exceeding the 10 lookup limit or the 255 character limit per line.
+Expurgate resolves hostnames to IP address and subnets every `DELAY=` seconds and generates an RBLSDND configuration file. With only 1 INCLUDE: in your new SPF record you never need to worry about exceeding the 10 lookup limit or the 255 character limit per line.
 
 # How does it work?
 There are two seperate services running, with a third service being optional:
@@ -54,11 +54,11 @@ You can simply use the docker-compose.yaml file [hosted here](https://github.com
 
 ## Docker CLI
 ### Step 1 - Create A + NS records
-Create an A record e.g. spf-ns.yourdomain.com and point it to the public IP that will be hosting your expurgate-rbldnsd container on UDP/53 - you may wish to use [dnsdist](https://dnsdist.org/) in front of RBLDNSD to serve both TCP and UDP but also deal with DDoS.
+1)Create an A record e.g. spf-ns.yourdomain.com and point it to the public IP that will be hosting your expurgate-rbldnsd container on UDP/53 - you may wish to use [dnsdist](https://dnsdist.org/) in front of RBLDNSD to serve both TCP and UDP but also deal with DDoS.
 
     spf-ns.yourdomain.com. IN A 192.0.2.1
    
-Then point your NS records of _spf.yourdomain.com to the A record, this will be what you set for `ZONE=` for expurgate-rbldnsd e.g.
+2)Then point your NS records of _spf.yourdomain.com to the A record, this will be what you set for `ZONE=` for expurgate-rbldnsd e.g.
 
     _spf.yourdomain.com. IN NS spf-ns.yourdomain.com
 
@@ -82,7 +82,7 @@ Copy your current domains SPF record to the subdomain which will be set in `SOUR
  | expurgate-resolver  | SOURCE_PREFIX= | This is where you will publish your 'hidden' SPF record e.g. you might host it at _sd3fdsfd.yourdomain.com so will be SOURCE_PREFIX=_sd3fdsfd |
 | expurgate-rbldnsd  | OPTIONS= | These are rbldnsd run [options - more here](https://linux.die.net/man/8/rbldnsd) Recommend: -e -t 5m -l - |
 | expurgate-rbldnsd  | TYPE= | These are rbldnsd zone types [options - more here](https://linux.die.net/man/8/rbldnsd) Recommend: combined |
-| expurgate-rbldnsd  | ZONE= | This is where you will be the last part of your SPF record, e.g. "v=spf1 include:%{ir}.%{d}.\{ZONE=\} -all" |
+| expurgate-rbldnsd  | ZONE= | This last part of your SPF record, from step 1.2 e.g. "ZONE=_spf.yourdomain.com" |
 
 NOTE: Because one container is generating config files for the other container, it is IMPORTANT that both containers have their respective volumes mapped to the same path e.g. /xpg8/rbldnsd-config
 
