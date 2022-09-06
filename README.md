@@ -42,20 +42,6 @@ The old SPF record not only gives away the names of all the cloud providers you 
 ### Exceed SPF Limits
 Expurgate resolves hostnames to IP address every X seconds and creates an RBLSDND configuration file. With only 1 INCLUDE: in your SPF record you never need to worry about exceeding the 10 lookup limit or the 255 character limit per line.
 
-# Test it out
-### An SPF pass checking 195.130.217.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.217.130.195.mimecast.com._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
-
-Suppose an e-mail was sent using the ENVELOPE FROM: domain mimecast.com from the IP address 195.130.217.1
-The recieving e-mail server will respond to the macro in you domains SPF record and interpret the below:
-
-    ${ir} - the sending servers IP address in reverse. So 195.130.217.1 will be 1.217.130.195
-    ${d} - the sending servers domain name (in ENVELOPE FROM: field) is mimecast.com
-
-    The request: 
-    1.217.130.195.mimecast.com._spf.xpg8.tk
-    The response from expurgate:
-    1.217.130.195.mimecast.com._spf.xpg8.tk. 300 IN	TXT "v=spf1 ip4:195.130.217.1 -all"
-
 # How to run it?
 There are two seperate services running. 
  1. The resolver container is responsible for dynamically generating the rbldsnd config files
@@ -71,7 +57,20 @@ You can simply use the docker-compose.yaml file hosted here.
 ### Step 2 - Run expurgate-rbldnsd
       docker run -p 53:53/udp -v /xpg8/rbldnsd-configs:/var/lib/rbldnsd/:ro -e OPTIONS='-e -t 5m -l -' -e TYPE=combined -e ZONE=_spf.xpg8.tk smck83/expurgate-rbldnsd
       
-# Sample Request & Repsonses
+# Sample Requests & Reponses
+### An SPF pass checking 195.130.217.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.217.130.195.mimecast.com._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
+
+Suppose an e-mail was sent using the ENVELOPE FROM: domain mimecast.com from the IP address 195.130.217.1
+The recieving e-mail server will respond to the macro in you domains SPF record and interpret the below:
+
+    ${ir} - the sending servers IP address in reverse. So 195.130.217.1 will be 1.217.130.195
+    ${d} - the sending servers domain name (in ENVELOPE FROM: field) is mimecast.com
+
+    The request: 
+    1.217.130.195.mimecast.com._spf.xpg8.tk
+    The response from expurgate:
+    1.217.130.195.mimecast.com._spf.xpg8.tk. 300 IN	TXT "v=spf1 ip4:195.130.217.1 -all"
+
 ## An SPF fail checking 127.0.0.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.0.0.127.mimecast.com._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
 
     ${ir} - the sending servers IP address in reverse. So 127.0.0.1 will be 1.0.0.127
