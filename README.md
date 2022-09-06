@@ -34,7 +34,7 @@ with an SPF Macro, removing hostnames and IP addresses from opportunistic threat
 
 https://emailstuff.org/spf/check/macro.xpg8.tk
 
-    "v=spf1 include:%{ir}.%{d}._spf.<your-domain> -all"
+    "v=spf1 include:%{ir}.%{d}._spf.yourdomain.com -all"
 
 The old SPF record not only gives away the names of all the cloud providers you may use that spoof your domain, but this record [exceeds the 10 lookup limit](https://emailstuff.org/spf/check/10plus.xpg8.tk).
 
@@ -55,12 +55,14 @@ You can simply use the docker-compose.yaml file hosted here.
 Create an A record e.g. spf-ns.yourdomain.com and point it to the public IP that will be hosting your expurgate-rbldnsd container on UDP/53 - you may wish to use [dnsdist](https://dnsdist.org/) in front of RBLDNSD to serve both TCP and UDP but also deal with DDoS.
 ### Step 2 - Setup your source SPF reocrd
 Copy your current domains SPF record to the subdomain which will be set in `SOURCE_PREFIX=` e.g. _sd6sdyfn
-    _sd6sdyfn.<yourdomain>.  IN  TXT "v=spf1 include:sendgrid.net include:mailgun.org -all"
+    _sd6sdyfn.yourdomain.com.  IN  TXT "v=spf1 include:sendgrid.net include:mailgun.org -all"
 ### Step 3 - Run the expurgate-resolver first, so your RBLDNSD config is ready for step 2.
     docker run -t -v /xpg8/rbldnsd-configs:/spf-resolver/output -e DELAY=300 -e MY_DOMAINS='xpg8.tk' -e SOURCE_PREFIX="_sd6sdyfn" --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver
 
 ### Step 4 - Run expurgate-rbldnsd
       docker run -t -p 53:53/udp -v /xpg8/rbldnsd-configs:/var/lib/rbldnsd/:ro -e OPTIONS='-e -t 5m -l -' -e TYPE=combined -e ZONE=_spf.xpg8.tk smck83/expurgate-rbldnsd
+### Step 5 - Replace your old SPF record with a macro pointing to expurgate
+    "v=spf1 include:%{ir}.%{d}._spf.yourdomain.com -all"
 ## Environment Variables
 | Container  | Variable | Description |
 | ------------- | ------------- | ------------- |
