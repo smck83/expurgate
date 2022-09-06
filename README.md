@@ -55,7 +55,9 @@ You can simply use the docker-compose.yaml file hosted here.
 Create an A record e.g. spf-ns.yourdomain.com and point it to the public IP that will be hosting your expurgate-rbldnsd container on UDP/53 - you may wish to use [dnsdist](https://dnsdist.org/) in front of RBLDNSD to serve both TCP and UDP but also deal with DDoS.
 ### Step 2 - Setup your source SPF reocrd
 Copy your current domains SPF record to the subdomain which will be set in `SOURCE_PREFIX=` e.g. _sd6sdyfn
+
     _sd6sdyfn.yourdomain.com.  IN  TXT "v=spf1 include:sendgrid.net include:mailgun.org -all"
+
 ### Step 3 - Run the expurgate-resolver first, so your RBLDNSD config is ready for step 2.
     docker run -t -v /xpg8/rbldnsd-configs:/spf-resolver/output -e DELAY=300 -e MY_DOMAINS='xpg8.tk' -e SOURCE_PREFIX="_sd6sdyfn" --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver
 
@@ -71,7 +73,7 @@ Copy your current domains SPF record to the subdomain which will be set in `SOUR
  | expurgate-resolver  | SOURCE_PREFIX= | This is where you will publish your 'hidden' SPF record e.g. you might host it at _sd3fdsfd.yourdomain.com so will be SOURCE_PREFIX=_sd3fdsfd |
 | expurgate-rbldnsd  | OPTIONS= | These are rbldnsd run [options - more here](https://linux.die.net/man/8/rbldnsd) Recommend: -e -t 5m -l - |
 | expurgate-rbldnsd  | TYPE= | These are rbldnsd zone types [options - more here](https://linux.die.net/man/8/rbldnsd) Recommend: combined |
-| expurgate-rbldnsd  | ZONE= | This is where you will be the last part of your SPF record, e.g. "v=spf1 include:%{ir}.%{d}.{ZONE=} -all" |
+| expurgate-rbldnsd  | ZONE= | This is where you will be the last part of your SPF record, e.g. "v=spf1 include:%{ir}.%{d}.\{ZONE=\} -all" |
 
 NOTE: Because one container is generating config files for the other container, it is IMPORTANT that both containers have their respective volumes mapped to the same path e.g. /xpg8/rbldnsd-config
 
