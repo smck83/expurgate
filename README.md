@@ -2,10 +2,10 @@
 A self-hosted,dockerized SPF solution built on rbldnsd to simplify, hide and exceed SPF lookup limits.
 
  # definition
- expurgate
- /ˈɛkspəːɡeɪt/
- verb
- remove matter thought to be objectionable or unsuitable from (a text or account).
+   expurgate
+   /ˈɛkspəːɡeɪt/
+   verb
+   remove matter thought to be objectionable or unsuitable from (a text or account).
 
 # The problem
 SPF records are DNS TXT records published by a domain owner so that receiving e-mail servers can validate whether or not the IP address is authorized to send an e-mail from the domain name in the  'ENVELOPE FROM:' address.
