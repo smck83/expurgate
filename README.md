@@ -34,5 +34,18 @@ with an SPF Macro, removing hostnames and IP addresses from opportunistic threat
 ### Exceed SPF Limits
 Expurgate resolves hostnames to IP address every X seconds and creates an RBLSDND configuration file. With only 1 INCLUDE: in your SPF record you never need to worry about exceeding the 10 lookup limit or the 255 character limit per line.
 
+# Test it out
+### An SPF pass checking 195.130.217.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.217.130.195.mimecast.com._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
+    request: 
+    1.217.130.195.mimecast.com._spf.xpg8.tk
+    response:
+    1.217.130.195.mimecast.com._spf.xpg8.tk. 300 IN	TXT "v=spf1 ip4:195.130.217.1 -all"
+
+### An SPF fail checking 127.0.0.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.0.0.127.mimecast.com._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
+    request: 
+    1.0.0.127.mimecast.com._spf.xpg8.tk
+    response:
+    1.0.0.127.mimecast.com._spf.xpg8.tk. 300 IN	TXT "v=spf1 -all"
+
 # Other Commercial/Cloud hosted SPF solutions
 There are a number of vendors that offer similiar capability, each with pro's and con's. Some services use terms like SPF flattening and SPF compression which often only solves 1 of the issues above.
