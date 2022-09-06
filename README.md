@@ -56,7 +56,13 @@ You can simply use the docker-compose.yaml file hosted here.
 
 ### Step 2 - Run expurgate-rbldnsd
       docker run -p 53:53/udp -v /xpg8/rbldnsd-configs:/var/lib/rbldnsd/:ro -e OPTIONS='-e -t 5m -l -' -e TYPE=combined -e ZONE=_spf.xpg8.tk smck83/expurgate-rbldnsd
-      
+## Environment Variables
+| Container  | Variable | Description |
+| ------------- | ------------- | ------------- |
+| expurgate-rbldnsd  | OPTIONS= | These are rbldnsd run [options - more here](https://linux.die.net/man/8/rbldnsd) Recommend: -e -t 5m -l - |
+| expurgate-rbldnsd  | TYPE= | These are rbldnsd zone types [options - more here](https://linux.die.net/man/8/rbldnsd) Recommend: combined |
+| expurgate-rbldnsd  | ZONE= | This is where you will be the last part of your SPF record, e.g. "v=spf1 include:%{ir}.%{d}.{ZONE=} -all" |
+
 # Sample Requests & Reponses
 ### An SPF pass checking 195.130.217.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.217.130.195.mimecast.com._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
 
