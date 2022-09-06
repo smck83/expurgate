@@ -117,4 +117,4 @@ NOTE(above): The response only includes the IP checked, and not every other vend
 
 
 # Cloud hosted SPF solutions
-There are a number of vendors that offer SPF management capability. Each with pro's and con's. Some services use terms like SPF flattening and SPF compression.
+There are a number of vendors that offer SPF management capability. However I could not find any self-hosted options. Common terms for these services are SPF flattening and SPF compression.
