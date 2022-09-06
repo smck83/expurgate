@@ -2,7 +2,7 @@
 
 A self-hosted,dockerized SPF solution leveraging rbldnsd as the DNS server to simplify, hide and exceed SPF lookup limits.
 
- # definition
+ # What is Expurgate?
     expurgate
     /ˈɛkspəːɡeɪt/
     verb
