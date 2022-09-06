@@ -83,7 +83,7 @@ Copy your current domains SPF record to the subdomain which will be set in `SOUR
 | ------------- | ------------- | ------------- | ------------- |
 | expurgate-resolver  | DELAY= | This is the delay in seconds between running the script to generate new RBLDNSD config files for RBLDNSD to pickup. `DEFAULT: 300` | N |
 | expurgate-resolver  | MY_DOMAINS= | A list of domains seperated by a space that you want config files to be generated for e.g. MY_DOMAINS='yourdomain.com microsoft.com github.com' | Y |
- | expurgate-resolver  | SOURCE_PREFIX= | This is where you will publish your 'hidden' SPF record e.g. you might host it at _sd3fdsfd.yourdomain.com so will be SOURCE_PREFIX=_sd3fdsfd `DEFAULT: _xpg8` | N |
+ | expurgate-resolver  | SOURCE_PREFIX= | This is where you will publish your 'hidden' SPF record; the source of truth e.g. you might host it at _sd3fdsfd.yourdomain.com so will be SOURCE_PREFIX=_sd3fdsfd `DEFAULT: _xpg8` | N |
 | expurgate-rbldnsd  | OPTIONS= | These are rbldnsd run [options - more here](https://linux.die.net/man/8/rbldnsd) Recommend: -e -t 5m -l -  | Y |
 | expurgate-rbldnsd  | TYPE= | These are rbldnsd zone types [options - more here](https://linux.die.net/man/8/rbldnsd) Recommend: combined  | Y |
 | expurgate-rbldnsd  | ZONE= | The last part of your SPF record (where rbldnsd is hosted), from step 1(2) e.g. "ZONE=_spf.yourdomain.com"  | Y |
