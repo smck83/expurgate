@@ -79,14 +79,14 @@ Copy your current domains SPF record to the subdomain which will be set in `SOUR
 ### Step 5 - Replace your old SPF record with a macro pointing to expurgate
     "v=spf1 include:%{ir}.%{d}._spf.yourdomain.com -all"
 ## Environment Variables
-| Container  | Variable | Description |
-| ------------- | ------------- | ------------- |
-| expurgate-resolver  | DELAY= | This is the delay in seconds between running the script to generate new RBLDNSD config files for RBLDNSD to pickup.
-| expurgate-resolver  | MY_DOMAINS= | A list of domains seperated by a space that you want config files to be generated for e.g. MY_DOMAINS='yourdomain.com microsoft.com github.com' |
- | expurgate-resolver  | SOURCE_PREFIX= | This is where you will publish your 'hidden' SPF record e.g. you might host it at _sd3fdsfd.yourdomain.com so will be SOURCE_PREFIX=_sd3fdsfd |
-| expurgate-rbldnsd  | OPTIONS= | These are rbldnsd run [options - more here](https://linux.die.net/man/8/rbldnsd) Recommend: -e -t 5m -l - |
-| expurgate-rbldnsd  | TYPE= | These are rbldnsd zone types [options - more here](https://linux.die.net/man/8/rbldnsd) Recommend: combined |
-| expurgate-rbldnsd  | ZONE= | The last part of your SPF record (where rbldnsd is hosted), from step 1(2) e.g. "ZONE=_spf.yourdomain.com" |
+| Container  | Variable | Description | Required? |
+| ------------- | ------------- | ------------- | ------------- |
+| expurgate-resolver  | DELAY= | This is the delay in seconds between running the script to generate new RBLDNSD config files for RBLDNSD to pickup. | Y |
+| expurgate-resolver  | MY_DOMAINS= | A list of domains seperated by a space that you want config files to be generated for e.g. MY_DOMAINS='yourdomain.com microsoft.com github.com' | Y |
+ | expurgate-resolver  | SOURCE_PREFIX= | This is where you will publish your 'hidden' SPF record e.g. you might host it at _sd3fdsfd.yourdomain.com so will be SOURCE_PREFIX=_sd3fdsfd  | Y |
+| expurgate-rbldnsd  | OPTIONS= | These are rbldnsd run [options - more here](https://linux.die.net/man/8/rbldnsd) Recommend: -e -t 5m -l -  | Y |
+| expurgate-rbldnsd  | TYPE= | These are rbldnsd zone types [options - more here](https://linux.die.net/man/8/rbldnsd) Recommend: combined  | Y |
+| expurgate-rbldnsd  | ZONE= | The last part of your SPF record (where rbldnsd is hosted), from step 1(2) e.g. "ZONE=_spf.yourdomain.com"  | Y |
 
 NOTE: Because one container is generating config files for the other container, it is IMPORTANT that both containers have their respective volumes mapped to the same path e.g. /xpg8/rbldnsd-config
 
