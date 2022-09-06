@@ -66,7 +66,7 @@ You can simply use the docker-compose.yaml file hosted here.
 
 ###Docker CLI
 #### Step 1 - Run the Resolver first, so your RBLDNSD config is ready for step 2
-docker run -t -v /xpg8/rbldnsd-configs:/spf-resolver/output -e DELAY=300 -e MY_DOMAINS='xpg8.tk' -e SOURCE_PREFIX="_sd6sdyfn" --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver
+    docker run -t -v /xpg8/rbldnsd-configs:/spf-resolver/output -e DELAY=300 -e MY_DOMAINS='xpg8.tk' -e SOURCE_PREFIX="_sd6sdyfn" --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver
 
 #### Step 2 - Run the RBLDNSD Server
       docker run -p 53:53/udp -v /xpg8/rbldnsd-configs:/var/lib/rbldnsd/:ro -e OPTIONS='-e -t 5m -l -' -e TYPE=combined -e ZONE=_spf.xpg8.tk smck83/expurgate-rbldnsd
