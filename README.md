@@ -6,7 +6,7 @@ A self-hosted,dockerized SPF solution leveraging rbldnsd as the DNS server to si
     expurgate
     /ˈɛkspəːɡeɪt/
     verb
-    remove matter thought to be objectionable or unsuitable from (a text or account).
+    remove matter thought to be objectionable or unsuitable
 
 SPF(Sender Policy Framework) records are DNS TXT records published by a domain owner so that e-mail that is sent from their domains can be checked by the receiving MTA as to whether the domain owner authorizes it.
 
