@@ -28,7 +28,7 @@ Replace your old SPF record that might look something like this
 
     "v=spf1 include:sendgrid.net include:_spf.google.com include:mailgun.org include:spf.protection.outlook.com include:_netblocks.mimecast.com -all"
 
-with
+with an SPF Macro, removing hostnames and IP addresses from opportunistic threat actors that could use this information against you.
 
     "v=spf1 include:%{ir}.%{d}._spf.<your-domain> ~all"
 
