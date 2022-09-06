@@ -20,7 +20,15 @@ Like all DNS records, TXT records are also limited to 255 chars per line meaning
 With the focus over the past 5 years for organisations adopting DMARC that rely on SPF and DKIM to prevent domain spoofing, as well as the average Enterprises using 110 Cloud/SaaS applications of which many need to spoof your domain, there has never been more reason for an organisation to exceed the 10 host resolution lookup limit
 
 # The solution
-expurgate
+Simplify
+
+Hide
+Replace your old SPF record that might look something like this
+    "v=spf1 include:sendgrid.net include:_spf.google.com include:mailgun.org include:spf.protection.outlook.com include:_netblocks.mimecast.com -all"
+with
+    "v=spf1 include:%{ir}.%{d}._spf.<your-domain> ~all"
+
+Exceed SPF Limits
 
 # Other Commercial/Cloud hosted SPF solutions
  - Mimecast : SPF Delegation
