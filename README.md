@@ -8,12 +8,12 @@ A self-hosted,dockerized SPF solution leveraging rbldnsd as the DNS server to si
     verb
     remove matter thought to be objectionable or unsuitable from (a text or account).
 
-SPF records are DNS TXT records published by a domain owner so that e-mail sent from their domains can be validated as to whether or not the sending IP address is authorized. 
+SPF(Sender Policy Framework) records are DNS TXT records published by a domain owner so that e-mail that is sent from their domains can be checked by the receiving MTA as to whether the domain owner authorizes it.
 
 NOTE: SPF does not prevent spoofing as it specifically relates to the domain name in the 'ENVELOPE FROM:' address which the recipient of the e-mail may never see. However a newer protocol called DMARC relies heavily on the SPF protocol to prevent spoofing.
 
 # The problem
-SPF(Sender Policy Framework) records are publicly visible, prone to misconfiguration and limited to include 10 hostnames which could be A records, MX records or other TXT records called INCCLUDES. This includes nested records. 
+SPF records are publicly visible, prone to misconfiguration and limited to include 10 hostnames which could be A records, MX records or other TXT records called INCCLUDES. This includes nested records. 
 
 Like all DNS records, TXT records are also limited to 255 chars per line meaning you not only have to juggle the hostname lookups but the length of each TXT record.
 
