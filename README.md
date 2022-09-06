@@ -60,7 +60,7 @@ Copy your current domains SPF record to the subdomain which will be set in `SOUR
 
     _sd6sdyfn.yourdomain.com.  IN  TXT "v=spf1 include:sendgrid.net include:mailgun.org -all"
 
-### Step 3 - Run the expurgate-resolver first, so your RBLDNSD config is ready for step 2.
+### Step 3 - Run the expurgate-resolver first, so your RBLDNSD config is ready for the next step
     docker run -t -v /xpg8/rbldnsd-configs:/spf-resolver/output -e DELAY=300 -e MY_DOMAINS='xpg8.tk' -e SOURCE_PREFIX="_sd6sdyfn" --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver
 
 ### Step 4 - Run expurgate-rbldnsd
