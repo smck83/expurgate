@@ -7,10 +7,13 @@ A self-hosted,dockerized SPF solution leveraging rbldnsd as the DNS server to si
     /ˈɛkspəːɡeɪt/
     verb
     remove matter thought to be objectionable or unsuitable
+    
+Expurgate is a passion project that provides the capability to host your own SPF Management solution in two docker containers. There is no webUI or database - this may be added as an option in future versions. The entire configuration is completed using ENV variables parsed at runtime. This solution will resolve records in a TXT DNS record published on an unused subdomain e.g. copy your root domain SPF record to subdomain`_sd6sdyfn.yourdomain.com`. The spf-resolver script will loop through this record and generate an rbldnsd configuration of IP addressess and networks so that you can update your root SPF record to point to Expurgate.
 
-SPF(Sender Policy Framework) records are DNS TXT records published by a domain owner so that e-mail that is sent from their domains can be checked by the receiving MTA as to whether the domain owner authorizes it.
+Expurgate supports both IPv4 and IPv6 addresses.
 
-NOTE: SPF does not prevent spoofing as it specifically relates to the domain name in the 'ENVELOPE FROM:' address and according to the RFC standard the EHLO domain. The recipient of the e-mail will most likley never see these addresses so it is possible to PASS SPF but still spoof the HEADER FROM: address that the recipient will see. A newer protocol called DMARC relies heavily on the SPF protocol to prevent spoofing.
+NOTE: SPF(Sender Policy Framework) records are DNS TXT records published by a domain owner so that e-mail that is sent from their domains can be checked by the receiving MTA as to whether the domain owner authorizes it.
+ SPF does not prevent spoofing as it specifically relates to the domain name in the 'ENVELOPE FROM:' address and according to the RFC standard the EHLO domain. The recipient of the e-mail will most likley never see these addresses so it is possible to PASS SPF but still spoof the HEADER FROM: address that the recipient will see. A newer protocol called DMARC relies heavily on the SPF protocol to prevent spoofing.
 
 # The problem
 SPF records are publicly visible, prone to misconfiguration and limited to include 10 hostnames which could be A records, MX records or other TXT records called INCLUDE's. While you may only INCLUDE: one other domain e.g. _spf.google.com this may very well link to 2 or 3 other hostnames which all count toward the RFC limit of 10.
