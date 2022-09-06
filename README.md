@@ -22,7 +22,7 @@ With the focus over the past 5 years for organisations adopting DMARC that rely 
 
 # The solution
 ### Simplify
-Expurgate simplifies DNS management for SPF by using a single record with variabeles. This removes the chance of human error and isolates issues with loops and broken upstream SPF records.
+Expurgate simplifies DNS management for SPF by using a single record with variables. This removes the chance of human error and isolates issues with loops and broken upstream SPF records.
 
 ### Hide
 Copy your old SPF record to unused subdomain defined in `SOURCE_PREFIX=`. Your old SPF record might look something like this:
