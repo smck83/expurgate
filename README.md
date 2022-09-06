@@ -29,7 +29,7 @@ Copy your old SPF record to a less visible subdomain defined in `SOURCE_PREFIX=`
 
     "v=spf1 include:sendgrid.net include:_spf.google.com include:mailgun.org include:spf.protection.outlook.com include:_netblocks.mimecast.com -all"
 
-By using an SPF Macro, we remove hostnames and IP addresses from opportunistic threat actors that could use this information against you (e.g. Phishing e-mails using sendgrid branding based on include:sendgrid.net being present:
+By using an SPF Macro in place of your old SPF record, we remove hostnames and IP addresses from opportunistic threat actors prying eyes that could use this information against you (e.g. Phishing e-mails using sendgrid branding based on include:sendgrid.net being present:
 
 https://emailstuff.org/spf/check/macro.xpg8.tk
 
