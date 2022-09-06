@@ -60,5 +60,5 @@ The recieving e-mail server will respond to the macro in you domains SPF record 
     The response from expurgate:
     1.0.0.127.mimecast.com._spf.xpg8.tk. 300 IN	TXT "v=spf1 -all"
 
-# Other Commercial/Cloud hosted SPF solutions
-There are a number of vendors that offer similiar capability, each with pro's and con's. Some services use terms like SPF flattening and SPF compression which often only solves 1 of the issues above.
+# Cloud hosted SPF solutions
+There are a number of vendors that offer SPF management capability. Each with pro's and con's. Some services use terms like SPF flattening and SPF compression.
