@@ -34,6 +34,8 @@ with an SPF Macro, removing hostnames and IP addresses from opportunistic threat
 
 Exceed SPF Limits
 
+Expurgate resolves hostnames to IP address every X seconds and creates an RBLSDND configuration file. With only 1 INCLUDE: in your SPF record you never need to worry about exceeding the 10 lookup limit or the 255 character limit per line.
+
 # Other Commercial/Cloud hosted SPF solutions
  - Mimecast : SPF Delegation
  - AutoSPF
