@@ -8,7 +8,7 @@ A self-hosted,dockerized SPF solution leveraging rbldnsd as the DNS server to si
     verb
     remove matter thought to be objectionable or unsuitable
     
-Expurgate is a passion project that provides the capability to host your own SPF Management solution in two docker containers. There is no webUI or database - this may be added as an option in future versions. The entire configuration is completed using ENV variables parsed at runtime. This solution will resolve records in a TXT DNS record published on an unused subdomain e.g. copy your root domain SPF record to subdomain`_sd6sdyfn.yourdomain.com`. The spf-resolver script will loop through this record and generate an rbldnsd configuration of IP addressess and networks so that you can update your root SPF record to point to Expurgate.
+Expurgate is a passion project that provides the capability to host your own SPF Management solution in two docker containers. There is no webUI or database - this may be added as an option in future versions. The entire configuration is completed using ENV variables parsed at runtime. This solution will resolve records in a TXT DNS record published on an unused subdomain that will act as the source of truth and where you make changes for Expurgate to publish e.g. In the example below the subdomain '_sd6sdyfn.yourdomain.com` is used. The spf-resolver script will loop through these records (no issues if they exceed 10 lookups) and generate an rbldnsd configuration of IP addressess and networks so that you can update your root SPF record to point to Expurgate.
 
 Expurgate supports both IPv4 and IPv6 addresses.
 
