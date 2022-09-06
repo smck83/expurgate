@@ -43,15 +43,19 @@ The recieving e-mail server will respond to the macro in you domains SPF record 
     ${ir} - the sending servers IP address in reverse. So 195.130.217.1 will be 1.217.130.195
     ${d} - the sending servers domain name (in ENVELOPE FROM: field) is mimecast.com
 
-    request: 
+    The request: 
     1.217.130.195.mimecast.com._spf.xpg8.tk
-    response:
+    The response from expurgate:
     1.217.130.195.mimecast.com._spf.xpg8.tk. 300 IN	TXT "v=spf1 ip4:195.130.217.1 -all"
 
 ### An SPF fail checking 127.0.0.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.0.0.127.mimecast.com._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
-    request: 
+
+    ${ir} - the sending servers IP address in reverse. So 127.0.0.1 will be 1.0.0.127
+    ${d} - the sending servers domain name (in ENVELOPE FROM: field) is mimecast.com
+
+    The request: 
     1.0.0.127.mimecast.com._spf.xpg8.tk
-    response:
+    The response from expurgate:
     1.0.0.127.mimecast.com._spf.xpg8.tk. 300 IN	TXT "v=spf1 -all"
 
 # Other Commercial/Cloud hosted SPF solutions
