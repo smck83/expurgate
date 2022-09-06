@@ -52,7 +52,7 @@ You can simply use the docker-compose.yaml file hosted here.
 
 ## Docker CLI
 ### Step 1 - Create A + NS records
-Create an A record e.g. spf-ns.<yourdomain> and point it to the public IP that will be hosting your expurgate-rbldnsd container on UDP/53 - you may wish to use [dnsdist](https://dnsdist.org/) in front of RBLDNSD to serve both TCP and UDP but also deal with DDoS.
+Create an A record e.g. spf-ns.yourdomain.com and point it to the public IP that will be hosting your expurgate-rbldnsd container on UDP/53 - you may wish to use [dnsdist](https://dnsdist.org/) in front of RBLDNSD to serve both TCP and UDP but also deal with DDoS.
 ### Step 2 - Setup your source SPF reocrd
 Copy your current domains SPF record to the subdomain which will be set in `SOURCE_PREFIX=` e.g. _sd6sdyfn
     _sd6sdyfn.<yourdomain>.  IN  TXT "v=spf1 include:sendgrid.net include:mailgun.org -all"
