@@ -61,18 +61,18 @@ There are two seperate services running.
  1. The resolver container is responsible for dynamically generating the rbldsnd config files
  2. The rblsdnsd container is the DNS server
 
-### Docker-compose.yaml
+## Docker-compose.yaml
 You can simply use the docker-compose.yaml file hosted here.
 
-### Docker CLI
-#### Step 1 - Run the expurgate-resolver first, so your RBLDNSD config is ready for step 2
+## Docker CLI
+### Step 1 - Run the expurgate-resolver first, so your RBLDNSD config is ready for step 2
     docker run -t -v /xpg8/rbldnsd-configs:/spf-resolver/output -e DELAY=300 -e MY_DOMAINS='xpg8.tk' -e SOURCE_PREFIX="_sd6sdyfn" --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver
 
-#### Step 2 - Run expurgate-rbldnsd
+### Step 2 - Run expurgate-rbldnsd
       docker run -p 53:53/udp -v /xpg8/rbldnsd-configs:/var/lib/rbldnsd/:ro -e OPTIONS='-e -t 5m -l -' -e TYPE=combined -e ZONE=_spf.xpg8.tk smck83/expurgate-rbldnsd
       
-
-### An SPF fail checking 127.0.0.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.0.0.127.mimecast.com._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
+# Sample Request & Repsonses
+## An SPF fail checking 127.0.0.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.0.0.127.mimecast.com._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
 
     ${ir} - the sending servers IP address in reverse. So 127.0.0.1 will be 1.0.0.127
     ${d} - the sending servers domain name (in ENVELOPE FROM: field) is mimecast.com
