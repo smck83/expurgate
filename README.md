@@ -15,7 +15,7 @@ Expurgate supports both IPv4 and IPv6 addresses.
 NOTE: SPF(Sender Policy Framework) records are DNS TXT records published by a domain owner so that e-mail that is sent from their domains can be validated by the receiving MTA to check if the domain owner authorizes it. SPF does not prevent spoofing as it specifically relates to the domain name in the `ENVELOPE FROM:` address and according to `RFC 7208` standard the EHLO domain. The recipient of the e-mail will most likley never see the `ENVELOPE FROM:` and EHLO addresses/domains so it is possible to PASS SPF but still spoof the  domain in the `HEADER FROM:` address that the recipient will see. A newer protocol called DMARC `RFC 7489` relies heavily on the SPF (and DKIM) protocol to prevent spoofing.
 
 # The problem
-SPF records are publicly visible, prone to misconfiguration and limited to include 10 hostnames which could be A records, MX records or other TXT records called INCLUDE's. While you may only INCLUDE: one other domain e.g. _spf.google.com this may very well link to 2 or 3 other hostnames which all count toward the RFC limit of 10.
+SPF records are publicly visible, prone to misconfiguration and limited to include 10 host DNS resolutions which could be A records, MX records or other TXT records called INCLUDE's. While you may only INCLUDE: one other domain e.g. _spf.google.com this may very well link to 2 or 3 other hostnames which all count toward the RFC limit of 10.
 
 Like all DNS records, TXT records are also limited to 255 chars per line meaning you not only have to juggle the hostname lookups but the length of each TXT record.
 
