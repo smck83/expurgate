@@ -25,11 +25,11 @@ With the focus over the past 5 years for organisations adopting DMARC that rely 
 Expurgate simplifies DNS management for SPF by using a single record with variabeles. This removes the chance of human error and isolates issues with loops and broken upstream SPF records.
 
 ### Hide
-Replace your old SPF record that might look something like this:
+Copy your old SPF record to a less visible subdomain defined in `SOURCE_PREFIX=`. Your old SPF record might look something like this:
 
     "v=spf1 include:sendgrid.net include:_spf.google.com include:mailgun.org include:spf.protection.outlook.com include:_netblocks.mimecast.com -all"
 
-with an SPF Macro, removing hostnames and IP addresses from opportunistic threat actors that could use this information against you:
+By using an SPF Macro, we remove hostnames and IP addresses from opportunistic threat actors that could use this information against you (e.g. Phishing e-mails using sendgrid branding based on include:sendgrid.net being present:
 
 https://emailstuff.org/spf/check/macro.xpg8.tk
 
