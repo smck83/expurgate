@@ -14,6 +14,7 @@ Expurgate supports both IPv4 and IPv6 addresses.
 
 NOTE: SPF(Sender Policy Framework) records are DNS TXT records published by a domain owner at the root(@) of your domain so that e-mail sent from their domains can be validated by the receiving MTA to check if the domain owner authorizes the transmission. SPF does not prevent spoofing as it specifically relates to the domain name in the `ENVELOPE FROM:` address and according to `RFC 7208` standard the EHLO domain. The recipient (end user) of the e-mail will most likley never see the `ENVELOPE FROM:` address or EHLO domain so it is possible to PASS SPF but still spoof the domain in the `HEADER FROM:` address that the recipient will see. A newer protocol called DMARC `RFC 7489` relies heavily on the SPF (and DKIM) protocol to prevent spoofing.
 
+You can read more on SPF here:
 https://en.wikipedia.org/wiki/Sender_Policy_Framework#Principles_of_operation
 
 # The problem
