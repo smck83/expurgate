@@ -97,7 +97,7 @@ NOTE: Because one container is generating config files for the other container, 
 ## An SPF pass checking 195.130.217.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.217.130.195.mimecast.com._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
 
 Suppose an e-mail was sent using the ENVELOPE FROM: domain mimecast.com from the IP address 195.130.217.1
-The recieving e-mail server will respond to the macro in you domains SPF record and interpret the below:
+The recieving e-mail server will respond to the macro in your domains SPF record and interpret the below:
 
     ${ir} - the sending servers IP address in reverse. So 195.130.217.1 will be 1.217.130.195
     ${d} - the sending servers domain name (in ENVELOPE FROM: field) is mimecast.com
