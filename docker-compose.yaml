@@ -1,0 +1,31 @@
+version: '2'
+services:
+  spf-resolver:
+    image: smck83/expurgate-resolver
+    environment:
+      DELAY: '300'
+      MY_DOMAINS: xpg8.tk
+      SOURCE_PREFIX: _sd6sdyfn
+    stdin_open: true
+    volumes:
+    - /xpg8/rbldnsd-configs:/spf-resolver/output
+    dns:
+    - 1.1.1.1
+    - 8.8.8.8
+    tty: true
+    labels:
+      io.rancher.container.pull_image: always
+  spf-rbldnsd:
+    image: smck83/expurgate-rbldnsd
+    environment:
+      OPTIONS: -e -t 5m -l -
+      TYPE: combined
+      ZONE: _spf.xpg8.tk
+    stdin_open: true
+    volumes:
+    - /xpg8/rbldnsd-configs:/var/lib/rbldnsd/:ro
+    tty: true
+    ports:
+    - 53:53/udp
+    labels:
+      io.rancher.container.pull_image: always
