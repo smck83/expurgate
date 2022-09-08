@@ -70,9 +70,7 @@ def getSPF(domain):
                 elif re.match('include\:', spfPart) and "%{" not in spfPart:
                     spfValue = spfPart.split(':')
                     ip4.append("# " + spfPart)
-                    # ip6.append("# " + spfPart)
                     getSPF(spfValue[1])
-                    #print(spfValue[1])
                 elif re.match('a\:', spfPart):
                     ip4.append("# " + spfPart)
                     spfValue = spfPart.split(':')
@@ -83,7 +81,6 @@ def getSPF(domain):
                     ip4.append(result + " # " + spfPart)
                 elif re.match('a', spfPart):
                     ip4.append("# " + spfPart)
-                    #spfValue = spfPart.split('a:')
                     result = [dns_record.to_text() for dns_record in dns.resolver.resolve(domain, "A").rrset]
                     depth += 1
                     result = '\n'.join(result)
@@ -97,11 +94,9 @@ def getSPF(domain):
                     for mxrecord in result:
                         mxValue = mxrecord.split(' ')
                         myarray.append(mxValue[1])
-                    #print(myarray)
                     for hostname in myarray:
                         result = [dns_record.to_text() for dns_record in dns.resolver.resolve(hostname, "A").rrset]
                         result = '\n'.join(result)
-                        #print(hostname + ":" + result)
                         ip4.append(result)
                 elif re.match('mx', spfPart):
                     ip4.append("# " + spfPart)
@@ -114,7 +109,6 @@ def getSPF(domain):
                     for mxrecord in result:
                         mxValue = mxrecord.split(' ')
                         myarray.append(mxValue[1])
-                    #print(myarray)
                     for hostname in myarray:
                         result = [dns_record.to_text() for dns_record in dns.resolver.resolve(hostname, "A").rrset]
                         depth += 1
@@ -148,13 +142,11 @@ while loop == 0:
         print(len(ip4)) 
         ip4 = list(dict.fromkeys(ip4))
         ip4 = [x.strip(' ') for x in ip4]
-        #ip4 = ip4.sort
         print(len(ip4),ip4)  
         # remove duplicates
         print(len(ip6)) 
         ip6 = list(dict.fromkeys(ip6))
         ip6 = [x.strip(' ') for x in ip6]
-        #ip6 = ip6.sort
         print(len(ip6),ip6)  
         
     # CREATE ARRAYS FOR EACH PART OF THE RBLDNSD FILE
@@ -188,5 +180,4 @@ while loop == 0:
             print('Generating rbldnsd config for SPF records in ' + domain)
             print("Your domain " + domain + " required " + str(depth) + " lookups.")
     print("Waiting " + str(delayBetweenRun) + " seconds before running again... ")
-    #print("Waiting...")
     sleep(int(delayBetweenRun)) # wait DELAY before running again.
