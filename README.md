@@ -18,12 +18,12 @@ You can read more on SPF here:
 https://en.wikipedia.org/wiki/Sender_Policy_Framework#Principles_of_operation
 
 # The problem
-SPF records are publicly visible, prone to misconfiguration and limited to include 10 host DNS resolutions which could be A records, MX records or other TXT records called INCLUDE's. While you may only INCLUDE: one other domain e.g. _spf.google.com this may very well link to 2 or 3 other hostnames which all count toward the RFC limit of 10.
+SPF records are publicly visible, prone to misconfiguration and limited to include 10 host DNS resolutions which could be A records, MX records or other TXT records called INCLUDE's. While you may only `INCLUDE` one other domain e.g. _spf.google.com this may very well link to 2 or 3 other hostnames which all count toward the RFC limit of 10. Further risk is that 3rd party providers in your SPF record may add a new host without communicating the specifics and while you have been keeping on top of your record, this could unknowingly push you over the limit.
 
-Like all DNS records, TXT records are also limited to 255 chars per line meaning you not only have to juggle the hostname lookups but the length of each TXT record.
+Like most DNS records; TXT records are limited to 255 chars per line meaning if you attempt to juggle and manage SPF yourself, you not only have to count hostname lookups but the length of each TXT record.
 
 
-With the focus over the past 5 years for organisations adopting DMARC that rely on SPF and DKIM to prevent domain spoofing, as well as the average Enterprises using 110 Cloud/SaaS applications of which many need to spoof your domain, there has never been more reason for an organisation to exceed the 10 host resolution lookup limit
+With organisations focusing on DMARC over the past 5 years that rely on SPF and DKIM to prevent domain spoofing, there has never been more reason for an organisation to exceed the 10 host resolution lookup limit.
 
 # The solution
 ### Simplify
