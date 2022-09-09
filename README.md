@@ -137,7 +137,7 @@ ${d} - the sending servers domain name (in ENVELOPE FROM: field) is `ehlo.email`
     
     1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2.ehlo.email._spf.xpg8.tk. 300 IN	TXT "v=spf1 ip6:2607:f8b0:4000::1 ~all"`
 
-## An SPF fail checking 127.0.0.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.0.0.127.mimecast.com._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
+## An SPF fail checking 127.0.0.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.0.0.127.ehlo.email._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
 
 ${ir} - the sending servers IP address in reverse. So `127.0.0.1` will be `1.0.0.127`
 
