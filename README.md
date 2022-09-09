@@ -104,7 +104,7 @@ NOTE: Because one container is generating config files for the other container, 
 # Sample Requests & Reponses
 ## An SPF pass checking 195.130.217.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.217.130.195.mimecast.com._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
 
-Suppose an e-mail was sent using the ENVELOPE FROM: domain mimecast.com from the IP address 195.130.217.1
+Suppose an e-mail was sent using the ENVELOPE FROM: domain mimecast.com from the IPv4 address 195.130.217.1
 The recieving e-mail server will respond to the macro in your domains SPF record and interpret the below:
 
     ${ir} - the sending servers IP address in reverse. So 195.130.217.1 will be 1.217.130.195
@@ -119,7 +119,7 @@ NOTE(above): The response only includes the IP checked, and not every other vend
 
 ## An SPF pass checking 2607:f8b0:4000:0000:0000:0000:0000:0001 - [Test here](https://www.digwebinterface.com/?hostnames=1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2.ehlo.email._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
 
-Suppose an e-mail was sent using the ENVELOPE FROM: domain mimecast.com from the IP address 195.130.217.1
+Suppose an e-mail was sent using the ENVELOPE FROM: domain ehlo.email from the IPv6 address 2607:f8b0:4000:0000:0000:0000:0000:0001
 The recieving e-mail server will respond to the macro in your domains SPF record and interpret the below:
 
     ${ir} - the sending servers IP address in reverse. So 2607:f8b0:4000:0000:0000:0000:0000:0001 will be reversed in dotted notation
