@@ -55,7 +55,7 @@ def getSPF(domain):
 
     #print("Depth:" + str(depth))
     for record in result:
-        if re.match('^"v=spf1 ', record):
+        if re.match('^"v=spf1 ', record, re.IGNORECASE):
             # replace " " with nothing which is used where TXT records exceed 255 characters
             record = record.replace("\" \"","")
             ip4.append("# " + record)
@@ -64,14 +64,14 @@ def getSPF(domain):
             spfParts = spfvalue.split()
  
             for spfPart in spfParts:
-                if re.match('redirect=', spfPart):
+                if re.match('redirect=', spfPart, re.IGNORECASE):
                     spfValue = spfPart.split('=')
                     getSPF(spfValue[1])
-                elif re.match('include\:', spfPart) and "%{" not in spfPart:
+                elif re.match('include\:', spfPart, re.IGNORECASE) and "%{" not in spfPart:
                     spfValue = spfPart.split(':')
                     ip4.append("# " + spfPart)
                     getSPF(spfValue[1])
-                elif re.match('a\:', spfPart):
+                elif re.match('a\:', spfPart, re.IGNORECASE):
                     ip4.append("# " + spfPart)
                     spfValue = spfPart.split(':')
                     result = [dns_record.to_text() for dns_record in dns.resolver.resolve(spfValue[1], "A").rrset]
@@ -79,13 +79,13 @@ def getSPF(domain):
                     result = (" # " + spfValue[0] + ":" + spfValue[1] + " \n").join(result)
 
                     ip4.append(result + " # " + spfPart)
-                elif re.match('a', spfPart):
+                elif re.match('a', spfPart, re.IGNORECASE):
                     ip4.append("# " + spfPart)
                     result = [dns_record.to_text() for dns_record in dns.resolver.resolve(domain, "A").rrset]
                     depth += 1
                     result = '\n'.join(result)
                     ip4.append(result + " # a")
-                elif re.match('mx\:', spfPart):
+                elif re.match('mx\:', spfPart, re.IGNORECASE):
                     ip4.append("# " + spfPart)
                     spfValue = spfPart.split(':')
                     result = [dns_record.to_text() for dns_record in dns.resolver.resolve(spfValue[1], "MX").rrset]
@@ -98,7 +98,7 @@ def getSPF(domain):
                         result = [dns_record.to_text() for dns_record in dns.resolver.resolve(hostname, "A").rrset]
                         result = '\n'.join(result)
                         ip4.append(result)
-                elif re.match('mx', spfPart):
+                elif re.match('mx', spfPart, re.IGNORECASE):
                     ip4.append("# " + spfPart)
                     try:
                         result = [dns_record.to_text() for dns_record in dns.resolver.resolve(domain, "MX").rrset]
@@ -114,15 +114,15 @@ def getSPF(domain):
                         depth += 1
                         result = '\n'.join(result)
                         ip4.append(result)
-                elif re.match('ip4\:', spfPart):
+                elif re.match('ip4\:', spfPart, re.IGNORECASE):
                     spfValue = spfPart.split('ip4:')
                     ip4.append(spfValue[1] + " # " + domain)
-                elif re.match('ip6\:', spfPart):
+                elif re.match('ip6\:', spfPart, re.IGNORECASE):
                     spfValue = spfPart.split('ip6:')
                     ip6.append(spfValue[1] + " # " + domain)
-                elif re.match('[\+\-\~]all', spfPart):
+                elif re.match('[\+\-\~]all', spfPart, re.IGNORECASE):
                     spfAction.append(spfPart)
-                elif re.match('v\=spf1', spfPart):
+                elif re.match('v\=spf1', spfPart, re.IGNORECASE):
                     spfValue = spfPart
                 else:
                     print('No match:',spfPart)
