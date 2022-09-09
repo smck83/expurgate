@@ -27,7 +27,7 @@ With organisations focusing on DMARC over the past 5 years that rely on SPF and 
 
 # The solution
 
-![image](https://user-images.githubusercontent.com/4591298/189255910-f38bf394-fa37-4e1c-8e22-adbeafd0003f.png)
+![image](https://github.com/smck83/expurgate/blob/main/expurgate-diagram.png)
 ### Simplify
 Expurgate simplifies DNS management for SPF by using a single record with variables. This removes the chance of human error and isolates issues with loops and broken upstream SPF records.
 
