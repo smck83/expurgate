@@ -102,7 +102,7 @@ Copy your current domains SPF record to the subdomain which will be set in `SOUR
 NOTE: Because one container is generating config files for the other container, it is IMPORTANT that both containers have their respective volumes mapped to the same path e.g. /xpg8/rbldnsd-config
 
 # Sample Requests & Reponses
-## An SPF pass checking 66.249.80.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.80.249.66.mimecast.com._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
+## An SPF pass checking 66.249.80.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.80.249.66.ehlo.email._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
 
 Suppose an e-mail was sent using the ENVELOPE FROM: domain ehlo.email from the IPv4 address 66.249.80.1
 The recieving e-mail server will respond to the macro in your domains SPF record and interpret the below:
