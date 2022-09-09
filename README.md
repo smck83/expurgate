@@ -122,7 +122,7 @@ NOTE(above): The response only includes the IP checked, and not every other vend
 Suppose an e-mail was sent using the ENVELOPE FROM: domain ehlo.email from the IPv6 address 2607:f8b0:4000:0000:0000:0000:0000:0001
 The recieving e-mail server will respond to the macro in your domains SPF record and interpret the below:
 
-    ${ir} - the sending servers IP address in reverse. So 2607:f8b0:4000:0000:0000:0000:0000:0001 will be reversed in dotted notation
+    ${ir} - the sending servers IP address in reverse. So 2607:f8b0:4000:0000:0000:0000:0000:0001 will be reversed in dotted notation 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2
     ${d} - the sending servers domain name (in ENVELOPE FROM: field) is ehlo.email
 
     The request: 
