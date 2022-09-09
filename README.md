@@ -26,10 +26,12 @@ Like most DNS records; TXT records are limited to 255 chars per line meaning if 
 With organisations focusing on DMARC over the past 5 years that rely on SPF and DKIM to prevent domain spoofing, there has never been more reason for an organisation to exceed the 10 host resolution lookup limit.
 
 # The solution
+
+![image](https://user-images.githubusercontent.com/4591298/189255910-f38bf394-fa37-4e1c-8e22-adbeafd0003f.png)
 ### Simplify
 Expurgate simplifies DNS management for SPF by using a single record with variables. This removes the chance of human error and isolates issues with loops and broken upstream SPF records.
 
-![image](https://user-images.githubusercontent.com/4591298/189255910-f38bf394-fa37-4e1c-8e22-adbeafd0003f.png)
+
 
 
 ### Hide
