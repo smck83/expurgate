@@ -73,7 +73,7 @@ For Step 3 & 4 use Docker CLI or [Docker-compose.yaml](https://github.com/smck83
     _spf.yourdomain.com. IN NS spf-ns.yourdomain.com
 
 ### Step 2 - Setup your source SPF record
-Copy your current domains SPF record to the subdomain which will be set in `SOURCE_PREFIX=` e.g. _sd6sdyfn
+Copy your current domains SPF record to an unused subdomain which will be set in `SOURCE_PREFIX=` e.g. _sd6sdyfn
 
     _sd6sdyfn.yourdomain.com.  IN  TXT "v=spf1 include:sendgrid.net include:mailgun.org -all"
 
