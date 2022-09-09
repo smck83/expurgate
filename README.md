@@ -61,10 +61,8 @@ To keep the solution lightweight, no database is used to track changes and sourc
 
 # How do I run it?
 
-## Docker-compose.yaml
-You can simply use the docker-compose.yaml file [hosted here](https://github.com/smck83/expurgate/blob/main/docker-compose.yaml).
+For Step 3 & 4 use Docker CLI or [Docker-compose.yaml](https://github.com/smck83/expurgate/blob/main/docker-compose.yaml)
 
-## Docker CLI
 ### Step 1 - Create A + NS records
 1)Create an A record e.g. spf-ns.yourdomain.com and point it to the public IP that will be hosting your expurgate-rbldnsd container on UDP/53 - you may wish to use [dnsdist](https://dnsdist.org/) in front of RBLDNSD to serve both TCP and UDP but also deal with DDoS.
 
@@ -75,7 +73,7 @@ You can simply use the docker-compose.yaml file [hosted here](https://github.com
     _spf.yourdomain.com. IN NS spf-ns.yourdomain.com
 
 ### Step 2 - Setup your source SPF record
-Copy your current domains SPF record to the subdomain which will be set in `SOURCE_PREFIX=` e.g. _sd6sdyfn
+Copy your current domains SPF record to an unused subdomain which will be set in `SOURCE_PREFIX=` e.g. _sd6sdyfn
 
     _sd6sdyfn.yourdomain.com.  IN  TXT "v=spf1 include:sendgrid.net include:mailgun.org -all"
 
@@ -84,7 +82,7 @@ Copy your current domains SPF record to the subdomain which will be set in `SOUR
 
 ### Step 4 - Run expurgate-rbldnsd
       docker run -t -p 53:53/udp -v /xpg8/rbldnsd-configs:/var/lib/rbldnsd/:ro -e OPTIONS='-e -t 5m -l -' -e TYPE=combined -e ZONE=_spf.yourdomain.com smck83/expurgate-rbldnsd
-### Step 5 - Replace your old SPF record with a macro pointing to expurgate
+### Step 5 - Replace your old SPF record with a macro pointing to expurgate-rbldsnd
     "v=spf1 include:%{ir}.%{d}._spf.yourdomain.com -all"
 ## Environment Variables
 | Container  | Variable | Description | Required? |
@@ -139,7 +137,7 @@ ${d} - the sending servers domain name (in ENVELOPE FROM: field) is `ehlo.email`
     
     1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2.ehlo.email._spf.xpg8.tk. 300 IN	TXT "v=spf1 ip6:2607:f8b0:4000::1 ~all"`
 
-## An SPF fail checking 127.0.0.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.0.0.127.mimecast.com._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
+## An SPF fail checking 127.0.0.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.0.0.127.ehlo.email._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
 
 ${ir} - the sending servers IP address in reverse. So `127.0.0.1` will be `1.0.0.127`
 
