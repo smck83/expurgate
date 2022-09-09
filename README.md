@@ -104,41 +104,41 @@ NOTE: Because one container is generating config files for the other container, 
 # Sample Requests & Reponses
 ## An SPF pass checking 66.249.80.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.80.249.66.ehlo.email._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
 
-Suppose an e-mail was sent using the ENVELOPE FROM: domain ehlo.email from the IPv4 address 66.249.80.1
+Suppose an e-mail was sent using the ENVELOPE FROM: domain ehlo.email from the IPv4 address `66.249.80.1`
 The recieving e-mail server will respond to the macro in your domains SPF record and interpret the below:
 
-    ${ir} - the sending servers IP address in reverse. So 66.249.80.1 will be 1.80.249.66
-    ${d} - the sending servers domain name (in ENVELOPE FROM: field) is mimecast.com
+    ${ir} - the sending servers IP address in reverse. So `66.249.80.1` will be `1.80.249.66`
+    ${d} - the sending servers domain name (in `ENVELOPE FROM:` field) is `ehlo.email`
 
     The request: 
-    1.80.249.66.ehlo.email_spf.xpg8.tk
+    `1.80.249.66.ehlo.email_spf.xpg8.tk`
     The response from expurgate:
-    1.80.249.66.ehlo.email._spf.xpg8.tk. 300 IN	TXT "v=spf1 ip4:66.249.80.1 -all"
+    `1.80.249.66.ehlo.email._spf.xpg8.tk. 300 IN	TXT "v=spf1 ip4:66.249.80.1 -all"`
 
 NOTE(above): The response only includes the IP checked, and not every other vendor or provider in your `{SOURCE_PREFIX}.yourdomain.com' DNS TXT record.
 
 ## An SPF pass checking 2607:f8b0:4000:0000:0000:0000:0000:0001 - [Test here](https://www.digwebinterface.com/?hostnames=1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2.ehlo.email._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
 
-Suppose an e-mail was sent using the ENVELOPE FROM: domain ehlo.email from the IPv6 address 2607:f8b0:4000:0000:0000:0000:0000:0001
+Suppose an e-mail was sent using the ENVELOPE FROM: domain ehlo.email from the IPv6 address `2607:f8b0:4000:0000:0000:0000:0000:0001`
 The recieving e-mail server will respond to the macro in your domains SPF record and interpret the below:
 
-    ${ir} - the sending servers IP address in reverse. So 2607:f8b0:4000:0000:0000:0000:0000:0001 will be reversed in dotted notation 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2
-    ${d} - the sending servers domain name (in ENVELOPE FROM: field) is ehlo.email
+    ${ir} - the sending servers IP address in reverse. So `2607:f8b0:4000:0000:0000:0000:0000:0001` will be reversed in dotted notation `1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2`
+    ${d} - the sending servers domain name (in ENVELOPE FROM: field) is `ehlo.email`
 
     The request: 
-    1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2.ehlo.email._spf.xpg8.tk
+    `1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2.ehlo.email._spf.xpg8.tk`
     The response from expurgate:
-    1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2.ehlo.email._spf.xpg8.tk. 300 IN	TXT "v=spf1 ip6:2607:f8b0:4000::1 ~all"
+    `1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2.ehlo.email._spf.xpg8.tk. 300 IN	TXT "v=spf1 ip6:2607:f8b0:4000::1 ~all"`
 
 ## An SPF fail checking 127.0.0.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.0.0.127.mimecast.com._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
 
-    ${ir} - the sending servers IP address in reverse. So 127.0.0.1 will be 1.0.0.127
-    ${d} - the sending servers domain name (in ENVELOPE FROM: field) is mimecast.com
+    ${ir} - the sending servers IP address in reverse. So `127.0.0.1` will be `1.0.0.127`
+    ${d} - the sending servers domain name (in ENVELOPE FROM: field) is `ehlo.email`
 
     The request: 
-    1.0.0.127.mimecast.com._spf.xpg8.tk
+    `1.0.0.127.ehlo.email._spf.xpg8.tk`
     The response from expurgate:
-    1.0.0.127.mimecast.com._spf.xpg8.tk. 300 IN	TXT "v=spf1 -all"
+    `1.0.0.127.ehlo.email._spf.xpg8.tk. 300 IN	TXT "v=spf1 -all"`
 
 
 
