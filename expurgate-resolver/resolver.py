@@ -4,6 +4,7 @@ import dns.resolver
 import re
 from datetime import datetime
 import os
+import shutil
 
 # set to 0 to loop infinitely
 loop = 0
@@ -42,20 +43,20 @@ def getSPF(domain):
         if depth == 0 and source_prefix_off == False:
            sourcerecord = source_prefix + "." + domain
            result = [dns_record.to_text() for dns_record in dns.resolver.resolve(sourcerecord, "TXT").rrset]
-           #depth += 1
         #except:
         elif depth <= 75:
-            result = [dns_record.to_text() for dns_record in dns.resolver.resolve(domain, "TXT").rrset]
-            #depth += 1         
+            result = [dns_record.to_text() for dns_record in dns.resolver.resolve(domain, "TXT").rrset]        
         else:
-            print("THERE MAY BE A SPF LOOP, EXITING AFTER GOING 75 DEEP")
+            msg = "THERE MAY BE A SPF LOOP, EXITING AFTER GOING 75 DEEP"
+            print(msg)
             result = "\"v=spf1 -all\""
             depth += 1  
+            header.append("# " + ("^" * depth) + " " + msg) 
     
     except:
         print("An exception occurred, check there is a DNS TXT record with SPF present at: " + str(source_prefix) + "." + str(domain) )
         result = "\"v=spf1 -all\""
-    #print("Depth:" + str(depth))
+
     for record in result:
         if re.match('^"v=spf1 ', record, re.IGNORECASE):
             # replace " " with nothing which is used where TXT records exceed 255 characters
@@ -63,7 +64,6 @@ def getSPF(domain):
             # remove " character from start and end
             spfvalue = record.replace("\"","")
             spfParts = spfvalue.split()
-            #depth += 1 
             header.append("# " + ("^" * depth) + " " + domain)           
             header.append("# " + ("^" * depth) + " " + spfvalue)
 
@@ -72,19 +72,17 @@ def getSPF(domain):
                     spfValue = spfPart.split('=')
                     depth += 1         
                     getSPF(spfValue[1])
-                    
-                    #header.append("# " + ("^" * depth) + " " + spfPart)
                 elif re.match('include\:', spfPart, re.IGNORECASE) and "%{" not in spfPart:
                     spfValue = spfPart.split(':')
                     depth += 1
                     getSPF(spfValue[1])
-                    #header.append("# " + ("^" * depth) + " " + spfPart)
                 elif re.match('a\:', spfPart, re.IGNORECASE):
                     spfValue = spfPart.split(':')
                     result = [dns_record.to_text() for dns_record in dns.resolver.resolve(spfValue[1], "A").rrset]
                     depth += 1
                     header.append("# " + ("^" * depth) + " " + spfPart)
-                    result = (' # a:' + spfValue[1] + '\n').join(result)
+                    result = [x + ' # a:' + spfValue[1] for x in result]
+                    result = ('\n').join(result)
                     ip4.append(result + " # " + spfPart)
                 elif re.match('a', spfPart, re.IGNORECASE):
                     result = [dns_record.to_text() for dns_record in dns.resolver.resolve(domain, "A").rrset]
@@ -189,11 +187,14 @@ while loop == 0:
         myrbldnsdconfig = header + ip4header + ip4 + ip4block + ip6header + ip6 + ip6block
 
         # Write the RBLDNSD config file to disk
-        with open(r'output/'+ domain.replace(".","-"), 'w') as fp:
+        src_path = r'output/'+ domain.replace(".","-")+".staging"
+        dst_path = r'output/'+ domain.replace(".","-")
+        with open(src_path, 'w') as fp:
             for item in myrbldnsdconfig:
                 # write each item on a new line
                 fp.write("%s\n" % item)
             print('Generating rbldnsd config for SPF records in ' + domain)
             print("Your domain " + domain + " required " + str(depth) + " lookups.")
+        shutil.move(src_path, dst_path) 
     print("Waiting " + str(delayBetweenRun) + " seconds before running again... ")
     sleep(int(delayBetweenRun)) # wait DELAY before running again.
