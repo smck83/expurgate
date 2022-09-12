@@ -131,11 +131,11 @@ ${d} - the sending servers domain name (in ENVELOPE FROM: field) is `ehlo.email`
 
     The request: 
     
-    1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2.ehlo.email._spf.xpg8.tk`
+    1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2.ehlo.email._spf.xpg8.tk
     
     The response from expurgate-rbldnsd:
     
-    1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2.ehlo.email._spf.xpg8.tk. 300 IN	TXT "v=spf1 ip6:2607:f8b0:4000::1 ~all"`
+    1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2.ehlo.email._spf.xpg8.tk. 300 IN	TXT "v=spf1 ip6:2607:f8b0:4000::1 ~all"
 
 ## An SPF fail checking 127.0.0.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.0.0.127.ehlo.email._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
 
