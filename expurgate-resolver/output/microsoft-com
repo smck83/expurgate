@@ -1,0 +1,155 @@
+# Automatically generated rbldnsd config by Expurgate for:microsoft.com @ 2022-09-12 13:54:52.304923
+#  microsoft.com
+#  v=spf1 include:_spf-a.microsoft.com include:_spf-b.microsoft.com include:_spf-c.microsoft.com include:_spf-ssg-a.microsoft.com include:spf-a.hotmail.com include:_spf1-meo.microsoft.com -all
+# ^ _spf-a.microsoft.com
+# ^ v=spf1 ip4:216.99.5.67 ip4:216.99.5.68 ip4:202.177.148.100 ip4:203.122.32.250 ip4:202.177.148.110 ip4:213.199.128.139 ip4:213.199.128.145 ip4:207.46.50.72 ip4:207.46.50.82 ip4:65.55.42.224/28 ip4:13.78.233.182 include:spf.protection.outlook.com ~all
+# ^^ spf.protection.outlook.com
+# ^^ v=spf1 ip4:40.92.0.0/15 ip4:40.107.0.0/16 ip4:52.100.0.0/14 ip4:104.47.0.0/17 ip6:2a01:111:f400::/48 ip6:2a01:111:f403::/49 ip6:2a01:111:f403:8000::/50 ip6:2a01:111:f403:c000::/51 ip6:2a01:111:f403:f000::/52 include:spfd.protection.outlook.com -all
+# ^^^ spfd.protection.outlook.com
+# ^^^ v=spf1 ip4:51.4.72.0/24 ip4:51.5.72.0/24 ip4:51.5.80.0/27 ip4:20.47.149.138/32 ip4:51.4.80.0/27 ip6:2a01:4180:4051:0800::/64 ip6:2a01:4180:4050:0800::/64 ip6:2a01:4180:4051:0400::/64 ip6:2a01:4180:4050:0400::/64 -all
+# ^^^^ _spf-b.microsoft.com
+# ^^^^ v=spf1 include:_spf-mdm.microsoft.com ip4:207.46.22.35 ip4:207.46.22.98/29 ip4:217.77.141.52 ip4:217.77.141.59 ip4:203.32.4.25 ip4:131.107.0.0/16 ip4:23.103.224.0/19 ip4:206.191.224.0/19 ip4:65.52.80.137/32 ip4:51.140.75.55 ip4:13.70.32.43 ~all
+# ^^^^^ _spf-mdm.microsoft.com
+# ^^^^^ v=spf1 ip4:134.170.113.0/26 ip4:131.253.30.0/24 ip4:157.56.120.128/26 ip4:134.170.174.0/24 ip4:134.170.141.64/26 ip4:134.170.143.0/24 ip4:157.58.249.3 ip4:65.55.29.77 ip4:131.253.121.0/26 -all
+# ^^^^^^ _spf-c.microsoft.com
+# ^^^^^^ v=spf1 ip4:213.199.138.181 ip4:213.199.138.191 ip4:207.46.52.71 ip4:207.46.52.79 ip4:86.61.88.25 ip4:167.220.67.232/29 ip4:157.58.196.96/29 ip4:147.243.128.24 ip4:147.243.128.26 ip4:147.243.1.153 ip4:147.243.1.47 ip4:147.243.1.48 ip4:52.250.126.174 ~all
+# ^^^^^^^ _spf-ssg-a.microsoft.com
+# ^^^^^^^ v=spf1 include:_spf-ssg-a.msft.net ip4:52.185.106.240/28 ip4:207.46.200.0/27 ip4:207.46.50.192/26 ip4:65.55.234.192/26 ip4:65.55.52.224/27 ip4:52.234.172.96/28 ip4:167.220.67.238 ip4:51.4.71.62 ip4:20.94.180.64/28 ip4:131.253.121.20 ip4:131.253.121.52 ~all
+# ^^^^^^^^ _spf-ssg-a.msft.net
+# ^^^^^^^^ v=spf1 ip4:20.63.210.192/28 ip4:52.236.28.240/28 ip4:103.9.8.121 ip4:103.9.8.122 ip4:103.9.8.123 ip4:42.159.163.81 ip4:42.159.163.82 ip4:42.159.163.83 ip4:134.170.27.8 ip4:52.251.55.143 ip4:52.237.141.173 ip4:40.112.65.63 ip4:104.215.186.3 ~all
+# ^^^^^^^^^ spf-a.hotmail.com
+# ^^^^^^^^^ v=spf1 ip4:157.55.0.192/26 ip4:157.55.1.128/26 ip4:157.55.2.0/25 ip4:65.54.190.0/24 ip4:65.54.51.64/26 ip4:65.54.61.64/26 ip4:65.55.111.0/24 ip4:65.55.116.0/25 ip4:65.55.34.0/24 ip4:65.55.90.0/24 ip4:65.54.241.0/24 ip4:207.46.117.0/24 ~all
+# ^^^^^^^^^^ _spf1-meo.microsoft.com
+# ^^^^^^^^^^ v=spf1 ip4:52.165.175.144 ip4:52.247.53.144 ip4:157.55.254.216 ip4:13.74.143.28 ip4:104.214.25.77 ip4:207.46.225.107 ip4:51.137.58.21 ip4:138.91.172.26 ip4:52.250.107.196 ip4:13.92.31.129 ip4:40.77.102.222 ip4:51.144.100.179 ip4:52.160.39.140 ip4:52.244.206.214 ip4:13.72.50.45 ip4:20.118.139.208/30 ip4:20.98.194.68/30 ip4:20.83.222.104/30 ip4:20.88.157.184/30 ip4:20.59.80.4/30 ip4:20.51.6.32/30 ip4:20.97.34.220/30 ip4:20.107.239.64/30 ip4:20.105.209.76/30 ~all
+# Depth:10
+$DATASET ip4set:microsoft.com microsoft.com @
+:3:v=spf1 ip4:$ ~all
+216.99.5.67 # _spf-a.microsoft.com
+216.99.5.68 # _spf-a.microsoft.com
+202.177.148.100 # _spf-a.microsoft.com
+203.122.32.250 # _spf-a.microsoft.com
+202.177.148.110 # _spf-a.microsoft.com
+213.199.128.139 # _spf-a.microsoft.com
+213.199.128.145 # _spf-a.microsoft.com
+207.46.50.72 # _spf-a.microsoft.com
+207.46.50.82 # _spf-a.microsoft.com
+65.55.42.224/28 # _spf-a.microsoft.com
+13.78.233.182 # _spf-a.microsoft.com
+40.92.0.0/15 # spf.protection.outlook.com
+40.107.0.0/16 # spf.protection.outlook.com
+52.100.0.0/14 # spf.protection.outlook.com
+104.47.0.0/17 # spf.protection.outlook.com
+51.4.72.0/24 # spfd.protection.outlook.com
+51.5.72.0/24 # spfd.protection.outlook.com
+51.5.80.0/27 # spfd.protection.outlook.com
+20.47.149.138/32 # spfd.protection.outlook.com
+51.4.80.0/27 # spfd.protection.outlook.com
+134.170.113.0/26 # _spf-mdm.microsoft.com
+131.253.30.0/24 # _spf-mdm.microsoft.com
+157.56.120.128/26 # _spf-mdm.microsoft.com
+134.170.174.0/24 # _spf-mdm.microsoft.com
+134.170.141.64/26 # _spf-mdm.microsoft.com
+134.170.143.0/24 # _spf-mdm.microsoft.com
+157.58.249.3 # _spf-mdm.microsoft.com
+65.55.29.77 # _spf-mdm.microsoft.com
+131.253.121.0/26 # _spf-mdm.microsoft.com
+207.46.22.35 # _spf-b.microsoft.com
+207.46.22.98/29 # _spf-b.microsoft.com
+217.77.141.52 # _spf-b.microsoft.com
+217.77.141.59 # _spf-b.microsoft.com
+203.32.4.25 # _spf-b.microsoft.com
+131.107.0.0/16 # _spf-b.microsoft.com
+23.103.224.0/19 # _spf-b.microsoft.com
+206.191.224.0/19 # _spf-b.microsoft.com
+65.52.80.137/32 # _spf-b.microsoft.com
+51.140.75.55 # _spf-b.microsoft.com
+13.70.32.43 # _spf-b.microsoft.com
+213.199.138.181 # _spf-c.microsoft.com
+213.199.138.191 # _spf-c.microsoft.com
+207.46.52.71 # _spf-c.microsoft.com
+207.46.52.79 # _spf-c.microsoft.com
+86.61.88.25 # _spf-c.microsoft.com
+167.220.67.232/29 # _spf-c.microsoft.com
+157.58.196.96/29 # _spf-c.microsoft.com
+147.243.128.24 # _spf-c.microsoft.com
+147.243.128.26 # _spf-c.microsoft.com
+147.243.1.153 # _spf-c.microsoft.com
+147.243.1.47 # _spf-c.microsoft.com
+147.243.1.48 # _spf-c.microsoft.com
+52.250.126.174 # _spf-c.microsoft.com
+20.63.210.192/28 # _spf-ssg-a.msft.net
+52.236.28.240/28 # _spf-ssg-a.msft.net
+103.9.8.121 # _spf-ssg-a.msft.net
+103.9.8.122 # _spf-ssg-a.msft.net
+103.9.8.123 # _spf-ssg-a.msft.net
+42.159.163.81 # _spf-ssg-a.msft.net
+42.159.163.82 # _spf-ssg-a.msft.net
+42.159.163.83 # _spf-ssg-a.msft.net
+134.170.27.8 # _spf-ssg-a.msft.net
+52.251.55.143 # _spf-ssg-a.msft.net
+52.237.141.173 # _spf-ssg-a.msft.net
+40.112.65.63 # _spf-ssg-a.msft.net
+104.215.186.3 # _spf-ssg-a.msft.net
+52.185.106.240/28 # _spf-ssg-a.microsoft.com
+207.46.200.0/27 # _spf-ssg-a.microsoft.com
+207.46.50.192/26 # _spf-ssg-a.microsoft.com
+65.55.234.192/26 # _spf-ssg-a.microsoft.com
+65.55.52.224/27 # _spf-ssg-a.microsoft.com
+52.234.172.96/28 # _spf-ssg-a.microsoft.com
+167.220.67.238 # _spf-ssg-a.microsoft.com
+51.4.71.62 # _spf-ssg-a.microsoft.com
+20.94.180.64/28 # _spf-ssg-a.microsoft.com
+131.253.121.20 # _spf-ssg-a.microsoft.com
+131.253.121.52 # _spf-ssg-a.microsoft.com
+157.55.0.192/26 # spf-a.hotmail.com
+157.55.1.128/26 # spf-a.hotmail.com
+157.55.2.0/25 # spf-a.hotmail.com
+65.54.190.0/24 # spf-a.hotmail.com
+65.54.51.64/26 # spf-a.hotmail.com
+65.54.61.64/26 # spf-a.hotmail.com
+65.55.111.0/24 # spf-a.hotmail.com
+65.55.116.0/25 # spf-a.hotmail.com
+65.55.34.0/24 # spf-a.hotmail.com
+65.55.90.0/24 # spf-a.hotmail.com
+65.54.241.0/24 # spf-a.hotmail.com
+207.46.117.0/24 # spf-a.hotmail.com
+52.165.175.144 # _spf1-meo.microsoft.com
+52.247.53.144 # _spf1-meo.microsoft.com
+157.55.254.216 # _spf1-meo.microsoft.com
+13.74.143.28 # _spf1-meo.microsoft.com
+104.214.25.77 # _spf1-meo.microsoft.com
+207.46.225.107 # _spf1-meo.microsoft.com
+51.137.58.21 # _spf1-meo.microsoft.com
+138.91.172.26 # _spf1-meo.microsoft.com
+52.250.107.196 # _spf1-meo.microsoft.com
+13.92.31.129 # _spf1-meo.microsoft.com
+40.77.102.222 # _spf1-meo.microsoft.com
+51.144.100.179 # _spf1-meo.microsoft.com
+52.160.39.140 # _spf1-meo.microsoft.com
+52.244.206.214 # _spf1-meo.microsoft.com
+13.72.50.45 # _spf1-meo.microsoft.com
+20.118.139.208/30 # _spf1-meo.microsoft.com
+20.98.194.68/30 # _spf1-meo.microsoft.com
+20.83.222.104/30 # _spf1-meo.microsoft.com
+20.88.157.184/30 # _spf1-meo.microsoft.com
+20.59.80.4/30 # _spf1-meo.microsoft.com
+20.51.6.32/30 # _spf1-meo.microsoft.com
+20.97.34.220/30 # _spf1-meo.microsoft.com
+20.107.239.64/30 # _spf1-meo.microsoft.com
+20.105.209.76/30 # _spf1-meo.microsoft.com
+:99:v=spf1 ~all
+0.0.0.0/1 # all other IPs
+128.0.0.0/1 # all other IPs
+$DATASET ip6trie:microsoft.com microsoft.com @
+:3:v=spf1 ip6:$ ~all
+2a01:111:f400::/48 # spf.protection.outlook.com
+2a01:111:f403::/49 # spf.protection.outlook.com
+2a01:111:f403:8000::/50 # spf.protection.outlook.com
+2a01:111:f403:c000::/51 # spf.protection.outlook.com
+2a01:111:f403:f000::/52 # spf.protection.outlook.com
+2a01:4180:4051:0800::/64 # spfd.protection.outlook.com
+2a01:4180:4050:0800::/64 # spfd.protection.outlook.com
+2a01:4180:4051:0400::/64 # spfd.protection.outlook.com
+2a01:4180:4050:0400::/64 # spfd.protection.outlook.com
+:99:v=spf1 ~all
+0:0:0:0:0:0:0:0/0 # all other IPs

@@ -1,0 +1,48 @@
+# Automatically generated rbldnsd config by Expurgate for:google.com @ 2022-09-12 13:54:50.091112
+#  google.com
+#  v=spf1 include:_spf.google.com ~all
+# ^ _spf.google.com
+# ^ v=spf1 include:_netblocks.google.com include:_netblocks2.google.com include:_netblocks3.google.com ~all
+# ^^ _netblocks.google.com
+# ^^ v=spf1 ip4:35.190.247.0/24 ip4:64.233.160.0/19 ip4:66.102.0.0/20 ip4:66.249.80.0/20 ip4:72.14.192.0/18 ip4:74.125.0.0/16 ip4:108.177.8.0/21 ip4:173.194.0.0/16 ip4:209.85.128.0/17 ip4:216.58.192.0/19 ip4:216.239.32.0/19 ~all
+# ^^^ _netblocks2.google.com
+# ^^^ v=spf1 ip6:2001:4860:4000::/36 ip6:2404:6800:4000::/36 ip6:2607:f8b0:4000::/36 ip6:2800:3f0:4000::/36 ip6:2a00:1450:4000::/36 ip6:2c0f:fb50:4000::/36 ~all
+# ^^^^ _netblocks3.google.com
+# ^^^^ v=spf1 ip4:172.217.0.0/19 ip4:172.217.32.0/20 ip4:172.217.128.0/19 ip4:172.217.160.0/20 ip4:172.217.192.0/19 ip4:172.253.56.0/21 ip4:172.253.112.0/20 ip4:108.177.96.0/19 ip4:35.191.0.0/16 ip4:130.211.0.0/22 ~all
+# Depth:4
+$DATASET ip4set:google.com google.com @
+:3:v=spf1 ip4:$ ~all
+35.190.247.0/24 # _netblocks.google.com
+64.233.160.0/19 # _netblocks.google.com
+66.102.0.0/20 # _netblocks.google.com
+66.249.80.0/20 # _netblocks.google.com
+72.14.192.0/18 # _netblocks.google.com
+74.125.0.0/16 # _netblocks.google.com
+108.177.8.0/21 # _netblocks.google.com
+173.194.0.0/16 # _netblocks.google.com
+209.85.128.0/17 # _netblocks.google.com
+216.58.192.0/19 # _netblocks.google.com
+216.239.32.0/19 # _netblocks.google.com
+172.217.0.0/19 # _netblocks3.google.com
+172.217.32.0/20 # _netblocks3.google.com
+172.217.128.0/19 # _netblocks3.google.com
+172.217.160.0/20 # _netblocks3.google.com
+172.217.192.0/19 # _netblocks3.google.com
+172.253.56.0/21 # _netblocks3.google.com
+172.253.112.0/20 # _netblocks3.google.com
+108.177.96.0/19 # _netblocks3.google.com
+35.191.0.0/16 # _netblocks3.google.com
+130.211.0.0/22 # _netblocks3.google.com
+:99:v=spf1 ~all
+0.0.0.0/1 # all other IPs
+128.0.0.0/1 # all other IPs
+$DATASET ip6trie:google.com google.com @
+:3:v=spf1 ip6:$ ~all
+2001:4860:4000::/36 # _netblocks2.google.com
+2404:6800:4000::/36 # _netblocks2.google.com
+2607:f8b0:4000::/36 # _netblocks2.google.com
+2800:3f0:4000::/36 # _netblocks2.google.com
+2a00:1450:4000::/36 # _netblocks2.google.com
+2c0f:fb50:4000::/36 # _netblocks2.google.com
+:99:v=spf1 ~all
+0:0:0:0:0:0:0:0/0 # all other IPs

@@ -1,0 +1,107 @@
+# Automatically generated rbldnsd config by Expurgate for:mimecast.com @ 2022-09-12 13:54:50.182799
+#  mimecast.com
+#  v=spf1 redirect=aojpw1q8._spf._d.mim.ec
+# ^ aojpw1q8._spf._d.mim.ec
+# ^ v=spf1 exists:%{i}._spf.mta.salesforce.com ip4:195.130.217.0/24 ip4:91.220.42.0/24 ip4:146.101.78.0/24 ip4:207.82.80.0/24 ip4:213.167.81.0/25 ip4:193.7.207.0/25 ip4:213.167.75.0/25 ip4:185.58.85.0/24 ip4:185.58.86.0/24 ip4:193.7.206.0/25 ip4:199.15.212.0/22 ip4:72.3.185.0/24 ip4:72.32.154.0/24 ip4:72.32.217.0/24 ip4:72.32.243.0/24 ip4:94.236.119.0/26 ip4:37.188.97.188 ip4:185.28.196.0/22 include:aojpw1q81._spf._d.mim.ec -all
+# ^^ aojpw1q81._spf._d.mim.ec
+# ^^ v=spf1 ip4:192.28.128.0/18 ip4:103.237.104.0/22 ip4:130.248.172.0/24 ip4:130.248.173.0/24 ip4:167.89.0.0/17 ip4:208.117.48.0/20 ip4:50.31.32.0/19 ip4:198.37.144.0/20 ip4:198.21.0.0/21 ip4:192.254.112.0/20 ip4:168.245.0.0/17 ip4:149.72.0.0/16 ip4:159.183.0.0/16 ip4:223.165.113.0/24 ip4:223.165.115.0/24 ip4:223.165.118.0/23 ip4:223.165.120.0/23 ip4:147.253.209.184 ip4:147.253.211.175 include:aojpw1q82._spf._d.mim.ec -all
+# ^^^ aojpw1q82._spf._d.mim.ec
+# ^^^ v=spf1 ip4:147.253.217.248 ip4:147.253.218.73 ip4:147.253.218.88 ip4:147.253.219.153 ip4:156.70.3.225 ip4:156.70.3.226/31 ip4:156.70.3.228/31 ip4:156.70.4.175 ip4:156.70.4.33 ip4:192.174.81.16/28 ip4:192.174.81.32/29 ip4:192.174.82.55 ip4:192.174.82.56/31 ip4:192.174.85.168 ip4:192.174.85.217 ip4:192.174.89.136 ip4:192.174.93.164 ip4:52.50.129.119 ip4:54.174.209.165 ip4:52.16.75.109 include:aojpw1q83._spf._d.mim.ec -all
+# ^^^^ aojpw1q83._spf._d.mim.ec
+# ^^^^ v=spf1 ip4:52.16.75.118 ip4:52.16.38.44 ip4:52.16.49.62 ip4:54.79.0.4 ip4:35.182.195.41 ip4:54.85.129.207 ip4:52.22.249.69 ip4:18.197.43.76 ip4:54.93.104.220 ip4:3.209.231.65 ip4:34.206.143.108 ip4:35.157.192.122 ip4:18.132.189.127 ip4:52.65.244.27 ip4:15.223.142.138 ip4:3.248.148.18 ip4:107.20.91.250 ip4:3.96.249.213 ip4:52.58.159.50 ip4:3.11.129.102 ip4:34.242.156.53 ip4:52.4.156.8 include:aojpw1q84._spf._d.mim.ec -all
+# ^^^^^ aojpw1q84._spf._d.mim.ec
+# ^^^^^ v=spf1 ip4:34.251.63.7 ip4:170.10.151.0/24 ip4:170.10.153.0/24 ip4:170.10.150.240/29 ip4:170.10.152.240/29 -all
+# Depth:5
+$DATASET ip4set:mimecast.com mimecast.com @
+:3:v=spf1 ip4:$ ~all
+195.130.217.0/24 # aojpw1q8._spf._d.mim.ec
+91.220.42.0/24 # aojpw1q8._spf._d.mim.ec
+146.101.78.0/24 # aojpw1q8._spf._d.mim.ec
+207.82.80.0/24 # aojpw1q8._spf._d.mim.ec
+213.167.81.0/25 # aojpw1q8._spf._d.mim.ec
+193.7.207.0/25 # aojpw1q8._spf._d.mim.ec
+213.167.75.0/25 # aojpw1q8._spf._d.mim.ec
+185.58.85.0/24 # aojpw1q8._spf._d.mim.ec
+185.58.86.0/24 # aojpw1q8._spf._d.mim.ec
+193.7.206.0/25 # aojpw1q8._spf._d.mim.ec
+199.15.212.0/22 # aojpw1q8._spf._d.mim.ec
+72.3.185.0/24 # aojpw1q8._spf._d.mim.ec
+72.32.154.0/24 # aojpw1q8._spf._d.mim.ec
+72.32.217.0/24 # aojpw1q8._spf._d.mim.ec
+72.32.243.0/24 # aojpw1q8._spf._d.mim.ec
+94.236.119.0/26 # aojpw1q8._spf._d.mim.ec
+37.188.97.188 # aojpw1q8._spf._d.mim.ec
+185.28.196.0/22 # aojpw1q8._spf._d.mim.ec
+192.28.128.0/18 # aojpw1q81._spf._d.mim.ec
+103.237.104.0/22 # aojpw1q81._spf._d.mim.ec
+130.248.172.0/24 # aojpw1q81._spf._d.mim.ec
+130.248.173.0/24 # aojpw1q81._spf._d.mim.ec
+167.89.0.0/17 # aojpw1q81._spf._d.mim.ec
+208.117.48.0/20 # aojpw1q81._spf._d.mim.ec
+50.31.32.0/19 # aojpw1q81._spf._d.mim.ec
+198.37.144.0/20 # aojpw1q81._spf._d.mim.ec
+198.21.0.0/21 # aojpw1q81._spf._d.mim.ec
+192.254.112.0/20 # aojpw1q81._spf._d.mim.ec
+168.245.0.0/17 # aojpw1q81._spf._d.mim.ec
+149.72.0.0/16 # aojpw1q81._spf._d.mim.ec
+159.183.0.0/16 # aojpw1q81._spf._d.mim.ec
+223.165.113.0/24 # aojpw1q81._spf._d.mim.ec
+223.165.115.0/24 # aojpw1q81._spf._d.mim.ec
+223.165.118.0/23 # aojpw1q81._spf._d.mim.ec
+223.165.120.0/23 # aojpw1q81._spf._d.mim.ec
+147.253.209.184 # aojpw1q81._spf._d.mim.ec
+147.253.211.175 # aojpw1q81._spf._d.mim.ec
+147.253.217.248 # aojpw1q82._spf._d.mim.ec
+147.253.218.73 # aojpw1q82._spf._d.mim.ec
+147.253.218.88 # aojpw1q82._spf._d.mim.ec
+147.253.219.153 # aojpw1q82._spf._d.mim.ec
+156.70.3.225 # aojpw1q82._spf._d.mim.ec
+156.70.3.226/31 # aojpw1q82._spf._d.mim.ec
+156.70.3.228/31 # aojpw1q82._spf._d.mim.ec
+156.70.4.175 # aojpw1q82._spf._d.mim.ec
+156.70.4.33 # aojpw1q82._spf._d.mim.ec
+192.174.81.16/28 # aojpw1q82._spf._d.mim.ec
+192.174.81.32/29 # aojpw1q82._spf._d.mim.ec
+192.174.82.55 # aojpw1q82._spf._d.mim.ec
+192.174.82.56/31 # aojpw1q82._spf._d.mim.ec
+192.174.85.168 # aojpw1q82._spf._d.mim.ec
+192.174.85.217 # aojpw1q82._spf._d.mim.ec
+192.174.89.136 # aojpw1q82._spf._d.mim.ec
+192.174.93.164 # aojpw1q82._spf._d.mim.ec
+52.50.129.119 # aojpw1q82._spf._d.mim.ec
+54.174.209.165 # aojpw1q82._spf._d.mim.ec
+52.16.75.109 # aojpw1q82._spf._d.mim.ec
+52.16.75.118 # aojpw1q83._spf._d.mim.ec
+52.16.38.44 # aojpw1q83._spf._d.mim.ec
+52.16.49.62 # aojpw1q83._spf._d.mim.ec
+54.79.0.4 # aojpw1q83._spf._d.mim.ec
+35.182.195.41 # aojpw1q83._spf._d.mim.ec
+54.85.129.207 # aojpw1q83._spf._d.mim.ec
+52.22.249.69 # aojpw1q83._spf._d.mim.ec
+18.197.43.76 # aojpw1q83._spf._d.mim.ec
+54.93.104.220 # aojpw1q83._spf._d.mim.ec
+3.209.231.65 # aojpw1q83._spf._d.mim.ec
+34.206.143.108 # aojpw1q83._spf._d.mim.ec
+35.157.192.122 # aojpw1q83._spf._d.mim.ec
+18.132.189.127 # aojpw1q83._spf._d.mim.ec
+52.65.244.27 # aojpw1q83._spf._d.mim.ec
+15.223.142.138 # aojpw1q83._spf._d.mim.ec
+3.248.148.18 # aojpw1q83._spf._d.mim.ec
+107.20.91.250 # aojpw1q83._spf._d.mim.ec
+3.96.249.213 # aojpw1q83._spf._d.mim.ec
+52.58.159.50 # aojpw1q83._spf._d.mim.ec
+3.11.129.102 # aojpw1q83._spf._d.mim.ec
+34.242.156.53 # aojpw1q83._spf._d.mim.ec
+52.4.156.8 # aojpw1q83._spf._d.mim.ec
+34.251.63.7 # aojpw1q84._spf._d.mim.ec
+170.10.151.0/24 # aojpw1q84._spf._d.mim.ec
+170.10.153.0/24 # aojpw1q84._spf._d.mim.ec
+170.10.150.240/29 # aojpw1q84._spf._d.mim.ec
+170.10.152.240/29 # aojpw1q84._spf._d.mim.ec
+:99:v=spf1 exists:%{i}._spf.mta.salesforce.com ~all
+0.0.0.0/1 # all other IPs
+128.0.0.0/1 # all other IPs
+$DATASET ip6trie:mimecast.com mimecast.com @
+:3:v=spf1 ip6:$ ~all
+:99:v=spf1 exists:%{i}._spf.mta.salesforce.com ~all
+0:0:0:0:0:0:0:0/0 # all other IPs
