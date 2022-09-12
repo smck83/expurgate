@@ -6,6 +6,7 @@ from datetime import datetime
 import os
 import shutil
 
+
 # set to 0 to loop infinitely
 loop = 0
 # set the depth to count resolutions
@@ -74,8 +75,11 @@ def getSPF(domain):
                     getSPF(spfValue[1])
                 elif re.match('include\:', spfPart, re.IGNORECASE) and "%{" not in spfPart:
                     spfValue = spfPart.split(':')
-                    depth += 1
-                    getSPF(spfValue[1])
+                    if spfValue[1] != domain:
+                        depth += 1
+                        getSPF(spfValue[1])
+                    else:
+                        print('No action, possible loop ' + spfValue[1] + ' equals ' + domain)
                 elif re.match('a\:', spfPart, re.IGNORECASE):
                     spfValue = spfPart.split(':')
                     result = [dns_record.to_text() for dns_record in dns.resolver.resolve(spfValue[1], "A").rrset]
@@ -88,7 +92,8 @@ def getSPF(domain):
                     result = [dns_record.to_text() for dns_record in dns.resolver.resolve(domain, "A").rrset]
                     depth += 1
                     header.append("# " + ("^" * depth) + " " + spfPart + "(" + domain + ")")
-                    result = (' # a(' + hostname + ')\n').join(result)
+                    result = [x + " # a(" + hostname + ")" for x in result]
+                    result = ('\n').join(result)
                     ip4.append(result + " # a")
                 elif re.match('mx\:', spfPart, re.IGNORECASE):
                     spfValue = spfPart.split(':')
@@ -102,7 +107,8 @@ def getSPF(domain):
                     for hostname in myarray:
                         result = [dns_record.to_text() for dns_record in dns.resolver.resolve(hostname, "A").rrset]
                         depth += 1
-                        result = (' # ' + spfPart + '=>a:' + hostname + '\n').join(result)
+                        result = [x + ' # ' + spfPart + '=>a:' + hostname for x in result]
+                        result = ('\n').join(result)
                         ip4.append(result)
                         header.append("# " + ("^" * depth) + " " + spfPart + "=>a:" + hostname)
 
@@ -120,7 +126,8 @@ def getSPF(domain):
                     for hostname in myarray:
                         result = [dns_record.to_text() for dns_record in dns.resolver.resolve(hostname, "A").rrset]
                         depth += 1
-                        result = (' # mx(' + domain + ')=>a:' + hostname + '\n').join(result)
+                        result = [x + ' # mx(' + domain + ')=>a:' + hostname for x in result ]
+                        result = ('\n').join(result)
                         ip4.append(result)
                         header.append("# " + ("^" * depth) + " mx(" + domain + ")=>a:" + hostname)
 
@@ -142,7 +149,7 @@ while loop == 0:
     print('Generating config for SPF records in ' + str(mydomains))
     for domain in mydomains:
         datetimeNow = datetime.now(tz=None)
-        header = ["# Automatically generated rbldnsd config by Expurgate for:" + domain + " @ " + str(datetimeNow)]
+        header = ["# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:" + domain + " @ " + str(datetimeNow)]
         ip4 = []
         ip4header = []
         ip6 = []
