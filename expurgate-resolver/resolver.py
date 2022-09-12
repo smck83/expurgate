@@ -40,71 +40,63 @@ def getSPF(domain):
     try:
         #try:
         if depth == 0 and source_prefix_off == False:
-           result = [dns_record.to_text() for dns_record in dns.resolver.resolve(source_prefix + "." + domain, "TXT").rrset]
+           sourcerecord = source_prefix + "." + domain
+           result = [dns_record.to_text() for dns_record in dns.resolver.resolve(sourcerecord, "TXT").rrset]
+           #depth += 1
         #except:
         elif depth <= 75:
             result = [dns_record.to_text() for dns_record in dns.resolver.resolve(domain, "TXT").rrset]
+            #depth += 1         
         else:
             print("THERE MAY BE A SPF LOOP, EXITING AFTER GOING 75 DEEP")
             result = "\"v=spf1 -all\""
+            depth += 1  
     
     except:
-        print("An exception occurred, check there is a DNS TXT record with SPF present at: " + source_prefix + "." + domain )
+        print("An exception occurred, check there is a DNS TXT record with SPF present at: " + str(source_prefix) + "." + str(domain) )
         result = "\"v=spf1 -all\""
-    depth += 1
-
     #print("Depth:" + str(depth))
     for record in result:
         if re.match('^"v=spf1 ', record, re.IGNORECASE):
             # replace " " with nothing which is used where TXT records exceed 255 characters
             record = record.replace("\" \"","")
-            ip4.append("# " + record)
             # remove " character from start and end
             spfvalue = record.replace("\"","")
             spfParts = spfvalue.split()
- 
+            #depth += 1 
+            header.append("# " + ("^" * depth) + " " + domain)           
+            header.append("# " + ("^" * depth) + " " + spfvalue)
+
             for spfPart in spfParts:
                 if re.match('redirect=', spfPart, re.IGNORECASE):
                     spfValue = spfPart.split('=')
+                    depth += 1         
                     getSPF(spfValue[1])
+                    
+                    #header.append("# " + ("^" * depth) + " " + spfPart)
                 elif re.match('include\:', spfPart, re.IGNORECASE) and "%{" not in spfPart:
                     spfValue = spfPart.split(':')
-                    ip4.append("# " + spfPart)
+                    depth += 1
                     getSPF(spfValue[1])
+                    #header.append("# " + ("^" * depth) + " " + spfPart)
                 elif re.match('a\:', spfPart, re.IGNORECASE):
-                    ip4.append("# " + spfPart)
                     spfValue = spfPart.split(':')
                     result = [dns_record.to_text() for dns_record in dns.resolver.resolve(spfValue[1], "A").rrset]
                     depth += 1
-                    result = (" # " + spfValue[0] + ":" + spfValue[1] + " \n").join(result)
-
+                    header.append("# " + ("^" * depth) + " " + spfPart)
+                    result = (' # a:' + spfValue[1] + '\n').join(result)
                     ip4.append(result + " # " + spfPart)
                 elif re.match('a', spfPart, re.IGNORECASE):
-                    ip4.append("# " + spfPart)
                     result = [dns_record.to_text() for dns_record in dns.resolver.resolve(domain, "A").rrset]
                     depth += 1
-                    result = '\n'.join(result)
+                    header.append("# " + ("^" * depth) + " " + spfPart + "(" + domain + ")")
+                    result = (' # a(' + hostname + ')\n').join(result)
                     ip4.append(result + " # a")
                 elif re.match('mx\:', spfPart, re.IGNORECASE):
-                    ip4.append("# " + spfPart)
                     spfValue = spfPart.split(':')
                     result = [dns_record.to_text() for dns_record in dns.resolver.resolve(spfValue[1], "MX").rrset]
-                    depth += 1
-                    myarray = []
-                    for mxrecord in result:
-                        mxValue = mxrecord.split(' ')
-                        myarray.append(mxValue[1])
-                    for hostname in myarray:
-                        result = [dns_record.to_text() for dns_record in dns.resolver.resolve(hostname, "A").rrset]
-                        result = '\n'.join(result)
-                        ip4.append(result)
-                elif re.match('mx', spfPart, re.IGNORECASE):
-                    ip4.append("# " + spfPart)
-                    try:
-                        result = [dns_record.to_text() for dns_record in dns.resolver.resolve(domain, "MX").rrset]
-                    except:
-                        print("Error performing MX lookup")
-                    depth += 1
+                    depth += 1       
+                    header.append("# " + ("^" * depth) + " " + spfPart)   
                     myarray = []
                     for mxrecord in result:
                         mxValue = mxrecord.split(' ')
@@ -112,15 +104,35 @@ def getSPF(domain):
                     for hostname in myarray:
                         result = [dns_record.to_text() for dns_record in dns.resolver.resolve(hostname, "A").rrset]
                         depth += 1
-                        result = '\n'.join(result)
+                        result = (' # ' + spfPart + '=>a:' + hostname + '\n').join(result)
                         ip4.append(result)
+                        header.append("# " + ("^" * depth) + " " + spfPart + "=>a:" + hostname)
+
+                elif re.match('mx', spfPart, re.IGNORECASE):
+                    try:
+                        result = [dns_record.to_text() for dns_record in dns.resolver.resolve(domain, "MX").rrset]
+                        depth += 1
+                        header.append("# " + ("^" * depth) + " mx(" + domain + ")")
+                    except:
+                        print("Error performing MX lookup")
+                    myarray = []
+                    for mxrecord in result:
+                        mxValue = mxrecord.split(' ')
+                        myarray.append(mxValue[1])
+                    for hostname in myarray:
+                        result = [dns_record.to_text() for dns_record in dns.resolver.resolve(hostname, "A").rrset]
+                        depth += 1
+                        result = (' # mx(' + domain + ')=>a:' + hostname + '\n').join(result)
+                        ip4.append(result)
+                        header.append("# " + ("^" * depth) + " mx(" + domain + ")=>a:" + hostname)
+
                 elif re.match('ip4\:', spfPart, re.IGNORECASE):
                     spfValue = spfPart.split('ip4:')
                     ip4.append(spfValue[1] + " # " + domain)
                 elif re.match('ip6\:', spfPart, re.IGNORECASE):
                     spfValue = spfPart.split('ip6:')
                     ip6.append(spfValue[1] + " # " + domain)
-                elif re.match('[\+\-\~]all', spfPart, re.IGNORECASE):
+                elif re.match('[\+\-\~\?]all', spfPart, re.IGNORECASE):
                     spfAction.append(spfPart)
                 elif re.match('v\=spf1', spfPart, re.IGNORECASE):
                     spfValue = spfPart
@@ -131,27 +143,31 @@ def getSPF(domain):
 while loop == 0:
     print('Generating config for SPF records in ' + str(mydomains))
     for domain in mydomains:
+        datetimeNow = datetime.now(tz=None)
+        header = ["# Automatically generated rbldnsd config by Expurgate for:" + domain + " @ " + str(datetimeNow)]
         ip4 = []
+        ip4header = []
         ip6 = []
+        ip6header = []
         spfAction = ["~all"]
         otherValues = []
         depth = 0
         getSPF(domain)
 
     # remove duplicates
-        print(len(ip4)) 
+        print("Items in IP4: array (before dedupe):" + str(len(ip4))) 
         ip4 = list(dict.fromkeys(ip4))
         ip4 = [x.strip(' ') for x in ip4]
-        print(len(ip4),ip4)  
+        print("Items in IP4: array (after dedupe):" + str(len(ip4)))  
+        print(ip4)
         # remove duplicates
-        print(len(ip6)) 
+        print("Items in IP6: array (before dedupe):" + str(len(ip6))) 
         ip6 = list(dict.fromkeys(ip6))
         ip6 = [x.strip(' ') for x in ip6]
-        print(len(ip6),ip6)  
+        print("Items in IP6: array (after dedupe):" + str(len(ip6)))  
+        print(ip6)
         
     # CREATE ARRAYS FOR EACH PART OF THE RBLDNSD FILE
-        datetimeNow = datetime.now(tz=None)
-        ip4header = ["# Automatically generated rbldnsd config by Expurgate for:" + domain + " @ " + str(datetimeNow)]
         ip4header.append("# Depth:" + str(depth))
         ip4header.append("$DATASET ip4set:"+ domain +" " + domain + " @")
         ip4header.append(":3:v=spf1 ip4:$ " + spfAction[0])
@@ -160,17 +176,17 @@ while loop == 0:
             ip4block = [":99:v=spf1 " + ' '.join(otherValues) + " " + spfAction[0]]
         else:
             ip4block = [":99:v=spf1 " + spfAction[0]]
-        ip4block.append("0.0.0.0/1")
-        ip4block.append("128.0.0.0/1")
-        ip6header = ["$DATASET ip6trie:"+ domain +" " + domain + " @"]
+        ip4block.append("0.0.0.0/1 # all other IPs")
+        ip4block.append("128.0.0.0/1 # all other IPs")
+        ip6header.append("$DATASET ip6trie:"+ domain +" " + domain + " @")
         ip6header.append(":3:v=spf1 ip6:$ " + spfAction[0])
         if len(otherValues) > 0:
             ip6block = [":99:v=spf1 " + ' '.join(otherValues) + " " + spfAction[0]]
         else:
             ip6block = [":99:v=spf1 " + spfAction[0]]
-        ip6block.append("0:0:0:0:0:0:0:0/0")
+        ip6block.append("0:0:0:0:0:0:0:0/0 # all other IPs")
         # Join all the pieces together, ready for file output
-        myrbldnsdconfig = ip4header + ip4 + ip4block + ip6header + ip6 + ip6block
+        myrbldnsdconfig = header + ip4header + ip4 + ip4block + ip6header + ip6 + ip6block
 
         # Write the RBLDNSD config file to disk
         with open(r'output/'+ domain.replace(".","-"), 'w') as fp:

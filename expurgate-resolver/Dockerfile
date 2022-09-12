@@ -1,4 +1,4 @@
-FROM python:stable
+FROM python
 LABEL maintainer="s@mck.la"
 RUN apt-get update && apt-get install -y \
 && mkdir -p /spf-resolver/output \
