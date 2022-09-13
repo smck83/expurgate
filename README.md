@@ -156,7 +156,5 @@ ${d} - the sending servers domain name (in ENVELOPE FROM: field) is `ehlo.email`
 # Cloud hosted SPF solutions
 There are a number of vendors that offer SPF management capability. However I could not find any self-hosted options. Common terms for these services are SPF flattening and SPF compression.
 
-![expurgate - simplify, hide and exceed SPF lookup limits](http://expurgate.github.com._spf.xpg8.tk)
-
 # Buy me a coffee
 If this was useful, feel free to [Buy me a coffee](https://www.buymeacoffee.com/smc83)
