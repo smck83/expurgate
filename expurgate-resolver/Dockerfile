@@ -1,8 +1,8 @@
-FROM python
+FROM python:3-alpine
 LABEL maintainer="s@mck.la"
-RUN apt-get update && apt-get install -y \
-&& mkdir -p /spf-resolver/output \
-&& pip install dnspython 
+RUN apk -U upgrade \
+&& pip install dnspython \
+&& mkdir -p /spf-resolver/output
 WORKDIR /spf-resolver
 COPY . /spf-resolver
 
