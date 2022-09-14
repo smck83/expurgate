@@ -115,7 +115,7 @@ def getSPF(domain):
                                 if result:
                                     result = [x + ' # ' + spfPart + '=>a:' + hostname for x in result]
                                     result.sort() # sort
-                                    result = ('\n').join(result.sort)
+                                    result = ('\n').join(result)
                                     ip4.append(result)
                                     header.append("# " + (paddingchar * depth) + " " + spfPart + "=>a:" + hostname)
 
