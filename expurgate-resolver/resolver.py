@@ -22,6 +22,7 @@ else:
 if 'MY_DOMAINS' in os.environ:
     domains = os.environ['MY_DOMAINS']
     mydomains = domains.split(' ') # convert input string to list
+    mydomains = [domain for domain in mydomains if '.' in domain] # confirm domain contains a fullstop
     mydomains = list(dict.fromkeys(mydomains)) # dedupe the list of domains
 else:
     source_prefix_off = True
@@ -32,7 +33,7 @@ if 'DELAY' in os.environ and int(os.environ['DELAY']) > 29:
 else:
     delayBetweenRun = 300 #default to 5 minutes
 print("Running delay of : " + str(delayBetweenRun))
-
+totaldomaincount = len(mydomains)
 
 def dnsLookup(domain,type):
     global depth
@@ -144,9 +145,12 @@ def getSPF(domain):
                         print('No match:',spfPart)
                         otherValues.append(spfPart)
 
-while loop == 0:
+while loop == 0 and mydomains:
     print('Generating config for SPF records in ' + str(mydomains))
+    domaincount = 0
     for domain in mydomains:
+        domaincount +=1
+        
         datetimeNow = datetime.now(tz=None)
         header = ["# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:" + domain + " @ " + str(datetimeNow)]
         ip4 = []
@@ -157,7 +161,9 @@ while loop == 0:
         otherValues = []
         depth = 0
         includes = []
+
         getSPF(domain)
+
 
     # remove duplicates
         print("Items in IP4: array (before dedupe):" + str(len(ip4))) 
@@ -199,8 +205,8 @@ while loop == 0:
             for item in myrbldnsdconfig:
                 # write each item on a new line
                 fp.write("%s\n" % item)
-            print('Generating rbldnsd config for SPF records in ' + domain)
-            print("Your domain " + domain + " required " + str(depth) + " lookups.")
+            print('[' + str(domaincount) +'/'+ str(totaldomaincount) + '] Generating rbldnsd config for SPF records in ' + domain)
+            print('[' + str(domaincount) +'/'+ str(totaldomaincount) + '] Your domain ' + domain + ' required ' + str(depth) + ' lookups.')
         shutil.move(src_path, dst_path) 
     print("Waiting " + str(delayBetweenRun) + " seconds before running again... ")
     sleep(int(delayBetweenRun)) # wait DELAY in secondsbefore running again.
