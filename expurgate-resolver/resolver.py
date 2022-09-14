@@ -7,6 +7,7 @@ import os
 import shutil
 
 
+
 # set to 0 to loop infinitely
 loop = 0
 # set the depth to count resolutions
@@ -92,9 +93,9 @@ def getSPF(domain):
                     result = [dns_record.to_text() for dns_record in dns.resolver.resolve(domain, "A").rrset]
                     depth += 1
                     header.append("# " + ("^" * depth) + " " + spfPart + "(" + domain + ")")
-                    result = [x + " # a(" + hostname + ")" for x in result]
+                    result = [x + " # a(" + domain + ")" for x in result]
                     result = ('\n').join(result)
-                    ip4.append(result + " # a")
+                    ip4.append(result)
                 elif re.match('mx\:', spfPart, re.IGNORECASE):
                     spfValue = spfPart.split(':')
                     result = [dns_record.to_text() for dns_record in dns.resolver.resolve(spfValue[1], "MX").rrset]
