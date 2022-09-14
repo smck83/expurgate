@@ -5,11 +5,7 @@ import re
 from datetime import datetime
 import os
 import shutil
-# set to 0 to loop infinitely
-loop = 0
-# set the depth to count resolutions
-global depth
-depth = 0
+paddingchar = "^"
 
 if 'SOURCE_PREFIX_OFF' in os.environ:
     source_prefix_off = os.environ['SOURCE_PREFIX_OFF']
@@ -26,7 +22,7 @@ if 'MY_DOMAINS' in os.environ:
     mydomains = list(dict.fromkeys(mydomains)) # dedupe the list of domains
 else:
     source_prefix_off = True
-    mydomains = ['google.com','mimecast.com','microsoft.com','github.com','who.int','apple.com'] # demo mode
+    mydomains = ['google.com','mimecast.com','microsoft.com','github.com','who.int','apple.com','lenovo.com'] # demo mode
     print("MY_DOMAIN not set, running in demo mode using " + str(mydomains))
 if 'DELAY' in os.environ and int(os.environ['DELAY']) > 29:
     delayBetweenRun = os.environ['DELAY']
@@ -34,6 +30,11 @@ else:
     delayBetweenRun = 300 #default to 5 minutes
 print("Running delay of : " + str(delayBetweenRun))
 totaldomaincount = len(mydomains)
+# set to 0 to loop infinitely
+loop = 0
+# set the depth to count resolutions
+global depth
+depth = 0
 
 def dnsLookup(domain,type):
     global depth
@@ -67,8 +68,8 @@ def getSPF(domain):
                 # remove " character from start and end
                 spfvalue = record.replace("\"","")
                 spfParts = spfvalue.split()
-                header.append("# " + ("^" * depth) + " " + domain)           
-                header.append("# " + ("^" * depth) + " " + spfvalue)
+                header.append("# " + (paddingchar * depth) + " " + domain)           
+                header.append("# " + (paddingchar * depth) + " " + spfvalue)
 
                 for spfPart in spfParts:
                     if re.match('redirect=', spfPart, re.IGNORECASE):
@@ -86,7 +87,7 @@ def getSPF(domain):
                         spfValue = spfPart.split(':')
                         result = dnsLookup(spfValue[1],"A")  
                         if result:
-                            header.append("# " + ("^" * depth) + " " + spfPart)
+                            header.append("# " + (paddingchar * depth) + " " + spfPart)
                             result = [x + ' # a:' + spfValue[1] for x in result]
                             result.sort() # sort
                             result = ('\n').join(result)
@@ -94,7 +95,7 @@ def getSPF(domain):
                     elif re.match('^(\+|)a', spfPart, re.IGNORECASE):
                         result = dnsLookup(domain,"A")
                         if result:  
-                            header.append("# " + ("^" * depth) + " " + spfPart + "(" + domain + ")")
+                            header.append("# " + (paddingchar * depth) + " " + spfPart + "(" + domain + ")")
                             result = [x + " # a(" + domain + ")" for x in result]
                             result.sort() # sort
                             result = ('\n').join(result)
@@ -103,37 +104,39 @@ def getSPF(domain):
                         spfValue = spfPart.split(':')
                         result = dnsLookup(spfValue[1],"MX") 
                         if result:    
-                            header.append("# " + ("^" * depth) + " " + spfPart)   
-                            myarray = []
+                            header.append("# " + (paddingchar * depth) + " " + spfPart)   
+                            mxrecords = []
                             for mxrecord in result:
                                 mxValue = mxrecord.split(' ')
-                                myarray.append(mxValue[1])
-                            for hostname in myarray:
+                                mxrecords.append(mxValue[1])
+                            mxrecords.sort()
+                            for hostname in mxrecords:
                                 result = dnsLookup(hostname,"A")  
                                 if result:
                                     result = [x + ' # ' + spfPart + '=>a:' + hostname for x in result]
                                     result.sort() # sort
                                     result = ('\n').join(result.sort)
                                     ip4.append(result)
-                                    header.append("# " + ("^" * depth) + " " + spfPart + "=>a:" + hostname)
+                                    header.append("# " + (paddingchar * depth) + " " + spfPart + "=>a:" + hostname)
 
                     elif re.match('^(\+|)mx', spfPart, re.IGNORECASE):
                         result = dnsLookup(domain,"MX")
                         if result:
-                            header.append("# " + ("^" * depth) + " mx(" + domain + ")")
+                            header.append("# " + (paddingchar * depth) + " mx(" + domain + ")")
                             print("Error performing MX lookup")
-                            myarray = []
+                            mxrecords = []
                             for mxrecord in result:
                                 mxValue = mxrecord.split(' ')
-                                myarray.append(mxValue[1])
-                            for hostname in myarray:
+                                mxrecords.append(mxValue[1])
+                            mxrecords.sort()
+                            for hostname in mxrecords:
                                 result = dnsLookup(hostname,"A")  
                                 if result:
                                     result = [x + ' # mx(' + domain + ')=>a:' + hostname for x in result ]
                                     result.sort() # sort
                                     result = ('\n').join(result)
                                     ip4.append(result)
-                                    header.append("# " + ("^" * depth) + " mx(" + domain + ")=>a:" + hostname)
+                                    header.append("# " + (paddingchar * depth) + " mx(" + domain + ")=>a:" + hostname)
 
                     elif re.match('^(\+|)ip4\:', spfPart, re.IGNORECASE):
                         spfValue = spfPart.split('ip4:')
@@ -154,7 +157,6 @@ while loop == 0 and mydomains:
     domaincount = 0
     for domain in mydomains:
         domaincount +=1
-        
         datetimeNow = datetime.now(tz=None)
         header = ["# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:" + domain + " @ " + str(datetimeNow)]
         ip4 = []

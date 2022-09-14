@@ -1,0 +1,99 @@
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:lenovo.com @ 2022-09-14 21:59:23.313400
+# ^ lenovo.com
+# ^ v=spf1 include:spf.messagelabs.com include:_netblocks.eloqua.com include:spf.protection.outlook.com include:spf.pfpool.lenovo.com ip4:72.32.45.225 ip4:40.65.201.146 ip4:138.108.60.125 ip4:138.108.24.107 ip4:52.247.21.11 ~all
+# ^^ spf.messagelabs.com
+# ^^ v=spf1 include:nets1.spf.messagelabs.com include:nets2.spf.messagelabs.com ~all
+# ^^^ nets1.spf.messagelabs.com
+# ^^^ v=spf1 ip4:85.158.136.0/21 ip4:193.109.254.0/23 ip4:194.106.220.0/23 ip4:195.245.230.0/23 ip4:95.131.104.0/21 ip4:46.226.48.0/21
+# ^^^^ nets2.spf.messagelabs.com
+# ^^^^ v=spf1 ip4:216.82.240.0/20 ip4:67.219.240.0/20 ip4:117.120.16.0/21 ip4:103.9.96.0/22
+# ^^^^^ _netblocks.eloqua.com
+# ^^^^^ v=spf1 include:_trustedips1.eloqua.com include:_trustedips2.eloqua.com include:_trustedips3.eloqua.com -all
+# ^^^^^^ _trustedips1.eloqua.com
+# ^^^^^^ v=spf1 ip4:204.92.19.0/24 ip4:204.92.21.0/25 ip4:204.92.22.0/24 ip4:204.92.26.0/24 ip4:204.92.31.0/24 ip4:204.92.114.0/24 ip4:66.48.80.0/25 ip4:209.167.231.0/24 ip4:129.145.16.0/21 ip4:129.145.76.0/22 ip4:141.145.8.0/21 ip4:129.91.16.0/21
+# ^^^^^^^ _trustedips2.eloqua.com
+# ^^^^^^^ v=spf1 ip4:142.0.160.0/20 ip4:138.1.49.41 ip4:147.154.9.180 ip4:138.1.55.48 ip4:130.35.98.1 ip4:209.17.48.0/24 ip4:209.17.49.0/24 ip4:209.17.50.0/24 ip4:129.145.79.0/24 ip4:207.135.30.0/23
+# ^^^^^^^^ _trustedips3.eloqua.com
+# ^^^^^^^^ v=spf1 ip4:129.145.74.0/23
+# ^^^^^^^^^ spf.protection.outlook.com
+# ^^^^^^^^^ v=spf1 ip4:40.92.0.0/15 ip4:40.107.0.0/16 ip4:52.100.0.0/14 ip4:104.47.0.0/17 ip6:2a01:111:f400::/48 ip6:2a01:111:f403::/49 ip6:2a01:111:f403:8000::/50 ip6:2a01:111:f403:c000::/51 ip6:2a01:111:f403:f000::/52 include:spfd.protection.outlook.com -all
+# ^^^^^^^^^^ spfd.protection.outlook.com
+# ^^^^^^^^^^ v=spf1 ip4:51.4.72.0/24 ip4:51.5.72.0/24 ip4:51.5.80.0/27 ip4:20.47.149.138/32 ip4:51.4.80.0/27 ip6:2a01:4180:4051:0800::/64 ip6:2a01:4180:4050:0800::/64 ip6:2a01:4180:4051:0400::/64 ip6:2a01:4180:4050:0400::/64 -all
+# ^^^^^^^^^^^ spf.pfpool.lenovo.com
+# ^^^^^^^^^^^ v=spf1 ip4:103.30.235.218 ip4:103.30.235.219 ip4:103.30.235.220 ip4:103.30.235.221 ip4:104.232.228.21 ip4:104.232.228.22 ip4:104.232.228.23 ip4:104.232.228.24 ip4:144.188.128.67 ip4:144.188.128.68
+# Depth:11
+$DATASET ip4set:lenovo.com lenovo.com @
+:3:v=spf1 ip4:$ ~all
+85.158.136.0/21 # nets1.spf.messagelabs.com
+193.109.254.0/23 # nets1.spf.messagelabs.com
+194.106.220.0/23 # nets1.spf.messagelabs.com
+195.245.230.0/23 # nets1.spf.messagelabs.com
+95.131.104.0/21 # nets1.spf.messagelabs.com
+46.226.48.0/21 # nets1.spf.messagelabs.com
+216.82.240.0/20 # nets2.spf.messagelabs.com
+67.219.240.0/20 # nets2.spf.messagelabs.com
+117.120.16.0/21 # nets2.spf.messagelabs.com
+103.9.96.0/22 # nets2.spf.messagelabs.com
+204.92.19.0/24 # _trustedips1.eloqua.com
+204.92.21.0/25 # _trustedips1.eloqua.com
+204.92.22.0/24 # _trustedips1.eloqua.com
+204.92.26.0/24 # _trustedips1.eloqua.com
+204.92.31.0/24 # _trustedips1.eloqua.com
+204.92.114.0/24 # _trustedips1.eloqua.com
+66.48.80.0/25 # _trustedips1.eloqua.com
+209.167.231.0/24 # _trustedips1.eloqua.com
+129.145.16.0/21 # _trustedips1.eloqua.com
+129.145.76.0/22 # _trustedips1.eloqua.com
+141.145.8.0/21 # _trustedips1.eloqua.com
+129.91.16.0/21 # _trustedips1.eloqua.com
+142.0.160.0/20 # _trustedips2.eloqua.com
+138.1.49.41 # _trustedips2.eloqua.com
+147.154.9.180 # _trustedips2.eloqua.com
+138.1.55.48 # _trustedips2.eloqua.com
+130.35.98.1 # _trustedips2.eloqua.com
+209.17.48.0/24 # _trustedips2.eloqua.com
+209.17.49.0/24 # _trustedips2.eloqua.com
+209.17.50.0/24 # _trustedips2.eloqua.com
+129.145.79.0/24 # _trustedips2.eloqua.com
+207.135.30.0/23 # _trustedips2.eloqua.com
+129.145.74.0/23 # _trustedips3.eloqua.com
+40.92.0.0/15 # spf.protection.outlook.com
+40.107.0.0/16 # spf.protection.outlook.com
+52.100.0.0/14 # spf.protection.outlook.com
+104.47.0.0/17 # spf.protection.outlook.com
+51.4.72.0/24 # spfd.protection.outlook.com
+51.5.72.0/24 # spfd.protection.outlook.com
+51.5.80.0/27 # spfd.protection.outlook.com
+20.47.149.138/32 # spfd.protection.outlook.com
+51.4.80.0/27 # spfd.protection.outlook.com
+103.30.235.218 # spf.pfpool.lenovo.com
+103.30.235.219 # spf.pfpool.lenovo.com
+103.30.235.220 # spf.pfpool.lenovo.com
+103.30.235.221 # spf.pfpool.lenovo.com
+104.232.228.21 # spf.pfpool.lenovo.com
+104.232.228.22 # spf.pfpool.lenovo.com
+104.232.228.23 # spf.pfpool.lenovo.com
+104.232.228.24 # spf.pfpool.lenovo.com
+144.188.128.67 # spf.pfpool.lenovo.com
+144.188.128.68 # spf.pfpool.lenovo.com
+72.32.45.225 # lenovo.com
+40.65.201.146 # lenovo.com
+138.108.60.125 # lenovo.com
+138.108.24.107 # lenovo.com
+52.247.21.11 # lenovo.com
+:99:v=spf1 ~all
+0.0.0.0/1 # all other IPv4 addresses
+128.0.0.0/1 # all other IP IPv4 addresses
+$DATASET ip6trie:lenovo.com lenovo.com @
+:3:v=spf1 ip6:$ ~all
+2a01:111:f400::/48 # spf.protection.outlook.com
+2a01:111:f403::/49 # spf.protection.outlook.com
+2a01:111:f403:8000::/50 # spf.protection.outlook.com
+2a01:111:f403:c000::/51 # spf.protection.outlook.com
+2a01:111:f403:f000::/52 # spf.protection.outlook.com
+2a01:4180:4051:0800::/64 # spfd.protection.outlook.com
+2a01:4180:4050:0800::/64 # spfd.protection.outlook.com
+2a01:4180:4051:0400::/64 # spfd.protection.outlook.com
+2a01:4180:4050:0400::/64 # spfd.protection.outlook.com
+:99:v=spf1 ~all
+0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
