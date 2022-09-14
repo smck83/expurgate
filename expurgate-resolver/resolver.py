@@ -13,6 +13,8 @@ loop = 0
 # set the depth to count resolutions
 global depth
 depth = 0
+global loopdetected
+loopdetected = 0
 
 if 'SOURCE_PREFIX_OFF' in os.environ:
     source_prefix_off = os.environ['SOURCE_PREFIX_OFF']
@@ -29,7 +31,7 @@ if 'MY_DOMAINS' in os.environ:
 else:
     #example list if MY_DOMAINS isnt provided
     source_prefix_off = True
-    mydomains = ['google.com','mimecast.com','microsoft.com']
+    mydomains = ['google.com','mimecast.com','microsoft.com','github.com']
     print("MY_DOMAIN not set, running in demo mode using " + str(mydomains))
 if 'DELAY' in os.environ and int(os.environ['DELAY']) > 29:
     delayBetweenRun = os.environ['DELAY']
@@ -40,6 +42,7 @@ print("Running delay of : " + str(delayBetweenRun))
 
 def getSPF(domain):
     global depth
+    global loopdetected
     try:
         #try:
         if depth == 0 and source_prefix_off == False:
@@ -49,11 +52,7 @@ def getSPF(domain):
         elif depth <= 75:
             result = [dns_record.to_text() for dns_record in dns.resolver.resolve(domain, "TXT").rrset]        
         else:
-            msg = "THERE MAY BE A SPF LOOP, EXITING AFTER GOING 75 DEEP"
-            print(msg)
-            result = "\"v=spf1 -all\""
-            depth += 1  
-            header.append("# " + ("^" * depth) + " " + msg) 
+            print('Unknown error detected') 
     
     except:
         print("An exception occurred, check there is a DNS TXT record with SPF present at: " + str(source_prefix) + "." + str(domain) )
@@ -76,8 +75,9 @@ def getSPF(domain):
                     getSPF(spfValue[1])
                 elif re.match('include\:', spfPart, re.IGNORECASE) and "%{" not in spfPart:
                     spfValue = spfPart.split(':')
-                    if spfValue[1] != domain:
+                    if spfValue[1] != domain and spfValue[1] and spfValue[1] not in includes:
                         depth += 1
+                        includes.append(spfValue[1])
                         getSPF(spfValue[1])
                     else:
                         print('No action, possible loop ' + spfValue[1] + ' equals ' + domain)
@@ -158,6 +158,7 @@ while loop == 0:
         spfAction = ["~all"]
         otherValues = []
         depth = 0
+        includes = []
         getSPF(domain)
 
     # remove duplicates
@@ -197,12 +198,13 @@ while loop == 0:
         # Write the RBLDNSD config file to disk
         src_path = r'output/'+ domain.replace(".","-")+".staging"
         dst_path = r'output/'+ domain.replace(".","-")
-        with open(src_path, 'w') as fp:
-            for item in myrbldnsdconfig:
-                # write each item on a new line
-                fp.write("%s\n" % item)
-            print('Generating rbldnsd config for SPF records in ' + domain)
-            print("Your domain " + domain + " required " + str(depth) + " lookups.")
-        shutil.move(src_path, dst_path) 
+        if loopdetected != 1:
+            with open(src_path, 'w') as fp:
+                for item in myrbldnsdconfig:
+                    # write each item on a new line
+                    fp.write("%s\n" % item)
+                print('Generating rbldnsd config for SPF records in ' + domain)
+                print("Your domain " + domain + " required " + str(depth) + " lookups.")
+            shutil.move(src_path, dst_path) 
     print("Waiting " + str(delayBetweenRun) + " seconds before running again... ")
     sleep(int(delayBetweenRun)) # wait DELAY before running again.
