@@ -1,5 +1,5 @@
 FROM python:3-alpine
-LABEL maintainer="s@mck.la"
+LABEL maintainer="expurgate@mck.la"
 RUN apk -U upgrade \
 && pip install dnspython \
 && mkdir -p /spf-resolver/output
