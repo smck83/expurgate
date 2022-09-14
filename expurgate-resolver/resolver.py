@@ -1,4 +1,4 @@
-
+# author: https://github.com/smck83/
 from time import sleep
 import dns.resolver
 import re
@@ -26,7 +26,7 @@ if 'MY_DOMAINS' in os.environ:
     mydomains = list(dict.fromkeys(mydomains)) # dedupe the list of domains
 else:
     source_prefix_off = True
-    mydomains = ['google.com','mimecast.com','microsoft.com','github.com','who.int'] # demo mode
+    mydomains = ['google.com','mimecast.com','microsoft.com','github.com','who.int','apple.com'] # demo mode
     print("MY_DOMAIN not set, running in demo mode using " + str(mydomains))
 if 'DELAY' in os.environ and int(os.environ['DELAY']) > 29:
     delayBetweenRun = os.environ['DELAY']
@@ -88,6 +88,7 @@ def getSPF(domain):
                         if result:
                             header.append("# " + ("^" * depth) + " " + spfPart)
                             result = [x + ' # a:' + spfValue[1] for x in result]
+                            result.sort() # sort
                             result = ('\n').join(result)
                             ip4.append(result + " # " + spfPart)
                     elif re.match('^(\+|)a', spfPart, re.IGNORECASE):
@@ -95,6 +96,7 @@ def getSPF(domain):
                         if result:  
                             header.append("# " + ("^" * depth) + " " + spfPart + "(" + domain + ")")
                             result = [x + " # a(" + domain + ")" for x in result]
+                            result.sort() # sort
                             result = ('\n').join(result)
                             ip4.append(result)
                     elif re.match('^(\+|)mx\:', spfPart, re.IGNORECASE):
@@ -110,7 +112,8 @@ def getSPF(domain):
                                 result = dnsLookup(hostname,"A")  
                                 if result:
                                     result = [x + ' # ' + spfPart + '=>a:' + hostname for x in result]
-                                    result = ('\n').join(result)
+                                    result.sort() # sort
+                                    result = ('\n').join(result.sort)
                                     ip4.append(result)
                                     header.append("# " + ("^" * depth) + " " + spfPart + "=>a:" + hostname)
 
@@ -127,6 +130,7 @@ def getSPF(domain):
                                 result = dnsLookup(hostname,"A")  
                                 if result:
                                     result = [x + ' # mx(' + domain + ')=>a:' + hostname for x in result ]
+                                    result.sort() # sort
                                     result = ('\n').join(result)
                                     ip4.append(result)
                                     header.append("# " + ("^" * depth) + " mx(" + domain + ")=>a:" + hostname)
