@@ -165,10 +165,11 @@ while loop == 0 and mydomains:
         ip6header = []
         spfAction = ["~all"]
         otherValues = []
-        depth = 0
+        depth = 0        
         includes = []
 
         getSPF(domain)
+
 
 
     # remove duplicates
