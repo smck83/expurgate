@@ -88,13 +88,13 @@ Copy your current domains SPF record to an unused subdomain which will be set in
 | Container  | Variable | Description | Required? |
 | ------------- | ------------- | ------------- | ------------- |
 | expurgate-resolver  | DELAY= | This is the delay in seconds between running the script to generate new RBLDNSD config files for RBLDNSD to pickup. `DEFAULT: 300` | N |
-| expurgate-resolver  | MY_DOMAINS= | A list of domains seperated by a space that you want config files to be generated for. `EXAMPLE: yourdomain.com microsoft.com github.com` | Y^ |
-| expurgate-resolver  | SOURCE_PREFIX= | This is where you will publish your 'hidden' SPF record; the source of truth e.g. you might host it at _sd3fdsfd.yourdomain.com so will be SOURCE_PREFIX=_sd3fdsfd `DEFAULT: _xpg8` | N |
-| expurgate-resolver  | SOURCE_PREFIX_OFF= | Only change for testing `DEFAULT: False` | N |
-| expurgate-resolver  | UPTIMEKUMA_PUSH_URL= | Monitor expurgate-resolver health (uptime and time per loop) with an [Uptime Kuma](https://github.com/louislam/uptime-kuma) 'push' monitor. URL should end in ping= `Example: https://status.yourdomain.com/api/push/D0A90al0HA?status=up&msg=OK&ping=` | N |
-| expurgate-rbldnsd  | OPTIONS= | These are rbldnsd run [options - more here](https://linux.die.net/man/8/rbldnsd) `Recommend: -e -t 5m -l -`  | Y |
-| expurgate-rbldnsd  | TYPE= | These are rbldnsd zone types [options - more here](https://linux.die.net/man/8/rbldnsd) `Recommend: combined`  | Y |
-| expurgate-rbldnsd  | ZONE= | The last part of your SPF record (where rbldnsd is hosted), from step 1(2) `EXAMPLE: _spf.yourdomain.com`  | Y |
+| expurgate-resolver  | MY_DOMAINS= | A list of domains seperated by a space that you want config files to be generated for. Example: `yourdomain.com microsoft.com github.com` | Y^ |
+| expurgate-resolver  | SOURCE_PREFIX= | This is where you will publish your 'hidden' SPF record; the source of truth e.g. you might host it at _sd3fdsfd.yourdomain.com( so will be SOURCE_PREFIX=_sd3fdsfd) Default: `_xpg8` | N |
+| expurgate-resolver  | SOURCE_PREFIX_OFF= | Only change for testing DEFAULT: `False` | N |
+| expurgate-resolver  | UPTIMEKUMA_PUSH_URL= | Monitor expurgate-resolver health (uptime and time per loop) with an [Uptime Kuma](https://github.com/louislam/uptime-kuma) 'push' monitor. URL should end in ping= Example: `https://status.yourdomain.com/api/push/D0A90al0HA?status=up&msg=OK&ping=` | N |
+| expurgate-rbldnsd  | OPTIONS= | These are rbldnsd run [options - more here](https://linux.die.net/man/8/rbldnsd) Recommend: `-e -t 5m -l -`  | Y |
+| expurgate-rbldnsd  | TYPE= | These are rbldnsd zone types [options - more here](https://linux.die.net/man/8/rbldnsd) Recommend: `combined`  | Y |
+| expurgate-rbldnsd  | ZONE= | The last part of your SPF record (where rbldnsd is hosted), from step 1(2) EXAMPLE: `_spf.yourdomain.com`  | Y |
 
 ^ If left blank `SOURCE_PREFIX_OFF` will be set to true and container will run in demo mode using microsoft.com, mimecast.com and google.com
 
