@@ -12,8 +12,11 @@ import requests
 
 paddingchar = "^"
 
+
 if 'UPTIMEKUMA_PUSH_URL' in os.environ and re.match('^http.*\/api\/push\/.*\&ping\=',os.environ['UPTIMEKUMA_PUSH_URL'], re.IGNORECASE):
     uptimekumapushurl = os.environ['UPTIMEKUMA_PUSH_URL']
+else:
+    uptimekumapushurl = None
 if 'SOURCE_PREFIX_OFF' in os.environ:
     source_prefix_off = os.environ['SOURCE_PREFIX_OFF']
 else:
@@ -44,7 +47,10 @@ global depth
 depth = 0
 
 def uptimeKumaPush (url):
-   x = requests.get(url)
+    try:
+        x = requests.get(url)
+    except:
+        print("ERROR: Uptime Kuma - push notification")
 
 def dnsLookup(domain,type):
     global depth
@@ -53,8 +59,9 @@ def dnsLookup(domain,type):
         depth += 1
         return lookup
     except:
-        print("DNS Resolution Error - " + type + ":" + domain)
-        header.append("# DNS Resolution Error - " + type + ":" + domain)
+        error = "DNS Resolution Error - " + type + ":" + domain
+        print(error)
+        header.append(error)
     
     
 
@@ -91,8 +98,9 @@ def getSPF(domain):
                             includes.append(spfValue[1])
                             getSPF(spfValue[1])
                         elif spfValue[1]:
-                            header.append("# ERROR DETECTED: Invalid DNS Record, Loop or Duplicate: " + spfValue[1] + " in " + domain)
-                            print("ERROR DETECTED: Invalid DNS Record, Loop or Duplicate: " + spfValue[1] + " in " + domain)
+                            error = "# ERROR DETECTED: Invalid DNS Record, Loop or Duplicate: " + spfValue[1] + " in " + domain
+                            header.append(error)
+                            print(error)
                     elif re.match('^(\+|)a\:', spfPart, re.IGNORECASE):
                         spfValue = spfPart.split(':')
                         result = dnsLookup(spfValue[1],"A")  
@@ -226,7 +234,7 @@ while loop == 0 and mydomains:
             print('[' + str(domaincount) +'/'+ str(totaldomaincount) + '] Generating rbldnsd config for SPF records in ' + domain)
             print('[' + str(domaincount) +'/'+ str(totaldomaincount) + '] Your domain ' + domain + ' required ' + str(depth) + ' lookups.')
         shutil.move(src_path, dst_path) 
-    if uptimekumapushurl:
+    if uptimekumapushurl != None:
         end_time = time.time()
         time_lapsed = (end_time - start_time) * 1000 # calculate loop runtime and convert from seconds to milliseconds
         print("Pushing Uptime Kuma - endpoint : " + uptimekumapushurl + str(math.ceil(time_lapsed)))
