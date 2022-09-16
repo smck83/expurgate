@@ -1,7 +1,7 @@
 FROM python:3-alpine
 LABEL maintainer="expurgate@mck.la"
 RUN apk -U upgrade \
-&& pip install dnspython \
+&& pip install dnspython requests \
 && mkdir -p /spf-resolver/output
 WORKDIR /spf-resolver
 COPY . /spf-resolver

@@ -5,8 +5,15 @@ import re
 from datetime import datetime
 import os
 import shutil
+import time
+import math
+import requests
+
+
 paddingchar = "^"
 
+if 'UPTIMEKUMA_PUSH_URL' in os.environ and re.match('^http.*\/api\/push\/.*\&ping\=',os.environ['UPTIMEKUMA_PUSH_URL'], re.IGNORECASE):
+    uptimekumapushurl = os.environ['UPTIMEKUMA_PUSH_URL']
 if 'SOURCE_PREFIX_OFF' in os.environ:
     source_prefix_off = os.environ['SOURCE_PREFIX_OFF']
 else:
@@ -35,6 +42,9 @@ loop = 0
 # set the depth to count resolutions
 global depth
 depth = 0
+
+def uptimeKumaPush (url):
+   x = requests.get(url)
 
 def dnsLookup(domain,type):
     global depth
@@ -153,6 +163,7 @@ def getSPF(domain):
                         otherValues.append(spfPart)
 
 while loop == 0 and mydomains:
+    start_time = time.time()
     print('Generating config for SPF records in ' + str(mydomains))
     domaincount = 0
     for domain in mydomains:
@@ -215,5 +226,10 @@ while loop == 0 and mydomains:
             print('[' + str(domaincount) +'/'+ str(totaldomaincount) + '] Generating rbldnsd config for SPF records in ' + domain)
             print('[' + str(domaincount) +'/'+ str(totaldomaincount) + '] Your domain ' + domain + ' required ' + str(depth) + ' lookups.')
         shutil.move(src_path, dst_path) 
-    print("Waiting " + str(delayBetweenRun) + " seconds before running again... ")
+    if uptimekumapushurl:
+        end_time = time.time()
+        time_lapsed = end_time - start_time
+        print("Pushing Uptime Kuma - endpoint : " + uptimekumapushurl + str(math.ceil(time_lapsed)))
+        uptimeKumaPush(uptimekumapushurl + str(math.ceil(time_lapsed)))    
+    print("Waiting " + str(delayBetweenRun) + " seconds before running again... ")   
     sleep(int(delayBetweenRun)) # wait DELAY in secondsbefore running again.

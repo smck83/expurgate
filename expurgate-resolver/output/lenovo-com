@@ -1,4 +1,4 @@
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:lenovo.com @ 2022-09-15 15:21:36.261648
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:lenovo.com @ 2022-09-16 17:03:11.518574
 # ^ lenovo.com
 # ^ v=spf1 include:spf.messagelabs.com include:_netblocks.eloqua.com include:spf.protection.outlook.com include:spf.pfpool.lenovo.com ip4:72.32.45.225 ip4:40.65.201.146 ip4:138.108.60.125 ip4:138.108.24.107 ip4:52.247.21.11 ~all
 # ^^ spf.messagelabs.com
