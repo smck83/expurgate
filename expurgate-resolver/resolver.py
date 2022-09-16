@@ -228,7 +228,7 @@ while loop == 0 and mydomains:
         shutil.move(src_path, dst_path) 
     if uptimekumapushurl:
         end_time = time.time()
-        time_lapsed = end_time - start_time
+        time_lapsed = (end_time - start_time) * 1000 # calculate loop runtime and convert from seconds to milliseconds
         print("Pushing Uptime Kuma - endpoint : " + uptimekumapushurl + str(math.ceil(time_lapsed)))
         uptimeKumaPush(uptimekumapushurl + str(math.ceil(time_lapsed)))    
     print("Waiting " + str(delayBetweenRun) + " seconds before running again... ")   
