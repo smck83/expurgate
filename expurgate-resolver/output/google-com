@@ -1,4 +1,4 @@
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:google.com @ 2022-09-17 21:44:29.797840
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:google.com @ 2022-09-17 22:00:49.221400
 # ^ google.com
 # ^ v=spf1 include:_spf.google.com ~all
 # ^^ _spf.google.com
@@ -10,6 +10,7 @@
 # ^^^^^ _netblocks3.google.com
 # ^^^^^ v=spf1 ip4:172.217.0.0/19 ip4:172.217.32.0/20 ip4:172.217.128.0/19 ip4:172.217.160.0/20 ip4:172.217.192.0/19 ip4:172.253.56.0/21 ip4:172.253.112.0/20 ip4:108.177.96.0/19 ip4:35.191.0.0/16 ip4:130.211.0.0/22 ~all
 # Depth:5
+# IP & Subnet: 27
 $DATASET ip4set:google.com google.com @
 :3:v=spf1 ip4:$ ~all
 35.190.247.0/24 # _netblocks.google.com

@@ -1,4 +1,4 @@
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:apple.com @ 2022-09-17 21:44:31.300884
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:apple.com @ 2022-09-17 22:00:53.431642
 # ^ apple.com
 # ^ v=spf1 include:_spf.apple.com include:_spf-txn.apple.com ~all
 # ^^ _spf.apple.com
@@ -6,6 +6,7 @@
 # ^^^ _spf-txn.apple.com
 # ^^^ v=spf1 ip4:17.151.1.0/24 ip4:17.171.37.0/24 ip4:17.111.110.0/23 ~all
 # Depth:3
+# IP & Subnet: 22
 $DATASET ip4set:apple.com apple.com @
 :3:v=spf1 ip4:$ ~all
 17.151.62.66 # _spf.apple.com

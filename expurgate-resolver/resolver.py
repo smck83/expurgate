@@ -210,7 +210,7 @@ while loop == 0 and mydomains:
         ip4header.append(":3:v=spf1 ip4:$ " + spfAction[0])
 
         if len(otherValues) > 0:
-            otherValues = list(dict.fromkeys(otherValues)) #dedupe
+            therValues = list(dict.fromkeys(otherValues)) #dedupe
             ip4block = [":99:v=spf1 " + ' '.join(otherValues) + " " + spfAction[0]]
             ip6block = [":99:v=spf1 " + ' '.join(otherValues) + " " + spfAction[0]]
         else:
@@ -221,6 +221,7 @@ while loop == 0 and mydomains:
         ip6header.append("$DATASET ip6trie:"+ domain + " " + domain + " @")
         ip6header.append(":3:v=spf1 ip6:$ " + spfAction[0])
         ip6block.append("0:0:0:0:0:0:0:0/0 # all other IPv6 addresses")
+        header.append("# IP & Subnet: " + str(len(ipmonitor)))
         # Join all the pieces together, ready for file output
         myrbldnsdconfig = header + ip4header + ip4 + ip4block + ip6header + ip6 + ip6block
 
