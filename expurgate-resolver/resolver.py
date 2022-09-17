@@ -186,26 +186,28 @@ while loop == 0 and mydomains:
         otherValues = []
         depth = 0        
         includes = []
+        ip4block = []
+        ip6block = []
 
         getSPF(domain)
 
 
 
     # remove duplicates
-        print("Items in IP4: array (before dedupe):" + str(len(ip4))) 
+        #print("Items in IP4: array (before dedupe):" + str(len(ip4))) 
         ip4 = list(dict.fromkeys(ip4))
         ip4 = [x.strip(' ') for x in ip4]
-        print("Items in IP4: array (after dedupe):" + str(len(ip4)))  
-        print(ip4)
+        #print("Items in IP4: array (after dedupe):" + str(len(ip4)))  
+        #print(ip4)
         # remove duplicates
-        print("Items in IP6: array (before dedupe):" + str(len(ip6))) 
+        #print("Items in IP6: array (before dedupe):" + str(len(ip6))) 
         ip6 = list(dict.fromkeys(ip6))
         ip6 = [x.strip(' ') for x in ip6]
-        print("Items in IP6: array (after dedupe):" + str(len(ip6)))  
-        print(ip6)
+        #print("Items in IP6: array (after dedupe):" + str(len(ip6)))  
+        #print(ip6)
         
     # CREATE ARRAYS FOR EACH PART OF THE RBLDNSD FILE
-        ip4header.append("# Depth:" + str(depth))
+        header.append("# Depth:" + str(depth))
         ip4header.append("$DATASET ip4set:"+ domain +" " + domain + " @")
         ip4header.append(":3:v=spf1 ip4:$ " + spfAction[0])
 
@@ -218,7 +220,7 @@ while loop == 0 and mydomains:
             ip6block = [":99:v=spf1 " + spfAction[0]]
         ip4block.append("0.0.0.0/1 # all other IPv4 addresses")
         ip4block.append("128.0.0.0/1 # all other IP IPv4 addresses")
-        ip6header.append("$DATASET ip6trie:"+ domain +" " + domain + " @")
+        ip6header.append("$DATASET ip6trie:"+ domain + " " + domain + " @")
         ip6header.append(":3:v=spf1 ip6:$ " + spfAction[0])
         ip6block.append("0:0:0:0:0:0:0:0/0 # all other IPv6 addresses")
         # Join all the pieces together, ready for file output
@@ -233,7 +235,7 @@ while loop == 0 and mydomains:
                 fp.write("%s\n" % item)
             print('[' + str(domaincount) +'/'+ str(totaldomaincount) + '] Generating rbldnsd config for SPF records in ' + domain)
             print('[' + str(domaincount) +'/'+ str(totaldomaincount) + '] Your domain ' + domain + ' required ' + str(depth) + ' lookups.')
-        shutil.move(src_path, dst_path) 
+        shutil.move(src_path, dst_path)
     if uptimekumapushurl != None:
         end_time = time.time()
         time_lapsed = (end_time - start_time) * 1000 # calculate loop runtime and convert from seconds to milliseconds
