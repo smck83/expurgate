@@ -158,10 +158,18 @@ def getSPF(domain):
 
                     elif re.match('^(\+|)ip4\:', spfPart, re.IGNORECASE):
                         spfValue = spfPart.split('ip4:')
-                        ip4.append(spfValue[1] + " # " + domain)
+                        if spfValue[1] not in ipmonitor:
+                            ipmonitor.append(spfValue[1])
+                            ip4.append(spfValue[1] + " # " + domain)
+                        else:
+                            header.append('# ' + (paddingchar * depth) + ' [Skipped] already added (ip4):' + spfValue[1] + " " + domain)
                     elif re.match('(\+|)ip6\:', spfPart, re.IGNORECASE):
                         spfValue = spfPart.split('ip6:')
-                        ip6.append(spfValue[1] + " # " + domain)
+                        if spfValue[1] not in ipmonitor:
+                            ipmonitor.append(spfValue[1])
+                            ip6.append(spfValue[1] + " # " + domain)
+                        else:
+                            header.append('# ' + (paddingchar * depth) + ' [Skipped] already added (ip6):' + spfValue[1] + " " + domain)
                     elif re.match('[\+\-\~\?]all', spfPart, re.IGNORECASE):
                         spfAction.append(spfPart)
                     elif re.match('v\=spf1', spfPart, re.IGNORECASE):
@@ -186,25 +194,15 @@ while loop == 0 and mydomains:
         otherValues = []
         depth = 0        
         includes = []
-        ip4block = []
-        ip6block = []
+        ipmonitor = []
 
         getSPF(domain)
 
 
 
-    # remove duplicates
-        #print("Items in IP4: array (before dedupe):" + str(len(ip4))) 
-        ip4 = list(dict.fromkeys(ip4))
+    # strip spaces
         ip4 = [x.strip(' ') for x in ip4]
-        #print("Items in IP4: array (after dedupe):" + str(len(ip4)))  
-        #print(ip4)
-        # remove duplicates
-        #print("Items in IP6: array (before dedupe):" + str(len(ip6))) 
-        ip6 = list(dict.fromkeys(ip6))
         ip6 = [x.strip(' ') for x in ip6]
-        #print("Items in IP6: array (after dedupe):" + str(len(ip6)))  
-        #print(ip6)
         
     # CREATE ARRAYS FOR EACH PART OF THE RBLDNSD FILE
         header.append("# Depth:" + str(depth))
