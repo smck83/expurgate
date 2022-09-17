@@ -61,7 +61,7 @@ def dnsLookup(domain,type):
     except:
         error = "DNS Resolution Error - " + type + ":" + domain
         print(error)
-        header.append(error)
+        header.append("# " + error)
     
     
 
