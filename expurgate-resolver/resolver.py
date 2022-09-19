@@ -9,7 +9,6 @@ import time
 import math
 import requests
 
-
 paddingchar = "^"
 #runningconfigon = 1
 
