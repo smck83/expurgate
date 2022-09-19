@@ -1,4 +1,4 @@
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:microsoft.com @ 2022-09-18 18:06:38.071557
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:microsoft.com @ 2022-09-18 21:44:13.082366
 # ^ microsoft.com
 # ^ v=spf1 include:_spf-a.microsoft.com include:_spf-b.microsoft.com include:_spf-c.microsoft.com include:_spf-ssg-a.microsoft.com include:spf-a.hotmail.com include:_spf1-meo.microsoft.com -all
 # ^^ _spf-a.microsoft.com
