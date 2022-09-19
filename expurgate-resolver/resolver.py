@@ -41,7 +41,7 @@ if 'MY_DOMAINS' in os.environ:
     
 else:
     source_prefix_off = True
-    mydomains = ['google.com','mimecast.com','microsoft.com','github.com','who.int','apple.com','lenovo.com'] # demo mode
+    mydomains = ['google.com','mimecast.com','microsoft.com','github.com','who.int','apple.com','lenovo.com','whitehouse.gov'] # demo mode
     print("MY_DOMAIN not set, running in demo mode using " + str(mydomains))
 
 if 'DELAY' in os.environ and int(os.environ['DELAY']) > 29:

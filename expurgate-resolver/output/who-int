@@ -1,4 +1,4 @@
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:who.int @ 2022-09-18 21:44:13.492716
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:who.int @ 2022-09-19 11:38:21.495147
 # ^ who.int
 # ^ v=spf1 ip4:158.232.12.0/24 include:spf.protection.outlook.com include:_spfincludes.who.int -all
 # ^^ spf.protection.outlook.com
