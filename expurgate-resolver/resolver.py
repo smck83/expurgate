@@ -32,16 +32,18 @@ if 'RUNNING_CONFIG_ON' in os.environ:
 else:
     runningconfigon  = 0 #if not specified, generate config files separately
 
+
 if 'MY_DOMAINS' in os.environ:
     domains = os.environ['MY_DOMAINS']
     mydomains = domains.split(' ') # convert input string to list
     mydomains = [domain for domain in mydomains if '.' in domain] # confirm domain contains a fullstop
     mydomains = list(dict.fromkeys(mydomains)) # dedupe the list of domains
+    
 else:
     source_prefix_off = True
     mydomains = ['google.com','mimecast.com','microsoft.com','github.com','who.int','apple.com','lenovo.com'] # demo mode
     print("MY_DOMAIN not set, running in demo mode using " + str(mydomains))
-    
+
 if 'DELAY' in os.environ and int(os.environ['DELAY']) > 29:
     delayBetweenRun = os.environ['DELAY']
 else:
@@ -53,6 +55,7 @@ loop = 0
 # set the depth to count resolutions
 global depth
 depth = 0
+
 
 def write2disk(src_path,dst_path,myrbldnsdconfig):
     with open(src_path, 'w') as fp:
