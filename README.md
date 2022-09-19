@@ -120,7 +120,7 @@ ${d} - the sending servers domain name (in `ENVELOPE FROM:` field) is `ehlo.emai
     1.80.249.66.ehlo.email._spf.xpg8.tk. 300 IN	TXT "v=spf1 ip4:66.249.80.1 -all"
 
 
-NOTE(above): The response only includes the IP checked, and not every other vendor or provider in your `{SOURCE_PREFIX}.yourdomain.com' DNS TXT record.
+NOTE(above): The response only includes the IP checked, and not every other vendor or provider in your `{SOURCE_PREFIX}.yourdomain.com` DNS TXT record.
 
 ## An SPF pass checking 2607:f8b0:4000:0000:0000:0000:0000:0001 - [Test here](https://www.digwebinterface.com/?hostnames=1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2.ehlo.email._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
 
