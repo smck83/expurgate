@@ -27,7 +27,6 @@ With organisations focusing on DMARC over the past 5 years that rely on SPF and 
 
 # The solution
 
-![image](https://github.com/smck83/expurgate/blob/main/expurgate-diagram.png)
 ### Simplify
 Expurgate simplifies DNS management for SPF by using a single record with variables. This removes the chance of human error and isolates issues with loops and broken upstream SPF records.
 
@@ -52,6 +51,9 @@ The old SPF record not only gives away the names of all the service providers yo
 Expurgate resolves hostnames to IP address and subnets every `DELAY=` seconds and generates an RBLSDND configuration file. With only 1 INCLUDE: in your new SPF record you never need to worry about exceeding the 10 lookup limit or the 255 character limit per line.
 
 # How does it work?
+
+![image](https://github.com/smck83/expurgate/blob/main/expurgate-diagram.png)
+
 There are two seperate services running, with a third service being optional:
  1. The expurgate-resolver container is responsible for dynamically generating the rbldsnd config files
  2. The expurgate-rblsdnsd container is the DNS server listening on UDP/53
