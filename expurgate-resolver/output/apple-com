@@ -1,4 +1,4 @@
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:apple.com @ 2022-09-19 11:38:22.295810
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:apple.com @ 2022-09-20 10:29:53.357924
 # ^ apple.com
 # ^ v=spf1 include:_spf.apple.com include:_spf-txn.apple.com ~all
 # ^^ _spf.apple.com

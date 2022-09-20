@@ -1,4 +1,4 @@
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:whitehouse.gov @ 2022-09-19 22:59:39.109945
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:whitehouse.gov @ 2022-09-20 10:29:53.733944
 # ^ whitehouse.gov
 # ^ v=spf1 +mx include:spf.mandrillapp.com ip4:214.3.140.16/32 ip4:214.3.140.255/32 ip4:214.3.115.12/32 ip4:214.3.115.10/32 ip4:214.3.115.225/32 ip4:214.3.115.14/32 ip4:214.3.140.22/32 ~all
 # DNS Resolution Error - MX:whitehouse.gov

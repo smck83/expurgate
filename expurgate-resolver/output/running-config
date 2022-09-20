@@ -1,4 +1,4 @@
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:google.com @ 2022-09-19 10:01:03.937137
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:google.com @ 2022-09-20 10:28:57.674646
 # ^ google.com
 # ^ v=spf1 include:_spf.google.com ~all
 # ^^ _spf.google.com
@@ -47,7 +47,7 @@ $DATASET ip6trie:google.com google.com @
 2c0f:fb50:4000::/36 # _netblocks2.google.com
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:mimecast.com @ 2022-09-19 10:01:04.029366
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:mimecast.com @ 2022-09-20 10:28:57.930452
 # ^ mimecast.com
 # ^ v=spf1 redirect=aojpw1q8._spf._d.mim.ec
 # ^^ aojpw1q8._spf._d.mim.ec
@@ -156,7 +156,7 @@ $DATASET ip6trie:mimecast.com mimecast.com @
 :3:v=spf1 ip6:$ ~all
 :99:v=spf1 exists:%{i}._spf.mta.salesforce.com ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:microsoft.com @ 2022-09-19 10:01:04.372020
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:microsoft.com @ 2022-09-20 10:28:58.511103
 # ^ microsoft.com
 # ^ v=spf1 include:_spf-a.microsoft.com include:_spf-b.microsoft.com include:_spf-c.microsoft.com include:_spf-ssg-a.microsoft.com include:spf-a.hotmail.com include:_spf1-meo.microsoft.com -all
 # ^^ _spf-a.microsoft.com
@@ -312,7 +312,7 @@ $DATASET ip6trie:microsoft.com microsoft.com @
 2a01:4180:4050:0400::/64 # spfd.protection.outlook.com
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:github.com @ 2022-09-19 10:01:04.575657
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:github.com @ 2022-09-20 10:28:58.712313
 # ^ github.com
 # ^ v=spf1 ip4:192.30.252.0/22 include:_netblocks.google.com include:_netblocks2.google.com include:_netblocks3.google.com include:spf.protection.outlook.com include:mail.zendesk.com include:_spf.salesforce.com include:servers.mcsv.net ip4:166.78.69.169 ip4:166.78.69.170 ip4:166.78.71.131 ip4:167.89.101.2 ip4:167.89.101.192/28 ip4:192.254.112.60 ip4:192.254.112.98/31 ip4:192.254.113.10 ip4:192.254.113.101 ip4:192.254.114.176 ip4:62.253.227.114 ~all
 # ^^ _netblocks.google.com
@@ -407,7 +407,7 @@ $DATASET ip6trie:github.com github.com @
 2a01:4180:4050:0400::/64 # spfd.protection.outlook.com
 :99:v=spf1 exists:%{i}._spf.mta.salesforce.com ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:who.int @ 2022-09-19 10:01:04.851627
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:who.int @ 2022-09-20 10:28:58.853690
 # ^ who.int
 # ^ v=spf1 ip4:158.232.12.0/24 include:spf.protection.outlook.com include:_spfincludes.who.int -all
 # ^^ spf.protection.outlook.com
@@ -482,7 +482,7 @@ $DATASET ip6trie:who.int who.int @
 2a01:4180:4050:0400::/64 # spfd.protection.outlook.com
 :99:v=spf1 exists:%{i}._spf.mta.salesforce.com ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:apple.com @ 2022-09-19 10:01:05.606833
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:apple.com @ 2022-09-20 10:28:59.334704
 # ^ apple.com
 # ^ v=spf1 include:_spf.apple.com include:_spf-txn.apple.com ~all
 # ^^ _spf.apple.com
@@ -522,7 +522,7 @@ $DATASET ip6trie:apple.com apple.com @
 :3:v=spf1 ip6:$ ~all
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:lenovo.com @ 2022-09-19 10:01:05.674829
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:lenovo.com @ 2022-09-20 10:28:59.391702
 # ^ lenovo.com
 # ^ v=spf1 include:spf.messagelabs.com include:_netblocks.eloqua.com include:spf.protection.outlook.com include:spf.pfpool.lenovo.com ip4:72.32.45.225 ip4:40.65.201.146 ip4:138.108.60.125 ip4:138.108.24.107 ip4:52.247.21.11 ~all
 # ^^ spf.messagelabs.com
@@ -621,4 +621,56 @@ $DATASET ip6trie:lenovo.com lenovo.com @
 2a01:4180:4051:0400::/64 # spfd.protection.outlook.com
 2a01:4180:4050:0400::/64 # spfd.protection.outlook.com
 :99:v=spf1 ~all
+0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:whitehouse.gov @ 2022-09-20 10:28:59.739852
+# ^ whitehouse.gov
+# ^ v=spf1 +mx include:spf.mandrillapp.com ip4:214.3.140.16/32 ip4:214.3.140.255/32 ip4:214.3.115.12/32 ip4:214.3.115.10/32 ip4:214.3.115.225/32 ip4:214.3.115.14/32 ip4:214.3.140.22/32 ~all
+# DNS Resolution Error - MX:whitehouse.gov
+# ^^ spf.mandrillapp.com
+# ^^ v=spf1 ip4:198.2.128.0/24 ip4:198.2.132.0/22 ip4:198.2.136.0/23 ip4:198.2.145.0/24 ip4:198.2.186.0/23 ip4:205.201.131.128/25 ip4:205.201.134.128/25 ip4:205.201.136.0/23 ip4:205.201.139.0/24 ip4:198.2.177.0/24 ip4:198.2.178.0/23 ip4:198.2.180.0/24 ~all
+# Depth:2
+# IP & Subnet: 19
+$DATASET ip4set:whitehouse.gov whitehouse.gov @
+:3:v=spf1 ip4:$ ~all
+198.2.128.0/24 # spf.mandrillapp.com
+198.2.132.0/22 # spf.mandrillapp.com
+198.2.136.0/23 # spf.mandrillapp.com
+198.2.145.0/24 # spf.mandrillapp.com
+198.2.186.0/23 # spf.mandrillapp.com
+205.201.131.128/25 # spf.mandrillapp.com
+205.201.134.128/25 # spf.mandrillapp.com
+205.201.136.0/23 # spf.mandrillapp.com
+205.201.139.0/24 # spf.mandrillapp.com
+198.2.177.0/24 # spf.mandrillapp.com
+198.2.178.0/23 # spf.mandrillapp.com
+198.2.180.0/24 # spf.mandrillapp.com
+214.3.140.16/32 # whitehouse.gov
+214.3.140.255/32 # whitehouse.gov
+214.3.115.12/32 # whitehouse.gov
+214.3.115.10/32 # whitehouse.gov
+214.3.115.225/32 # whitehouse.gov
+214.3.115.14/32 # whitehouse.gov
+214.3.140.22/32 # whitehouse.gov
+:99:v=spf1 ~all
+0.0.0.0/1 # all other IPv4 addresses
+128.0.0.0/1 # all other IP IPv4 addresses
+$DATASET ip6trie:whitehouse.gov whitehouse.gov @
+:3:v=spf1 ip6:$ ~all
+:99:v=spf1 ~all
+0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:yahoo.com @ 2022-09-20 10:28:59.782991
+# ^ yahoo.com
+# ^ v=spf1 redirect=_spf.mail.yahoo.com
+# ^^ _spf.mail.yahoo.com
+# ^^ v=spf1 ptr:yahoo.com ptr:yahoo.net ?all
+# Depth:2
+# IP & Subnet: 0
+$DATASET ip4set:yahoo.com yahoo.com @
+:3:v=spf1 ip4:$ ~all
+:99:v=spf1 ptr:yahoo.com ptr:yahoo.net ~all
+0.0.0.0/1 # all other IPv4 addresses
+128.0.0.0/1 # all other IP IPv4 addresses
+$DATASET ip6trie:yahoo.com yahoo.com @
+:3:v=spf1 ip6:$ ~all
+:99:v=spf1 ptr:yahoo.com ptr:yahoo.net ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses

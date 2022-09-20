@@ -13,7 +13,7 @@ from jsonpath_ng.ext import parse
 
 
 paddingchar = "^"
-#runningconfigon = 1
+
 
 
 if 'RESTDB_URL' in os.environ:
@@ -45,7 +45,7 @@ if 'RUNNING_CONFIG_ON' in os.environ:
     runningconfigon  = int(os.environ['RUNNING_CONFIG_ON'])
 else:
     runningconfigon  = 0 #if not specified, generate config files separately
-
+#runningconfigon = 1 
 def restdb(restdb_url,restdb_key):
 
     payload={}
@@ -74,7 +74,7 @@ elif restdb_url != None:
     mydomains = restdb(restdb_url,restdb_key) 
 else:
     source_prefix_off = True
-    mydomains = ['google.com','mimecast.com','microsoft.com','github.com','who.int','apple.com','lenovo.com','whitehouse.gov'] # demo mode
+    mydomains = ['google.com','mimecast.com','microsoft.com','github.com','who.int','apple.com','lenovo.com','whitehouse.gov','yahoo.com'] # demo mode
     print("MY_DOMAIN not set, running in demo mode using " + str(mydomains))
 
 if 'DELAY' in os.environ and int(os.environ['DELAY']) > 29:
