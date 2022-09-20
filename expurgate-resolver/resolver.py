@@ -11,10 +11,7 @@ import requests
 import json
 from jsonpath_ng.ext import parse
 
-
 paddingchar = "^"
-
-
 
 if 'RESTDB_URL' in os.environ:
     restdb_url = os.environ['RESTDB_URL']
