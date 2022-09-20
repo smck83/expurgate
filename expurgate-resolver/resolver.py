@@ -8,14 +8,29 @@ import shutil
 import time
 import math
 import requests
+import json
+from jsonpath_ng.ext import parse
+
 
 paddingchar = "^"
 #runningconfigon = 1
+
+
+if 'RESTDB_URL' in os.environ:
+    restdb_url = os.environ['RESTDB_URL']
+else:
+    restdb_url = None
+
+if 'RESTDB_KEY' in os.environ:
+    restdb_key = os.environ['RESTDB_KEY']
+else:
+    restdb_key = None
 
 if 'UPTIMEKUMA_PUSH_URL' in os.environ and re.match('^http.*\/api\/push\/.*\&ping\=',os.environ['UPTIMEKUMA_PUSH_URL'], re.IGNORECASE):
     uptimekumapushurl = os.environ['UPTIMEKUMA_PUSH_URL']
 else:
     uptimekumapushurl = None
+
 if 'SOURCE_PREFIX_OFF' in os.environ:
     source_prefix_off = os.environ['SOURCE_PREFIX_OFF']
 else:
@@ -31,13 +46,32 @@ if 'RUNNING_CONFIG_ON' in os.environ:
 else:
     runningconfigon  = 0 #if not specified, generate config files separately
 
+def restdb(restdb_url,restdb_key):
 
-if 'MY_DOMAINS' in os.environ:
+    payload={}
+    headers = {
+    'Content-Type': 'application/json',
+    'x-apikey': restdb_key
+    }
+
+    domains = []
+    response = requests.request("GET", restdb_url, headers=headers, data=payload)
+    out = response.text
+    aList = json.loads(out)
+    jsonpath_expression = parse("$..domain")
+
+    for match in jsonpath_expression.find(aList):
+        domains.append(match.value)
+
+    return domains
+
+if 'MY_DOMAINS' in os.environ and restdb_url == None:
     domains = os.environ['MY_DOMAINS']
     mydomains = domains.split(' ') # convert input string to list
     mydomains = [domain for domain in mydomains if '.' in domain] # confirm domain contains a fullstop
     mydomains = list(dict.fromkeys(mydomains)) # dedupe the list of domains
-    
+elif restdb_url != None:
+    mydomains = restdb(restdb_url,restdb_key) 
 else:
     source_prefix_off = True
     mydomains = ['google.com','mimecast.com','microsoft.com','github.com','who.int','apple.com','lenovo.com','whitehouse.gov'] # demo mode
@@ -54,6 +88,8 @@ loop = 0
 # set the depth to count resolutions
 global depth
 depth = 0
+
+
 
 
 def write2disk(src_path,dst_path,myrbldnsdconfig):
@@ -196,6 +232,8 @@ def getSPF(domain):
                         otherValues.append(spfPart)
 
 while loop == 0 and mydomains:
+    if restdb_url != None:
+        mydomains = restdb(restdb_url,restdb_key) 
     runningconfig = []
     start_time = time.time()
     print('Generating config for SPF records in ' + str(mydomains))
