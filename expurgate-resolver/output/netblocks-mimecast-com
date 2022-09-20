@@ -1,0 +1,13 @@
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:netblocks.mimecast.com @ 2022-09-20 13:29:26.713873
+# DNS Resolution Error - TXT:netblocks.mimecast.com
+# Depth:0
+# IP & Subnet: 0
+$DATASET ip4set:netblocks.mimecast.com netblocks.mimecast.com @
+:3:v=spf1 ip4:$ ~all
+:99:v=spf1 ~all
+0.0.0.0/1 # all other IPv4 addresses
+128.0.0.0/1 # all other IP IPv4 addresses
+$DATASET ip6trie:netblocks.mimecast.com netblocks.mimecast.com @
+:3:v=spf1 ip6:$ ~all
+:99:v=spf1 ~all
+0:0:0:0:0:0:0:0/0 # all other IPv6 addresses

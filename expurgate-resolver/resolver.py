@@ -31,7 +31,7 @@ else:
 if 'SOURCE_PREFIX_OFF' in os.environ:
     source_prefix_off = os.environ['SOURCE_PREFIX_OFF']
 else:
-    source_prefix_off = False # set to True to be able to run against root domain
+    source_prefix_off = False # set to True to be able to run against root domain, for vendor flattening e.g. replace include:_spf.google.com which needs 3 lookups with include:%{ir}._spf.google.com._spf.yourdomain.com or include:outbound.mailhop.org which needs 4 lookups with include:%{ir}.outbound.mailhop.org._spf.yourdomain.com
 
 if 'SOURCE_PREFIX' in os.environ:
     source_prefix = os.environ['SOURCE_PREFIX']
@@ -71,7 +71,7 @@ elif restdb_url != None:
     mydomains = restdb(restdb_url,restdb_key) 
 else:
     source_prefix_off = True
-    mydomains = ['google.com','mimecast.com','microsoft.com','github.com','who.int','apple.com','lenovo.com','whitehouse.gov','yahoo.com'] # demo mode
+    mydomains = ['_spf.google.com','netblocks.mimecast.com','spf.protection.outlook.com','outbound.mailhop.org','spf.messagelabs.com'] # demo mode
     print("MY_DOMAIN not set, running in demo mode using " + str(mydomains))
 
 if 'DELAY' in os.environ and int(os.environ['DELAY']) > 29:
@@ -231,6 +231,7 @@ def getSPF(domain):
 while loop == 0 and mydomains:
     if restdb_url != None:
         mydomains = restdb(restdb_url,restdb_key) 
+        totaldomaincount = len(mydomains)
     runningconfig = []
     start_time = time.time()
     print('Generating config for SPF records in ' + str(mydomains))
@@ -285,8 +286,8 @@ while loop == 0 and mydomains:
             src_path = r'output/'+ domain.replace(".","-")+".staging"
             dst_path = r'output/'+ domain.replace(".","-")
             write2disk(src_path,dst_path,myrbldnsdconfig)
-            print('[' + str(domaincount) +'/'+ str(totaldomaincount) + '] Generating rbldnsd config for SPF records in ' + domain)
-            print('[' + str(domaincount) +'/'+ str(totaldomaincount) + '] Your domain ' + domain + ' required ' + str(depth) + ' lookups.')
+        print('[' + str(domaincount) +'/'+ str(totaldomaincount) + '] Generating rbldnsd config for SPF records in ' + domain)
+        print('[' + str(domaincount) +'/'+ str(totaldomaincount) + '] Your domain ' + domain + ' required ' + str(depth) + ' lookups.')
     if uptimekumapushurl != None:
         end_time = time.time()
         time_lapsed = (end_time - start_time) * 1000 # calculate loop runtime and convert from seconds to milliseconds
@@ -296,5 +297,8 @@ while loop == 0 and mydomains:
         src_path = r'output/running-config.staging'
         dst_path = r'output/running-config'               
         write2disk(src_path,dst_path,runningconfig)
+        print("MODE: Running Config")
+    else:
+        print("MODE: Per Domain Config")
     print("Waiting " + str(delayBetweenRun) + " seconds before running again... ")   
     sleep(int(delayBetweenRun)) # wait DELAY in secondsbefore running again.

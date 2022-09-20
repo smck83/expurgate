@@ -1,341 +1,16 @@
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:google.com @ 2022-09-20 10:28:57.674646
-# ^ google.com
-# ^ v=spf1 include:_spf.google.com ~all
-# ^^ _spf.google.com
-# ^^ v=spf1 include:_netblocks.google.com include:_netblocks2.google.com include:_netblocks3.google.com ~all
-# ^^^ _netblocks.google.com
-# ^^^ v=spf1 ip4:35.190.247.0/24 ip4:64.233.160.0/19 ip4:66.102.0.0/20 ip4:66.249.80.0/20 ip4:72.14.192.0/18 ip4:74.125.0.0/16 ip4:108.177.8.0/21 ip4:173.194.0.0/16 ip4:209.85.128.0/17 ip4:216.58.192.0/19 ip4:216.239.32.0/19 ~all
-# ^^^^ _netblocks2.google.com
-# ^^^^ v=spf1 ip6:2001:4860:4000::/36 ip6:2404:6800:4000::/36 ip6:2607:f8b0:4000::/36 ip6:2800:3f0:4000::/36 ip6:2a00:1450:4000::/36 ip6:2c0f:fb50:4000::/36 ~all
-# ^^^^^ _netblocks3.google.com
-# ^^^^^ v=spf1 ip4:172.217.0.0/19 ip4:172.217.32.0/20 ip4:172.217.128.0/19 ip4:172.217.160.0/20 ip4:172.217.192.0/19 ip4:172.253.56.0/21 ip4:172.253.112.0/20 ip4:108.177.96.0/19 ip4:35.191.0.0/16 ip4:130.211.0.0/22 ~all
-# Depth:5
-# IP & Subnet: 27
-$DATASET ip4set:google.com google.com @
-:3:v=spf1 ip4:$ ~all
-35.190.247.0/24 # _netblocks.google.com
-64.233.160.0/19 # _netblocks.google.com
-66.102.0.0/20 # _netblocks.google.com
-66.249.80.0/20 # _netblocks.google.com
-72.14.192.0/18 # _netblocks.google.com
-74.125.0.0/16 # _netblocks.google.com
-108.177.8.0/21 # _netblocks.google.com
-173.194.0.0/16 # _netblocks.google.com
-209.85.128.0/17 # _netblocks.google.com
-216.58.192.0/19 # _netblocks.google.com
-216.239.32.0/19 # _netblocks.google.com
-172.217.0.0/19 # _netblocks3.google.com
-172.217.32.0/20 # _netblocks3.google.com
-172.217.128.0/19 # _netblocks3.google.com
-172.217.160.0/20 # _netblocks3.google.com
-172.217.192.0/19 # _netblocks3.google.com
-172.253.56.0/21 # _netblocks3.google.com
-172.253.112.0/20 # _netblocks3.google.com
-108.177.96.0/19 # _netblocks3.google.com
-35.191.0.0/16 # _netblocks3.google.com
-130.211.0.0/22 # _netblocks3.google.com
-:99:v=spf1 ~all
-0.0.0.0/1 # all other IPv4 addresses
-128.0.0.0/1 # all other IP IPv4 addresses
-$DATASET ip6trie:google.com google.com @
-:3:v=spf1 ip6:$ ~all
-2001:4860:4000::/36 # _netblocks2.google.com
-2404:6800:4000::/36 # _netblocks2.google.com
-2607:f8b0:4000::/36 # _netblocks2.google.com
-2800:3f0:4000::/36 # _netblocks2.google.com
-2a00:1450:4000::/36 # _netblocks2.google.com
-2c0f:fb50:4000::/36 # _netblocks2.google.com
-:99:v=spf1 ~all
-0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:mimecast.com @ 2022-09-20 10:28:57.930452
-# ^ mimecast.com
-# ^ v=spf1 redirect=aojpw1q8._spf._d.mim.ec
-# ^^ aojpw1q8._spf._d.mim.ec
-# ^^ v=spf1 exists:%{i}._spf.mta.salesforce.com ip4:195.130.217.0/24 ip4:91.220.42.0/24 ip4:146.101.78.0/24 ip4:207.82.80.0/24 ip4:213.167.81.0/25 ip4:193.7.207.0/25 ip4:213.167.75.0/25 ip4:185.58.85.0/24 ip4:185.58.86.0/24 ip4:193.7.206.0/25 ip4:147.28.36.0/24 ip4:199.15.212.0/22 ip4:72.3.185.0/24 ip4:72.32.154.0/24 ip4:72.32.217.0/24 ip4:72.32.243.0/24 ip4:94.236.119.0/26 ip4:37.188.97.188 include:aojpw1q81._spf._d.mim.ec -all
-# ^^^ aojpw1q81._spf._d.mim.ec
-# ^^^ v=spf1 ip4:185.28.196.0/22 ip4:192.28.128.0/18 ip4:103.237.104.0/22 ip4:130.248.172.0/24 ip4:130.248.173.0/24 ip4:167.89.0.0/17 ip4:208.117.48.0/20 ip4:50.31.32.0/19 ip4:198.37.144.0/20 ip4:198.21.0.0/21 ip4:192.254.112.0/20 ip4:168.245.0.0/17 ip4:149.72.0.0/16 ip4:159.183.0.0/16 ip4:223.165.113.0/24 ip4:223.165.115.0/24 ip4:223.165.118.0/23 ip4:223.165.120.0/23 ip4:147.253.209.184 include:aojpw1q82._spf._d.mim.ec -all
-# ^^^^ aojpw1q82._spf._d.mim.ec
-# ^^^^ v=spf1 ip4:147.253.211.175 ip4:147.253.217.248 ip4:147.253.218.73 ip4:147.253.218.88 ip4:147.253.219.153 ip4:156.70.3.225 ip4:156.70.3.226/31 ip4:156.70.3.228/31 ip4:156.70.4.175 ip4:156.70.4.33 ip4:192.174.81.16/28 ip4:192.174.81.32/29 ip4:192.174.82.55 ip4:192.174.82.56/31 ip4:192.174.85.168 ip4:192.174.85.217 ip4:192.174.89.136 ip4:192.174.93.164 ip4:52.50.129.119 ip4:54.174.209.165 include:aojpw1q83._spf._d.mim.ec -all
-# ^^^^^ aojpw1q83._spf._d.mim.ec
-# ^^^^^ v=spf1 ip4:52.16.75.109 ip4:52.16.75.118 ip4:52.16.38.44 ip4:52.16.49.62 ip4:54.79.0.4 ip4:35.182.195.41 ip4:54.85.129.207 ip4:52.22.249.69 ip4:18.197.43.76 ip4:54.93.104.220 ip4:3.209.231.65 ip4:34.206.143.108 ip4:35.157.192.122 ip4:18.132.189.127 ip4:52.65.244.27 ip4:15.223.142.138 ip4:3.248.148.18 ip4:107.20.91.250 ip4:3.96.249.213 ip4:52.58.159.50 ip4:3.11.129.102 ip4:34.242.156.53 include:aojpw1q84._spf._d.mim.ec -all
-# ^^^^^^ aojpw1q84._spf._d.mim.ec
-# ^^^^^^ v=spf1 ip4:52.4.156.8 ip4:34.251.63.7 ip4:170.10.151.0/24 ip4:170.10.153.0/24 ip4:170.10.150.240/29 ip4:170.10.152.240/29 -all
-# Depth:6
-# IP & Subnet: 85
-$DATASET ip4set:mimecast.com mimecast.com @
-:3:v=spf1 ip4:$ ~all
-195.130.217.0/24 # aojpw1q8._spf._d.mim.ec
-91.220.42.0/24 # aojpw1q8._spf._d.mim.ec
-146.101.78.0/24 # aojpw1q8._spf._d.mim.ec
-207.82.80.0/24 # aojpw1q8._spf._d.mim.ec
-213.167.81.0/25 # aojpw1q8._spf._d.mim.ec
-193.7.207.0/25 # aojpw1q8._spf._d.mim.ec
-213.167.75.0/25 # aojpw1q8._spf._d.mim.ec
-185.58.85.0/24 # aojpw1q8._spf._d.mim.ec
-185.58.86.0/24 # aojpw1q8._spf._d.mim.ec
-193.7.206.0/25 # aojpw1q8._spf._d.mim.ec
-147.28.36.0/24 # aojpw1q8._spf._d.mim.ec
-199.15.212.0/22 # aojpw1q8._spf._d.mim.ec
-72.3.185.0/24 # aojpw1q8._spf._d.mim.ec
-72.32.154.0/24 # aojpw1q8._spf._d.mim.ec
-72.32.217.0/24 # aojpw1q8._spf._d.mim.ec
-72.32.243.0/24 # aojpw1q8._spf._d.mim.ec
-94.236.119.0/26 # aojpw1q8._spf._d.mim.ec
-37.188.97.188 # aojpw1q8._spf._d.mim.ec
-185.28.196.0/22 # aojpw1q81._spf._d.mim.ec
-192.28.128.0/18 # aojpw1q81._spf._d.mim.ec
-103.237.104.0/22 # aojpw1q81._spf._d.mim.ec
-130.248.172.0/24 # aojpw1q81._spf._d.mim.ec
-130.248.173.0/24 # aojpw1q81._spf._d.mim.ec
-167.89.0.0/17 # aojpw1q81._spf._d.mim.ec
-208.117.48.0/20 # aojpw1q81._spf._d.mim.ec
-50.31.32.0/19 # aojpw1q81._spf._d.mim.ec
-198.37.144.0/20 # aojpw1q81._spf._d.mim.ec
-198.21.0.0/21 # aojpw1q81._spf._d.mim.ec
-192.254.112.0/20 # aojpw1q81._spf._d.mim.ec
-168.245.0.0/17 # aojpw1q81._spf._d.mim.ec
-149.72.0.0/16 # aojpw1q81._spf._d.mim.ec
-159.183.0.0/16 # aojpw1q81._spf._d.mim.ec
-223.165.113.0/24 # aojpw1q81._spf._d.mim.ec
-223.165.115.0/24 # aojpw1q81._spf._d.mim.ec
-223.165.118.0/23 # aojpw1q81._spf._d.mim.ec
-223.165.120.0/23 # aojpw1q81._spf._d.mim.ec
-147.253.209.184 # aojpw1q81._spf._d.mim.ec
-147.253.211.175 # aojpw1q82._spf._d.mim.ec
-147.253.217.248 # aojpw1q82._spf._d.mim.ec
-147.253.218.73 # aojpw1q82._spf._d.mim.ec
-147.253.218.88 # aojpw1q82._spf._d.mim.ec
-147.253.219.153 # aojpw1q82._spf._d.mim.ec
-156.70.3.225 # aojpw1q82._spf._d.mim.ec
-156.70.3.226/31 # aojpw1q82._spf._d.mim.ec
-156.70.3.228/31 # aojpw1q82._spf._d.mim.ec
-156.70.4.175 # aojpw1q82._spf._d.mim.ec
-156.70.4.33 # aojpw1q82._spf._d.mim.ec
-192.174.81.16/28 # aojpw1q82._spf._d.mim.ec
-192.174.81.32/29 # aojpw1q82._spf._d.mim.ec
-192.174.82.55 # aojpw1q82._spf._d.mim.ec
-192.174.82.56/31 # aojpw1q82._spf._d.mim.ec
-192.174.85.168 # aojpw1q82._spf._d.mim.ec
-192.174.85.217 # aojpw1q82._spf._d.mim.ec
-192.174.89.136 # aojpw1q82._spf._d.mim.ec
-192.174.93.164 # aojpw1q82._spf._d.mim.ec
-52.50.129.119 # aojpw1q82._spf._d.mim.ec
-54.174.209.165 # aojpw1q82._spf._d.mim.ec
-52.16.75.109 # aojpw1q83._spf._d.mim.ec
-52.16.75.118 # aojpw1q83._spf._d.mim.ec
-52.16.38.44 # aojpw1q83._spf._d.mim.ec
-52.16.49.62 # aojpw1q83._spf._d.mim.ec
-54.79.0.4 # aojpw1q83._spf._d.mim.ec
-35.182.195.41 # aojpw1q83._spf._d.mim.ec
-54.85.129.207 # aojpw1q83._spf._d.mim.ec
-52.22.249.69 # aojpw1q83._spf._d.mim.ec
-18.197.43.76 # aojpw1q83._spf._d.mim.ec
-54.93.104.220 # aojpw1q83._spf._d.mim.ec
-3.209.231.65 # aojpw1q83._spf._d.mim.ec
-34.206.143.108 # aojpw1q83._spf._d.mim.ec
-35.157.192.122 # aojpw1q83._spf._d.mim.ec
-18.132.189.127 # aojpw1q83._spf._d.mim.ec
-52.65.244.27 # aojpw1q83._spf._d.mim.ec
-15.223.142.138 # aojpw1q83._spf._d.mim.ec
-3.248.148.18 # aojpw1q83._spf._d.mim.ec
-107.20.91.250 # aojpw1q83._spf._d.mim.ec
-3.96.249.213 # aojpw1q83._spf._d.mim.ec
-52.58.159.50 # aojpw1q83._spf._d.mim.ec
-3.11.129.102 # aojpw1q83._spf._d.mim.ec
-34.242.156.53 # aojpw1q83._spf._d.mim.ec
-52.4.156.8 # aojpw1q84._spf._d.mim.ec
-34.251.63.7 # aojpw1q84._spf._d.mim.ec
-170.10.151.0/24 # aojpw1q84._spf._d.mim.ec
-170.10.153.0/24 # aojpw1q84._spf._d.mim.ec
-170.10.150.240/29 # aojpw1q84._spf._d.mim.ec
-170.10.152.240/29 # aojpw1q84._spf._d.mim.ec
-:99:v=spf1 exists:%{i}._spf.mta.salesforce.com ~all
-0.0.0.0/1 # all other IPv4 addresses
-128.0.0.0/1 # all other IP IPv4 addresses
-$DATASET ip6trie:mimecast.com mimecast.com @
-:3:v=spf1 ip6:$ ~all
-:99:v=spf1 exists:%{i}._spf.mta.salesforce.com ~all
-0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:microsoft.com @ 2022-09-20 10:28:58.511103
-# ^ microsoft.com
-# ^ v=spf1 include:_spf-a.microsoft.com include:_spf-b.microsoft.com include:_spf-c.microsoft.com include:_spf-ssg-a.microsoft.com include:spf-a.hotmail.com include:_spf1-meo.microsoft.com -all
-# ^^ _spf-a.microsoft.com
-# ^^ v=spf1 ip4:216.99.5.67 ip4:216.99.5.68 ip4:202.177.148.100 ip4:203.122.32.250 ip4:202.177.148.110 ip4:213.199.128.139 ip4:213.199.128.145 ip4:207.46.50.72 ip4:207.46.50.82 ip4:65.55.42.224/28 ip4:13.78.233.182 include:spf.protection.outlook.com ~all
-# ^^^ spf.protection.outlook.com
-# ^^^ v=spf1 ip4:40.92.0.0/15 ip4:40.107.0.0/16 ip4:52.100.0.0/14 ip4:104.47.0.0/17 ip6:2a01:111:f400::/48 ip6:2a01:111:f403::/49 ip6:2a01:111:f403:8000::/50 ip6:2a01:111:f403:c000::/51 ip6:2a01:111:f403:f000::/52 include:spfd.protection.outlook.com -all
-# ^^^^ spfd.protection.outlook.com
-# ^^^^ v=spf1 ip4:51.4.72.0/24 ip4:51.5.72.0/24 ip4:51.5.80.0/27 ip4:20.47.149.138/32 ip4:51.4.80.0/27 ip6:2a01:4180:4051:0800::/64 ip6:2a01:4180:4050:0800::/64 ip6:2a01:4180:4051:0400::/64 ip6:2a01:4180:4050:0400::/64 -all
-# ^^^^^ _spf-b.microsoft.com
-# ^^^^^ v=spf1 include:_spf-mdm.microsoft.com ip4:207.46.22.35 ip4:207.46.22.98/29 ip4:217.77.141.52 ip4:217.77.141.59 ip4:203.32.4.25 ip4:131.107.0.0/16 ip4:23.103.224.0/19 ip4:206.191.224.0/19 ip4:65.52.80.137/32 ip4:51.140.75.55 ip4:13.70.32.43 ~all
-# ^^^^^^ _spf-mdm.microsoft.com
-# ^^^^^^ v=spf1 ip4:134.170.113.0/26 ip4:131.253.30.0/24 ip4:157.56.120.128/26 ip4:134.170.174.0/24 ip4:134.170.141.64/26 ip4:134.170.143.0/24 ip4:157.58.249.3 ip4:65.55.29.77 ip4:131.253.121.0/26 -all
-# ^^^^^^^ _spf-c.microsoft.com
-# ^^^^^^^ v=spf1 ip4:213.199.138.181 ip4:213.199.138.191 ip4:207.46.52.71 ip4:207.46.52.79 ip4:86.61.88.25 ip4:167.220.67.232/29 ip4:157.58.196.96/29 ip4:147.243.128.24 ip4:147.243.128.26 ip4:147.243.1.153 ip4:147.243.1.47 ip4:147.243.1.48 ip4:52.250.126.174 ~all
-# ^^^^^^^^ _spf-ssg-a.microsoft.com
-# ^^^^^^^^ v=spf1 include:_spf-ssg-a.msft.net ip4:52.185.106.240/28 ip4:207.46.200.0/27 ip4:207.46.50.192/26 ip4:65.55.234.192/26 ip4:65.55.52.224/27 ip4:52.234.172.96/28 ip4:167.220.67.238 ip4:51.4.71.62 ip4:20.94.180.64/28 ip4:131.253.121.20 ip4:131.253.121.52 ~all
-# ^^^^^^^^^ _spf-ssg-a.msft.net
-# ^^^^^^^^^ v=spf1 ip4:20.63.210.192/28 ip4:52.236.28.240/28 ip4:103.9.8.121 ip4:103.9.8.122 ip4:103.9.8.123 ip4:42.159.163.81 ip4:42.159.163.82 ip4:42.159.163.83 ip4:134.170.27.8 ip4:52.251.55.143 ip4:52.237.141.173 ip4:40.112.65.63 ip4:104.215.186.3 ~all
-# ^^^^^^^^^^ spf-a.hotmail.com
-# ^^^^^^^^^^ v=spf1 ip4:157.55.0.192/26 ip4:157.55.1.128/26 ip4:157.55.2.0/25 ip4:65.54.190.0/24 ip4:65.54.51.64/26 ip4:65.54.61.64/26 ip4:65.55.111.0/24 ip4:65.55.116.0/25 ip4:65.55.34.0/24 ip4:65.55.90.0/24 ip4:65.54.241.0/24 ip4:207.46.117.0/24 ~all
-# ^^^^^^^^^^^ _spf1-meo.microsoft.com
-# ^^^^^^^^^^^ v=spf1 ip4:52.165.175.144 ip4:52.247.53.144 ip4:157.55.254.216 ip4:13.74.143.28 ip4:104.214.25.77 ip4:207.46.225.107 ip4:51.137.58.21 ip4:138.91.172.26 ip4:52.250.107.196 ip4:13.92.31.129 ip4:40.77.102.222 ip4:51.144.100.179 ip4:52.160.39.140 ip4:52.244.206.214 ip4:13.72.50.45 ip4:20.118.139.208/30 ip4:20.98.194.68/30 ip4:20.83.222.104/30 ip4:20.88.157.184/30 ip4:20.59.80.4/30 ip4:20.51.6.32/30 ip4:20.97.34.220/30 ip4:20.107.239.64/30 ip4:20.105.209.76/30 ~all
-# Depth:11
-# IP & Subnet: 122
-$DATASET ip4set:microsoft.com microsoft.com @
-:3:v=spf1 ip4:$ ~all
-216.99.5.67 # _spf-a.microsoft.com
-216.99.5.68 # _spf-a.microsoft.com
-202.177.148.100 # _spf-a.microsoft.com
-203.122.32.250 # _spf-a.microsoft.com
-202.177.148.110 # _spf-a.microsoft.com
-213.199.128.139 # _spf-a.microsoft.com
-213.199.128.145 # _spf-a.microsoft.com
-207.46.50.72 # _spf-a.microsoft.com
-207.46.50.82 # _spf-a.microsoft.com
-65.55.42.224/28 # _spf-a.microsoft.com
-13.78.233.182 # _spf-a.microsoft.com
-40.92.0.0/15 # spf.protection.outlook.com
-40.107.0.0/16 # spf.protection.outlook.com
-52.100.0.0/14 # spf.protection.outlook.com
-104.47.0.0/17 # spf.protection.outlook.com
-51.4.72.0/24 # spfd.protection.outlook.com
-51.5.72.0/24 # spfd.protection.outlook.com
-51.5.80.0/27 # spfd.protection.outlook.com
-20.47.149.138/32 # spfd.protection.outlook.com
-51.4.80.0/27 # spfd.protection.outlook.com
-134.170.113.0/26 # _spf-mdm.microsoft.com
-131.253.30.0/24 # _spf-mdm.microsoft.com
-157.56.120.128/26 # _spf-mdm.microsoft.com
-134.170.174.0/24 # _spf-mdm.microsoft.com
-134.170.141.64/26 # _spf-mdm.microsoft.com
-134.170.143.0/24 # _spf-mdm.microsoft.com
-157.58.249.3 # _spf-mdm.microsoft.com
-65.55.29.77 # _spf-mdm.microsoft.com
-131.253.121.0/26 # _spf-mdm.microsoft.com
-207.46.22.35 # _spf-b.microsoft.com
-207.46.22.98/29 # _spf-b.microsoft.com
-217.77.141.52 # _spf-b.microsoft.com
-217.77.141.59 # _spf-b.microsoft.com
-203.32.4.25 # _spf-b.microsoft.com
-131.107.0.0/16 # _spf-b.microsoft.com
-23.103.224.0/19 # _spf-b.microsoft.com
-206.191.224.0/19 # _spf-b.microsoft.com
-65.52.80.137/32 # _spf-b.microsoft.com
-51.140.75.55 # _spf-b.microsoft.com
-13.70.32.43 # _spf-b.microsoft.com
-213.199.138.181 # _spf-c.microsoft.com
-213.199.138.191 # _spf-c.microsoft.com
-207.46.52.71 # _spf-c.microsoft.com
-207.46.52.79 # _spf-c.microsoft.com
-86.61.88.25 # _spf-c.microsoft.com
-167.220.67.232/29 # _spf-c.microsoft.com
-157.58.196.96/29 # _spf-c.microsoft.com
-147.243.128.24 # _spf-c.microsoft.com
-147.243.128.26 # _spf-c.microsoft.com
-147.243.1.153 # _spf-c.microsoft.com
-147.243.1.47 # _spf-c.microsoft.com
-147.243.1.48 # _spf-c.microsoft.com
-52.250.126.174 # _spf-c.microsoft.com
-20.63.210.192/28 # _spf-ssg-a.msft.net
-52.236.28.240/28 # _spf-ssg-a.msft.net
-103.9.8.121 # _spf-ssg-a.msft.net
-103.9.8.122 # _spf-ssg-a.msft.net
-103.9.8.123 # _spf-ssg-a.msft.net
-42.159.163.81 # _spf-ssg-a.msft.net
-42.159.163.82 # _spf-ssg-a.msft.net
-42.159.163.83 # _spf-ssg-a.msft.net
-134.170.27.8 # _spf-ssg-a.msft.net
-52.251.55.143 # _spf-ssg-a.msft.net
-52.237.141.173 # _spf-ssg-a.msft.net
-40.112.65.63 # _spf-ssg-a.msft.net
-104.215.186.3 # _spf-ssg-a.msft.net
-52.185.106.240/28 # _spf-ssg-a.microsoft.com
-207.46.200.0/27 # _spf-ssg-a.microsoft.com
-207.46.50.192/26 # _spf-ssg-a.microsoft.com
-65.55.234.192/26 # _spf-ssg-a.microsoft.com
-65.55.52.224/27 # _spf-ssg-a.microsoft.com
-52.234.172.96/28 # _spf-ssg-a.microsoft.com
-167.220.67.238 # _spf-ssg-a.microsoft.com
-51.4.71.62 # _spf-ssg-a.microsoft.com
-20.94.180.64/28 # _spf-ssg-a.microsoft.com
-131.253.121.20 # _spf-ssg-a.microsoft.com
-131.253.121.52 # _spf-ssg-a.microsoft.com
-157.55.0.192/26 # spf-a.hotmail.com
-157.55.1.128/26 # spf-a.hotmail.com
-157.55.2.0/25 # spf-a.hotmail.com
-65.54.190.0/24 # spf-a.hotmail.com
-65.54.51.64/26 # spf-a.hotmail.com
-65.54.61.64/26 # spf-a.hotmail.com
-65.55.111.0/24 # spf-a.hotmail.com
-65.55.116.0/25 # spf-a.hotmail.com
-65.55.34.0/24 # spf-a.hotmail.com
-65.55.90.0/24 # spf-a.hotmail.com
-65.54.241.0/24 # spf-a.hotmail.com
-207.46.117.0/24 # spf-a.hotmail.com
-52.165.175.144 # _spf1-meo.microsoft.com
-52.247.53.144 # _spf1-meo.microsoft.com
-157.55.254.216 # _spf1-meo.microsoft.com
-13.74.143.28 # _spf1-meo.microsoft.com
-104.214.25.77 # _spf1-meo.microsoft.com
-207.46.225.107 # _spf1-meo.microsoft.com
-51.137.58.21 # _spf1-meo.microsoft.com
-138.91.172.26 # _spf1-meo.microsoft.com
-52.250.107.196 # _spf1-meo.microsoft.com
-13.92.31.129 # _spf1-meo.microsoft.com
-40.77.102.222 # _spf1-meo.microsoft.com
-51.144.100.179 # _spf1-meo.microsoft.com
-52.160.39.140 # _spf1-meo.microsoft.com
-52.244.206.214 # _spf1-meo.microsoft.com
-13.72.50.45 # _spf1-meo.microsoft.com
-20.118.139.208/30 # _spf1-meo.microsoft.com
-20.98.194.68/30 # _spf1-meo.microsoft.com
-20.83.222.104/30 # _spf1-meo.microsoft.com
-20.88.157.184/30 # _spf1-meo.microsoft.com
-20.59.80.4/30 # _spf1-meo.microsoft.com
-20.51.6.32/30 # _spf1-meo.microsoft.com
-20.97.34.220/30 # _spf1-meo.microsoft.com
-20.107.239.64/30 # _spf1-meo.microsoft.com
-20.105.209.76/30 # _spf1-meo.microsoft.com
-:99:v=spf1 ~all
-0.0.0.0/1 # all other IPv4 addresses
-128.0.0.0/1 # all other IP IPv4 addresses
-$DATASET ip6trie:microsoft.com microsoft.com @
-:3:v=spf1 ip6:$ ~all
-2a01:111:f400::/48 # spf.protection.outlook.com
-2a01:111:f403::/49 # spf.protection.outlook.com
-2a01:111:f403:8000::/50 # spf.protection.outlook.com
-2a01:111:f403:c000::/51 # spf.protection.outlook.com
-2a01:111:f403:f000::/52 # spf.protection.outlook.com
-2a01:4180:4051:0800::/64 # spfd.protection.outlook.com
-2a01:4180:4050:0800::/64 # spfd.protection.outlook.com
-2a01:4180:4051:0400::/64 # spfd.protection.outlook.com
-2a01:4180:4050:0400::/64 # spfd.protection.outlook.com
-:99:v=spf1 ~all
-0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:github.com @ 2022-09-20 10:28:58.712313
-# ^ github.com
-# ^ v=spf1 ip4:192.30.252.0/22 include:_netblocks.google.com include:_netblocks2.google.com include:_netblocks3.google.com include:spf.protection.outlook.com include:mail.zendesk.com include:_spf.salesforce.com include:servers.mcsv.net ip4:166.78.69.169 ip4:166.78.69.170 ip4:166.78.71.131 ip4:167.89.101.2 ip4:167.89.101.192/28 ip4:192.254.112.60 ip4:192.254.112.98/31 ip4:192.254.113.10 ip4:192.254.113.101 ip4:192.254.114.176 ip4:62.253.227.114 ~all
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_spf.google.com @ 2022-09-20 13:29:39.187262
+# ^ _spf.google.com
+# ^ v=spf1 include:_netblocks.google.com include:_netblocks2.google.com include:_netblocks3.google.com ~all
 # ^^ _netblocks.google.com
 # ^^ v=spf1 ip4:35.190.247.0/24 ip4:64.233.160.0/19 ip4:66.102.0.0/20 ip4:66.249.80.0/20 ip4:72.14.192.0/18 ip4:74.125.0.0/16 ip4:108.177.8.0/21 ip4:173.194.0.0/16 ip4:209.85.128.0/17 ip4:216.58.192.0/19 ip4:216.239.32.0/19 ~all
 # ^^^ _netblocks2.google.com
 # ^^^ v=spf1 ip6:2001:4860:4000::/36 ip6:2404:6800:4000::/36 ip6:2607:f8b0:4000::/36 ip6:2800:3f0:4000::/36 ip6:2a00:1450:4000::/36 ip6:2c0f:fb50:4000::/36 ~all
 # ^^^^ _netblocks3.google.com
 # ^^^^ v=spf1 ip4:172.217.0.0/19 ip4:172.217.32.0/20 ip4:172.217.128.0/19 ip4:172.217.160.0/20 ip4:172.217.192.0/19 ip4:172.253.56.0/21 ip4:172.253.112.0/20 ip4:108.177.96.0/19 ip4:35.191.0.0/16 ip4:130.211.0.0/22 ~all
-# ^^^^^ spf.protection.outlook.com
-# ^^^^^ v=spf1 ip4:40.92.0.0/15 ip4:40.107.0.0/16 ip4:52.100.0.0/14 ip4:104.47.0.0/17 ip6:2a01:111:f400::/48 ip6:2a01:111:f403::/49 ip6:2a01:111:f403:8000::/50 ip6:2a01:111:f403:c000::/51 ip6:2a01:111:f403:f000::/52 include:spfd.protection.outlook.com -all
-# ^^^^^^ spfd.protection.outlook.com
-# ^^^^^^ v=spf1 ip4:51.4.72.0/24 ip4:51.5.72.0/24 ip4:51.5.80.0/27 ip4:20.47.149.138/32 ip4:51.4.80.0/27 ip6:2a01:4180:4051:0800::/64 ip6:2a01:4180:4050:0800::/64 ip6:2a01:4180:4051:0400::/64 ip6:2a01:4180:4050:0400::/64 -all
-# ^^^^^^^ mail.zendesk.com
-# ^^^^^^^ v=spf1 ip4:103.151.192.0/23 ip4:185.12.80.0/22 ip4:188.172.128.0/20 ip4:192.161.144.0/20 ip4:216.198.0.0/18 ~all
-# ^^^^^^^^ _spf.salesforce.com
-# ^^^^^^^^ v=spf1 exists:%{i}._spf.mta.salesforce.com -all
-# ^^^^^^^^^ servers.mcsv.net
-# ^^^^^^^^^ v=spf1 ip4:205.201.128.0/20 ip4:198.2.128.0/18 ip4:148.105.8.0/21 -all
-# Depth:9
-# IP & Subnet: 65
-$DATASET ip4set:github.com github.com @
+# Depth:4
+# IP & Subnet: 27
+$DATASET ip4set:_spf.google.com _spf.google.com @
 :3:v=spf1 ip4:$ ~all
-192.30.252.0/22 # github.com
 35.190.247.0/24 # _netblocks.google.com
 64.233.160.0/19 # _netblocks.google.com
 66.102.0.0/20 # _netblocks.google.com
@@ -357,38 +32,10 @@ $DATASET ip4set:github.com github.com @
 108.177.96.0/19 # _netblocks3.google.com
 35.191.0.0/16 # _netblocks3.google.com
 130.211.0.0/22 # _netblocks3.google.com
-40.92.0.0/15 # spf.protection.outlook.com
-40.107.0.0/16 # spf.protection.outlook.com
-52.100.0.0/14 # spf.protection.outlook.com
-104.47.0.0/17 # spf.protection.outlook.com
-51.4.72.0/24 # spfd.protection.outlook.com
-51.5.72.0/24 # spfd.protection.outlook.com
-51.5.80.0/27 # spfd.protection.outlook.com
-20.47.149.138/32 # spfd.protection.outlook.com
-51.4.80.0/27 # spfd.protection.outlook.com
-103.151.192.0/23 # mail.zendesk.com
-185.12.80.0/22 # mail.zendesk.com
-188.172.128.0/20 # mail.zendesk.com
-192.161.144.0/20 # mail.zendesk.com
-216.198.0.0/18 # mail.zendesk.com
-205.201.128.0/20 # servers.mcsv.net
-198.2.128.0/18 # servers.mcsv.net
-148.105.8.0/21 # servers.mcsv.net
-166.78.69.169 # github.com
-166.78.69.170 # github.com
-166.78.71.131 # github.com
-167.89.101.2 # github.com
-167.89.101.192/28 # github.com
-192.254.112.60 # github.com
-192.254.112.98/31 # github.com
-192.254.113.10 # github.com
-192.254.113.101 # github.com
-192.254.114.176 # github.com
-62.253.227.114 # github.com
-:99:v=spf1 exists:%{i}._spf.mta.salesforce.com ~all
+:99:v=spf1 ~all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
-$DATASET ip6trie:github.com github.com @
+$DATASET ip6trie:_spf.google.com _spf.google.com @
 :3:v=spf1 ip6:$ ~all
 2001:4860:4000::/36 # _netblocks2.google.com
 2404:6800:4000::/36 # _netblocks2.google.com
@@ -396,34 +43,30 @@ $DATASET ip6trie:github.com github.com @
 2800:3f0:4000::/36 # _netblocks2.google.com
 2a00:1450:4000::/36 # _netblocks2.google.com
 2c0f:fb50:4000::/36 # _netblocks2.google.com
-2a01:111:f400::/48 # spf.protection.outlook.com
-2a01:111:f403::/49 # spf.protection.outlook.com
-2a01:111:f403:8000::/50 # spf.protection.outlook.com
-2a01:111:f403:c000::/51 # spf.protection.outlook.com
-2a01:111:f403:f000::/52 # spf.protection.outlook.com
-2a01:4180:4051:0800::/64 # spfd.protection.outlook.com
-2a01:4180:4050:0800::/64 # spfd.protection.outlook.com
-2a01:4180:4051:0400::/64 # spfd.protection.outlook.com
-2a01:4180:4050:0400::/64 # spfd.protection.outlook.com
-:99:v=spf1 exists:%{i}._spf.mta.salesforce.com ~all
+:99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:who.int @ 2022-09-20 10:28:58.853690
-# ^ who.int
-# ^ v=spf1 ip4:158.232.12.0/24 include:spf.protection.outlook.com include:_spfincludes.who.int -all
-# ^^ spf.protection.outlook.com
-# ^^ v=spf1 ip4:40.92.0.0/15 ip4:40.107.0.0/16 ip4:52.100.0.0/14 ip4:104.47.0.0/17 ip6:2a01:111:f400::/48 ip6:2a01:111:f403::/49 ip6:2a01:111:f403:8000::/50 ip6:2a01:111:f403:c000::/51 ip6:2a01:111:f403:f000::/52 include:spfd.protection.outlook.com -all
-# ^^^ spfd.protection.outlook.com
-# ^^^ v=spf1 ip4:51.4.72.0/24 ip4:51.5.72.0/24 ip4:51.5.80.0/27 ip4:20.47.149.138/32 ip4:51.4.80.0/27 ip6:2a01:4180:4051:0800::/64 ip6:2a01:4180:4050:0800::/64 ip6:2a01:4180:4051:0400::/64 ip6:2a01:4180:4050:0400::/64 -all
-# ^^^^ _spfincludes.who.int
-# ^^^^ v=spf1 a:c.spf.service-now.com ip4:160.34.64.28 ip4:188.92.48.138 ip4:188.92.48.139 ip4:188.92.48.140 ip4:188.92.48.141 ip4:168.245.118.121 include:_spf.salesforce.com -all
-# ^^^^^ a:c.spf.service-now.com
-# ^^^^^^ _spf.salesforce.com
-# ^^^^^^ v=spf1 exists:%{i}._spf.mta.salesforce.com -all
-# Depth:6
-# IP & Subnet: 25
-$DATASET ip4set:who.int who.int @
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:netblocks.mimecast.com @ 2022-09-20 13:29:39.241889
+# DNS Resolution Error - TXT:netblocks.mimecast.com
+# Depth:0
+# IP & Subnet: 0
+$DATASET ip4set:netblocks.mimecast.com netblocks.mimecast.com @
 :3:v=spf1 ip4:$ ~all
-158.232.12.0/24 # who.int
+:99:v=spf1 ~all
+0.0.0.0/1 # all other IPv4 addresses
+128.0.0.0/1 # all other IP IPv4 addresses
+$DATASET ip6trie:netblocks.mimecast.com netblocks.mimecast.com @
+:3:v=spf1 ip6:$ ~all
+:99:v=spf1 ~all
+0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.protection.outlook.com @ 2022-09-20 13:29:39.521255
+# ^ spf.protection.outlook.com
+# ^ v=spf1 ip4:40.92.0.0/15 ip4:40.107.0.0/16 ip4:52.100.0.0/14 ip4:104.47.0.0/17 ip6:2a01:111:f400::/48 ip6:2a01:111:f403::/49 ip6:2a01:111:f403:8000::/50 ip6:2a01:111:f403:c000::/51 ip6:2a01:111:f403:f000::/52 include:spfd.protection.outlook.com -all
+# ^^ spfd.protection.outlook.com
+# ^^ v=spf1 ip4:51.4.72.0/24 ip4:51.5.72.0/24 ip4:51.5.80.0/27 ip4:20.47.149.138/32 ip4:51.4.80.0/27 ip6:2a01:4180:4051:0800::/64 ip6:2a01:4180:4050:0800::/64 ip6:2a01:4180:4051:0400::/64 ip6:2a01:4180:4050:0400::/64 -all
+# Depth:2
+# IP & Subnet: 18
+$DATASET ip4set:spf.protection.outlook.com spf.protection.outlook.com @
+:3:v=spf1 ip4:$ ~all
 40.92.0.0/15 # spf.protection.outlook.com
 40.107.0.0/16 # spf.protection.outlook.com
 52.100.0.0/14 # spf.protection.outlook.com
@@ -433,43 +76,10 @@ $DATASET ip4set:who.int who.int @
 51.5.80.0/27 # spfd.protection.outlook.com
 20.47.149.138/32 # spfd.protection.outlook.com
 51.4.80.0/27 # spfd.protection.outlook.com
-148.139.0.2 # a:c.spf.service-now.com
-148.139.0.31 # a:c.spf.service-now.com
-148.139.1.2 # a:c.spf.service-now.com
-148.139.1.31 # a:c.spf.service-now.com
-148.139.2.2 # a:c.spf.service-now.com
-148.139.3.2 # a:c.spf.service-now.com
-149.96.13.2 # a:c.spf.service-now.com
-149.96.14.2 # a:c.spf.service-now.com
-199.91.136.26 # a:c.spf.service-now.com
-199.91.136.28 # a:c.spf.service-now.com
-199.91.137.2 # a:c.spf.service-now.com
-199.91.137.26 # a:c.spf.service-now.com
-199.91.139.145 # a:c.spf.service-now.com
-199.91.139.22 # a:c.spf.service-now.com
-199.91.139.23 # a:c.spf.service-now.com
-199.91.139.24 # a:c.spf.service-now.com
-199.91.140.26 # a:c.spf.service-now.com
-199.91.140.28 # a:c.spf.service-now.com
-199.91.141.145 # a:c.spf.service-now.com
-199.91.141.22 # a:c.spf.service-now.com
-199.91.141.23 # a:c.spf.service-now.com
-199.91.141.24 # a:c.spf.service-now.com
-37.98.232.12 # a:c.spf.service-now.com
-37.98.232.2 # a:c.spf.service-now.com
-37.98.232.26 # a:c.spf.service-now.com
-37.98.234.2 # a:c.spf.service-now.com
-37.98.235.2 # a:c.spf.service-now.com # a:c.spf.service-now.com
-160.34.64.28 # _spfincludes.who.int
-188.92.48.138 # _spfincludes.who.int
-188.92.48.139 # _spfincludes.who.int
-188.92.48.140 # _spfincludes.who.int
-188.92.48.141 # _spfincludes.who.int
-168.245.118.121 # _spfincludes.who.int
-:99:v=spf1 exists:%{i}._spf.mta.salesforce.com ~all
+:99:v=spf1 ~all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
-$DATASET ip6trie:who.int who.int @
+$DATASET ip6trie:spf.protection.outlook.com spf.protection.outlook.com @
 :3:v=spf1 ip6:$ ~all
 2a01:111:f400::/48 # spf.protection.outlook.com
 2a01:111:f403::/49 # spf.protection.outlook.com
@@ -480,74 +90,128 @@ $DATASET ip6trie:who.int who.int @
 2a01:4180:4050:0800::/64 # spfd.protection.outlook.com
 2a01:4180:4051:0400::/64 # spfd.protection.outlook.com
 2a01:4180:4050:0400::/64 # spfd.protection.outlook.com
-:99:v=spf1 exists:%{i}._spf.mta.salesforce.com ~all
+:99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:apple.com @ 2022-09-20 10:28:59.334704
-# ^ apple.com
-# ^ v=spf1 include:_spf.apple.com include:_spf-txn.apple.com ~all
-# ^^ _spf.apple.com
-# ^^ v=spf1 ip4:17.151.62.66 ip4:17.151.62.67 ip4:17.151.62.68 ip4:17.171.2.60 ip4:17.171.2.68 ip4:17.171.2.72 ip4:17.179.253.33 ip4:17.179.253.34 ip4:17.179.253.38 ip4:17.179.253.39 ip4:17.179.253.43 ip4:17.179.253.44 ip4:17.179.253.48 ip4:17.179.253.49 ip4:17.179.253.22/31 ip4:17.179.253.24/31 ip4:17.32.222.22/31 ip4:17.32.222.24/31 ip4:17.72.136.23 ~all
-# ^^^ _spf-txn.apple.com
-# ^^^ v=spf1 ip4:17.151.1.0/24 ip4:17.171.37.0/24 ip4:17.111.110.0/23 ~all
-# Depth:3
-# IP & Subnet: 22
-$DATASET ip4set:apple.com apple.com @
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:outbound.mailhop.org @ 2022-09-20 13:29:39.554747
+# ^ outbound.mailhop.org
+# ^ v=spf1 ip4:52.26.49.97 ip4:52.10.99.51 ip4:52.28.59.28 ip4:52.28.6.212 ip4:3.127.8.113 ip4:54.186.27.61 ip4:52.28.168.19 ip4:52.58.19.153 ip4:52.58.96.151 ip4:52.58.97.209 ip4:52.88.73.233 ip4:54.187.71.48 ip4:54.149.36.10 ip4:54.68.34.165 ip4:54.186.22.84 ip4:54.191.214.3 ip4:3.125.66.160 ip4:54.213.22.21 ip4:52.29.21.168 ip4:100.20.105.3 ip4:44.233.67.66 ip4:52.25.88.167 ip4:54.184.38.33 ip4:54.185.97.28 include:_s0.outbound.mailhop.org -all
+# ^^ _s0.outbound.mailhop.org
+# ^^ v=spf1 ip4:54.190.72.79 ip4:18.156.67.42 ip4:54.69.130.42 ip4:3.124.88.253 ip4:52.29.156.81 ip4:52.28.246.64 ip4:54.68.138.64 ip4:3.121.156.226 ip4:54.191.214.36 ip4:52.41.115.105 ip4:44.233.38.249 ip4:44.233.99.129 ip4:54.149.240.58 ip4:18.156.94.234 ip4:54.186.10.118 ip4:3.125.148.246 ip4:54.187.63.214 ip4:54.149.35.133 ip4:52.10.130.167 ip4:54.148.38.162 ip4:54.187.206.49 ip4:44.233.143.45 include:_s1.outbound.mailhop.org -all
+# ^^^ _s1.outbound.mailhop.org
+# ^^^ v=spf1 ip4:35.157.29.171 ip4:54.191.158.99 ip4:54.186.172.23 ip4:54.186.57.195 ip4:35.164.151.34 ip4:54.148.219.64 ip4:54.148.153.48 ip4:54.148.30.215 ip4:54.148.222.11 ip4:54.186.218.12 ip4:52.28.251.132 ip4:52.28.147.211 ip4:52.58.109.202 ip4:54.187.218.212 ip4:54.187.213.119 ip4:54.149.210.130 ip4:54.148.165.188 ip4:54.149.155.156 ip4:54.148.113.140 ip4:35.156.234.212 ip4:54.149.205.143 include:_s2.outbound.mailhop.org -all
+# ^^^^ _s2.outbound.mailhop.org
+# ^^^^ v=spf1 ip4:54.149.206.185 ip4:54.244.192.240 ip4:54.191.151.194 ip4:54.200.247.200 ip4:54.200.129.228 ip4:35.160.111.225 ip4:23.83.208.0/20 ip4:191.252.57.0/25 ip4:34.219.98.66/32 ip4:52.34.31.144/32 ip4:46.232.183.0/24 ip4:104.232.45.0/24 ip4:199.10.31.235/32 ip4:54.245.125.39/32 ip4:172.255.62.10/32 ip4:172.255.62.11/32 ip4:177.153.0.128/25 ip4:177.153.0.130/32 ip4:199.10.31.236/32 ip4:54.214.232.113/32 include:_s3.outbound.mailhop.org -all
+# ^^^^^ _s3.outbound.mailhop.org
+# ^^^^^ v=spf1 ip4:103.18.109.138/32 -all
+# Depth:5
+# IP & Subnet: 88
+$DATASET ip4set:outbound.mailhop.org outbound.mailhop.org @
 :3:v=spf1 ip4:$ ~all
-17.151.62.66 # _spf.apple.com
-17.151.62.67 # _spf.apple.com
-17.151.62.68 # _spf.apple.com
-17.171.2.60 # _spf.apple.com
-17.171.2.68 # _spf.apple.com
-17.171.2.72 # _spf.apple.com
-17.179.253.33 # _spf.apple.com
-17.179.253.34 # _spf.apple.com
-17.179.253.38 # _spf.apple.com
-17.179.253.39 # _spf.apple.com
-17.179.253.43 # _spf.apple.com
-17.179.253.44 # _spf.apple.com
-17.179.253.48 # _spf.apple.com
-17.179.253.49 # _spf.apple.com
-17.179.253.22/31 # _spf.apple.com
-17.179.253.24/31 # _spf.apple.com
-17.32.222.22/31 # _spf.apple.com
-17.32.222.24/31 # _spf.apple.com
-17.72.136.23 # _spf.apple.com
-17.151.1.0/24 # _spf-txn.apple.com
-17.171.37.0/24 # _spf-txn.apple.com
-17.111.110.0/23 # _spf-txn.apple.com
+52.26.49.97 # outbound.mailhop.org
+52.10.99.51 # outbound.mailhop.org
+52.28.59.28 # outbound.mailhop.org
+52.28.6.212 # outbound.mailhop.org
+3.127.8.113 # outbound.mailhop.org
+54.186.27.61 # outbound.mailhop.org
+52.28.168.19 # outbound.mailhop.org
+52.58.19.153 # outbound.mailhop.org
+52.58.96.151 # outbound.mailhop.org
+52.58.97.209 # outbound.mailhop.org
+52.88.73.233 # outbound.mailhop.org
+54.187.71.48 # outbound.mailhop.org
+54.149.36.10 # outbound.mailhop.org
+54.68.34.165 # outbound.mailhop.org
+54.186.22.84 # outbound.mailhop.org
+54.191.214.3 # outbound.mailhop.org
+3.125.66.160 # outbound.mailhop.org
+54.213.22.21 # outbound.mailhop.org
+52.29.21.168 # outbound.mailhop.org
+100.20.105.3 # outbound.mailhop.org
+44.233.67.66 # outbound.mailhop.org
+52.25.88.167 # outbound.mailhop.org
+54.184.38.33 # outbound.mailhop.org
+54.185.97.28 # outbound.mailhop.org
+54.190.72.79 # _s0.outbound.mailhop.org
+18.156.67.42 # _s0.outbound.mailhop.org
+54.69.130.42 # _s0.outbound.mailhop.org
+3.124.88.253 # _s0.outbound.mailhop.org
+52.29.156.81 # _s0.outbound.mailhop.org
+52.28.246.64 # _s0.outbound.mailhop.org
+54.68.138.64 # _s0.outbound.mailhop.org
+3.121.156.226 # _s0.outbound.mailhop.org
+54.191.214.36 # _s0.outbound.mailhop.org
+52.41.115.105 # _s0.outbound.mailhop.org
+44.233.38.249 # _s0.outbound.mailhop.org
+44.233.99.129 # _s0.outbound.mailhop.org
+54.149.240.58 # _s0.outbound.mailhop.org
+18.156.94.234 # _s0.outbound.mailhop.org
+54.186.10.118 # _s0.outbound.mailhop.org
+3.125.148.246 # _s0.outbound.mailhop.org
+54.187.63.214 # _s0.outbound.mailhop.org
+54.149.35.133 # _s0.outbound.mailhop.org
+52.10.130.167 # _s0.outbound.mailhop.org
+54.148.38.162 # _s0.outbound.mailhop.org
+54.187.206.49 # _s0.outbound.mailhop.org
+44.233.143.45 # _s0.outbound.mailhop.org
+35.157.29.171 # _s1.outbound.mailhop.org
+54.191.158.99 # _s1.outbound.mailhop.org
+54.186.172.23 # _s1.outbound.mailhop.org
+54.186.57.195 # _s1.outbound.mailhop.org
+35.164.151.34 # _s1.outbound.mailhop.org
+54.148.219.64 # _s1.outbound.mailhop.org
+54.148.153.48 # _s1.outbound.mailhop.org
+54.148.30.215 # _s1.outbound.mailhop.org
+54.148.222.11 # _s1.outbound.mailhop.org
+54.186.218.12 # _s1.outbound.mailhop.org
+52.28.251.132 # _s1.outbound.mailhop.org
+52.28.147.211 # _s1.outbound.mailhop.org
+52.58.109.202 # _s1.outbound.mailhop.org
+54.187.218.212 # _s1.outbound.mailhop.org
+54.187.213.119 # _s1.outbound.mailhop.org
+54.149.210.130 # _s1.outbound.mailhop.org
+54.148.165.188 # _s1.outbound.mailhop.org
+54.149.155.156 # _s1.outbound.mailhop.org
+54.148.113.140 # _s1.outbound.mailhop.org
+35.156.234.212 # _s1.outbound.mailhop.org
+54.149.205.143 # _s1.outbound.mailhop.org
+54.149.206.185 # _s2.outbound.mailhop.org
+54.244.192.240 # _s2.outbound.mailhop.org
+54.191.151.194 # _s2.outbound.mailhop.org
+54.200.247.200 # _s2.outbound.mailhop.org
+54.200.129.228 # _s2.outbound.mailhop.org
+35.160.111.225 # _s2.outbound.mailhop.org
+23.83.208.0/20 # _s2.outbound.mailhop.org
+191.252.57.0/25 # _s2.outbound.mailhop.org
+34.219.98.66/32 # _s2.outbound.mailhop.org
+52.34.31.144/32 # _s2.outbound.mailhop.org
+46.232.183.0/24 # _s2.outbound.mailhop.org
+104.232.45.0/24 # _s2.outbound.mailhop.org
+199.10.31.235/32 # _s2.outbound.mailhop.org
+54.245.125.39/32 # _s2.outbound.mailhop.org
+172.255.62.10/32 # _s2.outbound.mailhop.org
+172.255.62.11/32 # _s2.outbound.mailhop.org
+177.153.0.128/25 # _s2.outbound.mailhop.org
+177.153.0.130/32 # _s2.outbound.mailhop.org
+199.10.31.236/32 # _s2.outbound.mailhop.org
+54.214.232.113/32 # _s2.outbound.mailhop.org
+103.18.109.138/32 # _s3.outbound.mailhop.org
 :99:v=spf1 ~all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
-$DATASET ip6trie:apple.com apple.com @
+$DATASET ip6trie:outbound.mailhop.org outbound.mailhop.org @
 :3:v=spf1 ip6:$ ~all
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:lenovo.com @ 2022-09-20 10:28:59.391702
-# ^ lenovo.com
-# ^ v=spf1 include:spf.messagelabs.com include:_netblocks.eloqua.com include:spf.protection.outlook.com include:spf.pfpool.lenovo.com ip4:72.32.45.225 ip4:40.65.201.146 ip4:138.108.60.125 ip4:138.108.24.107 ip4:52.247.21.11 ~all
-# ^^ spf.messagelabs.com
-# ^^ v=spf1 include:nets1.spf.messagelabs.com include:nets2.spf.messagelabs.com ~all
-# ^^^ nets1.spf.messagelabs.com
-# ^^^ v=spf1 ip4:85.158.136.0/21 ip4:193.109.254.0/23 ip4:194.106.220.0/23 ip4:195.245.230.0/23 ip4:95.131.104.0/21 ip4:46.226.48.0/21
-# ^^^^ nets2.spf.messagelabs.com
-# ^^^^ v=spf1 ip4:216.82.240.0/20 ip4:67.219.240.0/20 ip4:117.120.16.0/21 ip4:103.9.96.0/22
-# ^^^^^ _netblocks.eloqua.com
-# ^^^^^ v=spf1 include:_trustedips1.eloqua.com include:_trustedips2.eloqua.com include:_trustedips3.eloqua.com -all
-# ^^^^^^ _trustedips1.eloqua.com
-# ^^^^^^ v=spf1 ip4:204.92.19.0/24 ip4:204.92.21.0/25 ip4:204.92.22.0/24 ip4:204.92.26.0/24 ip4:204.92.31.0/24 ip4:204.92.114.0/24 ip4:66.48.80.0/25 ip4:209.167.231.0/24 ip4:129.145.16.0/21 ip4:129.145.76.0/22 ip4:141.145.8.0/21 ip4:129.91.16.0/21
-# ^^^^^^^ _trustedips2.eloqua.com
-# ^^^^^^^ v=spf1 ip4:142.0.160.0/20 ip4:138.1.49.41 ip4:147.154.9.180 ip4:138.1.55.48 ip4:130.35.98.1 ip4:209.17.48.0/24 ip4:209.17.49.0/24 ip4:209.17.50.0/24 ip4:129.145.79.0/24 ip4:207.135.30.0/23
-# ^^^^^^^^ _trustedips3.eloqua.com
-# ^^^^^^^^ v=spf1 ip4:129.145.74.0/23
-# ^^^^^^^^^ spf.protection.outlook.com
-# ^^^^^^^^^ v=spf1 ip4:40.92.0.0/15 ip4:40.107.0.0/16 ip4:52.100.0.0/14 ip4:104.47.0.0/17 ip6:2a01:111:f400::/48 ip6:2a01:111:f403::/49 ip6:2a01:111:f403:8000::/50 ip6:2a01:111:f403:c000::/51 ip6:2a01:111:f403:f000::/52 include:spfd.protection.outlook.com -all
-# ^^^^^^^^^^ spfd.protection.outlook.com
-# ^^^^^^^^^^ v=spf1 ip4:51.4.72.0/24 ip4:51.5.72.0/24 ip4:51.5.80.0/27 ip4:20.47.149.138/32 ip4:51.4.80.0/27 ip6:2a01:4180:4051:0800::/64 ip6:2a01:4180:4050:0800::/64 ip6:2a01:4180:4051:0400::/64 ip6:2a01:4180:4050:0400::/64 -all
-# ^^^^^^^^^^^ spf.pfpool.lenovo.com
-# ^^^^^^^^^^^ v=spf1 ip4:103.30.235.218 ip4:103.30.235.219 ip4:103.30.235.220 ip4:103.30.235.221 ip4:104.232.228.21 ip4:104.232.228.22 ip4:104.232.228.23 ip4:104.232.228.24 ip4:144.188.128.67 ip4:144.188.128.68
-# Depth:11
-# IP & Subnet: 66
-$DATASET ip4set:lenovo.com lenovo.com @
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.messagelabs.com @ 2022-09-20 13:29:39.635659
+# ^ spf.messagelabs.com
+# ^ v=spf1 include:nets1.spf.messagelabs.com include:nets2.spf.messagelabs.com ~all
+# ^^ nets1.spf.messagelabs.com
+# ^^ v=spf1 ip4:85.158.136.0/21 ip4:193.109.254.0/23 ip4:194.106.220.0/23 ip4:195.245.230.0/23 ip4:95.131.104.0/21 ip4:46.226.48.0/21
+# ^^^ nets2.spf.messagelabs.com
+# ^^^ v=spf1 ip4:216.82.240.0/20 ip4:67.219.240.0/20 ip4:117.120.16.0/21 ip4:103.9.96.0/22
+# Depth:3
+# IP & Subnet: 10
+$DATASET ip4set:spf.messagelabs.com spf.messagelabs.com @
 :3:v=spf1 ip4:$ ~all
 85.158.136.0/21 # nets1.spf.messagelabs.com
 193.109.254.0/23 # nets1.spf.messagelabs.com
@@ -559,118 +223,10 @@ $DATASET ip4set:lenovo.com lenovo.com @
 67.219.240.0/20 # nets2.spf.messagelabs.com
 117.120.16.0/21 # nets2.spf.messagelabs.com
 103.9.96.0/22 # nets2.spf.messagelabs.com
-204.92.19.0/24 # _trustedips1.eloqua.com
-204.92.21.0/25 # _trustedips1.eloqua.com
-204.92.22.0/24 # _trustedips1.eloqua.com
-204.92.26.0/24 # _trustedips1.eloqua.com
-204.92.31.0/24 # _trustedips1.eloqua.com
-204.92.114.0/24 # _trustedips1.eloqua.com
-66.48.80.0/25 # _trustedips1.eloqua.com
-209.167.231.0/24 # _trustedips1.eloqua.com
-129.145.16.0/21 # _trustedips1.eloqua.com
-129.145.76.0/22 # _trustedips1.eloqua.com
-141.145.8.0/21 # _trustedips1.eloqua.com
-129.91.16.0/21 # _trustedips1.eloqua.com
-142.0.160.0/20 # _trustedips2.eloqua.com
-138.1.49.41 # _trustedips2.eloqua.com
-147.154.9.180 # _trustedips2.eloqua.com
-138.1.55.48 # _trustedips2.eloqua.com
-130.35.98.1 # _trustedips2.eloqua.com
-209.17.48.0/24 # _trustedips2.eloqua.com
-209.17.49.0/24 # _trustedips2.eloqua.com
-209.17.50.0/24 # _trustedips2.eloqua.com
-129.145.79.0/24 # _trustedips2.eloqua.com
-207.135.30.0/23 # _trustedips2.eloqua.com
-129.145.74.0/23 # _trustedips3.eloqua.com
-40.92.0.0/15 # spf.protection.outlook.com
-40.107.0.0/16 # spf.protection.outlook.com
-52.100.0.0/14 # spf.protection.outlook.com
-104.47.0.0/17 # spf.protection.outlook.com
-51.4.72.0/24 # spfd.protection.outlook.com
-51.5.72.0/24 # spfd.protection.outlook.com
-51.5.80.0/27 # spfd.protection.outlook.com
-20.47.149.138/32 # spfd.protection.outlook.com
-51.4.80.0/27 # spfd.protection.outlook.com
-103.30.235.218 # spf.pfpool.lenovo.com
-103.30.235.219 # spf.pfpool.lenovo.com
-103.30.235.220 # spf.pfpool.lenovo.com
-103.30.235.221 # spf.pfpool.lenovo.com
-104.232.228.21 # spf.pfpool.lenovo.com
-104.232.228.22 # spf.pfpool.lenovo.com
-104.232.228.23 # spf.pfpool.lenovo.com
-104.232.228.24 # spf.pfpool.lenovo.com
-144.188.128.67 # spf.pfpool.lenovo.com
-144.188.128.68 # spf.pfpool.lenovo.com
-72.32.45.225 # lenovo.com
-40.65.201.146 # lenovo.com
-138.108.60.125 # lenovo.com
-138.108.24.107 # lenovo.com
-52.247.21.11 # lenovo.com
 :99:v=spf1 ~all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
-$DATASET ip6trie:lenovo.com lenovo.com @
-:3:v=spf1 ip6:$ ~all
-2a01:111:f400::/48 # spf.protection.outlook.com
-2a01:111:f403::/49 # spf.protection.outlook.com
-2a01:111:f403:8000::/50 # spf.protection.outlook.com
-2a01:111:f403:c000::/51 # spf.protection.outlook.com
-2a01:111:f403:f000::/52 # spf.protection.outlook.com
-2a01:4180:4051:0800::/64 # spfd.protection.outlook.com
-2a01:4180:4050:0800::/64 # spfd.protection.outlook.com
-2a01:4180:4051:0400::/64 # spfd.protection.outlook.com
-2a01:4180:4050:0400::/64 # spfd.protection.outlook.com
-:99:v=spf1 ~all
-0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:whitehouse.gov @ 2022-09-20 10:28:59.739852
-# ^ whitehouse.gov
-# ^ v=spf1 +mx include:spf.mandrillapp.com ip4:214.3.140.16/32 ip4:214.3.140.255/32 ip4:214.3.115.12/32 ip4:214.3.115.10/32 ip4:214.3.115.225/32 ip4:214.3.115.14/32 ip4:214.3.140.22/32 ~all
-# DNS Resolution Error - MX:whitehouse.gov
-# ^^ spf.mandrillapp.com
-# ^^ v=spf1 ip4:198.2.128.0/24 ip4:198.2.132.0/22 ip4:198.2.136.0/23 ip4:198.2.145.0/24 ip4:198.2.186.0/23 ip4:205.201.131.128/25 ip4:205.201.134.128/25 ip4:205.201.136.0/23 ip4:205.201.139.0/24 ip4:198.2.177.0/24 ip4:198.2.178.0/23 ip4:198.2.180.0/24 ~all
-# Depth:2
-# IP & Subnet: 19
-$DATASET ip4set:whitehouse.gov whitehouse.gov @
-:3:v=spf1 ip4:$ ~all
-198.2.128.0/24 # spf.mandrillapp.com
-198.2.132.0/22 # spf.mandrillapp.com
-198.2.136.0/23 # spf.mandrillapp.com
-198.2.145.0/24 # spf.mandrillapp.com
-198.2.186.0/23 # spf.mandrillapp.com
-205.201.131.128/25 # spf.mandrillapp.com
-205.201.134.128/25 # spf.mandrillapp.com
-205.201.136.0/23 # spf.mandrillapp.com
-205.201.139.0/24 # spf.mandrillapp.com
-198.2.177.0/24 # spf.mandrillapp.com
-198.2.178.0/23 # spf.mandrillapp.com
-198.2.180.0/24 # spf.mandrillapp.com
-214.3.140.16/32 # whitehouse.gov
-214.3.140.255/32 # whitehouse.gov
-214.3.115.12/32 # whitehouse.gov
-214.3.115.10/32 # whitehouse.gov
-214.3.115.225/32 # whitehouse.gov
-214.3.115.14/32 # whitehouse.gov
-214.3.140.22/32 # whitehouse.gov
-:99:v=spf1 ~all
-0.0.0.0/1 # all other IPv4 addresses
-128.0.0.0/1 # all other IP IPv4 addresses
-$DATASET ip6trie:whitehouse.gov whitehouse.gov @
+$DATASET ip6trie:spf.messagelabs.com spf.messagelabs.com @
 :3:v=spf1 ip6:$ ~all
 :99:v=spf1 ~all
-0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:yahoo.com @ 2022-09-20 10:28:59.782991
-# ^ yahoo.com
-# ^ v=spf1 redirect=_spf.mail.yahoo.com
-# ^^ _spf.mail.yahoo.com
-# ^^ v=spf1 ptr:yahoo.com ptr:yahoo.net ?all
-# Depth:2
-# IP & Subnet: 0
-$DATASET ip4set:yahoo.com yahoo.com @
-:3:v=spf1 ip4:$ ~all
-:99:v=spf1 ptr:yahoo.com ptr:yahoo.net ~all
-0.0.0.0/1 # all other IPv4 addresses
-128.0.0.0/1 # all other IP IPv4 addresses
-$DATASET ip6trie:yahoo.com yahoo.com @
-:3:v=spf1 ip6:$ ~all
-:99:v=spf1 ptr:yahoo.com ptr:yahoo.net ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
