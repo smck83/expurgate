@@ -106,12 +106,13 @@ def dnsLookup(domain,type):
     global depth
     try:
         lookup = [dns_record.to_text() for dns_record in dns.resolver.resolve(domain, type).rrset]
-        depth += 1
-        return lookup
     except:
         error = "DNS Resolution Error - " + type + ":" + domain
         print(error)
         header.append("# " + error)
+    else:
+        depth += 1
+        return lookup       
     
     
 
