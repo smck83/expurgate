@@ -52,7 +52,7 @@ if 'RUNNING_CONFIG_ON' in os.environ:
     runningconfigon  = int(os.environ['RUNNING_CONFIG_ON'])
 else:
     runningconfigon  = 0 #if not specified, generate config files separately
-runningconfigon = 1 
+# runningconfigon = 1 
 def restdb(restdb_url,restdb_key):
 
     payload={}
@@ -243,11 +243,12 @@ while loop == 0 and mydomains:
     if restdb_url != None:
         mydomains = restdb(restdb_url,restdb_key) 
         totaldomaincount = len(mydomains)
-    runningconfig = []
-    runningconfig = runningconfig + xpg8logo
-    runningconfig.append("# Running config for: " + str(totaldomaincount) + ' domains' )
-    runningconfig.append("# Source domains: " + ', '.join(mydomains))
-    runningconfig.append("#\n#")
+    if runningconfigon == 1:
+        runningconfig = []
+        runningconfig = runningconfig + xpg8logo
+        runningconfig.append("# Running config for: " + str(totaldomaincount) + ' domains' )
+        runningconfig.append("# Source domains: " + ', '.join(mydomains))
+        runningconfig.append("#\n#")
     start_time = time.time()
     print('Generating config for SPF records in ' + str(mydomains))
     domaincount = 0
