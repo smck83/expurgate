@@ -90,8 +90,6 @@ else:
     delayBetweenRun = 300 #default to 5 minutes
 print("Running delay of : " + str(delayBetweenRun))
 totaldomaincount = len(mydomains)
-# set to 0 to loop infinitely
-loop = 0
 # set the depth to count resolutions
 global depth
 depth = 0
@@ -239,7 +237,7 @@ def getSPF(domain):
                         print('No match:',spfPart)
                         otherValues.append(spfPart)
 
-while loop == 0 and mydomains:
+while len(mydomains) > 0:
     if restdb_url != None:
         mydomains = restdb(restdb_url,restdb_key) 
         totaldomaincount = len(mydomains)

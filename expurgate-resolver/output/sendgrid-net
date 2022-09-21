@@ -9,7 +9,7 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:sendgrid.net @ 2022-09-21 15:42:42.839544
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:sendgrid.net @ 2022-09-21 16:24:39.046859
 # ^ sendgrid.net
 # ^ v=spf1 ip4:167.89.0.0/17 ip4:208.117.48.0/20 ip4:50.31.32.0/19 ip4:198.37.144.0/20 ip4:198.21.0.0/21 ip4:192.254.112.0/20 ip4:168.245.0.0/17 ip4:149.72.0.0/16 ip4:159.183.0.0/16 include:ab.sendgrid.net ~all
 # ^^ ab.sendgrid.net
