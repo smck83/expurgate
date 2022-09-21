@@ -8,12 +8,12 @@
 #             | |               __/ |              
 #             |_|              |___/               
 #
-# https://xpg.tk | https://github.com/smck83/expurgate 
+# https://xpg8.tk | https://github.com/smck83/expurgate 
 # Running config for: 5 domains
 # Source domains: _spf.google.com, _netblocks.mimecast.com, spf.protection.outlook.com, outbound.mailhop.org, spf.messagelabs.com
 #
 #
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_spf.google.com @ 2022-09-21 12:35:59.137650
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_spf.google.com @ 2022-09-21 14:38:27.981306
 # ^ _spf.google.com
 # ^ v=spf1 include:_netblocks.google.com include:_netblocks2.google.com include:_netblocks3.google.com ~all
 # ^^ _netblocks.google.com
@@ -24,7 +24,7 @@
 # ^^^^ v=spf1 ip4:172.217.0.0/19 ip4:172.217.32.0/20 ip4:172.217.128.0/19 ip4:172.217.160.0/20 ip4:172.217.192.0/19 ip4:172.253.56.0/21 ip4:172.253.112.0/20 ip4:108.177.96.0/19 ip4:35.191.0.0/16 ip4:130.211.0.0/22 ~all
 # Depth:4
 # IP & Subnet: 27
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_netblocks.mimecast.com @ 2022-09-21 12:35:59.199065
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_netblocks.mimecast.com @ 2022-09-21 14:38:28.172589
 # ^ _netblocks.mimecast.com
 # ^ v=spf1 include:eu._netblocks.mimecast.com include:us._netblocks.mimecast.com include:za._netblocks.mimecast.com include:de._netblocks.mimecast.com include:au._netblocks.mimecast.com ~all
 # ^^ eu._netblocks.mimecast.com

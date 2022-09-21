@@ -8,12 +8,12 @@
 #             | |               __/ |              
 #             |_|              |___/               
 #
-# https://xpg.tk | https://github.com/smck83/expurgate 
+# https://xpg8.tk | https://github.com/smck83/expurgate 
 # Running config for: 5 domains
 # Source domains: _spf.google.com, _netblocks.mimecast.com, spf.protection.outlook.com, outbound.mailhop.org, spf.messagelabs.com
 #
 #
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_spf.google.com @ 2022-09-21 12:35:59.137650
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_spf.google.com @ 2022-09-21 14:38:27.981306
 # ^ _spf.google.com
 # ^ v=spf1 include:_netblocks.google.com include:_netblocks2.google.com include:_netblocks3.google.com ~all
 # ^^ _netblocks.google.com
@@ -24,7 +24,7 @@
 # ^^^^ v=spf1 ip4:172.217.0.0/19 ip4:172.217.32.0/20 ip4:172.217.128.0/19 ip4:172.217.160.0/20 ip4:172.217.192.0/19 ip4:172.253.56.0/21 ip4:172.253.112.0/20 ip4:108.177.96.0/19 ip4:35.191.0.0/16 ip4:130.211.0.0/22 ~all
 # Depth:4
 # IP & Subnet: 27
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_netblocks.mimecast.com @ 2022-09-21 12:35:59.199065
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_netblocks.mimecast.com @ 2022-09-21 14:38:28.172589
 # ^ _netblocks.mimecast.com
 # ^ v=spf1 include:eu._netblocks.mimecast.com include:us._netblocks.mimecast.com include:za._netblocks.mimecast.com include:de._netblocks.mimecast.com include:au._netblocks.mimecast.com ~all
 # ^^ eu._netblocks.mimecast.com
@@ -39,14 +39,14 @@
 # ^^^^^^ v=spf1 ip4:103.13.69.0/24 ip4:124.47.150.0/24 ip4:124.47.189.0/24 ip4:103.96.23.0/24 ip4:103.96.21.0/24 ip4:180.189.28.0/24 ~all
 # Depth:6
 # IP & Subnet: 39
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.protection.outlook.com @ 2022-09-21 12:35:59.960602
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.protection.outlook.com @ 2022-09-21 14:38:28.548891
 # ^ spf.protection.outlook.com
 # ^ v=spf1 ip4:40.92.0.0/15 ip4:40.107.0.0/16 ip4:52.100.0.0/14 ip4:104.47.0.0/17 ip6:2a01:111:f400::/48 ip6:2a01:111:f403::/49 ip6:2a01:111:f403:8000::/50 ip6:2a01:111:f403:c000::/51 ip6:2a01:111:f403:f000::/52 include:spfd.protection.outlook.com -all
 # ^^ spfd.protection.outlook.com
 # ^^ v=spf1 ip4:51.4.72.0/24 ip4:51.5.72.0/24 ip4:51.5.80.0/27 ip4:20.47.149.138/32 ip4:51.4.80.0/27 ip6:2a01:4180:4051:0800::/64 ip6:2a01:4180:4050:0800::/64 ip6:2a01:4180:4051:0400::/64 ip6:2a01:4180:4050:0400::/64 -all
 # Depth:2
 # IP & Subnet: 18
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:outbound.mailhop.org @ 2022-09-21 12:35:59.987719
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:outbound.mailhop.org @ 2022-09-21 14:38:28.579813
 # ^ outbound.mailhop.org
 # ^ v=spf1 ip4:52.26.49.97 ip4:52.10.99.51 ip4:52.28.59.28 ip4:52.28.6.212 ip4:3.127.8.113 ip4:54.186.27.61 ip4:52.28.168.19 ip4:52.58.19.153 ip4:52.58.96.151 ip4:52.58.97.209 ip4:52.88.73.233 ip4:54.187.71.48 ip4:54.149.36.10 ip4:54.68.34.165 ip4:54.186.22.84 ip4:54.191.214.3 ip4:3.125.66.160 ip4:54.213.22.21 ip4:52.29.21.168 ip4:100.20.105.3 ip4:44.233.67.66 ip4:52.25.88.167 ip4:54.184.38.33 ip4:54.185.97.28 include:_s0.outbound.mailhop.org -all
 # ^^ _s0.outbound.mailhop.org
@@ -59,7 +59,7 @@
 # ^^^^^ v=spf1 ip4:103.18.109.138/32 -all
 # Depth:5
 # IP & Subnet: 88
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.messagelabs.com @ 2022-09-21 12:36:00.094073
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.messagelabs.com @ 2022-09-21 14:38:28.761179
 # ^ spf.messagelabs.com
 # ^ v=spf1 include:nets1.spf.messagelabs.com include:nets2.spf.messagelabs.com ~all
 # ^^ nets1.spf.messagelabs.com
