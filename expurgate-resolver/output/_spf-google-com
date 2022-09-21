@@ -1,4 +1,4 @@
-
+# 
 #  ______                                  _       
 # |  ____|                                | |      
 # | |__  __  ___ __  _   _ _ __ __ _  __ _| |_ ___ 
@@ -9,11 +9,7 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Running config for: 5 domains
-# Source domains: _spf.google.com, _netblocks.mimecast.com, spf.protection.outlook.com, outbound.mailhop.org, spf.messagelabs.com
-#
-#
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_spf.google.com @ 2022-09-21 14:38:27.981306
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_spf.google.com @ 2022-09-21 15:38:32.517296
 # ^ _spf.google.com
 # ^ v=spf1 include:_netblocks.google.com include:_netblocks2.google.com include:_netblocks3.google.com ~all
 # ^^ _netblocks.google.com

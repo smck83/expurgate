@@ -1,5 +1,5 @@
 # author: https://github.com/smck83/
-xpg8logo = [""]
+xpg8logo = ["# "]
 xpg8logo.append("#  ______                                  _       ")
 xpg8logo.append("# |  ____|                                | |      ")
 xpg8logo.append("# | |__  __  ___ __  _   _ _ __ __ _  __ _| |_ ___ ")
@@ -52,7 +52,7 @@ if 'RUNNING_CONFIG_ON' in os.environ:
     runningconfigon  = int(os.environ['RUNNING_CONFIG_ON'])
 else:
     runningconfigon  = 0 #if not specified, generate config files separately
-#runningconfigon = 1 
+runningconfigon = 1 
 def restdb(restdb_url,restdb_key):
 
     payload={}
@@ -81,7 +81,7 @@ elif restdb_url != None:
     mydomains = restdb(restdb_url,restdb_key) 
 else:
     source_prefix_off = True
-    mydomains = ['_spf.google.com','_netblocks.mimecast.com','spf.protection.outlook.com','outbound.mailhop.org','spf.messagelabs.com'] # demo mode
+    mydomains = ['_spf.google.com','_netblocks.mimecast.com','spf.protection.outlook.com','outbound.mailhop.org','spf.messagelabs.com','mailgun.org','sendgrid.net'] # demo mode
     print("MY_DOMAIN not set, running in demo mode using " + str(mydomains))
 
 if 'DELAY' in os.environ and int(os.environ['DELAY']) > 29:
@@ -243,7 +243,8 @@ while loop == 0 and mydomains:
     if restdb_url != None:
         mydomains = restdb(restdb_url,restdb_key) 
         totaldomaincount = len(mydomains)
-    runningconfig = xpg8logo
+    runningconfig = []
+    runningconfig = runningconfig + xpg8logo
     runningconfig.append("# Running config for: " + str(totaldomaincount) + ' domains' )
     runningconfig.append("# Source domains: " + ', '.join(mydomains))
     runningconfig.append("#\n#")
@@ -254,10 +255,11 @@ while loop == 0 and mydomains:
         domaincount +=1
         datetimeNow = datetime.now(tz=None)
         headersummary = "# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:" + domain + " @ " + str(datetimeNow)
+        header = []
         if runningconfigon == 1:
-            header = [headersummary]
+            header.append(headersummary)
         else:
-            header = xpg8logo
+            header = header + xpg8logo
             header.append(headersummary)
         ip4 = []
         ip4header = []

@@ -1,0 +1,40 @@
+# 
+#  ______                                  _       
+# |  ____|                                | |      
+# | |__  __  ___ __  _   _ _ __ __ _  __ _| |_ ___ 
+# |  __| \ \/ / '_ \| | | | '__/ _` |/ _` | __/ _ \
+# | |____ >  <| |_) | |_| | | | (_| | (_| | ||  __/
+# |______/_/\_\ .__/ \__,_|_|  \__, |\__,_|\__\___|
+#             | |               __/ |              
+#             |_|              |___/               
+#
+# https://xpg8.tk | https://github.com/smck83/expurgate 
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:sendgrid.net @ 2022-09-21 15:38:33.102095
+# ^ sendgrid.net
+# ^ v=spf1 ip4:167.89.0.0/17 ip4:208.117.48.0/20 ip4:50.31.32.0/19 ip4:198.37.144.0/20 ip4:198.21.0.0/21 ip4:192.254.112.0/20 ip4:168.245.0.0/17 ip4:149.72.0.0/16 ip4:159.183.0.0/16 include:ab.sendgrid.net ~all
+# ^^ ab.sendgrid.net
+# ^^ v=spf1 ip4:223.165.113.0/24 ip4:223.165.115.0/24 ip4:223.165.118.0/23 ip4:223.165.120.0/23 ~all
+# Depth:2
+# IP & Subnet: 13
+$DATASET ip4set:sendgrid.net sendgrid.net @
+:3:v=spf1 ip4:$ ~all
+167.89.0.0/17 # sendgrid.net
+208.117.48.0/20 # sendgrid.net
+50.31.32.0/19 # sendgrid.net
+198.37.144.0/20 # sendgrid.net
+198.21.0.0/21 # sendgrid.net
+192.254.112.0/20 # sendgrid.net
+168.245.0.0/17 # sendgrid.net
+149.72.0.0/16 # sendgrid.net
+159.183.0.0/16 # sendgrid.net
+223.165.113.0/24 # ab.sendgrid.net
+223.165.115.0/24 # ab.sendgrid.net
+223.165.118.0/23 # ab.sendgrid.net
+223.165.120.0/23 # ab.sendgrid.net
+:99:v=spf1 ~all
+0.0.0.0/1 # all other IPv4 addresses
+128.0.0.0/1 # all other IP IPv4 addresses
+$DATASET ip6trie:sendgrid.net sendgrid.net @
+:3:v=spf1 ip6:$ ~all
+:99:v=spf1 ~all
+0:0:0:0:0:0:0:0/0 # all other IPv6 addresses

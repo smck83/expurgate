@@ -1,4 +1,4 @@
-
+# 
 #  ______                                  _       
 # |  ____|                                | |      
 # | |__  __  ___ __  _   _ _ __ __ _  __ _| |_ ___ 
@@ -9,11 +9,11 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Running config for: 5 domains
-# Source domains: _spf.google.com, _netblocks.mimecast.com, spf.protection.outlook.com, outbound.mailhop.org, spf.messagelabs.com
+# Running config for: 7 domains
+# Source domains: _spf.google.com, _netblocks.mimecast.com, spf.protection.outlook.com, outbound.mailhop.org, spf.messagelabs.com, mailgun.org, sendgrid.net
 #
 #
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_spf.google.com @ 2022-09-21 14:38:50.336053
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_spf.google.com @ 2022-09-21 15:38:48.001109
 # ^ _spf.google.com
 # ^ v=spf1 include:_netblocks.google.com include:_netblocks2.google.com include:_netblocks3.google.com ~all
 # ^^ _netblocks.google.com
@@ -60,7 +60,7 @@ $DATASET ip6trie:_spf.google.com _spf.google.com @
 2c0f:fb50:4000::/36 # _netblocks2.google.com
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_netblocks.mimecast.com @ 2022-09-21 14:38:50.544829
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_netblocks.mimecast.com @ 2022-09-21 15:38:48.149506
 # ^ _netblocks.mimecast.com
 # ^ v=spf1 include:eu._netblocks.mimecast.com include:us._netblocks.mimecast.com include:za._netblocks.mimecast.com include:de._netblocks.mimecast.com include:au._netblocks.mimecast.com ~all
 # ^^ eu._netblocks.mimecast.com
@@ -123,7 +123,7 @@ $DATASET ip6trie:_netblocks.mimecast.com _netblocks.mimecast.com @
 :3:v=spf1 ip6:$ ~all
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.protection.outlook.com @ 2022-09-21 14:38:51.389762
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.protection.outlook.com @ 2022-09-21 15:38:48.484210
 # ^ spf.protection.outlook.com
 # ^ v=spf1 ip4:40.92.0.0/15 ip4:40.107.0.0/16 ip4:52.100.0.0/14 ip4:104.47.0.0/17 ip6:2a01:111:f400::/48 ip6:2a01:111:f403::/49 ip6:2a01:111:f403:8000::/50 ip6:2a01:111:f403:c000::/51 ip6:2a01:111:f403:f000::/52 include:spfd.protection.outlook.com -all
 # ^^ spfd.protection.outlook.com
@@ -157,7 +157,7 @@ $DATASET ip6trie:spf.protection.outlook.com spf.protection.outlook.com @
 2a01:4180:4050:0400::/64 # spfd.protection.outlook.com
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:outbound.mailhop.org @ 2022-09-21 14:38:51.422760
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:outbound.mailhop.org @ 2022-09-21 15:38:48.509341
 # ^ outbound.mailhop.org
 # ^ v=spf1 ip4:52.26.49.97 ip4:52.10.99.51 ip4:52.28.59.28 ip4:52.28.6.212 ip4:3.127.8.113 ip4:54.186.27.61 ip4:52.28.168.19 ip4:52.58.19.153 ip4:52.58.96.151 ip4:52.58.97.209 ip4:52.88.73.233 ip4:54.187.71.48 ip4:54.149.36.10 ip4:54.68.34.165 ip4:54.186.22.84 ip4:54.191.214.3 ip4:3.125.66.160 ip4:54.213.22.21 ip4:52.29.21.168 ip4:100.20.105.3 ip4:44.233.67.66 ip4:52.25.88.167 ip4:54.184.38.33 ip4:54.185.97.28 include:_s0.outbound.mailhop.org -all
 # ^^ _s0.outbound.mailhop.org
@@ -267,7 +267,7 @@ $DATASET ip6trie:outbound.mailhop.org outbound.mailhop.org @
 :3:v=spf1 ip6:$ ~all
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.messagelabs.com @ 2022-09-21 14:38:51.515822
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.messagelabs.com @ 2022-09-21 15:38:48.595507
 # ^ spf.messagelabs.com
 # ^ v=spf1 include:nets1.spf.messagelabs.com include:nets2.spf.messagelabs.com ~all
 # ^^ nets1.spf.messagelabs.com
@@ -292,6 +292,78 @@ $DATASET ip4set:spf.messagelabs.com spf.messagelabs.com @
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
 $DATASET ip6trie:spf.messagelabs.com spf.messagelabs.com @
+:3:v=spf1 ip6:$ ~all
+:99:v=spf1 ~all
+0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:mailgun.org @ 2022-09-21 15:38:48.630291
+# ^ mailgun.org
+# ^ v=spf1 include:_spf.mailgun.org include:_spf.eu.mailgun.org -all
+# ^^ _spf.mailgun.org
+# ^^ v=spf1 ip4:209.61.151.0/24 ip4:166.78.68.0/22 ip4:198.61.254.0/23 ip4:192.237.158.0/23 ip4:23.253.182.0/23 ip4:104.130.96.0/28 ip4:146.20.113.0/24 ip4:146.20.191.0/24 ip4:159.135.224.0/20 ip4:69.72.32.0/20 ip4:104.130.122.0/23 ip4:146.20.112.0/26 ip4:161.38.192.0/20 ip4:143.55.224.0/21 ip4:143.55.232.0/22 ip4:159.112.240.0/20 ~all
+# ^^^ _spf.eu.mailgun.org
+# ^^^ v=spf1 ip4:141.193.32.0/23 ip4:159.135.140.80/29 ip4:159.135.132.128/25 ip4:161.38.204.0/22 ip4:87.253.232.0/21 ip4:185.189.236.0/22 ip4:185.211.120.0/22 ip4:185.250.236.0/22 ip4:143.55.236.0/22 ~all
+# Depth:3
+# IP & Subnet: 25
+$DATASET ip4set:mailgun.org mailgun.org @
+:3:v=spf1 ip4:$ ~all
+209.61.151.0/24 # _spf.mailgun.org
+166.78.68.0/22 # _spf.mailgun.org
+198.61.254.0/23 # _spf.mailgun.org
+192.237.158.0/23 # _spf.mailgun.org
+23.253.182.0/23 # _spf.mailgun.org
+104.130.96.0/28 # _spf.mailgun.org
+146.20.113.0/24 # _spf.mailgun.org
+146.20.191.0/24 # _spf.mailgun.org
+159.135.224.0/20 # _spf.mailgun.org
+69.72.32.0/20 # _spf.mailgun.org
+104.130.122.0/23 # _spf.mailgun.org
+146.20.112.0/26 # _spf.mailgun.org
+161.38.192.0/20 # _spf.mailgun.org
+143.55.224.0/21 # _spf.mailgun.org
+143.55.232.0/22 # _spf.mailgun.org
+159.112.240.0/20 # _spf.mailgun.org
+141.193.32.0/23 # _spf.eu.mailgun.org
+159.135.140.80/29 # _spf.eu.mailgun.org
+159.135.132.128/25 # _spf.eu.mailgun.org
+161.38.204.0/22 # _spf.eu.mailgun.org
+87.253.232.0/21 # _spf.eu.mailgun.org
+185.189.236.0/22 # _spf.eu.mailgun.org
+185.211.120.0/22 # _spf.eu.mailgun.org
+185.250.236.0/22 # _spf.eu.mailgun.org
+143.55.236.0/22 # _spf.eu.mailgun.org
+:99:v=spf1 ~all
+0.0.0.0/1 # all other IPv4 addresses
+128.0.0.0/1 # all other IP IPv4 addresses
+$DATASET ip6trie:mailgun.org mailgun.org @
+:3:v=spf1 ip6:$ ~all
+:99:v=spf1 ~all
+0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:sendgrid.net @ 2022-09-21 15:38:48.746292
+# ^ sendgrid.net
+# ^ v=spf1 ip4:167.89.0.0/17 ip4:208.117.48.0/20 ip4:50.31.32.0/19 ip4:198.37.144.0/20 ip4:198.21.0.0/21 ip4:192.254.112.0/20 ip4:168.245.0.0/17 ip4:149.72.0.0/16 ip4:159.183.0.0/16 include:ab.sendgrid.net ~all
+# ^^ ab.sendgrid.net
+# ^^ v=spf1 ip4:223.165.113.0/24 ip4:223.165.115.0/24 ip4:223.165.118.0/23 ip4:223.165.120.0/23 ~all
+# Depth:2
+# IP & Subnet: 13
+$DATASET ip4set:sendgrid.net sendgrid.net @
+:3:v=spf1 ip4:$ ~all
+167.89.0.0/17 # sendgrid.net
+208.117.48.0/20 # sendgrid.net
+50.31.32.0/19 # sendgrid.net
+198.37.144.0/20 # sendgrid.net
+198.21.0.0/21 # sendgrid.net
+192.254.112.0/20 # sendgrid.net
+168.245.0.0/17 # sendgrid.net
+149.72.0.0/16 # sendgrid.net
+159.183.0.0/16 # sendgrid.net
+223.165.113.0/24 # ab.sendgrid.net
+223.165.115.0/24 # ab.sendgrid.net
+223.165.118.0/23 # ab.sendgrid.net
+223.165.120.0/23 # ab.sendgrid.net
+:99:v=spf1 ~all
+0.0.0.0/1 # all other IPv4 addresses
+128.0.0.0/1 # all other IP IPv4 addresses
+$DATASET ip6trie:sendgrid.net sendgrid.net @
 :3:v=spf1 ip6:$ ~all
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
