@@ -42,7 +42,7 @@ if 'RUNNING_CONFIG_ON' in os.environ:
     runningconfigon  = int(os.environ['RUNNING_CONFIG_ON'])
 else:
     runningconfigon  = 0 #if not specified, generate config files separately
-#runningconfigon = 1 
+runningconfigon = 1 
 def restdb(restdb_url,restdb_key):
 
     payload={}
@@ -233,7 +233,19 @@ while loop == 0 and mydomains:
     if restdb_url != None:
         mydomains = restdb(restdb_url,restdb_key) 
         totaldomaincount = len(mydomains)
-    runningconfig = []
+    
+    runningconfig = ["#  ______                                  _       "]
+    runningconfig.append("# |  ____|                                | |      ")
+    runningconfig.append("# | |__  __  ___ __  _   _ _ __ __ _  __ _| |_ ___ ")
+    runningconfig.append("# |  __| \ \/ / '_ \| | | | '__/ _` |/ _` | __/ _ \\")
+    runningconfig.append("# | |____ >  <| |_) | |_| | | | (_| | (_| | ||  __/")
+    runningconfig.append("# |______/_/\_\ .__/ \__,_|_|  \__, |\__,_|\__\___|")
+    runningconfig.append("#             | |               __/ |              ")
+    runningconfig.append("#             |_|              |___/               ")
+
+    runningconfig.append("# Running config for: " + str(totaldomaincount) + ' domains' )
+    runningconfig.append("# Source domains: " + ', '.join(mydomains))
+    runningconfig.append("#\n#")
     start_time = time.time()
     print('Generating config for SPF records in ' + str(mydomains))
     domaincount = 0
