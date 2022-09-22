@@ -22,7 +22,7 @@ import json
 from jsonpath_ng.ext import parse
 
 paddingchar = "^"
-
+ipmonitorCompare = {}
 if 'RESTDB_URL' in os.environ:
     restdb_url = os.environ['RESTDB_URL']
 else:
@@ -102,6 +102,7 @@ def write2disk(src_path,dst_path,myrbldnsdconfig):
             # write each item on a new line
             fp.write("%s\n" % item)
     shutil.move(src_path, dst_path)
+    print('Change detected: Writing config file:' + dst_path )
 
 def uptimeKumaPush (url):
     try:
@@ -150,7 +151,9 @@ def getSPF(domain):
                 for spfPart in spfParts:
                     if re.match('redirect=', spfPart, re.IGNORECASE):
                         spfValue = spfPart.split('=')       
-                        getSPF(spfValue[1])
+                        if spfValue[1] != domain and spfValue[1] and spfValue[1] not in includes:
+                            includes.append(spfValue[1])
+                            getSPF(spfValue[1])
                     elif re.match('^(\+|)include\:', spfPart, re.IGNORECASE) and "%{" not in spfPart:
                         spfValue = spfPart.split(':')
                         if spfValue[1] != domain and spfValue[1] and spfValue[1] not in includes:
@@ -238,6 +241,7 @@ def getSPF(domain):
                         otherValues.append(spfPart)
 
 while len(mydomains) > 0:
+    changeDetected = 0
     if restdb_url != None:
         mydomains = restdb(restdb_url,restdb_key) 
         totaldomaincount = len(mydomains)
@@ -296,17 +300,34 @@ while len(mydomains) > 0:
         ip6header.append(":3:v=spf1 ip6:$ " + spfAction[0])
         ip6block.append("0:0:0:0:0:0:0:0/0 # all other IPv6 addresses")
         header.append("# IP & Subnet: " + str(len(ipmonitor)))
+        ipmonitor.sort() # sort for comparison
+        print("Comparing CURRENT and PREVIOUS record for changes")
+        if domain not in ipmonitorCompare:
+            ipmonitorCompare[domain] = ipmonitor
+            changeDetected = 1
+            print("Change detected - First run, or a domain has been added(" + domain + ").")
+        elif ipmonitor == ipmonitorCompare[domain]:
+            changeDetected = 0
+            print("No change detected")
+
+        else:
+            changeDetected = 1
+            ipmonitorCompare[domain] = ipmonitor
+            print("Change detected!")
+            print("Previous Record: " + ipmonitor)
+            print("New Record: " + ipmonitorCompare[domain])
+
         # Join all the pieces together, ready for file output
         myrbldnsdconfig = header + ip4header + ip4 + ip4block + ip6header + ip6 + ip6block
         if runningconfigon == 1:
             runningconfig = runningconfig + myrbldnsdconfig
 
-        else:
+        if changeDetected == 1 and runningconfigon == 0:
              # Write the RBLDNSD config file to disk
             src_path = r'output/'+ domain.replace(".","-")+".staging"
             dst_path = r'output/'+ domain.replace(".","-")
             write2disk(src_path,dst_path,myrbldnsdconfig)
-        print('[' + str(domaincount) +'/'+ str(totaldomaincount) + '] Generating rbldnsd config for SPF records in ' + domain)
+        print('[' + str(domaincount) +'/'+ str(totaldomaincount) + '] Looking up SPF records for domain: ' + domain)
         print('[' + str(domaincount) +'/'+ str(totaldomaincount) + '] Your domain ' + domain + ' required ' + str(depth) + ' lookups.')
     if uptimekumapushurl != None:
         end_time = time.time()
@@ -314,11 +335,15 @@ while len(mydomains) > 0:
         print("Pushing Uptime Kuma - endpoint : " + uptimekumapushurl + str(math.ceil(time_lapsed)))
         uptimeKumaPush(uptimekumapushurl + str(math.ceil(time_lapsed)))
     if runningconfigon == 1:
-        src_path = r'output/running-config.staging'
-        dst_path = r'output/running-config'               
-        write2disk(src_path,dst_path,runningconfig)
+        if changeDetected == 1:
+            src_path = r'output/running-config.staging'
+            dst_path = r'output/running-config'               
+            write2disk(src_path,dst_path,runningconfig)
+        else:
+            print("No changes detected - No file written")
         print("MODE: Running Config")
     else:
         print("MODE: Per Domain Config")
-    print("Waiting " + str(delayBetweenRun) + " seconds before running again... ")   
+
+    print("Waiting " + str(delayBetweenRun) + " seconds before running again... ")  
     sleep(int(delayBetweenRun)) # wait DELAY in secondsbefore running again.
