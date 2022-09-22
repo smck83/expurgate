@@ -203,7 +203,6 @@ def getSPF(domain):
                         result = dnsLookup(domain,"MX")
                         if result:
                             header.append("# " + (paddingchar * depth) + " mx(" + domain + ")")
-                            print("Error performing MX lookup")
                             mxrecords = []
                             for mxrecord in result:
                                 mxValue = mxrecord.split(' ')
