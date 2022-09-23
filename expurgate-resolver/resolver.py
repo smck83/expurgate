@@ -114,39 +114,45 @@ def uptimeKumaPush (url):
 
 def dnsLookup(domain,type):
     global depth
-    try:
-        lookup = [dns_record.to_text() for dns_record in dns.resolver.resolve(domain, type).rrset]
-    except:
-        error = "DNS Resolution Error - " + type + ":" + domain
-        print(error)
-        header.append("# " + error)
+    lookupKey = domain + "-" + type
+    if lookupKey not in dnsCache:
+        try:
+            lookup = [dns_record.to_text() for dns_record in dns.resolver.resolve(domain, type).rrset]    
+        except:
+            error = "DNS Resolution Error - " + type + ":" + domain
+            print(error)
+            header.append("# " + error)
+        else:
+            dnsCache[lookupKey] = lookup
+            print("[CACHE] Added to DNS Cache - " + type + ":" + domain)
+            depth += 1 
+            return lookup 
     else:
+        lookup = dnsCache[lookupKey]
         depth += 1
-        return lookup       
-    
+        print("[CACHE] Grabbed from DNS Cache - " + type + ":" + domain)
+        return lookup 
+     
+        
 
     
 
 def getSPF(domain):
     global depth
     try:
-        #try:
         if depth == 0 and source_prefix_off == False:
-           sourcerecord = source_prefix + "." + domain
-           result = dnsLookup(sourcerecord,"TXT")
+            sourcerecord = source_prefix + "." + domain
+            result = dnsLookup(sourcerecord,"TXT")
         else:
-            if domain in spfCache:
-                result = spfCache[domain]
-                print("[CACHE]: Grabbed from Cache:" + domain)
-            else:
-                result = dnsLookup(domain,"TXT")
-                spfCache[domain] = result
+           result = dnsLookup(domain,"TXT")
    
     except:
         print("An exception occurred, check there is a DNS TXT record with SPF present at: " + str(source_prefix) + "." + str(domain) )
     if result:
         for record in result:
             if record != None and re.match('^"v=spf1 ', record, re.IGNORECASE):
+
+                #print(record)
                 # replace " " with nothing which is used where TXT records exceed 255 characters
                 record = record.replace("\" \"","")
                 # remove " character from start and end
@@ -247,8 +253,9 @@ def getSPF(domain):
                         otherValues.append(spfPart)
 
 while len(mydomains) > 0:
-    spfCache = {}
+    dnsCache = {}
     loopcount += 1
+    cacheHit = 0
     changeDetected = 0
     if restdb_url != None:
         mydomains = restdb(restdb_url,restdb_key) 
@@ -292,6 +299,7 @@ while len(mydomains) > 0:
         
     # CREATE ARRAYS FOR EACH PART OF THE RBLDNSD FILE
         header.append("# Depth:" + str(depth))
+        #header.append("# SPF Cache Hits:" + str(cacheHit))
         ip4header.append("$DATASET ip4set:"+ domain +" " + domain + " @")
         ip4header.append(":3:v=spf1 ip4:$ " + spfAction[0])
 
