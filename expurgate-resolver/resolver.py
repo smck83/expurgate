@@ -9,6 +9,7 @@ xpg8logo.append("# |______/_/\_\ .__/ \__,_|_|  \__, |\__,_|\__\___|")
 xpg8logo.append("#             | |               __/ |              ")
 xpg8logo.append("#             |_|              |___/               \n#")
 xpg8logo.append("# https://xpg8.tk | https://github.com/smck83/expurgate ")
+from sys import stdout
 from time import sleep
 import dns.resolver
 import re
@@ -23,6 +24,7 @@ from jsonpath_ng.ext import parse
 
 paddingchar = "^"
 ipmonitorCompare = {}
+loopcount = 0
 if 'RESTDB_URL' in os.environ:
     restdb_url = os.environ['RESTDB_URL']
 else:
@@ -102,7 +104,7 @@ def write2disk(src_path,dst_path,myrbldnsdconfig):
             # write each item on a new line
             fp.write("%s\n" % item)
     shutil.move(src_path, dst_path)
-    print('Change detected: Writing config file:' + dst_path )
+    print("[" + str(loopcount) + ': CHANGE DETECTED] Writing config file:' + dst_path)
 
 def uptimeKumaPush (url):
     try:
@@ -240,6 +242,7 @@ def getSPF(domain):
                         otherValues.append(spfPart)
 
 while len(mydomains) > 0:
+    loopcount += 1
     changeDetected = 0
     if restdb_url != None:
         mydomains = restdb(restdb_url,restdb_key) 
@@ -251,7 +254,7 @@ while len(mydomains) > 0:
         runningconfig.append("# Source domains: " + ', '.join(mydomains))
         runningconfig.append("#\n#")
     start_time = time.time()
-    print('Generating config for SPF records in ' + str(mydomains))
+    print('Scanning SPF Records for domains: ' + str(mydomains))
     domaincount = 0
     for domain in mydomains:
         domaincount +=1
@@ -275,7 +278,7 @@ while len(mydomains) > 0:
 
         getSPF(domain)
 
-
+        stdoutprefix = '[' + str(loopcount) + ": " + str(domaincount) +'/'+ str(totaldomaincount) + '] '
 
     # strip spaces
         ip4 = [x.strip(' ') for x in ip4]
@@ -300,21 +303,21 @@ while len(mydomains) > 0:
         ip6block.append("0:0:0:0:0:0:0:0/0 # all other IPv6 addresses")
         header.append("# IP & Subnet: " + str(len(ipmonitor)))
         ipmonitor.sort() # sort for comparison
-        print("Comparing CURRENT and PREVIOUS record for changes")
+        print(stdoutprefix + 'Comparing CURRENT and PREVIOUS record for changes :' + domain)
         if domain not in ipmonitorCompare:
             ipmonitorCompare[domain] = ipmonitor
             changeDetected = 1
-            print("Change detected - First run, or a domain has been added(" + domain + ").")
+            print(stdoutprefix + 'Change detected - First run, or a domain has been added(' + domain + ').')
         elif ipmonitor == ipmonitorCompare[domain]:
             changeDetected = 0
-            print("No change detected")
+            print(stdoutprefix + 'No change detected')
 
         else:
             changeDetected = 1
             ipmonitorCompare[domain] = ipmonitor
-            print("Change detected!")
-            print("Previous Record: " + ipmonitor)
-            print("New Record: " + ipmonitorCompare[domain])
+            print(stdoutprefix + 'Change detected!')
+            print(stdoutprefix + 'Previous Record: ' + ipmonitor)
+            print(stdoutprefix + 'New Record: ' + ipmonitorCompare[domain])
 
         # Join all the pieces together, ready for file output
         myrbldnsdconfig = header + ip4header + ip4 + ip4block + ip6header + ip6 + ip6block
@@ -326,13 +329,8 @@ while len(mydomains) > 0:
             src_path = r'output/'+ domain.replace(".","-")+".staging"
             dst_path = r'output/'+ domain.replace(".","-")
             write2disk(src_path,dst_path,myrbldnsdconfig)
-        print('[' + str(domaincount) +'/'+ str(totaldomaincount) + '] Looking up SPF records for domain: ' + domain)
-        print('[' + str(domaincount) +'/'+ str(totaldomaincount) + '] Your domain ' + domain + ' required ' + str(depth) + ' lookups.')
-    if uptimekumapushurl != None:
-        end_time = time.time()
-        time_lapsed = (end_time - start_time) * 1000 # calculate loop runtime and convert from seconds to milliseconds
-        print("Pushing Uptime Kuma - endpoint : " + uptimekumapushurl + str(math.ceil(time_lapsed)))
-        uptimeKumaPush(uptimekumapushurl + str(math.ceil(time_lapsed)))
+        print(stdoutprefix + 'Looking up SPF records for domain: ' + domain)
+        print(stdoutprefix + 'Your domain ' + domain + ' required ' + str(depth) + ' lookups.')
     if runningconfigon == 1:
         if changeDetected == 1:
             src_path = r'output/running-config.staging'
@@ -344,5 +342,10 @@ while len(mydomains) > 0:
     else:
         print("MODE: Per Domain Config")
 
+    if uptimekumapushurl != None:
+        end_time = time.time()
+        time_lapsed = (end_time - start_time) * 1000 # calculate loop runtime and convert from seconds to milliseconds
+        print("Pushing Uptime Kuma - endpoint : " + uptimekumapushurl + str(math.ceil(time_lapsed)))
+        uptimeKumaPush(uptimekumapushurl + str(math.ceil(time_lapsed)))
     print("Waiting " + str(delayBetweenRun) + " seconds before running again... ")  
     sleep(int(delayBetweenRun)) # wait DELAY in secondsbefore running again.
