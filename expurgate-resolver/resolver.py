@@ -135,7 +135,12 @@ def getSPF(domain):
            sourcerecord = source_prefix + "." + domain
            result = dnsLookup(sourcerecord,"TXT")
         else:
-           result = dnsLookup(domain,"TXT")      
+            if domain in spfCache:
+                result = spfCache[domain]
+                print("[CACHE]: Grabbed from Cache:" + domain)
+            else:
+                result = dnsLookup(domain,"TXT")
+                spfCache[domain] = result
    
     except:
         print("An exception occurred, check there is a DNS TXT record with SPF present at: " + str(source_prefix) + "." + str(domain) )
@@ -242,6 +247,7 @@ def getSPF(domain):
                         otherValues.append(spfPart)
 
 while len(mydomains) > 0:
+    spfCache = {}
     loopcount += 1
     changeDetected = 0
     if restdb_url != None:
