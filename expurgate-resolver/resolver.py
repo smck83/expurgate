@@ -83,7 +83,7 @@ elif restdb_url != None:
     mydomains = restdb(restdb_url,restdb_key) 
 else:
     source_prefix_off = True
-    mydomains = ['_spf.google.com','_netblocks.mimecast.com','spf.protection.outlook.com','outbound.mailhop.org','spf.messagelabs.com','mailgun.org','sendgrid.net'] # demo mode
+    mydomains = ['smcgov.org','_spf.google.com','_netblocks.mimecast.com','spf.protection.outlook.com','outbound.mailhop.org','spf.messagelabs.com','mailgun.org','sendgrid.net'] # demo mode
     print("MY_DOMAIN not set, running in demo mode using " + str(mydomains))
 
 if 'DELAY' in os.environ and int(os.environ['DELAY']) > 29:
@@ -231,14 +231,14 @@ def getSPF(domain):
                                     header.append("# " + (paddingchar * depth) + " mx(" + domain + ")=>a:" + hostname)
 
                     elif re.match('^(\+|)ip4\:', spfPart, re.IGNORECASE):
-                        spfValue = spfPart.split('ip4:')
+                        spfValue = re.split("ip4:", spfPart, flags=re.IGNORECASE)
                         if spfValue[1] not in ipmonitor:
                             ipmonitor.append(spfValue[1])
                             ip4.append(spfValue[1] + " # " + domain)
                         else:
                             header.append('# ' + (paddingchar * depth) + ' [Skipped] already added (ip4):' + spfValue[1] + " " + domain)
                     elif re.match('(\+|)ip6\:', spfPart, re.IGNORECASE):
-                        spfValue = spfPart.split('ip6:')
+                        spfValue = re.split("ip6:", spfPart, flags=re.IGNORECASE)
                         if spfValue[1] not in ipmonitor:
                             ipmonitor.append(spfValue[1])
                             ip6.append(spfValue[1] + " # " + domain)
