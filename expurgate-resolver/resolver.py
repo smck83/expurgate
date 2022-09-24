@@ -54,7 +54,7 @@ if 'RUNNING_CONFIG_ON' in os.environ:
     runningconfigon  = int(os.environ['RUNNING_CONFIG_ON'])
 else:
     runningconfigon  = 0 #if not specified, generate config files separately
-# runningconfigon = 1 
+#runningconfigon = 1 
 def restdb(restdb_url,restdb_key):
 
     payload={}
@@ -83,7 +83,7 @@ elif restdb_url != None:
     mydomains = restdb(restdb_url,restdb_key) 
 else:
     source_prefix_off = True
-    mydomains = ['smcgov.org','_spf.google.com','_netblocks.mimecast.com','spf.protection.outlook.com','outbound.mailhop.org','spf.messagelabs.com','mailgun.org','sendgrid.net'] # demo mode
+    mydomains = ['_spf.google.com','_netblocks.mimecast.com','spf.protection.outlook.com','outbound.mailhop.org','spf.messagelabs.com','mailgun.org','sendgrid.net'] # demo mode
     print("MY_DOMAIN not set, running in demo mode using " + str(mydomains))
 
 if 'DELAY' in os.environ and int(os.environ['DELAY']) > 29:
@@ -162,7 +162,9 @@ def getSPF(domain):
                 header.append("# " + (paddingchar * depth) + " " + spfvalue)
 
                 for spfPart in spfParts:
-                    if re.match('redirect=', spfPart, re.IGNORECASE):
+                    if re.match('[\+\-\~\?]all', spfPart, re.IGNORECASE):
+                        spfAction.append(spfPart)
+                    elif re.match('redirect=', spfPart, re.IGNORECASE):
                         spfValue = spfPart.split('=')       
                         if spfValue[1] != domain and spfValue[1] and spfValue[1] not in includes:
                             includes.append(spfValue[1])
@@ -176,6 +178,10 @@ def getSPF(domain):
                             error = "# ERROR DETECTED: Invalid DNS Record, Loop or Duplicate: " + spfValue[1] + " in " + domain
                             header.append(error)
                             print(error)
+                    elif re.match('^(\+|)ptr\:', spfPart, re.IGNORECASE):
+                            otherValues.append(spfPart)
+                    elif re.match('^(\+|)ptr', spfPart, re.IGNORECASE):
+                            otherValues.append(spfPart + ':' + domain)                           
                     elif re.match('^(\+|)a\:', spfPart, re.IGNORECASE):
                         spfValue = spfPart.split(':')
                         result = dnsLookup(spfValue[1],"A")  
@@ -244,13 +250,12 @@ def getSPF(domain):
                             ip6.append(spfValue[1] + " # " + domain)
                         else:
                             header.append('# ' + (paddingchar * depth) + ' [Skipped] already added (ip6):' + spfValue[1] + " " + domain)
-                    elif re.match('[\+\-\~\?]all', spfPart, re.IGNORECASE):
-                        spfAction.append(spfPart)
                     elif re.match('v\=spf1', spfPart, re.IGNORECASE):
                         spfValue = spfPart
-                    else:
+                    elif re.match('exists\:', spfPart, re.IGNORECASE):
                         print('No match:',spfPart)
                         otherValues.append(spfPart)
+                    #else: drop everything else
 
 while len(mydomains) > 0:
     dnsCache = {}
@@ -328,10 +333,10 @@ while len(mydomains) > 0:
 
         else:
             changeDetected = 1
-            ipmonitorCompare[domain] = ipmonitor
             print(stdoutprefix + 'Change detected!')
-            print(stdoutprefix + 'Previous Record: ' + ipmonitor)
-            print(stdoutprefix + 'New Record: ' + ipmonitorCompare[domain])
+            print(stdoutprefix + 'Previous Record: ' + str(ipmonitor))
+            print(stdoutprefix + 'New Record: ' + str(ipmonitorCompare[domain]))
+            ipmonitorCompare[domain] = ipmonitor
 
         # Join all the pieces together, ready for file output
         myrbldnsdconfig = header + ip4header + ip4 + ip4block + ip6header + ip6 + ip6block
@@ -347,7 +352,7 @@ while len(mydomains) > 0:
         print(stdoutprefix + 'Your domain ' + domain + ' required ' + str(depth) + ' lookups.')
     if runningconfigon == 1:
         if changeDetected == 1:
-            src_path = r'output/running-config.staging'
+            src_path = r'output/runningconfig.staging'
             dst_path = r'output/running-config'               
             write2disk(src_path,dst_path,runningconfig)
         else:
