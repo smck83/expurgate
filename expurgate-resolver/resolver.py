@@ -288,7 +288,7 @@ while len(mydomains) > 0:
         ip4header = []
         ip6 = []
         ip6header = []
-        spfAction = ["~all"]
+        spfAction = []
         otherValues = []
         depth = 0        
         includes = []
