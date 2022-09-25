@@ -306,7 +306,10 @@ while len(mydomains) > 0:
         header.append("# Depth:" + str(depth))
         #header.append("# SPF Cache Hits:" + str(cacheHit))
         ip4header.append("$DATASET ip4set:"+ domain +" " + domain + " @")
-        ip4header.append(":3:v=spf1 ip4:$ " + spfAction[0])
+        if len(spfAction) > 0:
+            ip4header.append(":3:v=spf1 ip4:$ " + spfAction[0])
+        else:
+            ip4header.append(":3:v=spf1 ip4:$ " + "~all")
 
         if len(otherValues) > 0:
             therValues = list(dict.fromkeys(otherValues)) #dedupe
@@ -318,7 +321,10 @@ while len(mydomains) > 0:
         ip4block.append("0.0.0.0/1 # all other IPv4 addresses")
         ip4block.append("128.0.0.0/1 # all other IP IPv4 addresses")
         ip6header.append("$DATASET ip6trie:"+ domain + " " + domain + " @")
-        ip6header.append(":3:v=spf1 ip6:$ " + spfAction[0])
+        if len(spfAction) > 0:
+            ip6header.append(":3:v=spf1 ip6:$ " + spfAction[0])
+        else:
+            ip6header.append(":3:v=spf1 ip6:$ " + "~all")
         ip6block.append("0:0:0:0:0:0:0:0/0 # all other IPv6 addresses")
         header.append("# IP & Subnet: " + str(len(ipmonitor)))
         ipmonitor.sort() # sort for comparison
