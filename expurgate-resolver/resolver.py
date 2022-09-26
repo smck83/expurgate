@@ -56,7 +56,6 @@ else:
     runningconfigon  = 0 #if not specified, generate config files separately
 #runningconfigon = 1 
 def restdb(restdb_url,restdb_key):
-
     payload={}
     headers = {
     'Content-Type': 'application/json',
@@ -96,8 +95,6 @@ totaldomaincount = len(mydomains)
 global depth
 depth = 0
 
-
-
 def write2disk(src_path,dst_path,myrbldnsdconfig):
     with open(src_path, 'w') as fp:
         for item in myrbldnsdconfig:
@@ -131,11 +128,7 @@ def dnsLookup(domain,type):
         lookup = dnsCache[lookupKey]
         depth += 1
         print("[CACHE] Grabbed from DNS Cache - " + type + ":" + domain)
-        return lookup 
-     
-        
-
-    
+        return lookup  
 
 def getSPF(domain):
     global depth
@@ -151,8 +144,6 @@ def getSPF(domain):
     if result:
         for record in result:
             if record != None and re.match('^"v=spf1 ', record, re.IGNORECASE):
-
-                #print(record)
                 # replace " " with nothing which is used where TXT records exceed 255 characters
                 record = record.replace("\" \"","")
                 # remove " character from start and end
@@ -253,7 +244,7 @@ def getSPF(domain):
                     elif re.match('v\=spf1', spfPart, re.IGNORECASE):
                         spfValue = spfPart
                     elif re.match('exists\:', spfPart, re.IGNORECASE):
-                        print('No match:',spfPart)
+                        print('Added to fail response record:',spfPart)
                         otherValues.append(spfPart)
                     #else: drop everything else
 
@@ -263,8 +254,12 @@ while len(mydomains) > 0:
     cacheHit = 0
     changeDetected = 0
     if restdb_url != None:
-        mydomains = restdb(restdb_url,restdb_key) 
-        totaldomaincount = len(mydomains)
+        try:
+            mydomains = restdb(restdb_url,restdb_key) 
+        except:
+            print("Error: restdb")
+        else:
+            totaldomaincount = len(mydomains)
     if runningconfigon == 1:
         runningconfig = []
         runningconfig = runningconfig + xpg8logo
@@ -335,7 +330,6 @@ while len(mydomains) > 0:
         elif ipmonitor == ipmonitorCompare[domain]:
             changeDetected = 0
             print(stdoutprefix + 'No change detected')
-
         else:
             changeDetected = 1
             print(stdoutprefix + 'Change detected!')
