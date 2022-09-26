@@ -85,15 +85,18 @@ else:
     mydomains = ['_spf.google.com','_netblocks.mimecast.com','spf.protection.outlook.com','outbound.mailhop.org','spf.messagelabs.com','mailgun.org','sendgrid.net'] # demo mode
     print("MY_DOMAIN not set, running in demo mode using " + str(mydomains))
 
+totaldomaincount = len(mydomains)
+
 if 'DELAY' in os.environ and int(os.environ['DELAY']) > 29:
     delayBetweenRun = os.environ['DELAY']
 else:
     delayBetweenRun = 300 #default to 5 minutes
 print("Running delay of : " + str(delayBetweenRun))
-totaldomaincount = len(mydomains)
+
 # set the depth to count resolutions
 global depth
 depth = 0
+global cacheHit
 
 def write2disk(src_path,dst_path,myrbldnsdconfig):
     with open(src_path, 'w') as fp:
@@ -110,6 +113,7 @@ def uptimeKumaPush (url):
         print("ERROR: Uptime Kuma - push notification")
 
 def dnsLookup(domain,type):
+    global cacheHit
     global depth
     lookupKey = domain + "-" + type
     if lookupKey not in dnsCache:
@@ -127,6 +131,7 @@ def dnsLookup(domain,type):
     else:
         lookup = dnsCache[lookupKey]
         depth += 1
+        cacheHit += 1
         print("[CACHE] Grabbed from DNS Cache - " + type + ":" + domain)
         return lookup  
 
@@ -365,5 +370,6 @@ while totaldomaincount > 0:
         time_lapsed = (end_time - start_time) * 1000 # calculate loop runtime and convert from seconds to milliseconds
         print("Pushing Uptime Kuma - endpoint : " + uptimekumapushurl + str(math.ceil(time_lapsed)))
         uptimeKumaPush(uptimekumapushurl + str(math.ceil(time_lapsed)))
+    print("DNS Cache Size:" + str(len(dnsCache)) + " | " + "DNS Cache Hits:" + str(cacheHit))
     print("Waiting " + str(delayBetweenRun) + " seconds before running again... ")  
     sleep(int(delayBetweenRun)) # wait DELAY in secondsbefore running again.
