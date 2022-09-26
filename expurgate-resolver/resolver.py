@@ -248,7 +248,7 @@ def getSPF(domain):
                         otherValues.append(spfPart)
                     #else: drop everything else
 
-while len(mydomains) > 0:
+while totaldomaincount > 0:
     dnsCache = {}
     loopcount += 1
     cacheHit = 0
@@ -257,7 +257,7 @@ while len(mydomains) > 0:
         try:
             mydomains = restdb(restdb_url,restdb_key) 
         except:
-            print("Error: restdb")
+            print("Error: restdb connection")
         else:
             totaldomaincount = len(mydomains)
     if runningconfigon == 1:
