@@ -162,7 +162,7 @@ def getSPF(domain):
                 header.append("# " + (paddingchar * depth) + " " + spfvalue)
 
                 for spfPart in spfParts:
-                    if re.match('[\+\-\~\?]all', spfPart, re.IGNORECASE):
+                    if re.match('^[\+\-\~\?](all)$', spfPart, re.IGNORECASE):
                         spfAction.append(spfPart)
                     elif re.match('redirect=', spfPart, re.IGNORECASE):
                         spfValue = spfPart.split('=')       
@@ -304,27 +304,26 @@ while len(mydomains) > 0:
         
     # CREATE ARRAYS FOR EACH PART OF THE RBLDNSD FILE
         header.append("# Depth:" + str(depth))
+        # Set SPF Action
+        if len(spfAction) == 0:
+            spfActionValue = "~all"
+        else:
+            spfActionValue = spfAction[0]
         #header.append("# SPF Cache Hits:" + str(cacheHit))
         ip4header.append("$DATASET ip4set:"+ domain +" " + domain + " @")
-        if len(spfAction) > 0:
-            ip4header.append(":3:v=spf1 ip4:$ " + spfAction[0])
-        else:
-            ip4header.append(":3:v=spf1 ip4:$ " + "~all")
 
+        ip4header.append(":3:v=spf1 ip4:$ " + spfActionValue)
         if len(otherValues) > 0:
             therValues = list(dict.fromkeys(otherValues)) #dedupe
-            ip4block = [":99:v=spf1 " + ' '.join(otherValues) + " " + spfAction[0]]
-            ip6block = [":99:v=spf1 " + ' '.join(otherValues) + " " + spfAction[0]]
+            ip4block = [":99:v=spf1 " + ' '.join(otherValues) + " " + spfActionValue]
+            ip6block = [":99:v=spf1 " + ' '.join(otherValues) + " " + spfActionValue]
         else:
-            ip4block = [":99:v=spf1 " + spfAction[0]]
-            ip6block = [":99:v=spf1 " + spfAction[0]]
+            ip4block = [":99:v=spf1 " + spfActionValue]
+            ip6block = [":99:v=spf1 " + spfActionValue]
         ip4block.append("0.0.0.0/1 # all other IPv4 addresses")
         ip4block.append("128.0.0.0/1 # all other IP IPv4 addresses")
         ip6header.append("$DATASET ip6trie:"+ domain + " " + domain + " @")
-        if len(spfAction) > 0:
-            ip6header.append(":3:v=spf1 ip6:$ " + spfAction[0])
-        else:
-            ip6header.append(":3:v=spf1 ip6:$ " + "~all")
+        ip6header.append(":3:v=spf1 ip6:$ " + spfActionValue)
         ip6block.append("0:0:0:0:0:0:0:0/0 # all other IPv6 addresses")
         header.append("# IP & Subnet: " + str(len(ipmonitor)))
         ipmonitor.sort() # sort for comparison
