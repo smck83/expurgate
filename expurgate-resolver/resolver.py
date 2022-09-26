@@ -122,14 +122,14 @@ def dnsLookup(domain,type):
             header.append("# " + error)
         else:
             dnsCache[lookupKey] = lookup
-            print("[CACHE] Added to DNS Cache - " + type + ":" + domain)
+            print("++[CACHE][" + domain + "] Added to DNS Cache - " + type)
             depth += 1 
             return lookup 
     else:
         lookup = dnsCache[lookupKey]
         depth += 1
         cacheHit += 1
-        print("[CACHE] Grabbed from DNS Cache - " + type + ":" + domain)
+        print("==[CACHE][" + domain + "] Grabbed from DNS Cache - " + type + ":" + domain)
         return lookup  
 
 def getSPF(domain):
@@ -293,7 +293,7 @@ while totaldomaincount > 0:
 
         getSPF(domain)
 
-        stdoutprefix = '[' + str(loopcount) + ": " + str(domaincount) +'/'+ str(totaldomaincount) + '] '
+        stdoutprefix = '[' + str(loopcount) + ": " + str(domaincount) +'/'+ str(totaldomaincount) + '][' + domain + "] "
 
     # strip spaces
         ip4 = [x.strip(' ') for x in ip4]
