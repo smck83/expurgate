@@ -23,8 +23,10 @@ import json
 from jsonpath_ng.ext import parse
 
 paddingchar = "^"
+spfActionValue ="~all" # default spfAction if lookup fails or not present
 ipmonitorCompare = {}
 loopcount = 0
+
 if 'RESTDB_URL' in os.environ:
     restdb_url = os.environ['RESTDB_URL']
 else:
@@ -54,7 +56,7 @@ if 'RUNNING_CONFIG_ON' in os.environ:
     runningconfigon  = int(os.environ['RUNNING_CONFIG_ON'])
 else:
     runningconfigon  = 0 #if not specified, generate config files separately
-#runningconfigon = 1 
+# runningconfigon = 1 
 def restdb(restdb_url,restdb_key):
     payload={}
     headers = {
@@ -92,11 +94,6 @@ if 'DELAY' in os.environ and int(os.environ['DELAY']) > 29:
 else:
     delayBetweenRun = 300 #default to 5 minutes
 print("Running delay of : " + str(delayBetweenRun))
-
-# set the depth to count resolutions
-# global depth
-#depth = 0
-#global cacheHit
 
 def write2disk(src_path,dst_path,myrbldnsdconfig):
     with open(src_path, 'w') as fp:
@@ -305,9 +302,7 @@ while totaldomaincount > 0:
     # CREATE ARRAYS FOR EACH PART OF THE RBLDNSD FILE
         header.append("# Depth:" + str(depth))
         # Set SPF Action
-        if len(spfAction) == 0:
-            spfActionValue = "~all"
-        else:
+        if len(spfAction) > 0:
             spfActionValue = spfAction[0]
         #header.append("# SPF Cache Hits:" + str(cacheHit))
         ip4header.append("$DATASET ip4set:"+ domain +" " + domain + " @")
@@ -370,6 +365,7 @@ while totaldomaincount > 0:
         time_lapsed = (end_time - start_time) * 1000 # calculate loop runtime and convert from seconds to milliseconds
         print("Pushing Uptime Kuma - endpoint : " + uptimekumapushurl + str(math.ceil(time_lapsed)))
         uptimeKumaPush(uptimekumapushurl + str(math.ceil(time_lapsed)))
-    print("DNS Cache Size:" + str(len(dnsCache)) + " | " + "DNS Cache Hits:" + str(cacheHit) + " | " + "DNS Cache vs Total:" + str(math.ceil(cacheHit/(len(dnsCache) + cacheHit)*100)) + "%")
+    dnsReqTotal = len(dnsCache) + cacheHit
+    print("Total Requests:" + str(dnsReqTotal) + " | DNS Cache Size:" + str(len(dnsCache)) + " | DNS Cache Hits:" + str(cacheHit) + " | DNS Cache vs Total:" + str(math.ceil((cacheHit/dnsReqTotal)*100)) + "%")
     print("Waiting " + str(delayBetweenRun) + " seconds before running again... ")  
     sleep(int(delayBetweenRun)) # wait DELAY in secondsbefore running again.
