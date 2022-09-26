@@ -94,9 +94,9 @@ else:
 print("Running delay of : " + str(delayBetweenRun))
 
 # set the depth to count resolutions
-global depth
-depth = 0
-global cacheHit
+# global depth
+#depth = 0
+#global cacheHit
 
 def write2disk(src_path,dst_path,myrbldnsdconfig):
     with open(src_path, 'w') as fp:
@@ -113,8 +113,8 @@ def uptimeKumaPush (url):
         print("ERROR: Uptime Kuma - push notification")
 
 def dnsLookup(domain,type):
-    global cacheHit
     global depth
+    global cacheHit
     lookupKey = domain + "-" + type
     if lookupKey not in dnsCache:
         try:
@@ -370,6 +370,6 @@ while totaldomaincount > 0:
         time_lapsed = (end_time - start_time) * 1000 # calculate loop runtime and convert from seconds to milliseconds
         print("Pushing Uptime Kuma - endpoint : " + uptimekumapushurl + str(math.ceil(time_lapsed)))
         uptimeKumaPush(uptimekumapushurl + str(math.ceil(time_lapsed)))
-    print("DNS Cache Size:" + str(len(dnsCache)) + " | " + "DNS Cache Hits:" + str(cacheHit))
+    print("DNS Cache Size:" + str(len(dnsCache)) + " | " + "DNS Cache Hits:" + str(cacheHit) + " | " + "DNS Cache vs Total:" + str(math.ceil(cacheHit/(len(dnsCache) + cacheHit)*100)) + "%")
     print("Waiting " + str(delayBetweenRun) + " seconds before running again... ")  
     sleep(int(delayBetweenRun)) # wait DELAY in secondsbefore running again.
