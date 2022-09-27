@@ -2,7 +2,7 @@ FROM debian:stable
 LABEL maintainer="s@mck.la"
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    rbldnsd ntp \
+    rbldnsd ntp dnsutils\
     && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 VOLUME ["/var/lib/rbldnsd"]
 
