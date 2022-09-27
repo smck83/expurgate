@@ -13,7 +13,7 @@
 # Source domains: _spf.google.com, _netblocks.mimecast.com, spf.protection.outlook.com, outbound.mailhop.org, spf.messagelabs.com, mailgun.org, sendgrid.net
 #
 #
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_spf.google.com @ 2022-09-26 14:29:23.385300
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_spf.google.com @ 2022-09-27 09:58:54.281810
 # ^ _spf.google.com
 # ^ v=spf1 include:_netblocks.google.com include:_netblocks2.google.com include:_netblocks3.google.com ~all
 # ^^ _netblocks.google.com
@@ -26,27 +26,27 @@
 # IP & Subnet: 27
 $DATASET ip4set:_spf.google.com _spf.google.com @
 :3:v=spf1 ip4:$ ~all
-35.190.247.0/24 # _netblocks.google.com
-64.233.160.0/19 # _netblocks.google.com
-66.102.0.0/20 # _netblocks.google.com
-66.249.80.0/20 # _netblocks.google.com
-72.14.192.0/18 # _netblocks.google.com
-74.125.0.0/16 # _netblocks.google.com
-108.177.8.0/21 # _netblocks.google.com
-173.194.0.0/16 # _netblocks.google.com
-209.85.128.0/17 # _netblocks.google.com
-216.58.192.0/19 # _netblocks.google.com
-216.239.32.0/19 # _netblocks.google.com
-172.217.0.0/19 # _netblocks3.google.com
-172.217.32.0/20 # _netblocks3.google.com
-172.217.128.0/19 # _netblocks3.google.com
-172.217.160.0/20 # _netblocks3.google.com
-172.217.192.0/19 # _netblocks3.google.com
-172.253.56.0/21 # _netblocks3.google.com
-172.253.112.0/20 # _netblocks3.google.com
-108.177.96.0/19 # _netblocks3.google.com
-35.191.0.0/16 # _netblocks3.google.com
-130.211.0.0/22 # _netblocks3.google.com
+35.190.247.0/24 # subnet:_netblocks.google.com
+64.233.160.0/19 # subnet:_netblocks.google.com
+66.102.0.0/20 # subnet:_netblocks.google.com
+66.249.80.0/20 # subnet:_netblocks.google.com
+72.14.192.0/18 # subnet:_netblocks.google.com
+74.125.0.0/16 # subnet:_netblocks.google.com
+108.177.8.0/21 # subnet:_netblocks.google.com
+173.194.0.0/16 # subnet:_netblocks.google.com
+209.85.128.0/17 # subnet:_netblocks.google.com
+216.58.192.0/19 # subnet:_netblocks.google.com
+216.239.32.0/19 # subnet:_netblocks.google.com
+172.217.0.0/19 # subnet:_netblocks3.google.com
+172.217.32.0/20 # subnet:_netblocks3.google.com
+172.217.128.0/19 # subnet:_netblocks3.google.com
+172.217.160.0/20 # subnet:_netblocks3.google.com
+172.217.192.0/19 # subnet:_netblocks3.google.com
+172.253.56.0/21 # subnet:_netblocks3.google.com
+172.253.112.0/20 # subnet:_netblocks3.google.com
+108.177.96.0/19 # subnet:_netblocks3.google.com
+35.191.0.0/16 # subnet:_netblocks3.google.com
+130.211.0.0/22 # subnet:_netblocks3.google.com
 :99:v=spf1 ~all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
@@ -60,7 +60,7 @@ $DATASET ip6trie:_spf.google.com _spf.google.com @
 2c0f:fb50:4000::/36 # _netblocks2.google.com
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_netblocks.mimecast.com @ 2022-09-26 14:29:23.573977
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_netblocks.mimecast.com @ 2022-09-27 09:58:54.336728
 # ^ _netblocks.mimecast.com
 # ^ v=spf1 include:eu._netblocks.mimecast.com include:us._netblocks.mimecast.com include:za._netblocks.mimecast.com include:de._netblocks.mimecast.com include:au._netblocks.mimecast.com ~all
 # ^^ eu._netblocks.mimecast.com
@@ -77,45 +77,45 @@ $DATASET ip6trie:_spf.google.com _spf.google.com @
 # IP & Subnet: 39
 $DATASET ip4set:_netblocks.mimecast.com _netblocks.mimecast.com @
 :3:v=spf1 ip4:$ ~all
-195.130.217.0/24 # eu._netblocks.mimecast.com
-91.220.42.0/24 # eu._netblocks.mimecast.com
-146.101.78.0/24 # eu._netblocks.mimecast.com
-207.82.80.0/24 # eu._netblocks.mimecast.com
-213.167.81.0/25 # eu._netblocks.mimecast.com
-193.7.207.0/25 # eu._netblocks.mimecast.com
-213.167.75.0/25 # eu._netblocks.mimecast.com
-185.58.85.0/24 # eu._netblocks.mimecast.com
-185.58.86.0/24 # eu._netblocks.mimecast.com
-193.7.206.0/25 # eu._netblocks.mimecast.com
-147.28.36.0/24 # eu._netblocks.mimecast.com
-207.211.31.0/25 # us._netblocks.mimecast.com
-205.139.110.0/24 # us._netblocks.mimecast.com
-216.205.24.0/24 # us._netblocks.mimecast.com
-170.10.129.0/24 # us._netblocks.mimecast.com
-63.128.21.0/24 # us._netblocks.mimecast.com
-170.10.133.0/24 # us._netblocks.mimecast.com
-185.58.84.93/32 # us._netblocks.mimecast.com
-207.211.41.113/32 # us._netblocks.mimecast.com
-207.211.30.64/26 # us._netblocks.mimecast.com
-207.211.30.128/25 # us._netblocks.mimecast.com
-216.145.221.0/24 # us._netblocks.mimecast.com
-41.74.192.0/22 # za._netblocks.mimecast.com
-41.74.200.0/23 # za._netblocks.mimecast.com
-41.74.196.0/22 # za._netblocks.mimecast.com
-41.74.204.0/23 # za._netblocks.mimecast.com
-41.74.206.0/24 # za._netblocks.mimecast.com
-51.163.158.0/24 # de._netblocks.mimecast.com
-194.104.109.0/24 # de._netblocks.mimecast.com
-62.140.7.0/24 # de._netblocks.mimecast.com
-194.104.111.0/24 # de._netblocks.mimecast.com
-51.163.159.21/32 # de._netblocks.mimecast.com
-62.140.10.21/32 # de._netblocks.mimecast.com
-103.13.69.0/24 # au._netblocks.mimecast.com
-124.47.150.0/24 # au._netblocks.mimecast.com
-124.47.189.0/24 # au._netblocks.mimecast.com
-103.96.23.0/24 # au._netblocks.mimecast.com
-103.96.21.0/24 # au._netblocks.mimecast.com
-180.189.28.0/24 # au._netblocks.mimecast.com
+195.130.217.0/24 # subnet:eu._netblocks.mimecast.com
+91.220.42.0/24 # subnet:eu._netblocks.mimecast.com
+146.101.78.0/24 # subnet:eu._netblocks.mimecast.com
+207.82.80.0/24 # subnet:eu._netblocks.mimecast.com
+213.167.81.0/25 # subnet:eu._netblocks.mimecast.com
+193.7.207.0/25 # subnet:eu._netblocks.mimecast.com
+213.167.75.0/25 # subnet:eu._netblocks.mimecast.com
+185.58.85.0/24 # subnet:eu._netblocks.mimecast.com
+185.58.86.0/24 # subnet:eu._netblocks.mimecast.com
+193.7.206.0/25 # subnet:eu._netblocks.mimecast.com
+147.28.36.0/24 # subnet:eu._netblocks.mimecast.com
+207.211.31.0/25 # subnet:us._netblocks.mimecast.com
+205.139.110.0/24 # subnet:us._netblocks.mimecast.com
+216.205.24.0/24 # subnet:us._netblocks.mimecast.com
+170.10.129.0/24 # subnet:us._netblocks.mimecast.com
+63.128.21.0/24 # subnet:us._netblocks.mimecast.com
+170.10.133.0/24 # subnet:us._netblocks.mimecast.com
+185.58.84.93/32 # ip:us._netblocks.mimecast.com
+207.211.41.113/32 # ip:us._netblocks.mimecast.com
+207.211.30.64/26 # subnet:us._netblocks.mimecast.com
+207.211.30.128/25 # subnet:us._netblocks.mimecast.com
+216.145.221.0/24 # subnet:us._netblocks.mimecast.com
+41.74.192.0/22 # subnet:za._netblocks.mimecast.com
+41.74.200.0/23 # subnet:za._netblocks.mimecast.com
+41.74.196.0/22 # subnet:za._netblocks.mimecast.com
+41.74.204.0/23 # subnet:za._netblocks.mimecast.com
+41.74.206.0/24 # subnet:za._netblocks.mimecast.com
+51.163.158.0/24 # subnet:de._netblocks.mimecast.com
+194.104.109.0/24 # subnet:de._netblocks.mimecast.com
+62.140.7.0/24 # subnet:de._netblocks.mimecast.com
+194.104.111.0/24 # subnet:de._netblocks.mimecast.com
+51.163.159.21/32 # ip:de._netblocks.mimecast.com
+62.140.10.21/32 # ip:de._netblocks.mimecast.com
+103.13.69.0/24 # subnet:au._netblocks.mimecast.com
+124.47.150.0/24 # subnet:au._netblocks.mimecast.com
+124.47.189.0/24 # subnet:au._netblocks.mimecast.com
+103.96.23.0/24 # subnet:au._netblocks.mimecast.com
+103.96.21.0/24 # subnet:au._netblocks.mimecast.com
+180.189.28.0/24 # subnet:au._netblocks.mimecast.com
 :99:v=spf1 ~all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
@@ -123,7 +123,7 @@ $DATASET ip6trie:_netblocks.mimecast.com _netblocks.mimecast.com @
 :3:v=spf1 ip6:$ ~all
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.protection.outlook.com @ 2022-09-26 14:29:24.103107
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.protection.outlook.com @ 2022-09-27 09:58:54.556547
 # ^ spf.protection.outlook.com
 # ^ v=spf1 ip4:40.92.0.0/15 ip4:40.107.0.0/16 ip4:52.100.0.0/14 ip4:104.47.0.0/17 ip6:2a01:111:f400::/48 ip6:2a01:111:f403::/49 ip6:2a01:111:f403:8000::/50 ip6:2a01:111:f403:c000::/51 ip6:2a01:111:f403:f000::/52 include:spfd.protection.outlook.com -all
 # ^^ spfd.protection.outlook.com
@@ -132,15 +132,15 @@ $DATASET ip6trie:_netblocks.mimecast.com _netblocks.mimecast.com @
 # IP & Subnet: 18
 $DATASET ip4set:spf.protection.outlook.com spf.protection.outlook.com @
 :3:v=spf1 ip4:$ -all
-40.92.0.0/15 # spf.protection.outlook.com
-40.107.0.0/16 # spf.protection.outlook.com
-52.100.0.0/14 # spf.protection.outlook.com
-104.47.0.0/17 # spf.protection.outlook.com
-51.4.72.0/24 # spfd.protection.outlook.com
-51.5.72.0/24 # spfd.protection.outlook.com
-51.5.80.0/27 # spfd.protection.outlook.com
-20.47.149.138/32 # spfd.protection.outlook.com
-51.4.80.0/27 # spfd.protection.outlook.com
+40.92.0.0/15 # subnet:spf.protection.outlook.com
+40.107.0.0/16 # subnet:spf.protection.outlook.com
+52.100.0.0/14 # subnet:spf.protection.outlook.com
+104.47.0.0/17 # subnet:spf.protection.outlook.com
+51.4.72.0/24 # subnet:spfd.protection.outlook.com
+51.5.72.0/24 # subnet:spfd.protection.outlook.com
+51.5.80.0/27 # subnet:spfd.protection.outlook.com
+20.47.149.138/32 # ip:spfd.protection.outlook.com
+51.4.80.0/27 # subnet:spfd.protection.outlook.com
 :99:v=spf1 -all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
@@ -157,7 +157,7 @@ $DATASET ip6trie:spf.protection.outlook.com spf.protection.outlook.com @
 2a01:4180:4050:0400::/64 # spfd.protection.outlook.com
 :99:v=spf1 -all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:outbound.mailhop.org @ 2022-09-26 14:29:24.132917
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:outbound.mailhop.org @ 2022-09-27 09:58:54.578497
 # ^ outbound.mailhop.org
 # ^ v=spf1 ip4:52.26.49.97 ip4:52.10.99.51 ip4:52.28.59.28 ip4:52.28.6.212 ip4:3.127.8.113 ip4:54.186.27.61 ip4:52.28.168.19 ip4:52.58.19.153 ip4:52.58.96.151 ip4:52.58.97.209 ip4:52.88.73.233 ip4:54.187.71.48 ip4:54.149.36.10 ip4:54.68.34.165 ip4:54.186.22.84 ip4:54.191.214.3 ip4:3.125.66.160 ip4:54.213.22.21 ip4:52.29.21.168 ip4:100.20.105.3 ip4:44.233.67.66 ip4:52.25.88.167 ip4:54.184.38.33 ip4:54.185.97.28 include:_s0.outbound.mailhop.org -all
 # ^^ _s0.outbound.mailhop.org
@@ -172,94 +172,94 @@ $DATASET ip6trie:spf.protection.outlook.com spf.protection.outlook.com @
 # IP & Subnet: 88
 $DATASET ip4set:outbound.mailhop.org outbound.mailhop.org @
 :3:v=spf1 ip4:$ -all
-52.26.49.97 # outbound.mailhop.org
-52.10.99.51 # outbound.mailhop.org
-52.28.59.28 # outbound.mailhop.org
-52.28.6.212 # outbound.mailhop.org
-3.127.8.113 # outbound.mailhop.org
-54.186.27.61 # outbound.mailhop.org
-52.28.168.19 # outbound.mailhop.org
-52.58.19.153 # outbound.mailhop.org
-52.58.96.151 # outbound.mailhop.org
-52.58.97.209 # outbound.mailhop.org
-52.88.73.233 # outbound.mailhop.org
-54.187.71.48 # outbound.mailhop.org
-54.149.36.10 # outbound.mailhop.org
-54.68.34.165 # outbound.mailhop.org
-54.186.22.84 # outbound.mailhop.org
-54.191.214.3 # outbound.mailhop.org
-3.125.66.160 # outbound.mailhop.org
-54.213.22.21 # outbound.mailhop.org
-52.29.21.168 # outbound.mailhop.org
-100.20.105.3 # outbound.mailhop.org
-44.233.67.66 # outbound.mailhop.org
-52.25.88.167 # outbound.mailhop.org
-54.184.38.33 # outbound.mailhop.org
-54.185.97.28 # outbound.mailhop.org
-54.190.72.79 # _s0.outbound.mailhop.org
-18.156.67.42 # _s0.outbound.mailhop.org
-54.69.130.42 # _s0.outbound.mailhop.org
-3.124.88.253 # _s0.outbound.mailhop.org
-52.29.156.81 # _s0.outbound.mailhop.org
-52.28.246.64 # _s0.outbound.mailhop.org
-54.68.138.64 # _s0.outbound.mailhop.org
-3.121.156.226 # _s0.outbound.mailhop.org
-54.191.214.36 # _s0.outbound.mailhop.org
-52.41.115.105 # _s0.outbound.mailhop.org
-44.233.38.249 # _s0.outbound.mailhop.org
-44.233.99.129 # _s0.outbound.mailhop.org
-54.149.240.58 # _s0.outbound.mailhop.org
-18.156.94.234 # _s0.outbound.mailhop.org
-54.186.10.118 # _s0.outbound.mailhop.org
-3.125.148.246 # _s0.outbound.mailhop.org
-54.187.63.214 # _s0.outbound.mailhop.org
-54.149.35.133 # _s0.outbound.mailhop.org
-52.10.130.167 # _s0.outbound.mailhop.org
-54.148.38.162 # _s0.outbound.mailhop.org
-54.187.206.49 # _s0.outbound.mailhop.org
-44.233.143.45 # _s0.outbound.mailhop.org
-35.157.29.171 # _s1.outbound.mailhop.org
-54.191.158.99 # _s1.outbound.mailhop.org
-54.186.172.23 # _s1.outbound.mailhop.org
-54.186.57.195 # _s1.outbound.mailhop.org
-35.164.151.34 # _s1.outbound.mailhop.org
-54.148.219.64 # _s1.outbound.mailhop.org
-54.148.153.48 # _s1.outbound.mailhop.org
-54.148.30.215 # _s1.outbound.mailhop.org
-54.148.222.11 # _s1.outbound.mailhop.org
-54.186.218.12 # _s1.outbound.mailhop.org
-52.28.251.132 # _s1.outbound.mailhop.org
-52.28.147.211 # _s1.outbound.mailhop.org
-52.58.109.202 # _s1.outbound.mailhop.org
-54.187.218.212 # _s1.outbound.mailhop.org
-54.187.213.119 # _s1.outbound.mailhop.org
-54.149.210.130 # _s1.outbound.mailhop.org
-54.148.165.188 # _s1.outbound.mailhop.org
-54.149.155.156 # _s1.outbound.mailhop.org
-54.148.113.140 # _s1.outbound.mailhop.org
-35.156.234.212 # _s1.outbound.mailhop.org
-54.149.205.143 # _s1.outbound.mailhop.org
-54.149.206.185 # _s2.outbound.mailhop.org
-54.244.192.240 # _s2.outbound.mailhop.org
-54.191.151.194 # _s2.outbound.mailhop.org
-54.200.247.200 # _s2.outbound.mailhop.org
-54.200.129.228 # _s2.outbound.mailhop.org
-35.160.111.225 # _s2.outbound.mailhop.org
-23.83.208.0/20 # _s2.outbound.mailhop.org
-191.252.57.0/25 # _s2.outbound.mailhop.org
-34.219.98.66/32 # _s2.outbound.mailhop.org
-52.34.31.144/32 # _s2.outbound.mailhop.org
-46.232.183.0/24 # _s2.outbound.mailhop.org
-104.232.45.0/24 # _s2.outbound.mailhop.org
-199.10.31.235/32 # _s2.outbound.mailhop.org
-54.245.125.39/32 # _s2.outbound.mailhop.org
-172.255.62.10/32 # _s2.outbound.mailhop.org
-172.255.62.11/32 # _s2.outbound.mailhop.org
-177.153.0.128/25 # _s2.outbound.mailhop.org
-177.153.0.130/32 # _s2.outbound.mailhop.org
-199.10.31.236/32 # _s2.outbound.mailhop.org
-54.214.232.113/32 # _s2.outbound.mailhop.org
-103.18.109.138/32 # _s3.outbound.mailhop.org
+52.26.49.97 # ip:outbound.mailhop.org
+52.10.99.51 # ip:outbound.mailhop.org
+52.28.59.28 # ip:outbound.mailhop.org
+52.28.6.212 # ip:outbound.mailhop.org
+3.127.8.113 # ip:outbound.mailhop.org
+54.186.27.61 # ip:outbound.mailhop.org
+52.28.168.19 # ip:outbound.mailhop.org
+52.58.19.153 # ip:outbound.mailhop.org
+52.58.96.151 # ip:outbound.mailhop.org
+52.58.97.209 # ip:outbound.mailhop.org
+52.88.73.233 # ip:outbound.mailhop.org
+54.187.71.48 # ip:outbound.mailhop.org
+54.149.36.10 # ip:outbound.mailhop.org
+54.68.34.165 # ip:outbound.mailhop.org
+54.186.22.84 # ip:outbound.mailhop.org
+54.191.214.3 # ip:outbound.mailhop.org
+3.125.66.160 # ip:outbound.mailhop.org
+54.213.22.21 # ip:outbound.mailhop.org
+52.29.21.168 # ip:outbound.mailhop.org
+100.20.105.3 # ip:outbound.mailhop.org
+44.233.67.66 # ip:outbound.mailhop.org
+52.25.88.167 # ip:outbound.mailhop.org
+54.184.38.33 # ip:outbound.mailhop.org
+54.185.97.28 # ip:outbound.mailhop.org
+54.190.72.79 # ip:_s0.outbound.mailhop.org
+18.156.67.42 # ip:_s0.outbound.mailhop.org
+54.69.130.42 # ip:_s0.outbound.mailhop.org
+3.124.88.253 # ip:_s0.outbound.mailhop.org
+52.29.156.81 # ip:_s0.outbound.mailhop.org
+52.28.246.64 # ip:_s0.outbound.mailhop.org
+54.68.138.64 # ip:_s0.outbound.mailhop.org
+3.121.156.226 # ip:_s0.outbound.mailhop.org
+54.191.214.36 # ip:_s0.outbound.mailhop.org
+52.41.115.105 # ip:_s0.outbound.mailhop.org
+44.233.38.249 # ip:_s0.outbound.mailhop.org
+44.233.99.129 # ip:_s0.outbound.mailhop.org
+54.149.240.58 # ip:_s0.outbound.mailhop.org
+18.156.94.234 # ip:_s0.outbound.mailhop.org
+54.186.10.118 # ip:_s0.outbound.mailhop.org
+3.125.148.246 # ip:_s0.outbound.mailhop.org
+54.187.63.214 # ip:_s0.outbound.mailhop.org
+54.149.35.133 # ip:_s0.outbound.mailhop.org
+52.10.130.167 # ip:_s0.outbound.mailhop.org
+54.148.38.162 # ip:_s0.outbound.mailhop.org
+54.187.206.49 # ip:_s0.outbound.mailhop.org
+44.233.143.45 # ip:_s0.outbound.mailhop.org
+35.157.29.171 # ip:_s1.outbound.mailhop.org
+54.191.158.99 # ip:_s1.outbound.mailhop.org
+54.186.172.23 # ip:_s1.outbound.mailhop.org
+54.186.57.195 # ip:_s1.outbound.mailhop.org
+35.164.151.34 # ip:_s1.outbound.mailhop.org
+54.148.219.64 # ip:_s1.outbound.mailhop.org
+54.148.153.48 # ip:_s1.outbound.mailhop.org
+54.148.30.215 # ip:_s1.outbound.mailhop.org
+54.148.222.11 # ip:_s1.outbound.mailhop.org
+54.186.218.12 # ip:_s1.outbound.mailhop.org
+52.28.251.132 # ip:_s1.outbound.mailhop.org
+52.28.147.211 # ip:_s1.outbound.mailhop.org
+52.58.109.202 # ip:_s1.outbound.mailhop.org
+54.187.218.212 # ip:_s1.outbound.mailhop.org
+54.187.213.119 # ip:_s1.outbound.mailhop.org
+54.149.210.130 # ip:_s1.outbound.mailhop.org
+54.148.165.188 # ip:_s1.outbound.mailhop.org
+54.149.155.156 # ip:_s1.outbound.mailhop.org
+54.148.113.140 # ip:_s1.outbound.mailhop.org
+35.156.234.212 # ip:_s1.outbound.mailhop.org
+54.149.205.143 # ip:_s1.outbound.mailhop.org
+54.149.206.185 # ip:_s2.outbound.mailhop.org
+54.244.192.240 # ip:_s2.outbound.mailhop.org
+54.191.151.194 # ip:_s2.outbound.mailhop.org
+54.200.247.200 # ip:_s2.outbound.mailhop.org
+54.200.129.228 # ip:_s2.outbound.mailhop.org
+35.160.111.225 # ip:_s2.outbound.mailhop.org
+23.83.208.0/20 # subnet:_s2.outbound.mailhop.org
+191.252.57.0/25 # subnet:_s2.outbound.mailhop.org
+34.219.98.66/32 # ip:_s2.outbound.mailhop.org
+52.34.31.144/32 # ip:_s2.outbound.mailhop.org
+46.232.183.0/24 # subnet:_s2.outbound.mailhop.org
+104.232.45.0/24 # subnet:_s2.outbound.mailhop.org
+199.10.31.235/32 # ip:_s2.outbound.mailhop.org
+54.245.125.39/32 # ip:_s2.outbound.mailhop.org
+172.255.62.10/32 # ip:_s2.outbound.mailhop.org
+172.255.62.11/32 # ip:_s2.outbound.mailhop.org
+177.153.0.128/25 # subnet:_s2.outbound.mailhop.org
+177.153.0.130/32 # ip:_s2.outbound.mailhop.org
+199.10.31.236/32 # ip:_s2.outbound.mailhop.org
+54.214.232.113/32 # ip:_s2.outbound.mailhop.org
+103.18.109.138/32 # ip:_s3.outbound.mailhop.org
 :99:v=spf1 -all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
@@ -267,7 +267,7 @@ $DATASET ip6trie:outbound.mailhop.org outbound.mailhop.org @
 :3:v=spf1 ip6:$ -all
 :99:v=spf1 -all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.messagelabs.com @ 2022-09-26 14:29:24.240177
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.messagelabs.com @ 2022-09-27 09:58:54.662991
 # ^ spf.messagelabs.com
 # ^ v=spf1 include:nets1.spf.messagelabs.com include:nets2.spf.messagelabs.com ~all
 # ^^ nets1.spf.messagelabs.com
@@ -278,16 +278,16 @@ $DATASET ip6trie:outbound.mailhop.org outbound.mailhop.org @
 # IP & Subnet: 10
 $DATASET ip4set:spf.messagelabs.com spf.messagelabs.com @
 :3:v=spf1 ip4:$ ~all
-85.158.136.0/21 # nets1.spf.messagelabs.com
-193.109.254.0/23 # nets1.spf.messagelabs.com
-194.106.220.0/23 # nets1.spf.messagelabs.com
-195.245.230.0/23 # nets1.spf.messagelabs.com
-95.131.104.0/21 # nets1.spf.messagelabs.com
-46.226.48.0/21 # nets1.spf.messagelabs.com
-216.82.240.0/20 # nets2.spf.messagelabs.com
-67.219.240.0/20 # nets2.spf.messagelabs.com
-117.120.16.0/21 # nets2.spf.messagelabs.com
-103.9.96.0/22 # nets2.spf.messagelabs.com
+85.158.136.0/21 # subnet:nets1.spf.messagelabs.com
+193.109.254.0/23 # subnet:nets1.spf.messagelabs.com
+194.106.220.0/23 # subnet:nets1.spf.messagelabs.com
+195.245.230.0/23 # subnet:nets1.spf.messagelabs.com
+95.131.104.0/21 # subnet:nets1.spf.messagelabs.com
+46.226.48.0/21 # subnet:nets1.spf.messagelabs.com
+216.82.240.0/20 # subnet:nets2.spf.messagelabs.com
+67.219.240.0/20 # subnet:nets2.spf.messagelabs.com
+117.120.16.0/21 # subnet:nets2.spf.messagelabs.com
+103.9.96.0/22 # subnet:nets2.spf.messagelabs.com
 :99:v=spf1 ~all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
@@ -295,7 +295,7 @@ $DATASET ip6trie:spf.messagelabs.com spf.messagelabs.com @
 :3:v=spf1 ip6:$ ~all
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:mailgun.org @ 2022-09-26 14:29:24.278533
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:mailgun.org @ 2022-09-27 09:58:54.694747
 # ^ mailgun.org
 # ^ v=spf1 include:_spf.mailgun.org include:_spf.eu.mailgun.org -all
 # ^^ _spf.mailgun.org
@@ -306,31 +306,31 @@ $DATASET ip6trie:spf.messagelabs.com spf.messagelabs.com @
 # IP & Subnet: 25
 $DATASET ip4set:mailgun.org mailgun.org @
 :3:v=spf1 ip4:$ ~all
-209.61.151.0/24 # _spf.mailgun.org
-166.78.68.0/22 # _spf.mailgun.org
-198.61.254.0/23 # _spf.mailgun.org
-192.237.158.0/23 # _spf.mailgun.org
-23.253.182.0/23 # _spf.mailgun.org
-104.130.96.0/28 # _spf.mailgun.org
-146.20.113.0/24 # _spf.mailgun.org
-146.20.191.0/24 # _spf.mailgun.org
-159.135.224.0/20 # _spf.mailgun.org
-69.72.32.0/20 # _spf.mailgun.org
-104.130.122.0/23 # _spf.mailgun.org
-146.20.112.0/26 # _spf.mailgun.org
-161.38.192.0/20 # _spf.mailgun.org
-143.55.224.0/21 # _spf.mailgun.org
-143.55.232.0/22 # _spf.mailgun.org
-159.112.240.0/20 # _spf.mailgun.org
-141.193.32.0/23 # _spf.eu.mailgun.org
-159.135.140.80/29 # _spf.eu.mailgun.org
-159.135.132.128/25 # _spf.eu.mailgun.org
-161.38.204.0/22 # _spf.eu.mailgun.org
-87.253.232.0/21 # _spf.eu.mailgun.org
-185.189.236.0/22 # _spf.eu.mailgun.org
-185.211.120.0/22 # _spf.eu.mailgun.org
-185.250.236.0/22 # _spf.eu.mailgun.org
-143.55.236.0/22 # _spf.eu.mailgun.org
+209.61.151.0/24 # subnet:_spf.mailgun.org
+166.78.68.0/22 # subnet:_spf.mailgun.org
+198.61.254.0/23 # subnet:_spf.mailgun.org
+192.237.158.0/23 # subnet:_spf.mailgun.org
+23.253.182.0/23 # subnet:_spf.mailgun.org
+104.130.96.0/28 # subnet:_spf.mailgun.org
+146.20.113.0/24 # subnet:_spf.mailgun.org
+146.20.191.0/24 # subnet:_spf.mailgun.org
+159.135.224.0/20 # subnet:_spf.mailgun.org
+69.72.32.0/20 # subnet:_spf.mailgun.org
+104.130.122.0/23 # subnet:_spf.mailgun.org
+146.20.112.0/26 # subnet:_spf.mailgun.org
+161.38.192.0/20 # subnet:_spf.mailgun.org
+143.55.224.0/21 # subnet:_spf.mailgun.org
+143.55.232.0/22 # subnet:_spf.mailgun.org
+159.112.240.0/20 # subnet:_spf.mailgun.org
+141.193.32.0/23 # subnet:_spf.eu.mailgun.org
+159.135.140.80/29 # subnet:_spf.eu.mailgun.org
+159.135.132.128/25 # subnet:_spf.eu.mailgun.org
+161.38.204.0/22 # subnet:_spf.eu.mailgun.org
+87.253.232.0/21 # subnet:_spf.eu.mailgun.org
+185.189.236.0/22 # subnet:_spf.eu.mailgun.org
+185.211.120.0/22 # subnet:_spf.eu.mailgun.org
+185.250.236.0/22 # subnet:_spf.eu.mailgun.org
+143.55.236.0/22 # subnet:_spf.eu.mailgun.org
 :99:v=spf1 ~all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
@@ -338,7 +338,7 @@ $DATASET ip6trie:mailgun.org mailgun.org @
 :3:v=spf1 ip6:$ ~all
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:sendgrid.net @ 2022-09-26 14:29:24.496067
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:sendgrid.net @ 2022-09-27 09:58:54.743748
 # ^ sendgrid.net
 # ^ v=spf1 ip4:167.89.0.0/17 ip4:208.117.48.0/20 ip4:50.31.32.0/19 ip4:198.37.144.0/20 ip4:198.21.0.0/21 ip4:192.254.112.0/20 ip4:168.245.0.0/17 ip4:149.72.0.0/16 ip4:159.183.0.0/16 include:ab.sendgrid.net ~all
 # ^^ ab.sendgrid.net
@@ -347,19 +347,19 @@ $DATASET ip6trie:mailgun.org mailgun.org @
 # IP & Subnet: 13
 $DATASET ip4set:sendgrid.net sendgrid.net @
 :3:v=spf1 ip4:$ ~all
-167.89.0.0/17 # sendgrid.net
-208.117.48.0/20 # sendgrid.net
-50.31.32.0/19 # sendgrid.net
-198.37.144.0/20 # sendgrid.net
-198.21.0.0/21 # sendgrid.net
-192.254.112.0/20 # sendgrid.net
-168.245.0.0/17 # sendgrid.net
-149.72.0.0/16 # sendgrid.net
-159.183.0.0/16 # sendgrid.net
-223.165.113.0/24 # ab.sendgrid.net
-223.165.115.0/24 # ab.sendgrid.net
-223.165.118.0/23 # ab.sendgrid.net
-223.165.120.0/23 # ab.sendgrid.net
+167.89.0.0/17 # subnet:sendgrid.net
+208.117.48.0/20 # subnet:sendgrid.net
+50.31.32.0/19 # subnet:sendgrid.net
+198.37.144.0/20 # subnet:sendgrid.net
+198.21.0.0/21 # subnet:sendgrid.net
+192.254.112.0/20 # subnet:sendgrid.net
+168.245.0.0/17 # subnet:sendgrid.net
+149.72.0.0/16 # subnet:sendgrid.net
+159.183.0.0/16 # subnet:sendgrid.net
+223.165.113.0/24 # subnet:ab.sendgrid.net
+223.165.115.0/24 # subnet:ab.sendgrid.net
+223.165.118.0/23 # subnet:ab.sendgrid.net
+223.165.120.0/23 # subnet:ab.sendgrid.net
 :99:v=spf1 ~all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses

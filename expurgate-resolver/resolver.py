@@ -20,6 +20,7 @@ import time
 import math
 import requests
 import json
+import ipaddress
 from jsonpath_ng.ext import parse
 
 paddingchar = "^"
@@ -56,7 +57,7 @@ if 'RUNNING_CONFIG_ON' in os.environ:
     runningconfigon  = int(os.environ['RUNNING_CONFIG_ON'])
 else:
     runningconfigon  = 0 #if not specified, generate config files separately
-# runningconfigon = 1 
+runningconfigon = 1 
 def restdb(restdb_url,restdb_key):
     payload={}
     headers = {
@@ -103,6 +104,12 @@ def write2disk(src_path,dst_path,myrbldnsdconfig):
     shutil.move(src_path, dst_path)
     print("[" + str(loopcount) + ': CHANGE DETECTED] Writing config file:' + dst_path)
 
+def ipInSubnet(an_address,a_network):
+    an_address = ipaddress.ip_address(an_address)
+    a_network = ipaddress.ip_network(a_network)
+    address_in_network = an_address in a_network
+    return address_in_network 
+
 def uptimeKumaPush (url):
     try:
         x = requests.get(url)
@@ -129,7 +136,7 @@ def dnsLookup(domain,type):
         lookup = dnsCache[lookupKey]
         depth += 1
         cacheHit += 1
-        print("==[CACHE][" + domain + "] Grabbed from DNS Cache - " + type + ":" + domain)
+        print("==[CACHE][" + domain + "] Grabbed from DNS Cache - " + type)
         return lookup  
 
 def getSPF(domain):
@@ -232,8 +239,12 @@ def getSPF(domain):
                     elif re.match('^(\+|)ip4\:', spfPart, re.IGNORECASE):
                         spfValue = re.split("ip4:", spfPart, flags=re.IGNORECASE)
                         if spfValue[1] not in ipmonitor:
-                            ipmonitor.append(spfValue[1])
-                            ip4.append(spfValue[1] + " # " + domain)
+                            if re.match('^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/[1-2][0-9]|[3][0-1]$',spfValue[1]): #later check IP against subnet and if present in subnet, ignore.
+                                ipmonitor.append(spfValue[1])
+                                ip4.append(spfValue[1] + " # subnet:" + domain)
+                            else:
+                                ipmonitor.append(spfValue[1])
+                                ip4.append(spfValue[1] + " # ip:" + domain)                               
                         else:
                             header.append('# ' + (paddingchar * depth) + ' [Skipped] already added (ip4):' + spfValue[1] + " " + domain)
                     elif re.match('(\+|)ip6\:', spfPart, re.IGNORECASE):
@@ -326,7 +337,7 @@ while totaldomaincount > 0:
         if domain not in ipmonitorCompare:
             ipmonitorCompare[domain] = ipmonitor
             changeDetected = 1
-            print(stdoutprefix + 'Change detected - First run, or a domain has been added(' + domain + ').')
+            print(stdoutprefix + 'Change detected - First run, or a domain has just been added.')
         elif ipmonitor == ipmonitorCompare[domain]:
             changeDetected = 0
             print(stdoutprefix + 'No change detected')
@@ -347,8 +358,8 @@ while totaldomaincount > 0:
             src_path = r'output/'+ domain.replace(".","-")+".staging"
             dst_path = r'output/'+ domain.replace(".","-")
             write2disk(src_path,dst_path,myrbldnsdconfig)
-        print(stdoutprefix + 'Looking up SPF records for domain: ' + domain)
-        print(stdoutprefix + 'Your domain ' + domain + ' required ' + str(depth) + ' lookups.')
+        print(stdoutprefix + 'Looking up SPF records.')
+        print(stdoutprefix + 'Required ' + str(depth) + ' lookups.')
     if runningconfigon == 1:
         if changeDetected == 1:
             src_path = r'output/runningconfig.staging'
@@ -359,10 +370,11 @@ while totaldomaincount > 0:
         print("MODE: Running Config")
     else:
         print("MODE: Per Domain Config")
-
+    end_time = time.time()
+    time_lapsed = (end_time - start_time)
+    print('Time Lapsed (seconds):' + str(math.ceil(time_lapsed)))
     if uptimekumapushurl != None:
-        end_time = time.time()
-        time_lapsed = (end_time - start_time) * 1000 # calculate loop runtime and convert from seconds to milliseconds
+        time_lapsed = time_lapsed * 1000 # calculate loop runtime and convert from seconds to milliseconds
         print("Pushing Uptime Kuma - endpoint : " + uptimekumapushurl + str(math.ceil(time_lapsed)))
         uptimeKumaPush(uptimekumapushurl + str(math.ceil(time_lapsed)))
     dnsReqTotal = len(dnsCache) + cacheHit

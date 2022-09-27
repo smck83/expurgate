@@ -9,7 +9,7 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.protection.outlook.com @ 2022-09-26 22:00:14.396194
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.protection.outlook.com @ 2022-09-27 09:57:10.754648
 # ^ spf.protection.outlook.com
 # ^ v=spf1 ip4:40.92.0.0/15 ip4:40.107.0.0/16 ip4:52.100.0.0/14 ip4:104.47.0.0/17 ip6:2a01:111:f400::/48 ip6:2a01:111:f403::/49 ip6:2a01:111:f403:8000::/50 ip6:2a01:111:f403:c000::/51 ip6:2a01:111:f403:f000::/52 include:spfd.protection.outlook.com -all
 # ^^ spfd.protection.outlook.com
@@ -18,15 +18,15 @@
 # IP & Subnet: 18
 $DATASET ip4set:spf.protection.outlook.com spf.protection.outlook.com @
 :3:v=spf1 ip4:$ -all
-40.92.0.0/15 # spf.protection.outlook.com
-40.107.0.0/16 # spf.protection.outlook.com
-52.100.0.0/14 # spf.protection.outlook.com
-104.47.0.0/17 # spf.protection.outlook.com
-51.4.72.0/24 # spfd.protection.outlook.com
-51.5.72.0/24 # spfd.protection.outlook.com
-51.5.80.0/27 # spfd.protection.outlook.com
-20.47.149.138/32 # spfd.protection.outlook.com
-51.4.80.0/27 # spfd.protection.outlook.com
+40.92.0.0/15 # subnet:spf.protection.outlook.com
+40.107.0.0/16 # subnet:spf.protection.outlook.com
+52.100.0.0/14 # subnet:spf.protection.outlook.com
+104.47.0.0/17 # subnet:spf.protection.outlook.com
+51.4.72.0/24 # subnet:spfd.protection.outlook.com
+51.5.72.0/24 # subnet:spfd.protection.outlook.com
+51.5.80.0/27 # subnet:spfd.protection.outlook.com
+20.47.149.138/32 # ip:spfd.protection.outlook.com
+51.4.80.0/27 # subnet:spfd.protection.outlook.com
 :99:v=spf1 -all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses

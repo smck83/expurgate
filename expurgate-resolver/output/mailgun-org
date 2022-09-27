@@ -9,7 +9,7 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:mailgun.org @ 2022-09-26 22:00:14.556204
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:mailgun.org @ 2022-09-27 09:57:10.922140
 # ^ mailgun.org
 # ^ v=spf1 include:_spf.mailgun.org include:_spf.eu.mailgun.org -all
 # ^^ _spf.mailgun.org
@@ -20,31 +20,31 @@
 # IP & Subnet: 25
 $DATASET ip4set:mailgun.org mailgun.org @
 :3:v=spf1 ip4:$ ~all
-209.61.151.0/24 # _spf.mailgun.org
-166.78.68.0/22 # _spf.mailgun.org
-198.61.254.0/23 # _spf.mailgun.org
-192.237.158.0/23 # _spf.mailgun.org
-23.253.182.0/23 # _spf.mailgun.org
-104.130.96.0/28 # _spf.mailgun.org
-146.20.113.0/24 # _spf.mailgun.org
-146.20.191.0/24 # _spf.mailgun.org
-159.135.224.0/20 # _spf.mailgun.org
-69.72.32.0/20 # _spf.mailgun.org
-104.130.122.0/23 # _spf.mailgun.org
-146.20.112.0/26 # _spf.mailgun.org
-161.38.192.0/20 # _spf.mailgun.org
-143.55.224.0/21 # _spf.mailgun.org
-143.55.232.0/22 # _spf.mailgun.org
-159.112.240.0/20 # _spf.mailgun.org
-141.193.32.0/23 # _spf.eu.mailgun.org
-159.135.140.80/29 # _spf.eu.mailgun.org
-159.135.132.128/25 # _spf.eu.mailgun.org
-161.38.204.0/22 # _spf.eu.mailgun.org
-87.253.232.0/21 # _spf.eu.mailgun.org
-185.189.236.0/22 # _spf.eu.mailgun.org
-185.211.120.0/22 # _spf.eu.mailgun.org
-185.250.236.0/22 # _spf.eu.mailgun.org
-143.55.236.0/22 # _spf.eu.mailgun.org
+209.61.151.0/24 # subnet:_spf.mailgun.org
+166.78.68.0/22 # subnet:_spf.mailgun.org
+198.61.254.0/23 # subnet:_spf.mailgun.org
+192.237.158.0/23 # subnet:_spf.mailgun.org
+23.253.182.0/23 # subnet:_spf.mailgun.org
+104.130.96.0/28 # subnet:_spf.mailgun.org
+146.20.113.0/24 # subnet:_spf.mailgun.org
+146.20.191.0/24 # subnet:_spf.mailgun.org
+159.135.224.0/20 # subnet:_spf.mailgun.org
+69.72.32.0/20 # subnet:_spf.mailgun.org
+104.130.122.0/23 # subnet:_spf.mailgun.org
+146.20.112.0/26 # subnet:_spf.mailgun.org
+161.38.192.0/20 # subnet:_spf.mailgun.org
+143.55.224.0/21 # subnet:_spf.mailgun.org
+143.55.232.0/22 # subnet:_spf.mailgun.org
+159.112.240.0/20 # subnet:_spf.mailgun.org
+141.193.32.0/23 # subnet:_spf.eu.mailgun.org
+159.135.140.80/29 # subnet:_spf.eu.mailgun.org
+159.135.132.128/25 # subnet:_spf.eu.mailgun.org
+161.38.204.0/22 # subnet:_spf.eu.mailgun.org
+87.253.232.0/21 # subnet:_spf.eu.mailgun.org
+185.189.236.0/22 # subnet:_spf.eu.mailgun.org
+185.211.120.0/22 # subnet:_spf.eu.mailgun.org
+185.250.236.0/22 # subnet:_spf.eu.mailgun.org
+143.55.236.0/22 # subnet:_spf.eu.mailgun.org
 :99:v=spf1 ~all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses

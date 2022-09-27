@@ -9,7 +9,7 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_spf.google.com @ 2022-09-26 22:00:14.040353
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_spf.google.com @ 2022-09-27 09:57:10.270745
 # ^ _spf.google.com
 # ^ v=spf1 include:_netblocks.google.com include:_netblocks2.google.com include:_netblocks3.google.com ~all
 # ^^ _netblocks.google.com
@@ -22,27 +22,27 @@
 # IP & Subnet: 27
 $DATASET ip4set:_spf.google.com _spf.google.com @
 :3:v=spf1 ip4:$ ~all
-35.190.247.0/24 # _netblocks.google.com
-64.233.160.0/19 # _netblocks.google.com
-66.102.0.0/20 # _netblocks.google.com
-66.249.80.0/20 # _netblocks.google.com
-72.14.192.0/18 # _netblocks.google.com
-74.125.0.0/16 # _netblocks.google.com
-108.177.8.0/21 # _netblocks.google.com
-173.194.0.0/16 # _netblocks.google.com
-209.85.128.0/17 # _netblocks.google.com
-216.58.192.0/19 # _netblocks.google.com
-216.239.32.0/19 # _netblocks.google.com
-172.217.0.0/19 # _netblocks3.google.com
-172.217.32.0/20 # _netblocks3.google.com
-172.217.128.0/19 # _netblocks3.google.com
-172.217.160.0/20 # _netblocks3.google.com
-172.217.192.0/19 # _netblocks3.google.com
-172.253.56.0/21 # _netblocks3.google.com
-172.253.112.0/20 # _netblocks3.google.com
-108.177.96.0/19 # _netblocks3.google.com
-35.191.0.0/16 # _netblocks3.google.com
-130.211.0.0/22 # _netblocks3.google.com
+35.190.247.0/24 # subnet:_netblocks.google.com
+64.233.160.0/19 # subnet:_netblocks.google.com
+66.102.0.0/20 # subnet:_netblocks.google.com
+66.249.80.0/20 # subnet:_netblocks.google.com
+72.14.192.0/18 # subnet:_netblocks.google.com
+74.125.0.0/16 # subnet:_netblocks.google.com
+108.177.8.0/21 # subnet:_netblocks.google.com
+173.194.0.0/16 # subnet:_netblocks.google.com
+209.85.128.0/17 # subnet:_netblocks.google.com
+216.58.192.0/19 # subnet:_netblocks.google.com
+216.239.32.0/19 # subnet:_netblocks.google.com
+172.217.0.0/19 # subnet:_netblocks3.google.com
+172.217.32.0/20 # subnet:_netblocks3.google.com
+172.217.128.0/19 # subnet:_netblocks3.google.com
+172.217.160.0/20 # subnet:_netblocks3.google.com
+172.217.192.0/19 # subnet:_netblocks3.google.com
+172.253.56.0/21 # subnet:_netblocks3.google.com
+172.253.112.0/20 # subnet:_netblocks3.google.com
+108.177.96.0/19 # subnet:_netblocks3.google.com
+35.191.0.0/16 # subnet:_netblocks3.google.com
+130.211.0.0/22 # subnet:_netblocks3.google.com
 :99:v=spf1 ~all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses

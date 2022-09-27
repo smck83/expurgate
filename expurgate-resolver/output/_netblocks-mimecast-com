@@ -9,7 +9,7 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_netblocks.mimecast.com @ 2022-09-26 22:00:14.104733
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_netblocks.mimecast.com @ 2022-09-27 09:57:10.462373
 # ^ _netblocks.mimecast.com
 # ^ v=spf1 include:eu._netblocks.mimecast.com include:us._netblocks.mimecast.com include:za._netblocks.mimecast.com include:de._netblocks.mimecast.com include:au._netblocks.mimecast.com ~all
 # ^^ eu._netblocks.mimecast.com
@@ -26,45 +26,45 @@
 # IP & Subnet: 39
 $DATASET ip4set:_netblocks.mimecast.com _netblocks.mimecast.com @
 :3:v=spf1 ip4:$ ~all
-195.130.217.0/24 # eu._netblocks.mimecast.com
-91.220.42.0/24 # eu._netblocks.mimecast.com
-146.101.78.0/24 # eu._netblocks.mimecast.com
-207.82.80.0/24 # eu._netblocks.mimecast.com
-213.167.81.0/25 # eu._netblocks.mimecast.com
-193.7.207.0/25 # eu._netblocks.mimecast.com
-213.167.75.0/25 # eu._netblocks.mimecast.com
-185.58.85.0/24 # eu._netblocks.mimecast.com
-185.58.86.0/24 # eu._netblocks.mimecast.com
-193.7.206.0/25 # eu._netblocks.mimecast.com
-147.28.36.0/24 # eu._netblocks.mimecast.com
-207.211.31.0/25 # us._netblocks.mimecast.com
-205.139.110.0/24 # us._netblocks.mimecast.com
-216.205.24.0/24 # us._netblocks.mimecast.com
-170.10.129.0/24 # us._netblocks.mimecast.com
-63.128.21.0/24 # us._netblocks.mimecast.com
-170.10.133.0/24 # us._netblocks.mimecast.com
-185.58.84.93/32 # us._netblocks.mimecast.com
-207.211.41.113/32 # us._netblocks.mimecast.com
-207.211.30.64/26 # us._netblocks.mimecast.com
-207.211.30.128/25 # us._netblocks.mimecast.com
-216.145.221.0/24 # us._netblocks.mimecast.com
-41.74.192.0/22 # za._netblocks.mimecast.com
-41.74.200.0/23 # za._netblocks.mimecast.com
-41.74.196.0/22 # za._netblocks.mimecast.com
-41.74.204.0/23 # za._netblocks.mimecast.com
-41.74.206.0/24 # za._netblocks.mimecast.com
-51.163.158.0/24 # de._netblocks.mimecast.com
-194.104.109.0/24 # de._netblocks.mimecast.com
-62.140.7.0/24 # de._netblocks.mimecast.com
-194.104.111.0/24 # de._netblocks.mimecast.com
-51.163.159.21/32 # de._netblocks.mimecast.com
-62.140.10.21/32 # de._netblocks.mimecast.com
-103.13.69.0/24 # au._netblocks.mimecast.com
-124.47.150.0/24 # au._netblocks.mimecast.com
-124.47.189.0/24 # au._netblocks.mimecast.com
-103.96.23.0/24 # au._netblocks.mimecast.com
-103.96.21.0/24 # au._netblocks.mimecast.com
-180.189.28.0/24 # au._netblocks.mimecast.com
+195.130.217.0/24 # subnet:eu._netblocks.mimecast.com
+91.220.42.0/24 # subnet:eu._netblocks.mimecast.com
+146.101.78.0/24 # subnet:eu._netblocks.mimecast.com
+207.82.80.0/24 # subnet:eu._netblocks.mimecast.com
+213.167.81.0/25 # subnet:eu._netblocks.mimecast.com
+193.7.207.0/25 # subnet:eu._netblocks.mimecast.com
+213.167.75.0/25 # subnet:eu._netblocks.mimecast.com
+185.58.85.0/24 # subnet:eu._netblocks.mimecast.com
+185.58.86.0/24 # subnet:eu._netblocks.mimecast.com
+193.7.206.0/25 # subnet:eu._netblocks.mimecast.com
+147.28.36.0/24 # subnet:eu._netblocks.mimecast.com
+207.211.31.0/25 # subnet:us._netblocks.mimecast.com
+205.139.110.0/24 # subnet:us._netblocks.mimecast.com
+216.205.24.0/24 # subnet:us._netblocks.mimecast.com
+170.10.129.0/24 # subnet:us._netblocks.mimecast.com
+63.128.21.0/24 # subnet:us._netblocks.mimecast.com
+170.10.133.0/24 # subnet:us._netblocks.mimecast.com
+185.58.84.93/32 # ip:us._netblocks.mimecast.com
+207.211.41.113/32 # ip:us._netblocks.mimecast.com
+207.211.30.64/26 # subnet:us._netblocks.mimecast.com
+207.211.30.128/25 # subnet:us._netblocks.mimecast.com
+216.145.221.0/24 # subnet:us._netblocks.mimecast.com
+41.74.192.0/22 # subnet:za._netblocks.mimecast.com
+41.74.200.0/23 # subnet:za._netblocks.mimecast.com
+41.74.196.0/22 # subnet:za._netblocks.mimecast.com
+41.74.204.0/23 # subnet:za._netblocks.mimecast.com
+41.74.206.0/24 # subnet:za._netblocks.mimecast.com
+51.163.158.0/24 # subnet:de._netblocks.mimecast.com
+194.104.109.0/24 # subnet:de._netblocks.mimecast.com
+62.140.7.0/24 # subnet:de._netblocks.mimecast.com
+194.104.111.0/24 # subnet:de._netblocks.mimecast.com
+51.163.159.21/32 # ip:de._netblocks.mimecast.com
+62.140.10.21/32 # ip:de._netblocks.mimecast.com
+103.13.69.0/24 # subnet:au._netblocks.mimecast.com
+124.47.150.0/24 # subnet:au._netblocks.mimecast.com
+124.47.189.0/24 # subnet:au._netblocks.mimecast.com
+103.96.23.0/24 # subnet:au._netblocks.mimecast.com
+103.96.21.0/24 # subnet:au._netblocks.mimecast.com
+180.189.28.0/24 # subnet:au._netblocks.mimecast.com
 :99:v=spf1 ~all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses

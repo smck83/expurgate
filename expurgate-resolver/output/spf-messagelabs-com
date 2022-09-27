@@ -9,7 +9,7 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.messagelabs.com @ 2022-09-26 22:00:14.514681
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.messagelabs.com @ 2022-09-27 09:57:10.885357
 # ^ spf.messagelabs.com
 # ^ v=spf1 include:nets1.spf.messagelabs.com include:nets2.spf.messagelabs.com ~all
 # ^^ nets1.spf.messagelabs.com
@@ -20,16 +20,16 @@
 # IP & Subnet: 10
 $DATASET ip4set:spf.messagelabs.com spf.messagelabs.com @
 :3:v=spf1 ip4:$ ~all
-85.158.136.0/21 # nets1.spf.messagelabs.com
-193.109.254.0/23 # nets1.spf.messagelabs.com
-194.106.220.0/23 # nets1.spf.messagelabs.com
-195.245.230.0/23 # nets1.spf.messagelabs.com
-95.131.104.0/21 # nets1.spf.messagelabs.com
-46.226.48.0/21 # nets1.spf.messagelabs.com
-216.82.240.0/20 # nets2.spf.messagelabs.com
-67.219.240.0/20 # nets2.spf.messagelabs.com
-117.120.16.0/21 # nets2.spf.messagelabs.com
-103.9.96.0/22 # nets2.spf.messagelabs.com
+85.158.136.0/21 # subnet:nets1.spf.messagelabs.com
+193.109.254.0/23 # subnet:nets1.spf.messagelabs.com
+194.106.220.0/23 # subnet:nets1.spf.messagelabs.com
+195.245.230.0/23 # subnet:nets1.spf.messagelabs.com
+95.131.104.0/21 # subnet:nets1.spf.messagelabs.com
+46.226.48.0/21 # subnet:nets1.spf.messagelabs.com
+216.82.240.0/20 # subnet:nets2.spf.messagelabs.com
+67.219.240.0/20 # subnet:nets2.spf.messagelabs.com
+117.120.16.0/21 # subnet:nets2.spf.messagelabs.com
+103.9.96.0/22 # subnet:nets2.spf.messagelabs.com
 :99:v=spf1 ~all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
