@@ -57,7 +57,7 @@ if 'RUNNING_CONFIG_ON' in os.environ:
     runningconfigon  = int(os.environ['RUNNING_CONFIG_ON'])
 else:
     runningconfigon  = 0 #if not specified, generate config files separately
-runningconfigon = 1 
+# runningconfigon = 1 
 def restdb(restdb_url,restdb_key):
     payload={}
     headers = {
@@ -242,9 +242,12 @@ def getSPF(domain):
                             if re.match('^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/[1-2][0-9]|[3][0-1]$',spfValue[1]): #later check IP against subnet and if present in subnet, ignore.
                                 ipmonitor.append(spfValue[1])
                                 ip4.append(spfValue[1] + " # subnet:" + domain)
-                            else:
+                            elif re.match('^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\/32)?$',spfValue[1]): #later check IP against subnet and if present in subnet, ignore.
                                 ipmonitor.append(spfValue[1])
-                                ip4.append(spfValue[1] + " # ip:" + domain)                               
+                                ip4.append(spfValue[1] + " # ip:" + domain)
+                            else:
+                                ip4.append("# error:" + spfValue[1] + " for " + domain)
+
                         else:
                             header.append('# ' + (paddingchar * depth) + ' [Skipped] already added (ip4):' + spfValue[1] + " " + domain)
                     elif re.match('(\+|)ip6\:', spfPart, re.IGNORECASE):
@@ -304,7 +307,7 @@ while totaldomaincount > 0:
 
         getSPF(domain)
 
-        stdoutprefix = '[' + str(loopcount) + ": " + str(domaincount) +'/'+ str(totaldomaincount) + '][' + domain + "] "
+        stdoutprefix = '[' + str(loopcount) + ": " + str(domaincount) + '/' + str(totaldomaincount) + '][' + domain + "] "
 
     # strip spaces
         ip4 = [x.strip(' ') for x in ip4]

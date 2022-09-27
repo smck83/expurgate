@@ -9,7 +9,7 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.messagelabs.com @ 2022-09-27 09:57:10.885357
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.messagelabs.com @ 2022-09-27 10:22:00.251745
 # ^ spf.messagelabs.com
 # ^ v=spf1 include:nets1.spf.messagelabs.com include:nets2.spf.messagelabs.com ~all
 # ^^ nets1.spf.messagelabs.com
