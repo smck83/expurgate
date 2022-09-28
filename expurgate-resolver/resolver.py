@@ -146,6 +146,9 @@ def getSPF(domain):
             sourcerecord = source_prefix + "." + domain
             header.append("# Source of truth:  " + sourcerecord)
             result = dnsLookup(sourcerecord,"TXT")
+        elif depth == 0:
+            header.append("# Source of truth:  " + domain + " - Will not work in production unless you replace a single record. e.g. include:" + domain + " with include:{ir}." + domain + "._spf.yourdomain.com")
+            result = dnsLookup(domain,"TXT")
         else:
            result = dnsLookup(domain,"TXT")
    
@@ -260,7 +263,7 @@ def getSPF(domain):
                             header.append('# ' + (paddingchar * depth) + ' [Skipped] already added (ip6):' + spfValue[1] + " " + domain)
                     elif re.match('v\=spf1', spfPart, re.IGNORECASE):
                         spfValue = spfPart
-                    elif re.match('exists\:', spfPart, re.IGNORECASE):
+                    elif re.match('exists\:', spfPart, re.IGNORECASE) or re.match('include\:', spfPart, re.IGNORECASE):
                         print('Added to fail response record:',spfPart)
                         otherValues.append(spfPart)
                     #else: drop everything else
