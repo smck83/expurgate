@@ -160,5 +160,11 @@ ${d} - the sending servers domain name (in ENVELOPE FROM: field) is `ehlo.email`
 # Cloud hosted SPF solutions
 There are a number of vendors that offer SPF management capability. However I could not find any self-hosted options. Common terms for these services are SPF flattening and SPF compression.
 
+# Recent enhancements
+- Dedupe : If record already exists in 'list', do not add it again
+- Write2Disk on Change: Instead of regenerating config files every time the script runs, the rbldnsd config will only be written shoudl a record change
+- RestDB: RestDB capability has been added to manage MY_DOMAINS from restDB instead of via ENV.
+- Running Config : Running config means a single rbldnsd config file is generated for ALL domains which means the expurgate-rbldnsd container doesnt need to restart if domains are added or removed from MY_DOMAINS or in RestDB
+
 # Buy me a coffee
 If this was useful, feel free to [Buy me a coffee](https://www.buymeacoffee.com/smc83)
