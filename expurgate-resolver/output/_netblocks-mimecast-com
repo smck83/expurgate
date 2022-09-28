@@ -9,7 +9,7 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_netblocks.mimecast.com @ 2022-09-27 10:43:09.524940
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_netblocks.mimecast.com @ 2022-09-27 16:45:36.634612
 # ^ _netblocks.mimecast.com
 # ^ v=spf1 include:eu._netblocks.mimecast.com include:us._netblocks.mimecast.com include:za._netblocks.mimecast.com include:de._netblocks.mimecast.com include:au._netblocks.mimecast.com ~all
 # ^^ eu._netblocks.mimecast.com

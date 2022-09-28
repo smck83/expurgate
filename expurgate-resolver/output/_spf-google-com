@@ -9,7 +9,7 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_spf.google.com @ 2022-09-27 10:43:09.316340
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_spf.google.com @ 2022-09-27 16:45:36.560862
 # ^ _spf.google.com
 # ^ v=spf1 include:_netblocks.google.com include:_netblocks2.google.com include:_netblocks3.google.com ~all
 # ^^ _netblocks.google.com

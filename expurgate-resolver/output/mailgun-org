@@ -9,7 +9,7 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:mailgun.org @ 2022-09-27 10:43:10.054827
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:mailgun.org @ 2022-09-27 16:45:37.085305
 # ^ mailgun.org
 # ^ v=spf1 include:_spf.mailgun.org include:_spf.eu.mailgun.org -all
 # ^^ _spf.mailgun.org
