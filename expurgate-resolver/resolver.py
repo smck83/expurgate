@@ -144,6 +144,7 @@ def getSPF(domain):
     try:
         if depth == 0 and source_prefix_off == False:
             sourcerecord = source_prefix + "." + domain
+            header.append("# Source of truth:  " + sourcerecord)
             result = dnsLookup(sourcerecord,"TXT")
         else:
            result = dnsLookup(domain,"TXT")

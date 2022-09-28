@@ -9,7 +9,7 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.protection.outlook.com @ 2022-09-27 16:45:36.941567
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.protection.outlook.com @ 2022-09-28 16:08:57.423923
 # ^ spf.protection.outlook.com
 # ^ v=spf1 ip4:40.92.0.0/15 ip4:40.107.0.0/16 ip4:52.100.0.0/14 ip4:104.47.0.0/17 ip6:2a01:111:f400::/48 ip6:2a01:111:f403::/49 ip6:2a01:111:f403:8000::/50 ip6:2a01:111:f403:c000::/51 ip6:2a01:111:f403:f000::/52 include:spfd.protection.outlook.com -all
 # ^^ spfd.protection.outlook.com
