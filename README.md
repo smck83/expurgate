@@ -165,6 +165,7 @@ There are a number of vendors that offer SPF management capability. However I co
 - Write2Disk on Change: Instead of regenerating config files every time the script runs, the rbldnsd config will only be written shoudd a record change since last run. A python dictionary is used to track this, however if scale is required REDIS or something similiar could be used.
 - RestDB: RestDB capability has been added to manage MY_DOMAINS from restDB instead of via ENV.
 - Running Config : Running config means a single rbldnsd config file is generated for ALL domains which means the expurgate-rbldnsd container doesnt need to restart if domains are added or removed from MY_DOMAINS or in RestDB
+- Cache added : Given many INCLUDE: tend to be the same per source, e.g. mailgun.org, sendgrid.net, \_spf.google.com etc. A python disctionary has been added called dnsCache. If the record has already been looked up by another domain the respoonse the second or third+ time will come from memory, saving a DNS request.
 
 # Buy me a coffee
 If this was useful, feel free to [Buy me a coffee](https://www.buymeacoffee.com/smc83)
