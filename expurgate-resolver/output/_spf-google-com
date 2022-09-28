@@ -9,7 +9,8 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_spf.google.com @ 2022-09-28 16:08:57.182985
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_spf.google.com @ 2022-09-28 17:08:32.203464
+# Source of truth:  _spf.google.com - Will not work in production unless you replace a single record. e.g. include:_spf.google.com with include:{ir}._spf.google.com._spf.yourdomain.com
 # ^ _spf.google.com
 # ^ v=spf1 include:_netblocks.google.com include:_netblocks2.google.com include:_netblocks3.google.com ~all
 # ^^ _netblocks.google.com

@@ -85,7 +85,7 @@ elif restdb_url != None:
     mydomains = restdb(restdb_url,restdb_key) 
 else:
     source_prefix_off = True
-    mydomains = ['_spf.google.com','_netblocks.mimecast.com','spf.protection.outlook.com','outbound.mailhop.org','spf.messagelabs.com','mailgun.org','sendgrid.net'] # demo mode
+    mydomains = ['_spf.google.com','_netblocks.mimecast.com','spf.protection.outlook.com','outbound.mailhop.org','spf.messagelabs.com','mailgun.org','sendgrid.net','service-now.com'] # demo mode
     print("MY_DOMAIN not set, running in demo mode using " + str(mydomains))
 
 totaldomaincount = len(mydomains)
@@ -191,10 +191,11 @@ def getSPF(domain):
                         result = dnsLookup(spfValue[1],"A")  
                         if result:
                             header.append("# " + (paddingchar * depth) + " " + spfPart)
-                            result = [x + ' # a:' + spfValue[1] for x in result]
+                            print(result)
+                            result = [(x + ' # a:' + spfValue[1]) for x in result]
                             result.sort() # sort
                             result = ('\n').join(result)
-                            ip4.append(result + " # " + spfPart)
+                            ip4.append(result)
                     elif re.match('^(\+|)a', spfPart, re.IGNORECASE):
                         result = dnsLookup(domain,"A")
                         if result:  

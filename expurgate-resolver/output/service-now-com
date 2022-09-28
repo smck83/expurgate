@@ -1,0 +1,86 @@
+# 
+#  ______                                  _       
+# |  ____|                                | |      
+# | |__  __  ___ __  _   _ _ __ __ _  __ _| |_ ___ 
+# |  __| \ \/ / '_ \| | | | '__/ _` |/ _` | __/ _ \
+# | |____ >  <| |_) | |_| | | | (_| | (_| | ||  __/
+# |______/_/\_\ .__/ \__,_|_|  \__, |\__,_|\__\___|
+#             | |               __/ |              
+#             |_|              |___/               
+#
+# https://xpg8.tk | https://github.com/smck83/expurgate 
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:service-now.com @ 2022-09-28 17:08:33.027754
+# Source of truth:  service-now.com - Will not work in production unless you replace a single record. e.g. include:service-now.com with include:{ir}.service-now.com._spf.yourdomain.com
+# ^ service-now.com
+# ^ v=spf1 a:b.spf.service-now.com a:c.spf.service-now.com a:d.spf.service-now.com ~all
+# ^^ a:b.spf.service-now.com
+# ^^^ a:c.spf.service-now.com
+# ^^^^ a:d.spf.service-now.com
+# Depth:4
+# IP & Subnet: 0
+$DATASET ip4set:service-now.com service-now.com @
+:3:v=spf1 ip4:$ ~all
+149.96.5.2 # a:b.spf.service-now.com
+149.96.5.209 # a:b.spf.service-now.com
+149.96.5.3 # a:b.spf.service-now.com
+149.96.5.6 # a:b.spf.service-now.com
+149.96.5.7 # a:b.spf.service-now.com
+149.96.6.2 # a:b.spf.service-now.com
+149.96.6.209 # a:b.spf.service-now.com
+149.96.6.3 # a:b.spf.service-now.com
+149.96.6.6 # a:b.spf.service-now.com
+149.96.6.7 # a:b.spf.service-now.com
+199.91.136.28 # a:b.spf.service-now.com
+199.91.140.28 # a:b.spf.service-now.com
+148.139.0.2 # a:c.spf.service-now.com
+148.139.0.31 # a:c.spf.service-now.com
+148.139.1.2 # a:c.spf.service-now.com
+148.139.1.31 # a:c.spf.service-now.com
+148.139.2.2 # a:c.spf.service-now.com
+148.139.3.2 # a:c.spf.service-now.com
+149.96.13.2 # a:c.spf.service-now.com
+149.96.14.2 # a:c.spf.service-now.com
+199.91.136.26 # a:c.spf.service-now.com
+199.91.136.28 # a:c.spf.service-now.com
+199.91.137.2 # a:c.spf.service-now.com
+199.91.137.26 # a:c.spf.service-now.com
+199.91.139.145 # a:c.spf.service-now.com
+199.91.139.22 # a:c.spf.service-now.com
+199.91.139.23 # a:c.spf.service-now.com
+199.91.139.24 # a:c.spf.service-now.com
+199.91.140.26 # a:c.spf.service-now.com
+199.91.140.28 # a:c.spf.service-now.com
+199.91.141.145 # a:c.spf.service-now.com
+199.91.141.22 # a:c.spf.service-now.com
+199.91.141.23 # a:c.spf.service-now.com
+199.91.141.24 # a:c.spf.service-now.com
+37.98.232.12 # a:c.spf.service-now.com
+37.98.232.2 # a:c.spf.service-now.com
+37.98.232.26 # a:c.spf.service-now.com
+37.98.234.2 # a:c.spf.service-now.com
+37.98.235.2 # a:c.spf.service-now.com
+103.23.64.2 # a:d.spf.service-now.com
+103.23.65.2 # a:d.spf.service-now.com
+103.23.66.26 # a:d.spf.service-now.com
+103.23.67.26 # a:d.spf.service-now.com
+148.139.104.16 # a:d.spf.service-now.com
+148.139.104.17 # a:d.spf.service-now.com
+148.139.105.16 # a:d.spf.service-now.com
+148.139.105.17 # a:d.spf.service-now.com
+149.96.1.26 # a:d.spf.service-now.com
+149.96.132.2 # a:d.spf.service-now.com
+149.96.133.2 # a:d.spf.service-now.com
+149.96.194.2 # a:d.spf.service-now.com
+149.96.195.2 # a:d.spf.service-now.com
+149.96.2.26 # a:d.spf.service-now.com
+149.96.220.2 # a:d.spf.service-now.com
+149.96.221.2 # a:d.spf.service-now.com
+199.91.136.28 # a:d.spf.service-now.com
+199.91.140.28 # a:d.spf.service-now.com
+:99:v=spf1 ~all
+0.0.0.0/1 # all other IPv4 addresses
+128.0.0.0/1 # all other IP IPv4 addresses
+$DATASET ip6trie:service-now.com service-now.com @
+:3:v=spf1 ip6:$ ~all
+:99:v=spf1 ~all
+0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
