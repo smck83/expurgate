@@ -9,11 +9,12 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Running config for: 7 domains
-# Source domains: _spf.google.com, _netblocks.mimecast.com, spf.protection.outlook.com, outbound.mailhop.org, spf.messagelabs.com, mailgun.org, sendgrid.net
+# Running config for: 8 domains
+# Source domains: _spf.google.com, _netblocks.mimecast.com, spf.protection.outlook.com, outbound.mailhop.org, spf.messagelabs.com, mailgun.org, sendgrid.net, service-now.com
 #
 #
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_spf.google.com @ 2022-09-28 10:25:29.729513
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_spf.google.com @ 2022-09-28 17:09:53.817231
+# Source of truth:  _spf.google.com - Will not work in production unless you replace a single record. e.g. include:_spf.google.com with include:{ir}._spf.google.com._spf.yourdomain.com
 # ^ _spf.google.com
 # ^ v=spf1 include:_netblocks.google.com include:_netblocks2.google.com include:_netblocks3.google.com ~all
 # ^^ _netblocks.google.com
@@ -60,7 +61,8 @@ $DATASET ip6trie:_spf.google.com _spf.google.com @
 2c0f:fb50:4000::/36 # _netblocks2.google.com
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_netblocks.mimecast.com @ 2022-09-28 10:25:29.898125
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_netblocks.mimecast.com @ 2022-09-28 17:09:53.989986
+# Source of truth:  _netblocks.mimecast.com - Will not work in production unless you replace a single record. e.g. include:_netblocks.mimecast.com with include:{ir}._netblocks.mimecast.com._spf.yourdomain.com
 # ^ _netblocks.mimecast.com
 # ^ v=spf1 include:eu._netblocks.mimecast.com include:us._netblocks.mimecast.com include:za._netblocks.mimecast.com include:de._netblocks.mimecast.com include:au._netblocks.mimecast.com ~all
 # ^^ eu._netblocks.mimecast.com
@@ -123,7 +125,8 @@ $DATASET ip6trie:_netblocks.mimecast.com _netblocks.mimecast.com @
 :3:v=spf1 ip6:$ ~all
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.protection.outlook.com @ 2022-09-28 10:25:29.977538
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.protection.outlook.com @ 2022-09-28 17:09:54.313667
+# Source of truth:  spf.protection.outlook.com - Will not work in production unless you replace a single record. e.g. include:spf.protection.outlook.com with include:{ir}.spf.protection.outlook.com._spf.yourdomain.com
 # ^ spf.protection.outlook.com
 # ^ v=spf1 ip4:40.92.0.0/15 ip4:40.107.0.0/16 ip4:52.100.0.0/14 ip4:104.47.0.0/17 ip6:2a01:111:f400::/48 ip6:2a01:111:f403::/49 ip6:2a01:111:f403:8000::/50 ip6:2a01:111:f403:c000::/51 ip6:2a01:111:f403:f000::/52 include:spfd.protection.outlook.com -all
 # ^^ spfd.protection.outlook.com
@@ -157,7 +160,8 @@ $DATASET ip6trie:spf.protection.outlook.com spf.protection.outlook.com @
 2a01:4180:4050:0400::/64 # spfd.protection.outlook.com
 :99:v=spf1 -all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:outbound.mailhop.org @ 2022-09-28 10:25:30.004277
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:outbound.mailhop.org @ 2022-09-28 17:09:54.337643
+# Source of truth:  outbound.mailhop.org - Will not work in production unless you replace a single record. e.g. include:outbound.mailhop.org with include:{ir}.outbound.mailhop.org._spf.yourdomain.com
 # ^ outbound.mailhop.org
 # ^ v=spf1 ip4:52.26.49.97 ip4:52.10.99.51 ip4:52.28.59.28 ip4:52.28.6.212 ip4:3.127.8.113 ip4:54.186.27.61 ip4:52.28.168.19 ip4:52.58.19.153 ip4:52.58.96.151 ip4:52.58.97.209 ip4:52.88.73.233 ip4:54.187.71.48 ip4:54.149.36.10 ip4:54.68.34.165 ip4:54.186.22.84 ip4:54.191.214.3 ip4:3.125.66.160 ip4:54.213.22.21 ip4:52.29.21.168 ip4:100.20.105.3 ip4:44.233.67.66 ip4:52.25.88.167 ip4:54.184.38.33 ip4:54.185.97.28 include:_s0.outbound.mailhop.org -all
 # ^^ _s0.outbound.mailhop.org
@@ -267,7 +271,8 @@ $DATASET ip6trie:outbound.mailhop.org outbound.mailhop.org @
 :3:v=spf1 ip6:$ -all
 :99:v=spf1 -all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.messagelabs.com @ 2022-09-28 10:25:30.081289
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.messagelabs.com @ 2022-09-28 17:09:54.486490
+# Source of truth:  spf.messagelabs.com - Will not work in production unless you replace a single record. e.g. include:spf.messagelabs.com with include:{ir}.spf.messagelabs.com._spf.yourdomain.com
 # ^ spf.messagelabs.com
 # ^ v=spf1 include:nets1.spf.messagelabs.com include:nets2.spf.messagelabs.com ~all
 # ^^ nets1.spf.messagelabs.com
@@ -295,7 +300,8 @@ $DATASET ip6trie:spf.messagelabs.com spf.messagelabs.com @
 :3:v=spf1 ip6:$ ~all
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:mailgun.org @ 2022-09-28 10:25:30.113329
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:mailgun.org @ 2022-09-28 17:09:54.548508
+# Source of truth:  mailgun.org - Will not work in production unless you replace a single record. e.g. include:mailgun.org with include:{ir}.mailgun.org._spf.yourdomain.com
 # ^ mailgun.org
 # ^ v=spf1 include:_spf.mailgun.org include:_spf.eu.mailgun.org -all
 # ^^ _spf.mailgun.org
@@ -338,7 +344,8 @@ $DATASET ip6trie:mailgun.org mailgun.org @
 :3:v=spf1 ip6:$ ~all
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:sendgrid.net @ 2022-09-28 10:25:30.225602
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:sendgrid.net @ 2022-09-28 17:09:54.590234
+# Source of truth:  sendgrid.net - Will not work in production unless you replace a single record. e.g. include:sendgrid.net with include:{ir}.sendgrid.net._spf.yourdomain.com
 # ^ sendgrid.net
 # ^ v=spf1 ip4:167.89.0.0/17 ip4:208.117.48.0/20 ip4:50.31.32.0/19 ip4:198.37.144.0/20 ip4:198.21.0.0/21 ip4:192.254.112.0/20 ip4:168.245.0.0/17 ip4:149.72.0.0/16 ip4:159.183.0.0/16 include:ab.sendgrid.net ~all
 # ^^ ab.sendgrid.net
@@ -364,6 +371,81 @@ $DATASET ip4set:sendgrid.net sendgrid.net @
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
 $DATASET ip6trie:sendgrid.net sendgrid.net @
+:3:v=spf1 ip6:$ ~all
+:99:v=spf1 ~all
+0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:service-now.com @ 2022-09-28 17:09:54.613959
+# Source of truth:  service-now.com - Will not work in production unless you replace a single record. e.g. include:service-now.com with include:{ir}.service-now.com._spf.yourdomain.com
+# ^ service-now.com
+# ^ v=spf1 a:b.spf.service-now.com a:c.spf.service-now.com a:d.spf.service-now.com ~all
+# ^^ a:b.spf.service-now.com
+# ^^^ a:c.spf.service-now.com
+# ^^^^ a:d.spf.service-now.com
+# Depth:4
+# IP & Subnet: 0
+$DATASET ip4set:service-now.com service-now.com @
+:3:v=spf1 ip4:$ ~all
+149.96.5.2 # a:b.spf.service-now.com
+149.96.5.209 # a:b.spf.service-now.com
+149.96.5.3 # a:b.spf.service-now.com
+149.96.5.6 # a:b.spf.service-now.com
+149.96.5.7 # a:b.spf.service-now.com
+149.96.6.2 # a:b.spf.service-now.com
+149.96.6.209 # a:b.spf.service-now.com
+149.96.6.3 # a:b.spf.service-now.com
+149.96.6.6 # a:b.spf.service-now.com
+149.96.6.7 # a:b.spf.service-now.com
+199.91.136.28 # a:b.spf.service-now.com
+199.91.140.28 # a:b.spf.service-now.com
+148.139.0.2 # a:c.spf.service-now.com
+148.139.0.31 # a:c.spf.service-now.com
+148.139.1.2 # a:c.spf.service-now.com
+148.139.1.31 # a:c.spf.service-now.com
+148.139.2.2 # a:c.spf.service-now.com
+148.139.3.2 # a:c.spf.service-now.com
+149.96.13.2 # a:c.spf.service-now.com
+149.96.14.2 # a:c.spf.service-now.com
+199.91.136.26 # a:c.spf.service-now.com
+199.91.136.28 # a:c.spf.service-now.com
+199.91.137.2 # a:c.spf.service-now.com
+199.91.137.26 # a:c.spf.service-now.com
+199.91.139.145 # a:c.spf.service-now.com
+199.91.139.22 # a:c.spf.service-now.com
+199.91.139.23 # a:c.spf.service-now.com
+199.91.139.24 # a:c.spf.service-now.com
+199.91.140.26 # a:c.spf.service-now.com
+199.91.140.28 # a:c.spf.service-now.com
+199.91.141.145 # a:c.spf.service-now.com
+199.91.141.22 # a:c.spf.service-now.com
+199.91.141.23 # a:c.spf.service-now.com
+199.91.141.24 # a:c.spf.service-now.com
+37.98.232.12 # a:c.spf.service-now.com
+37.98.232.2 # a:c.spf.service-now.com
+37.98.232.26 # a:c.spf.service-now.com
+37.98.234.2 # a:c.spf.service-now.com
+37.98.235.2 # a:c.spf.service-now.com
+103.23.64.2 # a:d.spf.service-now.com
+103.23.65.2 # a:d.spf.service-now.com
+103.23.66.26 # a:d.spf.service-now.com
+103.23.67.26 # a:d.spf.service-now.com
+148.139.104.16 # a:d.spf.service-now.com
+148.139.104.17 # a:d.spf.service-now.com
+148.139.105.16 # a:d.spf.service-now.com
+148.139.105.17 # a:d.spf.service-now.com
+149.96.1.26 # a:d.spf.service-now.com
+149.96.132.2 # a:d.spf.service-now.com
+149.96.133.2 # a:d.spf.service-now.com
+149.96.194.2 # a:d.spf.service-now.com
+149.96.195.2 # a:d.spf.service-now.com
+149.96.2.26 # a:d.spf.service-now.com
+149.96.220.2 # a:d.spf.service-now.com
+149.96.221.2 # a:d.spf.service-now.com
+199.91.136.28 # a:d.spf.service-now.com
+199.91.140.28 # a:d.spf.service-now.com
+:99:v=spf1 ~all
+0.0.0.0/1 # all other IPv4 addresses
+128.0.0.0/1 # all other IP IPv4 addresses
+$DATASET ip6trie:service-now.com service-now.com @
 :3:v=spf1 ip6:$ ~all
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses

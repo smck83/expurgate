@@ -57,7 +57,7 @@ if 'RUNNING_CONFIG_ON' in os.environ:
     runningconfigon  = int(os.environ['RUNNING_CONFIG_ON'])
 else:
     runningconfigon  = 0 #if not specified, generate config files separately
-#runningconfigon = 1 
+# runningconfigon = 1 
 def restdb(restdb_url,restdb_key):
     payload={}
     headers = {
