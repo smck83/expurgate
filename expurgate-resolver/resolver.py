@@ -184,14 +184,15 @@ def getSPF(domain):
                             print(error)
                     elif re.match('^(\+|)ptr\:', spfPart, re.IGNORECASE):
                             otherValues.append(spfPart)
+                            ipmonitor.append(spfPart)
                     elif re.match('^(\+|)ptr', spfPart, re.IGNORECASE):
-                            otherValues.append(spfPart + ':' + domain)                           
+                            otherValues.append(spfPart + ':' + domain)
+                            ipmonitor.append(spfPart + ':' + domain)                           
                     elif re.match('^(\+|)a\:', spfPart, re.IGNORECASE):
                         spfValue = spfPart.split(':')
                         result = dnsLookup(spfValue[1],"A")  
                         if result:
                             header.append("# " + (paddingchar * depth) + " " + spfPart)
-                            print(result)
                             result = [(x + ' # a:' + spfValue[1]) for x in result]
                             result.sort() # sort
                             result = ('\n').join(result)
@@ -267,6 +268,7 @@ def getSPF(domain):
                     elif re.match('exists\:', spfPart, re.IGNORECASE) or re.match('include\:', spfPart, re.IGNORECASE):
                         print('Added to fail response record:',spfPart)
                         otherValues.append(spfPart)
+                        ipmonitor.append(spfPart)
                     #else: drop everything else
 
 while totaldomaincount > 0:
@@ -309,10 +311,11 @@ while totaldomaincount > 0:
         depth = 0        
         includes = []
         ipmonitor = []
-
+        stdoutprefix = '[' + str(loopcount) + ": " + str(domaincount) + '/' + str(totaldomaincount) + '][' + domain + "] "
+        print(stdoutprefix + 'Looking up SPF records.')
         getSPF(domain)
 
-        stdoutprefix = '[' + str(loopcount) + ": " + str(domaincount) + '/' + str(totaldomaincount) + '][' + domain + "] "
+        
 
     # strip spaces
         ip4 = [x.strip(' ') for x in ip4]
@@ -344,16 +347,15 @@ while totaldomaincount > 0:
         print(stdoutprefix + 'Comparing CURRENT and PREVIOUS record for changes :' + domain)
         if domain not in ipmonitorCompare:
             ipmonitorCompare[domain] = ipmonitor
-            changeDetected = 1
+            changeDetected += 1
             print(stdoutprefix + 'Change detected - First run, or a domain has just been added.')
         elif ipmonitor == ipmonitorCompare[domain]:
-            changeDetected = 0
             print(stdoutprefix + 'No change detected')
         else:
-            changeDetected = 1
+            changeDetected += 1
             print(stdoutprefix + 'Change detected!')
-            print(stdoutprefix + 'Previous Record: ' + str(ipmonitor))
-            print(stdoutprefix + 'New Record: ' + str(ipmonitorCompare[domain]))
+            print(stdoutprefix + 'Previous Record: ' + str(ipmonitorCompare[domain]))
+            print(stdoutprefix + 'New Record: ' + str(ipmonitor))
             ipmonitorCompare[domain] = ipmonitor
 
         # Join all the pieces together, ready for file output
@@ -361,15 +363,14 @@ while totaldomaincount > 0:
         if runningconfigon == 1:
             runningconfig = runningconfig + myrbldnsdconfig
 
-        if changeDetected == 1 and runningconfigon == 0:
+        if changeDetected > 0 and runningconfigon == 0:
              # Write the RBLDNSD config file to disk
             src_path = r'output/'+ domain.replace(".","-")+".staging"
             dst_path = r'output/'+ domain.replace(".","-")
             write2disk(src_path,dst_path,myrbldnsdconfig)
-        print(stdoutprefix + 'Looking up SPF records.')
         print(stdoutprefix + 'Required ' + str(depth) + ' lookups.')
     if runningconfigon == 1:
-        if changeDetected == 1:
+        if changeDetected > 0:
             src_path = r'output/runningconfig.staging'
             dst_path = r'output/running-config'               
             write2disk(src_path,dst_path,runningconfig)
