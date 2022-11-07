@@ -161,8 +161,9 @@ ${d} - the sending servers domain name (in ENVELOPE FROM: field) is `ehlo.email`
 There are a number of vendors that offer SPF management capability. However I could not find any self-hosted options. Common terms for these services are SPF flattening and SPF compression.
 
 # Recent enhancements
+- Expurgate Solo : an updated version where both rbldnsd and resolver are in a single docker container using supervisord https://github.com/smck83/expurgate-solo/
 - Dedupe : If record already exists in 'list', do not add it again
-- Write2Disk on Change: Instead of regenerating config files every time the script runs, the rbldnsd config will only be written shoudd a record change since last run. A python dictionary is used to track this, however if scale is required REDIS or something similiar could be used.
+- Write2Disk on Change: Instead of regenerating config files every time the script runs, the rbldnsd config will only be written should a record change since last run. A python dictionary is used to track this, however if scale is required REDIS or something similiar could be used.
 - RestDB: RestDB capability has been added to manage MY_DOMAINS from restDB instead of via ENV.
 - Running Config : Running config means a single rbldnsd config file is generated for ALL domains which means the expurgate-rbldnsd container doesnt need to restart if domains are added or removed from MY_DOMAINS or in RestDB
 - Cache added : Given many INCLUDE: tend to be the same per source, e.g. mailgun.org, sendgrid.net, \_spf.google.com etc. A python disctionary has been added called dnsCache. If the record has already been looked up by another domain the respoonse the second or third+ time will come from memory, saving a DNS request.
