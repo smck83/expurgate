@@ -10,7 +10,7 @@
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
 # Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_netblocks.mimecast.com @ 2022-09-30 15:28:06.852705
-# Source of truth:  _netblocks.mimecast.com - Will not work in production unless you replace a single record. e.g. include:_netblocks.mimecast.com with include:{ir}._netblocks.mimecast.com._spf.yourdomain.com
+# Source of truth:  _netblocks.mimecast.com - Will not work in production unless you replace a single record. e.g. include:_netblocks.mimecast.com with include:%{ir}._netblocks.mimecast.com._spf.yourdomain.com
 # ^ _netblocks.mimecast.com
 # ^ v=spf1 include:eu._netblocks.mimecast.com include:us._netblocks.mimecast.com include:za._netblocks.mimecast.com include:de._netblocks.mimecast.com include:au._netblocks.mimecast.com ~all
 # ^^ eu._netblocks.mimecast.com
