@@ -195,16 +195,20 @@ def getSPF(domain):
                             header.append("# " + (paddingchar * depth) + " " + spfPart)
                             result = [(x + ' # a:' + spfValue[1]) for x in result]
                             result.sort() # sort
-                            result = ('\n').join(result)
-                            ip4.append(result)
+                            #result = ('\n').join(result)
+                            #ip4.append(result)
+                            for record in result:
+                                ip4.append(record)
                     elif re.match('^(\+|)a', spfPart, re.IGNORECASE):
                         result = dnsLookup(domain,"A")
                         if result:  
                             header.append("# " + (paddingchar * depth) + " " + spfPart + "(" + domain + ")")
                             result = [x + " # a(" + domain + ")" for x in result]
                             result.sort() # sort
-                            result = ('\n').join(result)
-                            ip4.append(result)
+                            #result = ('\n').join(result)
+                            #ip4.append(result)
+                            for record in result:
+                                ip4.append(record)
                     elif re.match('^(\+|)mx\:', spfPart, re.IGNORECASE):
                         spfValue = spfPart.split(':')
                         result = dnsLookup(spfValue[1],"MX") 
@@ -220,8 +224,10 @@ def getSPF(domain):
                                 if result:
                                     result = [x + ' # ' + spfPart + '=>a:' + hostname for x in result]
                                     result.sort() # sort
-                                    result = ('\n').join(result)
-                                    ip4.append(result)
+                                    #result = ('\n').join(result)
+                                    #ip4.append(result)
+                                    for record in result:
+                                       ip4.append(record)
                                     header.append("# " + (paddingchar * depth) + " " + spfPart + "=>a:" + hostname)
 
                     elif re.match('^(\+|)mx', spfPart, re.IGNORECASE):
@@ -238,8 +244,10 @@ def getSPF(domain):
                                 if result:
                                     result = [x + ' # mx(' + domain + ')=>a:' + hostname for x in result ]
                                     result.sort() # sort
-                                    result = ('\n').join(result)
-                                    ip4.append(result)
+                                    #result = ('\n').join(result)
+                                    #ip4.append(result)
+                                    for record in result:
+                                       ip4.append(record)
                                     header.append("# " + (paddingchar * depth) + " mx(" + domain + ")=>a:" + hostname)
 
                     elif re.match('^(\+|)ip4\:', spfPart, re.IGNORECASE):
