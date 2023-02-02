@@ -23,7 +23,7 @@ SPF records are publicly visible, prone to misconfiguration and limited to inclu
 Like most DNS records; TXT records are limited to 255 chars per line meaning if you attempt to juggle and manage SPF yourself, you not only have to count hostname lookups but the length of each TXT record.
 
 
-With organisations focusing on DMARC over the past 5 years that rely on SPF and DKIM to prevent domain spoofing, there has never been more reason for an organisation to exceed the 10 host resolution lookup limit.
+With DMARC being listed in Gartner's top project list in 2021, more and more organasations are protecting their brand by preeventing e-mail domain spoofing that relies on SPF and DKIM. So, the requirement to exceed the SPF host lookup limit of 10 for a mid to large+ size organisation has never been greater. Expurgate makes the whole process easy, and means you don't have to juggle SPF on 10's or 100's of subdomains, deal with 253 line limits in TXT records or worry about the 10 SPF host resolution lookup limit.
 
 # The solution
 
@@ -59,7 +59,7 @@ There are two seperate services running, with a third service being optional:
  2. The expurgate-rblsdnsd container is the DNS server listening on UDP/53
  3. \(OPTIONAL\) Use [dnsdist](https://dnsdist.org/) as a load balancer in front of rbldnsd to handle DDoS and support both UDP/53 + TCP/53
 
-To keep the solution lightweight, no database is used to track changes and source records are stored in another obfuscated or hidden TXT record. This also means when the expurgate-resolver script runs it will regenerate ALL config files which rbldnsd will automatically pickup.
+To keep the solution lightweight, no database or frontend UI is used, although these could be added to future version. Source records are stored in another obfuscated or hidden TXT record using a subdomain. This also means when the expurgate-resolver script runs it will regenerate config files when changes are detected which rbldnsd will automatically pickup.
 
 # How do I run it?
 
