@@ -335,7 +335,7 @@ while totaldomaincount > 0:
         if len(spfAction) > 0:
             spfActionValue = spfAction[0]
         #header.append("# SPF Cache Hits:" + str(cacheHit))
-        ip4header.append("$DATASET ip4set:"+ domain +" " + domain + " @")
+        ip4header.append("$DATASET ip4set:"+ domain +" " + domain)
 
         ip4header.append(":3:v=spf1 ip4:$ " + spfActionValue)
         if len(otherValues) > 0:
@@ -347,7 +347,7 @@ while totaldomaincount > 0:
             ip6block = [":99:v=spf1 " + spfActionValue]
         ip4block.append("0.0.0.0/1 # all other IPv4 addresses")
         ip4block.append("128.0.0.0/1 # all other IP IPv4 addresses")
-        ip6header.append("$DATASET ip6trie:"+ domain + " " + domain + " @")
+        ip6header.append("$DATASET ip6trie:"+ domain + " " + domain)
         ip6header.append(":3:v=spf1 ip6:$ " + spfActionValue)
         ip6block.append("0:0:0:0:0:0:0:0/0 # all other IPv6 addresses")
         header.append("# IP & Subnet: " + str(len(ipmonitor)))
