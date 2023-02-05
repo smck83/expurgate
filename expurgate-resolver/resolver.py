@@ -147,7 +147,7 @@ def getSPF(domain):
             header.append("# Source of truth:  " + sourcerecord)
             result = dnsLookup(sourcerecord,"TXT")
         elif depth == 0:
-            header.append("# Source of truth:  " + domain + " - Will not work in production unless you replace a single record. e.g. include:" + domain + " with include:{ir}." + domain + "._spf.yourdomain.com")
+            header.append("# Source of truth:  " + domain + " - Will not work in production unless you replace a single record. e.g. include:" + domain + " with include:%{ir}." + domain + "._spf.yourdomain.com")
             result = dnsLookup(domain,"TXT")
         else:
            result = dnsLookup(domain,"TXT")
