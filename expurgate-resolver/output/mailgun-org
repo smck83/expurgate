@@ -9,7 +9,7 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:mailgun.org @ 2022-09-30 15:28:07.307220
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:mailgun.org @ 2023-02-05 19:51:53.531409
 # Source of truth:  mailgun.org - Will not work in production unless you replace a single record. e.g. include:mailgun.org with include:{ir}.mailgun.org._spf.yourdomain.com
 # ^ mailgun.org
 # ^ v=spf1 include:_spf.mailgun.org include:_spf.eu.mailgun.org -all
@@ -19,7 +19,7 @@
 # ^^^ v=spf1 ip4:141.193.32.0/23 ip4:159.135.140.80/29 ip4:159.135.132.128/25 ip4:161.38.204.0/22 ip4:87.253.232.0/21 ip4:185.189.236.0/22 ip4:185.211.120.0/22 ip4:185.250.236.0/22 ip4:143.55.236.0/22 ~all
 # Depth:3
 # IP & Subnet: 25
-$DATASET ip4set:mailgun.org mailgun.org @
+$DATASET ip4set:mailgun.org mailgun.org
 :3:v=spf1 ip4:$ ~all
 209.61.151.0/24 # subnet:_spf.mailgun.org
 166.78.68.0/22 # subnet:_spf.mailgun.org
@@ -49,7 +49,7 @@ $DATASET ip4set:mailgun.org mailgun.org @
 :99:v=spf1 ~all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
-$DATASET ip6trie:mailgun.org mailgun.org @
+$DATASET ip6trie:mailgun.org mailgun.org
 :3:v=spf1 ip6:$ ~all
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses

@@ -9,7 +9,7 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:outbound.mailhop.org @ 2022-09-30 15:28:07.173599
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:outbound.mailhop.org @ 2023-02-05 19:51:53.311737
 # Source of truth:  outbound.mailhop.org - Will not work in production unless you replace a single record. e.g. include:outbound.mailhop.org with include:{ir}.outbound.mailhop.org._spf.yourdomain.com
 # ^ outbound.mailhop.org
 # ^ v=spf1 ip4:52.26.49.97 ip4:52.10.99.51 ip4:52.28.59.28 ip4:52.28.6.212 ip4:3.127.8.113 ip4:54.186.27.61 ip4:52.28.168.19 ip4:52.58.19.153 ip4:52.58.96.151 ip4:52.58.97.209 ip4:52.88.73.233 ip4:54.187.71.48 ip4:54.149.36.10 ip4:54.68.34.165 ip4:54.186.22.84 ip4:54.191.214.3 ip4:3.125.66.160 ip4:54.213.22.21 ip4:52.29.21.168 ip4:100.20.105.3 ip4:44.233.67.66 ip4:52.25.88.167 ip4:54.184.38.33 ip4:54.185.97.28 include:_s0.outbound.mailhop.org -all
@@ -23,7 +23,7 @@
 # ^^^^^ v=spf1 ip4:103.18.109.138/32 -all
 # Depth:5
 # IP & Subnet: 88
-$DATASET ip4set:outbound.mailhop.org outbound.mailhop.org @
+$DATASET ip4set:outbound.mailhop.org outbound.mailhop.org
 :3:v=spf1 ip4:$ -all
 52.26.49.97 # ip:outbound.mailhop.org
 52.10.99.51 # ip:outbound.mailhop.org
@@ -116,7 +116,7 @@ $DATASET ip4set:outbound.mailhop.org outbound.mailhop.org @
 :99:v=spf1 -all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
-$DATASET ip6trie:outbound.mailhop.org outbound.mailhop.org @
+$DATASET ip6trie:outbound.mailhop.org outbound.mailhop.org
 :3:v=spf1 ip6:$ -all
 :99:v=spf1 -all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses

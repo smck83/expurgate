@@ -9,7 +9,7 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_spf.google.com @ 2022-09-30 15:28:06.698468
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_spf.google.com @ 2023-02-05 19:51:51.850326
 # Source of truth:  _spf.google.com - Will not work in production unless you replace a single record. e.g. include:_spf.google.com with include:{ir}._spf.google.com._spf.yourdomain.com
 # ^ _spf.google.com
 # ^ v=spf1 include:_netblocks.google.com include:_netblocks2.google.com include:_netblocks3.google.com ~all
@@ -21,7 +21,7 @@
 # ^^^^ v=spf1 ip4:172.217.0.0/19 ip4:172.217.32.0/20 ip4:172.217.128.0/19 ip4:172.217.160.0/20 ip4:172.217.192.0/19 ip4:172.253.56.0/21 ip4:172.253.112.0/20 ip4:108.177.96.0/19 ip4:35.191.0.0/16 ip4:130.211.0.0/22 ~all
 # Depth:4
 # IP & Subnet: 27
-$DATASET ip4set:_spf.google.com _spf.google.com @
+$DATASET ip4set:_spf.google.com _spf.google.com
 :3:v=spf1 ip4:$ ~all
 35.190.247.0/24 # subnet:_netblocks.google.com
 64.233.160.0/19 # subnet:_netblocks.google.com
@@ -47,7 +47,7 @@ $DATASET ip4set:_spf.google.com _spf.google.com @
 :99:v=spf1 ~all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
-$DATASET ip6trie:_spf.google.com _spf.google.com @
+$DATASET ip6trie:_spf.google.com _spf.google.com
 :3:v=spf1 ip6:$ ~all
 2001:4860:4000::/36 # _netblocks2.google.com
 2404:6800:4000::/36 # _netblocks2.google.com

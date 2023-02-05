@@ -9,7 +9,7 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.messagelabs.com @ 2022-09-30 15:28:07.270710
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.messagelabs.com @ 2023-02-05 19:51:53.467562
 # Source of truth:  spf.messagelabs.com - Will not work in production unless you replace a single record. e.g. include:spf.messagelabs.com with include:{ir}.spf.messagelabs.com._spf.yourdomain.com
 # ^ spf.messagelabs.com
 # ^ v=spf1 include:nets1.spf.messagelabs.com include:nets2.spf.messagelabs.com ~all
@@ -19,7 +19,7 @@
 # ^^^ v=spf1 ip4:216.82.240.0/20 ip4:67.219.240.0/20 ip4:117.120.16.0/21 ip4:103.9.96.0/22
 # Depth:3
 # IP & Subnet: 10
-$DATASET ip4set:spf.messagelabs.com spf.messagelabs.com @
+$DATASET ip4set:spf.messagelabs.com spf.messagelabs.com
 :3:v=spf1 ip4:$ ~all
 85.158.136.0/21 # subnet:nets1.spf.messagelabs.com
 193.109.254.0/23 # subnet:nets1.spf.messagelabs.com
@@ -34,7 +34,7 @@ $DATASET ip4set:spf.messagelabs.com spf.messagelabs.com @
 :99:v=spf1 ~all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
-$DATASET ip6trie:spf.messagelabs.com spf.messagelabs.com @
+$DATASET ip6trie:spf.messagelabs.com spf.messagelabs.com
 :3:v=spf1 ip6:$ ~all
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
