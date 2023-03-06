@@ -161,6 +161,7 @@ ${d} - the sending servers domain name (in ENVELOPE FROM: field) is `ehlo.email`
 There are a number of vendors that offer SPF management capability. However I could not find any self-hosted options. Common terms for these services are SPF flattening and SPF compression.
 
 # Recent enhancements
+- AAAA Support: References to hostnames via A\A: or MX\MX: now perform a AAAA lookup to handle ip6 addresses.
 - Expurgate Solo : an updated version where both rbldnsd and resolver are in a single docker container using supervisord https://github.com/smck83/expurgate-solo/
 - Dedupe : If record already exists in 'list', do not add it again
 - Write2Disk on Change: Instead of regenerating config files every time the script runs, the rbldnsd config will only be written should a record change since last run. A python dictionary is used to track this, however if scale is required REDIS or something similiar could be used.
