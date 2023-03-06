@@ -9,7 +9,7 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_netblocks.mimecast.com @ 2023-02-05 19:55:45.949974
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_netblocks.mimecast.com @ 2023-03-06 13:18:30.482457
 # Source of truth:  _netblocks.mimecast.com - Will not work in production unless you replace a single record. e.g. include:_netblocks.mimecast.com with include:%{ir}._netblocks.mimecast.com._spf.yourdomain.com
 # ^ _netblocks.mimecast.com
 # ^ v=spf1 include:eu._netblocks.mimecast.com include:us._netblocks.mimecast.com include:za._netblocks.mimecast.com include:de._netblocks.mimecast.com include:au._netblocks.mimecast.com ~all
@@ -22,9 +22,9 @@
 # ^^^^^ de._netblocks.mimecast.com
 # ^^^^^ v=spf1 ip4:51.163.158.0/24 ip4:194.104.109.0/24 ip4:62.140.7.0/24 ip4:194.104.111.0/24 ip4:51.163.159.21/32 ip4:62.140.10.21/32 ~all
 # ^^^^^^ au._netblocks.mimecast.com
-# ^^^^^^ v=spf1 ip4:103.13.69.0/24 ip4:124.47.150.0/24 ip4:124.47.189.0/24 ip4:103.96.23.0/24 ip4:103.96.21.0/24 ip4:180.189.28.0/24 ~all
+# ^^^^^^ v=spf1 ip4:103.13.69.0/24 ip4:124.47.150.0/24 ip4:124.47.189.0/24 ip4:103.96.23.0/24 ip4:103.96.21.0/24 ip4:180.189.28.0/24 ip4:216.145.217.0/24 ip4:103.96.22.0/24 ~all
 # Depth:6
-# IP & Subnet: 41
+# IP & Subnet: 43
 $DATASET ip4set:_netblocks.mimecast.com _netblocks.mimecast.com
 :3:v=spf1 ip4:$ ~all
 195.130.217.0/24 # subnet:eu._netblocks.mimecast.com
@@ -68,6 +68,8 @@ $DATASET ip4set:_netblocks.mimecast.com _netblocks.mimecast.com
 103.96.23.0/24 # subnet:au._netblocks.mimecast.com
 103.96.21.0/24 # subnet:au._netblocks.mimecast.com
 180.189.28.0/24 # subnet:au._netblocks.mimecast.com
+216.145.217.0/24 # subnet:au._netblocks.mimecast.com
+103.96.22.0/24 # subnet:au._netblocks.mimecast.com
 :99:v=spf1 ~all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
