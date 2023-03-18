@@ -1,6 +1,8 @@
 ![expurgate - simplify, hide and exceed SPF lookup limits](https://github.com/smck83/expurgate/blob/main/expurgate.png?raw=true)
 
-A self-hosted,dockerized SPF solution leveraging rbldnsd as the DNS server to simplify, hide and exceed SPF lookup limits.
+A dockerized multi-domain SPF hosting solution leveraging rbldnsd as the DNS server to simplify, hide and exceed SPF lookup limits. The resolver script runs periodically to generate SPF Macro friendly configuration files for rbldnsd. 
+
+My testing has proven performance with over 570 domains in `MY_DOMAINS`, running for 38 days; average resolution and file generation times are < 3 minutes at < 1 minute when running resolver with pypy instead of python.
 
  # What is Expurgate?
     expurgate
@@ -161,6 +163,7 @@ ${d} - the sending servers domain name (in ENVELOPE FROM: field) is `ehlo.email`
 There are a number of vendors that offer SPF management capability. However I could not find any self-hosted options. Common terms for these services are SPF flattening and SPF compression.
 
 # Recent enhancements
+- pypy : As of 19/March/23 using pypy to run resolver script. This increases performance of DNS record generation by 5-10 x's
 - AAAA Support: References to hostnames via A\A: or MX\MX: now perform a AAAA lookup to handle ip6 addresses.
 - Expurgate Solo : an updated version where both rbldnsd and resolver are in a single docker container using supervisord https://github.com/smck83/expurgate-solo/
 - Dedupe : If record already exists in 'list', do not add it again
