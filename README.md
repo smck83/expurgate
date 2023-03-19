@@ -2,7 +2,7 @@
 
 A dockerized multi-domain SPF hosting solution leveraging rbldnsd as the DNS server to simplify, hide and exceed SPF lookup limits. The resolver script runs periodically to generate SPF Macro friendly configuration files for rbldnsd. 
 
-My testing has proven performance with over 570 domains in `MY_DOMAINS`, running for 38 days; average resolution and file generation times are ~3 minutes versus < 1 minute when running resolver with pypy instead of python.
+My testing has proven performance with over 570 domains in `MY_DOMAINS`, running for 38 days; average total resolution and file generation times are ~3 minutes for python vs < 1 minute when running resolver with pypy. For this reason; all docker containers are using pypy.
 
 ![image](https://github.com/smck83/expurgate/blob/main/python-vs-pypy.png)
  # What is Expurgate?
