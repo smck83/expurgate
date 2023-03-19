@@ -37,6 +37,7 @@ Expurgate simplifies DNS management for SPF by using a single record with variab
 
 ### Hide
 `DISCLAIMER: Security through obscurity (or security by obscurity) is the reliance in security engineering on design or implementation secrecy as the main method of providing security to a system or component. While hiding SPF records may be beneficial, anyone on the internet can still check an IP against the record and whether it receives a PASS or FAIL. Technically brute force methods could be used against an SPF macro record; or targetted checks, e.g. lookup sengrid, microsoft, mailgun IP addresses to determine if a domain uses one of these vendors (or any others) - BGP prefix data could also be used to determine which IP within an enterprises subnets can e-mail on their behalf.`
+
 Copy your old SPF record to unused subdomain defined in `SOURCE_PREFIX=`. Your old SPF record might look something like this:
 
     "v=spf1 include:sendgrid.net include:_spf.google.com include:mailgun.org include:spf.protection.outlook.com include:_netblocks.mimecast.com -all"
