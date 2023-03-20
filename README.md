@@ -23,7 +23,7 @@ SPF records are publicly visible, prone to misconfiguration and limited to inclu
 Like most DNS records; TXT records are limited to 255 chars per line meaning if you attempt to juggle and manage SPF yourself, you not only have to count hostname lookups but the length of each TXT record.
 
 
-With DMARC being listed in Gartner's top project list in 2021, more and more organasations are protecting their brand by preeventing e-mail domain spoofing that relies on SPF and DKIM. So, the requirement to exceed the SPF host lookup limit of 10 for a mid to large+ size organisation has never been greater. Expurgate makes the whole process easy, and means you don't have to juggle SPF on 10's or 100's of subdomains, deal with 253 line limits in TXT records or worry about the 10 SPF host resolution lookup limit.
+With DMARC being listed in Gartner's top project list in 2021, more and more organasations are protecting their brand by preeventing e-mail domain spoofing that relies on SPF and DKIM. So, the requirement to exceed the SPF host lookup limit of 10 for a mid to large+ size organisation has never been greater. Expurgate makes the whole process easy, and means you don't have to juggle SPF on 10's or 100's of subdomains, deal with 255 byte/character limit per line in TXT records or worry about the 10 SPF host resolution lookup limit.
 
 # The solution
 
@@ -49,7 +49,7 @@ The old SPF record not only gives away the names of all the service providers yo
 `DISCLAIMER: Security through obscurity (or security by obscurity) is the reliance in security engineering on design or implementation secrecy as the main method of providing security to a system or component. While hiding SPF records may be beneficial, anyone on the internet can still check an IP against the record and whether it receives a PASS or FAIL. Technically brute force methods could be used against an SPF macro record; or targetted checks, e.g. lookup sengrid, microsoft, mailgun IP addresses to determine if a domain uses one of these vendors (or any others) - BGP prefix data could also be used to determine which IP within an enterprises subnets can e-mail on their behalf.`
 
 ### Exceed SPF Limits
-Expurgate resolves hostnames to IP address and subnets every `DELAY=` seconds and generates an RBLSDND configuration file. With only 1 INCLUDE: in your new SPF record you never need to worry about exceeding the 10 lookup limit or the 253 character limit per line.
+Expurgate resolves hostnames to IP address and subnets every `DELAY=` seconds and generates an RBLSDND configuration file. With only 1 INCLUDE: in your new SPF record you never need to worry about exceeding the 10 lookup limit or the 255 byte/character limit per line.
 
 # How does it work?
 
