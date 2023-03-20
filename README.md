@@ -20,7 +20,7 @@ https://en.wikipedia.org/wiki/Sender_Policy_Framework#Principles_of_operation
 # The problem
 SPF records are publicly visible, prone to misconfiguration and limited to include 10 host DNS resolutions which could be A records, MX records or other TXT records called INCLUDE's. While you may only `INCLUDE` one other domain e.g. _spf.google.com this may very well link to 2 or 3 other hostnames which all count toward the RFC limit of 10. Further risk is that 3rd party providers in your SPF record may add a new host without communicating the specifics and while you have been keeping on top of your record, this could unknowingly push you over the limit.
 
-Like most DNS records; TXT records are limited to 255 chars per line meaning if you attempt to juggle and manage SPF yourself, you not only have to count hostname lookups but the length of each TXT record.
+Like most DNS records; TXT records are limited to 255 chars per line meaning if you attempt to juggle and manage SPF yourself, you not only have to count hostname lookups but the length of each line in your TXT record.
 
 
 With DMARC being listed in Gartner's top project list in 2021, more and more organasations are protecting their brand by preeventing e-mail domain spoofing that relies on SPF and DKIM. So, the requirement to exceed the SPF host lookup limit of 10 for a mid to large+ size organisation has never been greater. Expurgate makes the whole process easy, and means you don't have to juggle SPF on 10's or 100's of subdomains, deal with 255 byte/character limit per line in TXT records or worry about the 10 SPF host resolution lookup limit.
