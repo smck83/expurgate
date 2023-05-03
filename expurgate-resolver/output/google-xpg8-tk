@@ -9,44 +9,44 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:google.xpg8.tk @ 2023-03-06 13:18:30.243188
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:google.xpg8.tk @ 2023-03-26 21:28:06.608258
 # Source of truth:  google.xpg8.tk - Will not work in production unless you replace a single record. e.g. include:google.xpg8.tk with include:%{ir}.google.xpg8.tk._spf.yourdomain.com
 # ^ google.xpg8.tk
-# ^ v=spf1 mx mx:google1.xpg8.tk -all
-# ^^ mx(google.xpg8.tk)
-# ^^^^ mx(google.xpg8.tk)=>a:alt1.aspmx.l.google.com.
-# ^^^^ mx(google.xpg8.tk)=>aaaa:alt1.aspmx.l.google.com.
-# ^^^^^^ mx(google.xpg8.tk)=>a:alt2.aspmx.l.google.com.
-# ^^^^^^ mx(google.xpg8.tk)=>aaaa:alt2.aspmx.l.google.com.
-# ^^^^^^^^ mx(google.xpg8.tk)=>a:alt3.aspmx.l.google.com.
-# ^^^^^^^^ mx(google.xpg8.tk)=>aaaa:alt3.aspmx.l.google.com.
-# ^^^^^^^^^^ mx(google.xpg8.tk)=>a:alt4.aspmx.l.google.com.
-# ^^^^^^^^^^ mx(google.xpg8.tk)=>aaaa:alt4.aspmx.l.google.com.
-# ^^^^^^^^^^^^ mx(google.xpg8.tk)=>a:aspmx.l.google.com.
-# ^^^^^^^^^^^^ mx(google.xpg8.tk)=>aaaa:aspmx.l.google.com.
-# ^^^^^^^^^^^^^ mx:google1.xpg8.tk
-# ^^^^^^^^^^^^^^^ mx:google1.xpg8.tk=>a:alt3.aspmx.l.google.com.
-# ^^^^^^^^^^^^^^^ mx:google1.xpg8.tk=>aaaa:alt3.aspmx.l.google.com.
-# Depth:15
-# IP & Subnet: 0
+# ^ v=spf1 mx:google.xpg8.tk mx:google1.xpg8.tk -all
+# ^^ mx:google.xpg8.tk
+# ^^ mx:google.xpg8.tk=>a:alt1.aspmx.l.google.com.
+# ^^ mx:google.xpg8.tk=>aaaa:alt1.aspmx.l.google.com.
+# ^^ mx:google.xpg8.tk=>a:alt2.aspmx.l.google.com.
+# ^^ mx:google.xpg8.tk=>aaaa:alt2.aspmx.l.google.com.
+# ^^ mx:google.xpg8.tk=>a:alt3.aspmx.l.google.com.
+# ^^ mx:google.xpg8.tk=>aaaa:alt3.aspmx.l.google.com.
+# ^^ mx:google.xpg8.tk=>a:alt4.aspmx.l.google.com.
+# ^^ mx:google.xpg8.tk=>aaaa:alt4.aspmx.l.google.com.
+# ^^ mx:google.xpg8.tk=>a:aspmx.l.google.com.
+# ^^ mx:google.xpg8.tk=>aaaa:aspmx.l.google.com.
+# ^^^ mx:google1.xpg8.tk
+# ^^^ mx:google1.xpg8.tk=>a:alt3.aspmx.l.google.com.
+# ^^^ mx:google1.xpg8.tk=>aaaa:alt3.aspmx.l.google.com.
+# Depth:3
+# IP & Subnet: 12
 $DATASET ip4set:google.xpg8.tk google.xpg8.tk
 :3:v=spf1 ip4:$ -all
-173.194.202.26 # mx(google.xpg8.tk)=>a:alt1.aspmx.l.google.com.
-142.250.141.27 # mx(google.xpg8.tk)=>a:alt2.aspmx.l.google.com.
-142.250.115.26 # mx(google.xpg8.tk)=>a:alt3.aspmx.l.google.com.
-64.233.171.26 # mx(google.xpg8.tk)=>a:alt4.aspmx.l.google.com.
-142.251.10.26 # mx(google.xpg8.tk)=>a:aspmx.l.google.com.
-142.250.115.26 # mx:google1.xpg8.tk=>a:alt3.aspmx.l.google.com.
+173.194.202.26 # mx:google.xpg8.tk=>a:alt1.aspmx.l.google.com.
+142.250.141.27 # mx:google.xpg8.tk=>a:alt2.aspmx.l.google.com.
+142.250.115.27 # mx:google.xpg8.tk=>a:alt3.aspmx.l.google.com.
+64.233.171.27 # mx:google.xpg8.tk=>a:alt4.aspmx.l.google.com.
+74.125.200.26 # mx:google.xpg8.tk=>a:aspmx.l.google.com.
+142.250.115.27 # mx:google1.xpg8.tk=>a:alt3.aspmx.l.google.com.
 :99:v=spf1 -all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
 $DATASET ip6trie:google.xpg8.tk google.xpg8.tk
 :3:v=spf1 ip6:$ -all
-2607:f8b0:400e:c00::1b # mx(google.xpg8.tk)=>aaaa:alt1.aspmx.l.google.com.
-2607:f8b0:4023:c0b::1a # mx(google.xpg8.tk)=>aaaa:alt2.aspmx.l.google.com.
-2607:f8b0:4023:1004::1a # mx(google.xpg8.tk)=>aaaa:alt3.aspmx.l.google.com.
-2607:f8b0:4003:c15::1b # mx(google.xpg8.tk)=>aaaa:alt4.aspmx.l.google.com.
-2404:6800:4003:c0f::1a # mx(google.xpg8.tk)=>aaaa:aspmx.l.google.com.
+2607:f8b0:400e:c00::1a # mx:google.xpg8.tk=>aaaa:alt1.aspmx.l.google.com.
+2607:f8b0:4023:c0b::1b # mx:google.xpg8.tk=>aaaa:alt2.aspmx.l.google.com.
+2607:f8b0:4023:1004::1a # mx:google.xpg8.tk=>aaaa:alt3.aspmx.l.google.com.
+2607:f8b0:4003:c15::1b # mx:google.xpg8.tk=>aaaa:alt4.aspmx.l.google.com.
+2404:6800:4003:c02::1a # mx:google.xpg8.tk=>aaaa:aspmx.l.google.com.
 2607:f8b0:4023:1004::1a # mx:google1.xpg8.tk=>aaaa:alt3.aspmx.l.google.com.
 :99:v=spf1 -all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses

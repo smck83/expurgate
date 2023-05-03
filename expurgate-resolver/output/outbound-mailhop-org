@@ -9,20 +9,20 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:outbound.mailhop.org @ 2023-03-06 13:18:31.038880
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:outbound.mailhop.org @ 2023-03-26 21:28:09.528035
 # Source of truth:  outbound.mailhop.org - Will not work in production unless you replace a single record. e.g. include:outbound.mailhop.org with include:%{ir}.outbound.mailhop.org._spf.yourdomain.com
 # ^ outbound.mailhop.org
-# ^ v=spf1 ip4:52.26.49.97 ip4:52.10.99.51 ip4:52.28.59.28 ip4:52.28.6.212 ip4:3.127.8.113 ip4:54.186.27.61 ip4:52.28.168.19 ip4:52.58.19.153 ip4:52.58.96.151 ip4:52.58.97.209 ip4:52.88.73.233 ip4:54.187.71.48 ip4:54.149.36.10 ip4:54.68.34.165 ip4:54.186.22.84 ip4:54.191.214.3 ip4:3.125.66.160 ip4:54.213.22.21 ip4:52.29.21.168 ip4:100.20.105.3 ip4:44.233.67.66 ip4:52.25.88.167 ip4:54.184.38.33 ip4:54.185.97.28 include:_s0.outbound.mailhop.org -all
+# ^ v=spf1 ip4:52.26.49.97 ip4:52.10.99.51 ip4:52.28.59.28 ip4:52.28.6.212 ip4:3.127.8.113 ip4:54.186.27.61 ip4:52.28.168.19 ip4:52.58.19.153 ip4:52.58.96.151 ip4:52.58.97.209 ip4:52.88.73.233 ip4:54.187.71.48 ip4:54.149.36.10 ip4:54.68.34.165 ip4:54.186.22.84 ip4:54.191.214.3 ip4:3.125.66.160 ip4:54.213.22.21 ip4:52.29.21.168 ip4:100.20.105.3 ip4:44.233.67.66 ip4:54.185.97.28 include:_s0.outbound.mailhop.org -all
 # ^^ _s0.outbound.mailhop.org
-# ^^ v=spf1 ip4:54.190.72.79 ip4:18.156.67.42 ip4:54.69.130.42 ip4:3.124.88.253 ip4:52.29.156.81 ip4:52.28.246.64 ip4:54.68.138.64 ip4:3.121.156.226 ip4:54.191.214.36 ip4:52.41.115.105 ip4:44.233.38.249 ip4:44.233.99.129 ip4:54.149.240.58 ip4:18.156.94.234 ip4:54.186.10.118 ip4:3.125.148.246 ip4:54.187.63.214 ip4:54.149.35.133 ip4:52.10.130.167 ip4:54.148.38.162 ip4:54.187.206.49 ip4:44.233.143.45 include:_s1.outbound.mailhop.org -all
+# ^^ v=spf1 ip4:54.190.72.79 ip4:18.156.67.42 ip4:54.69.130.42 ip4:3.124.88.253 ip4:52.29.156.81 ip4:52.28.246.64 ip4:54.68.138.64 ip4:3.121.156.226 ip4:54.191.214.36 ip4:44.233.38.249 ip4:44.233.99.129 ip4:54.149.240.58 ip4:18.156.94.234 ip4:54.186.10.118 ip4:3.125.148.246 ip4:54.187.63.214 ip4:54.149.35.133 ip4:52.10.130.167 ip4:54.148.38.162 ip4:54.187.206.49 ip4:44.233.143.45 include:_s1.outbound.mailhop.org -all
 # ^^^ _s1.outbound.mailhop.org
-# ^^^ v=spf1 ip4:35.157.29.171 ip4:54.191.158.99 ip4:54.186.172.23 ip4:54.186.57.195 ip4:35.164.151.34 ip4:54.148.219.64 ip4:54.148.153.48 ip4:54.148.30.215 ip4:54.148.222.11 ip4:54.186.218.12 ip4:52.28.251.132 ip4:52.28.147.211 ip4:52.58.109.202 ip4:54.187.218.212 ip4:54.187.213.119 ip4:54.149.210.130 ip4:54.148.165.188 ip4:54.149.155.156 ip4:54.148.113.140 ip4:35.156.234.212 ip4:54.149.205.143 include:_s2.outbound.mailhop.org -all
+# ^^^ v=spf1 ip4:35.157.29.171 ip4:54.191.158.99 ip4:54.186.172.23 ip4:54.186.57.195 ip4:54.148.219.64 ip4:54.148.153.48 ip4:54.148.30.215 ip4:54.148.222.11 ip4:54.186.218.12 ip4:52.28.251.132 ip4:52.28.147.211 ip4:52.58.109.202 ip4:54.187.218.212 ip4:54.187.213.119 ip4:54.149.210.130 ip4:54.148.165.188 ip4:54.149.155.156 ip4:54.148.113.140 ip4:35.156.234.212 ip4:54.149.205.143 include:_s2.outbound.mailhop.org -all
 # ^^^^ _s2.outbound.mailhop.org
 # ^^^^ v=spf1 ip4:54.149.206.185 ip4:54.244.192.240 ip4:54.191.151.194 ip4:54.200.247.200 ip4:54.200.129.228 ip4:35.160.111.225 ip4:23.83.208.0/20 ip4:191.252.57.0/25 ip4:34.219.98.66/32 ip4:52.34.31.144/32 ip4:46.232.183.0/24 ip4:104.232.45.0/24 ip4:199.10.31.235/32 ip4:54.245.125.39/32 ip4:172.255.62.10/32 ip4:172.255.62.11/32 ip4:177.153.0.128/25 ip4:177.153.0.130/32 ip4:199.10.31.236/32 ip4:54.214.232.113/32 include:_s3.outbound.mailhop.org -all
 # ^^^^^ _s3.outbound.mailhop.org
 # ^^^^^ v=spf1 ip4:103.18.109.138/32 -all
 # Depth:5
-# IP & Subnet: 88
+# IP & Subnet: 84
 $DATASET ip4set:outbound.mailhop.org outbound.mailhop.org
 :3:v=spf1 ip4:$ -all
 52.26.49.97 # ip:outbound.mailhop.org
@@ -46,8 +46,6 @@ $DATASET ip4set:outbound.mailhop.org outbound.mailhop.org
 52.29.21.168 # ip:outbound.mailhop.org
 100.20.105.3 # ip:outbound.mailhop.org
 44.233.67.66 # ip:outbound.mailhop.org
-52.25.88.167 # ip:outbound.mailhop.org
-54.184.38.33 # ip:outbound.mailhop.org
 54.185.97.28 # ip:outbound.mailhop.org
 54.190.72.79 # ip:_s0.outbound.mailhop.org
 18.156.67.42 # ip:_s0.outbound.mailhop.org
@@ -58,7 +56,6 @@ $DATASET ip4set:outbound.mailhop.org outbound.mailhop.org
 54.68.138.64 # ip:_s0.outbound.mailhop.org
 3.121.156.226 # ip:_s0.outbound.mailhop.org
 54.191.214.36 # ip:_s0.outbound.mailhop.org
-52.41.115.105 # ip:_s0.outbound.mailhop.org
 44.233.38.249 # ip:_s0.outbound.mailhop.org
 44.233.99.129 # ip:_s0.outbound.mailhop.org
 54.149.240.58 # ip:_s0.outbound.mailhop.org
@@ -75,7 +72,6 @@ $DATASET ip4set:outbound.mailhop.org outbound.mailhop.org
 54.191.158.99 # ip:_s1.outbound.mailhop.org
 54.186.172.23 # ip:_s1.outbound.mailhop.org
 54.186.57.195 # ip:_s1.outbound.mailhop.org
-35.164.151.34 # ip:_s1.outbound.mailhop.org
 54.148.219.64 # ip:_s1.outbound.mailhop.org
 54.148.153.48 # ip:_s1.outbound.mailhop.org
 54.148.30.215 # ip:_s1.outbound.mailhop.org

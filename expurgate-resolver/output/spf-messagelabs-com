@@ -9,7 +9,7 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.messagelabs.com @ 2023-03-06 13:18:31.139995
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.messagelabs.com @ 2023-03-26 21:28:09.625733
 # Source of truth:  spf.messagelabs.com - Will not work in production unless you replace a single record. e.g. include:spf.messagelabs.com with include:%{ir}.spf.messagelabs.com._spf.yourdomain.com
 # ^ spf.messagelabs.com
 # ^ v=spf1 include:nets1.spf.messagelabs.com include:nets2.spf.messagelabs.com ~all

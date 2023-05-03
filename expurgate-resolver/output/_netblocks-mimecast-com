@@ -9,22 +9,22 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_netblocks.mimecast.com @ 2023-03-06 13:18:30.482457
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_netblocks.mimecast.com @ 2023-03-26 21:28:07.385282
 # Source of truth:  _netblocks.mimecast.com - Will not work in production unless you replace a single record. e.g. include:_netblocks.mimecast.com with include:%{ir}._netblocks.mimecast.com._spf.yourdomain.com
 # ^ _netblocks.mimecast.com
 # ^ v=spf1 include:eu._netblocks.mimecast.com include:us._netblocks.mimecast.com include:za._netblocks.mimecast.com include:de._netblocks.mimecast.com include:au._netblocks.mimecast.com ~all
 # ^^ eu._netblocks.mimecast.com
 # ^^ v=spf1 ip4:195.130.217.0/24 ip4:91.220.42.0/24 ip4:146.101.78.0/24 ip4:207.82.80.0/24 ip4:213.167.81.0/25 ip4:193.7.207.0/25 ip4:213.167.75.0/25 ip4:185.58.85.0/24 ip4:185.58.86.0/24 ip4:193.7.206.0/25 ip4:147.28.36.0/24 ~all
 # ^^^ us._netblocks.mimecast.com
-# ^^^ v=spf1 ip4:207.211.31.0/25 ip4:205.139.110.0/24 ip4:216.205.24.0/24 ip4:170.10.129.0/24 ip4:63.128.21.0/24 ip4:170.10.133.0/24 ip4:185.58.84.93/32 ip4:207.211.41.113/32 ip4:207.211.30.64/26 ip4:207.211.30.128/25 ip4:216.145.221.0/24 ip4:170.10.156.0/24 ip4:170.10.157.0/24 ~all
+# ^^^ v=spf1 ip4:207.211.31.0/25 ip4:205.139.110.0/24 ip4:216.205.24.0/24 ip4:170.10.129.0/24 ip4:63.128.21.0/24 ip4:170.10.133.0/24 ip4:185.58.84.93/32 ip4:207.211.41.113/32 ip4:207.211.30.64/26 ip4:207.211.30.128/25 ip4:216.145.221.0/24 ip4:170.10.156.0/24 ip4:170.10.157.0/24 ip4:170.10.128.0/24 ~all
 # ^^^^ za._netblocks.mimecast.com
 # ^^^^ v=spf1 ip4:41.74.192.0/22 ip4:41.74.200.0/23 ip4:41.74.196.0/22 ip4:41.74.204.0/23 ip4:41.74.206.0/24 ~all
 # ^^^^^ de._netblocks.mimecast.com
-# ^^^^^ v=spf1 ip4:51.163.158.0/24 ip4:194.104.109.0/24 ip4:62.140.7.0/24 ip4:194.104.111.0/24 ip4:51.163.159.21/32 ip4:62.140.10.21/32 ~all
+# ^^^^^ v=spf1 ip4:51.163.158.0/24 ip4:194.104.109.0/24 ip4:62.140.7.0/24 ip4:194.104.111.0/24 ip4:51.163.159.21/32 ip4:62.140.10.21/32 ip4:194.104.110.0/24 ~all
 # ^^^^^^ au._netblocks.mimecast.com
 # ^^^^^^ v=spf1 ip4:103.13.69.0/24 ip4:124.47.150.0/24 ip4:124.47.189.0/24 ip4:103.96.23.0/24 ip4:103.96.21.0/24 ip4:180.189.28.0/24 ip4:216.145.217.0/24 ip4:103.96.22.0/24 ~all
 # Depth:6
-# IP & Subnet: 43
+# IP & Subnet: 45
 $DATASET ip4set:_netblocks.mimecast.com _netblocks.mimecast.com
 :3:v=spf1 ip4:$ ~all
 195.130.217.0/24 # subnet:eu._netblocks.mimecast.com
@@ -51,6 +51,7 @@ $DATASET ip4set:_netblocks.mimecast.com _netblocks.mimecast.com
 216.145.221.0/24 # subnet:us._netblocks.mimecast.com
 170.10.156.0/24 # subnet:us._netblocks.mimecast.com
 170.10.157.0/24 # subnet:us._netblocks.mimecast.com
+170.10.128.0/24 # subnet:us._netblocks.mimecast.com
 41.74.192.0/22 # subnet:za._netblocks.mimecast.com
 41.74.200.0/23 # subnet:za._netblocks.mimecast.com
 41.74.196.0/22 # subnet:za._netblocks.mimecast.com
@@ -62,6 +63,7 @@ $DATASET ip4set:_netblocks.mimecast.com _netblocks.mimecast.com
 194.104.111.0/24 # subnet:de._netblocks.mimecast.com
 51.163.159.21/32 # ip:de._netblocks.mimecast.com
 62.140.10.21/32 # ip:de._netblocks.mimecast.com
+194.104.110.0/24 # subnet:de._netblocks.mimecast.com
 103.13.69.0/24 # subnet:au._netblocks.mimecast.com
 124.47.150.0/24 # subnet:au._netblocks.mimecast.com
 124.47.189.0/24 # subnet:au._netblocks.mimecast.com

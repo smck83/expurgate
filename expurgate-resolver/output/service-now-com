@@ -9,7 +9,7 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:service-now.com @ 2023-03-06 13:18:31.363069
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:service-now.com @ 2023-03-26 21:28:10.035642
 # Source of truth:  service-now.com - Will not work in production unless you replace a single record. e.g. include:service-now.com with include:%{ir}.service-now.com._spf.yourdomain.com
 # ^ service-now.com
 # ^ v=spf1 a:b.spf.service-now.com a:c.spf.service-now.com a:d.spf.service-now.com ~all
@@ -20,7 +20,7 @@
 # DNS Resolution Error - AAAA:d.spf.service-now.com
 # ^^^^ a:d.spf.service-now.com
 # Depth:4
-# IP & Subnet: 0
+# IP & Subnet: 57
 $DATASET ip4set:service-now.com service-now.com
 :3:v=spf1 ip4:$ ~all
 149.96.5.2 # a:b.spf.service-now.com
