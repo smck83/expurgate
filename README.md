@@ -2,8 +2,6 @@
 
 A dockerized multi-domain SPF hosting solution leveraging rbldnsd as the DNS server to simplify, hide and exceed SPF lookup limits. The resolver script runs periodically to generate SPF Macro friendly configuration files for rbldnsd. 
 
-My testing has proven performance with over 570 domains in `MY_DOMAINS`, running for 38 days; average resolution and file generation times are < 3 minutes at < 1 minute when running resolver with pypy instead of python.
-
  # What is Expurgate?
     expurgate
     /ˈɛkspəːɡeɪt/
@@ -22,10 +20,10 @@ https://en.wikipedia.org/wiki/Sender_Policy_Framework#Principles_of_operation
 # The problem
 SPF records are publicly visible, prone to misconfiguration and limited to include 10 host DNS resolutions which could be A records, MX records or other TXT records called INCLUDE's. While you may only `INCLUDE` one other domain e.g. _spf.google.com this may very well link to 2 or 3 other hostnames which all count toward the RFC limit of 10. Further risk is that 3rd party providers in your SPF record may add a new host without communicating the specifics and while you have been keeping on top of your record, this could unknowingly push you over the limit.
 
-Like most DNS records; TXT records are limited to 255 chars per line meaning if you attempt to juggle and manage SPF yourself, you not only have to count hostname lookups but the length of each TXT record.
+Like most DNS records; TXT records are limited to 255 chars per line meaning if you attempt to juggle and manage SPF yourself, you not only have to count hostname lookups but the length of each line in your TXT record.
 
 
-With DMARC being listed in Gartner's top project list in 2021, more and more organasations are protecting their brand by preeventing e-mail domain spoofing that relies on SPF and DKIM. So, the requirement to exceed the SPF host lookup limit of 10 for a mid to large+ size organisation has never been greater. Expurgate makes the whole process easy, and means you don't have to juggle SPF on 10's or 100's of subdomains, deal with 253 line limits in TXT records or worry about the 10 SPF host resolution lookup limit.
+With DMARC being listed in Gartner's top project list in 2021, more and more organasations are protecting their brand by preeventing e-mail domain spoofing that relies on SPF and DKIM. So, the requirement to exceed the SPF host lookup limit of 10 for a mid to large+ size organisation has never been greater. Expurgate makes the whole process easy, and means you don't have to juggle SPF on 10's or 100's of subdomains, deal with 255 byte/character limit per line in TXT records or worry about the 10 SPF host resolution lookup limit.
 
 # The solution
 
@@ -40,7 +38,7 @@ Copy your old SPF record to unused subdomain defined in `SOURCE_PREFIX=`. Your o
 
     "v=spf1 include:sendgrid.net include:_spf.google.com include:mailgun.org include:spf.protection.outlook.com include:_netblocks.mimecast.com -all"
 
-By using an SPF Macro in place of your old SPF record, we remove hostnames and IP addresses from opportunistic threat actors prying eyes that could use this information against you (e.g. Phishing e-mails using sendgrid branding based on include:sendgrid.net being present:
+By using an SPF Macro in place of your old SPF record, the hostnames and IP addresses are hidden from opportunistic threat actors prying eyes that could use this information against you (e.g. Targetted phishing e-mails using sendgrid branding based on include:sendgrid.net being present:
 
 https://emailstuff.org/spf/check/macro.xpg8.tk
 
@@ -48,9 +46,16 @@ https://emailstuff.org/spf/check/macro.xpg8.tk
 
 The old SPF record not only gives away the names of all the service providers you use that need to legitimately spoof your domain, but this sample record [exceeds the 10 lookup limit](https://emailstuff.org/spf/check/10plus.xpg8.tk).
 
+    DISCLAIMER: Security through obscurity (or security by obscurity) is the reliance in security engineering on
+    design or implementation secrecy as the main method of     providing security to a system or component. While
+    hiding SPF records may be beneficial, anyone on the internet can still check an IP against the record and 
+    whether it receives a PASS or FAIL. Technically brute force methods could be used against an SPF macro record; 
+    or targetted checks, e.g. lookup sengrid, microsoft, mailgun IP addresses to determine if a domain uses one of
+    these vendors (or any others) - BGP prefix data could also be used to determine which IP within an enterprises
+    subnets can e-mail on their behalf.`
 
 ### Exceed SPF Limits
-Expurgate resolves hostnames to IP address and subnets every `DELAY=` seconds and generates an RBLSDND configuration file. With only 1 INCLUDE: in your new SPF record you never need to worry about exceeding the 10 lookup limit or the 255 character limit per line.
+Expurgate resolves hostnames to IP address and subnets every `DELAY=` seconds and generates an RBLSDND configuration file. With only 1 INCLUDE: in your new SPF record you never need to worry about exceeding the 10 lookup limit or the 255 byte/character limit per line.
 
 # How does it work?
 
@@ -162,8 +167,13 @@ ${d} - the sending servers domain name (in ENVELOPE FROM: field) is `ehlo.email`
 # Cloud hosted SPF solutions
 There are a number of vendors that offer SPF management capability. However I could not find any self-hosted options. Common terms for these services are SPF flattening and SPF compression.
 
+# Performance testing
+My testing has proven performance with over 570 domains in `MY_DOMAINS`, running for 38 days; average total resolution and file generation times are ~2 minutes for python vs < 1 minute when running resolver with pypy. For this reason; all docker containers are using pypy.
+
+![image](https://github.com/smck83/expurgate/blob/main/python-vs-pypy.png)
+
 # Recent enhancements
-- pypy : As of 19/March/23 using pypy to run resolver script. This increases performance of DNS record generation by 5-10 x's
+- pypy : As of 19/03/2023 docker is using pypy to run the Expurgate Resolver script. This increases performance of DNS record generation by 2-5x's
 - AAAA Support: References to hostnames via A\A: or MX\MX: now perform a AAAA lookup to handle ip6 addresses.
 - Expurgate Solo : an updated version where both rbldnsd and resolver are in a single docker container using supervisord https://github.com/smck83/expurgate-solo/
 - Dedupe : If record already exists in 'list', do not add it again
