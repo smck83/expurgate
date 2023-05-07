@@ -183,4 +183,6 @@ My testing has proven performance with over 570 domains in `MY_DOMAINS`, running
 - Cache added : Given many INCLUDE: tend to be the same per source, e.g. mailgun.org, sendgrid.net, \_spf.google.com etc. A python disctionary has been added called dnsCache. If the record has already been looked up by another domain the respoonse the second or third+ time will come from memory, saving a DNS request.
 
 # Buy me a coffee
-If this was useful, feel free to [Buy me a coffee](https://www.buymeacoffee.com/smc83)
+If this was useful, feel free to Buy me a coffee
+
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="smc83" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
