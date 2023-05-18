@@ -6,6 +6,7 @@ services:
       DELAY: '300'
       MY_DOMAINS: xpg8.tk
       SOURCE_PREFIX: _sd6sdyfn
+      RUNNING_CONFIG: 1
     stdin_open: true
     restart: always
     volumes:
