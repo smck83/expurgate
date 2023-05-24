@@ -9,25 +9,18 @@
 #             |_|              |___/               
 #
 # https://xpg8.tk | https://github.com/smck83/expurgate 
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.protection.outlook.com @ 2023-03-26 21:28:09.500084
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.protection.outlook.com @ 2023-05-24 20:54:47.405207
 # Source of truth:  spf.protection.outlook.com - Will not work in production unless you replace a single record. e.g. include:spf.protection.outlook.com with include:%{ir}.spf.protection.outlook.com._spf.yourdomain.com
 # ^ spf.protection.outlook.com
-# ^ v=spf1 ip4:40.92.0.0/15 ip4:40.107.0.0/16 ip4:52.100.0.0/14 ip4:104.47.0.0/17 ip6:2a01:111:f400::/48 ip6:2a01:111:f403::/49 ip6:2a01:111:f403:8000::/50 ip6:2a01:111:f403:c000::/51 ip6:2a01:111:f403:f000::/52 include:spfd.protection.outlook.com -all
-# ^^ spfd.protection.outlook.com
-# ^^ v=spf1 ip4:51.4.72.0/24 ip4:51.5.72.0/24 ip4:51.5.80.0/27 ip4:20.47.149.138/32 ip4:51.4.80.0/27 ip6:2a01:4180:4051:0800::/64 ip6:2a01:4180:4050:0800::/64 ip6:2a01:4180:4051:0400::/64 ip6:2a01:4180:4050:0400::/64 -all
-# Depth:2
-# IP & Subnet: 18
+# ^ v=spf1 ip4:40.92.0.0/15 ip4:40.107.0.0/16 ip4:52.100.0.0/14 ip4:104.47.0.0/17 ip6:2a01:111:f400::/48 ip6:2a01:111:f403::/49 ip6:2a01:111:f403:8000::/50 ip6:2a01:111:f403:c000::/51 ip6:2a01:111:f403:f000::/52 -all
+# Depth:1
+# IP & Subnet: 9
 $DATASET ip4set:spf.protection.outlook.com spf.protection.outlook.com
 :3:v=spf1 ip4:$ -all
 40.92.0.0/15 # subnet:spf.protection.outlook.com
 40.107.0.0/16 # subnet:spf.protection.outlook.com
 52.100.0.0/14 # subnet:spf.protection.outlook.com
 104.47.0.0/17 # subnet:spf.protection.outlook.com
-51.4.72.0/24 # subnet:spfd.protection.outlook.com
-51.5.72.0/24 # subnet:spfd.protection.outlook.com
-51.5.80.0/27 # subnet:spfd.protection.outlook.com
-20.47.149.138/32 # ip:spfd.protection.outlook.com
-51.4.80.0/27 # subnet:spfd.protection.outlook.com
 :99:v=spf1 -all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
@@ -38,9 +31,5 @@ $DATASET ip6trie:spf.protection.outlook.com spf.protection.outlook.com
 2a01:111:f403:8000::/50 # spf.protection.outlook.com
 2a01:111:f403:c000::/51 # spf.protection.outlook.com
 2a01:111:f403:f000::/52 # spf.protection.outlook.com
-2a01:4180:4051:0800::/64 # spfd.protection.outlook.com
-2a01:4180:4050:0800::/64 # spfd.protection.outlook.com
-2a01:4180:4051:0400::/64 # spfd.protection.outlook.com
-2a01:4180:4050:0400::/64 # spfd.protection.outlook.com
 :99:v=spf1 -all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
