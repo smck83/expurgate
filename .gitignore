@@ -3,3 +3,4 @@ expurgate-single/Dockerfile
 expurgate-single/resolver.py
 expurgate-resolver/test.py
 test/test.py
+expurgate-resolver/build-and-run.bat
