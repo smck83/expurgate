@@ -15,8 +15,6 @@ services:
     - 1.1.1.1
     - 8.8.8.8
     tty: true
-    labels:
-      io.rancher.container.pull_image: always
   spf-rbldnsd:
     image: smck83/expurgate-rbldnsd
     environment:
@@ -30,5 +28,3 @@ services:
     tty: true
     ports:
     - 53:53/udp
-    labels:
-      io.rancher.container.pull_image: always
