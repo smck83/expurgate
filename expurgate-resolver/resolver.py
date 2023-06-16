@@ -393,7 +393,7 @@ while totaldomaincount > 0:
             ipmonitorCompare[domain] = ipmonitor
 
         # Join all the pieces together, ready for file output
-        myrbldnsdconfig = header + ip4header + ip4 + ip4block + ip6header + ip6 + ip6block
+        myrbldnsdconfig = header + ip4header + list(set(ip4)) + ip4block + ip6header + list(set(ip6)) + ip6block # convert ip4 and ip6 to set to remove duplicates.
         if runningconfigon == 1:
             runningconfig = runningconfig + myrbldnsdconfig
 
