@@ -11,6 +11,7 @@ xpg8logo.append("#             |_|              |___/               \n#")
 xpg8logo.append("# https://xpg8.tk | https://github.com/smck83/expurgate ")
 from sys import stdout
 from time import sleep
+from time import strftime
 import dns.resolver
 import re
 from datetime import datetime
@@ -27,7 +28,7 @@ paddingchar = "^"
 spfActionValue ="~all" # default spfAction if lookup fails or not present
 ipmonitorCompare = {}
 loopcount = 0
-
+lastChangeTime = "No changes"
 if 'RESTDB_URL' in os.environ:
     restdb_url = os.environ['RESTDB_URL']
 else:
@@ -124,11 +125,16 @@ def dnsLookup(domain,type,countDepth="on"):
     if lookupKey not in dnsCache:
         try:
             lookup = [dns_record.to_text() for dns_record in dns.resolver.resolve(domain, type).rrset]    
-        except:
+        except Exception as e:
             error = "DNS Resolution Error - " + type + ":" + domain
             print(error)
+            print(e)
             header.append("# " + error)
+            if depth == 0:
+                mydomains_source_failure.append(domain)
         else:
+            if depth == 0:
+                mydomains_source_success.append(domain)
             dnsCache[lookupKey] = lookup
             print("++[CACHE][" + domain + "] Added to DNS Cache - " + type)
             if countDepth == "on":
@@ -198,9 +204,7 @@ def getSPF(domain):
                         if result:
                             header.append("# " + (paddingchar * depth) + " " + spfPart)
                             result = [(x + ' # a:' + spfValue[1]) for x in result]
-                            result.sort() # sort
-                            #result = ('\n').join(result)
-                            #ip4.append(result)
+                            result.sort() 
                             for record in result:
                                 ip4.append(record)
                         if result6:
@@ -303,7 +307,10 @@ def getSPF(domain):
                         ipmonitor.append(spfPart)
                     #else: drop everything else
 
+
 while totaldomaincount > 0:
+    mydomains_source_success = []
+    mydomains_source_failure = []
     dnsCache = {}
     loopcount += 1
     cacheHit = 0
@@ -397,20 +404,33 @@ while totaldomaincount > 0:
         if runningconfigon == 1:
             runningconfig = runningconfig + myrbldnsdconfig
 
-        if changeDetected > 0 and runningconfigon == 0:
+        if changeDetected > 0 and runningconfigon == 0 and domaincount == len(mydomains_source_success):
              # Write the RBLDNSD config file to disk
             src_path = r'output/'+ domain.replace(".","-")+".staging"
             dst_path = r'output/'+ domain.replace(".","-")
             write2disk(src_path,dst_path,myrbldnsdconfig)
+        elif domaincount != len(mydomains_source_success) and runningconfigon == 0:
+            print(f"ERROR: {len(mydomains_source_success)} out of {domaincount} of your domains in MY_DOMAINS resolved successfully.")
+            print("ERROR: Ensure each domain in MY_DOMAINS has a valid SPF record setup at SOURCE_PREFIX.<domainname>")
+            print("ERROR: No config file written, ensure internet and dns connectivity is working")
+            print("ERROR: SPF TXT records requiring attention:",len(mydomains_source_failure),"-", str(mydomains_source_failure)) 
+        elif runningconfigon == 0:
+            print("No issues & changes detected  - No file written")            
         print(stdoutprefix + 'Required ' + str(depth) + ' lookups.')
     if runningconfigon == 1:
-        if changeDetected > 0:
+        if changeDetected > 0 and len(mydomains) == len(mydomains_source_success):
             src_path = r'output/runningconfig.staging'
             dst_path = r'output/running-config'               
             write2disk(src_path,dst_path,runningconfig)
+            lastChangeTime = strftime("%Y-%m-%dT%H:%M:%S", time.localtime())
+        elif len(mydomains_source_failure) > 0:
+            print(f"ERROR: {len(mydomains_source_success)} out of {len(mydomains)} of your domains in MY_DOMAINS resolved successfully.")
+            print("ERROR: Ensure each domain in MY_DOMAINS has a valid SPF record setup at SOURCE_PREFIX.<domainname>")
+            print("ERROR: No config file written, ensure internet and dns connectivity is working")
+            print("ERROR: SPF TXT records requiring attention:",len(mydomains_source_failure),"-", str(mydomains_source_failure)) 
         else:
-            print("No changes detected - No file written")
-        print("MODE: Running Config")
+            print("No issues & no changes detected - No file written (" + str(changeDetected) + f") Last change: {lastChangeTime}")
+            print("MODE: Running Config")
     else:
         print("MODE: Per Domain Config")
     end_time = time.time()
@@ -422,6 +442,7 @@ while totaldomaincount > 0:
         uptimeKumaPush(uptimekumapushurl + str(math.ceil(time_lapsed)))
     dnsReqTotal = len(dnsCache) + cacheHit
     if dnsReqTotal > 0:
-        print("Total Requests:" + str(dnsReqTotal) + " | DNS Cache Size:" + str(len(dnsCache)) + " | DNS Cache Hits:" + str(cacheHit) + " | DNS Cache vs Total:" + str(math.ceil((cacheHit/dnsReqTotal)*100)) + "%")
+        #print("Total Requests:" + str(dnsReqTotal) + " | DNS Cache Size:" + str(len(dnsCache)) + " | DNS Cache Hits:" + str(cacheHit) + " | DNS Cache vs Total:" + str(math.ceil((cacheHit/dnsReqTotal)*100)) + "%")
+        print(strftime("%Y-%m-%dT%H:%M:%S", time.localtime()) + " | Total Requests:" + str(dnsReqTotal) + " | DNS Cache Size:" + str(len(dnsCache)) + " | DNS Cache Hits:" + str(cacheHit) + " | DNS Cache vs Total:" + str(math.ceil((cacheHit/dnsReqTotal)*100)) + "%")
     print("Waiting " + str(delayBetweenRun) + " seconds before running again... ")  
     sleep(int(delayBetweenRun)) # wait DELAY in secondsbefore running again.
