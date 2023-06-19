@@ -430,7 +430,7 @@ while totaldomaincount > 0:
             print("ERROR: SPF TXT records requiring attention:",len(mydomains_source_failure),"-", str(mydomains_source_failure)) 
         elif runningconfigon == 0:
             print("Changes:",changeDetected,"mydomains:",len(mydomains),"mydomains_source_success:",len(mydomains_source_success),'mydomains_source_failure',mydomains_source_failure)
-            print("No issues & no changes detected - No file written. Last change: {lastChangeTime}")
+            print("No issues & no changes detected - No file written. Last change: {lastChangeTime})")
         print(stdoutprefix + 'Required ' + str(depth) + ' lookups.')
     if runningconfigon == 1:
         if changeDetected > 0 and len(mydomains) == len(mydomains_source_success):
