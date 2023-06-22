@@ -13,7 +13,7 @@
 # Source domains: google.xpg8.tk, _spf.google.com, _netblocks.mimecast.com, spf.protection.outlook.com, outbound.mailhop.org, spf.messagelabs.com, mailgun.org, sendgrid.net, service-now.com
 #
 #
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:google.xpg8.tk @ 2023-06-02 16:19:06.177279
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:google.xpg8.tk @ 2023-06-22 21:00:34.205088
 # Source of truth:  google.xpg8.tk - Will not work in production unless you replace a single record. e.g. include:google.xpg8.tk with include:%{ir}.google.xpg8.tk._spf.yourdomain.com
 # ^ google.xpg8.tk
 # ^ v=spf1 mx:google.xpg8.tk mx:google1.xpg8.tk -all
@@ -35,26 +35,26 @@
 # IP & Subnet: 12
 $DATASET ip4set:google.xpg8.tk google.xpg8.tk
 :3:v=spf1 ip4:$ -all
-173.194.202.26 # mx:google.xpg8.tk=>a:alt1.aspmx.l.google.com.
-142.250.141.27 # mx:google.xpg8.tk=>a:alt2.aspmx.l.google.com.
-142.250.115.26 # mx:google.xpg8.tk=>a:alt3.aspmx.l.google.com.
 64.233.171.27 # mx:google.xpg8.tk=>a:alt4.aspmx.l.google.com.
-74.125.200.26 # mx:google.xpg8.tk=>a:aspmx.l.google.com.
-142.250.115.26 # mx:google1.xpg8.tk=>a:alt3.aspmx.l.google.com.
+142.251.175.26 # mx:google.xpg8.tk=>a:aspmx.l.google.com.
+173.194.202.26 # mx:google.xpg8.tk=>a:alt1.aspmx.l.google.com.
+142.250.115.27 # mx:google.xpg8.tk=>a:alt3.aspmx.l.google.com.
+142.250.115.27 # mx:google1.xpg8.tk=>a:alt3.aspmx.l.google.com.
+142.250.141.26 # mx:google.xpg8.tk=>a:alt2.aspmx.l.google.com.
 :99:v=spf1 -all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
 $DATASET ip6trie:google.xpg8.tk google.xpg8.tk
 :3:v=spf1 ip6:$ -all
-2607:f8b0:400e:c00::1a # mx:google.xpg8.tk=>aaaa:alt1.aspmx.l.google.com.
-2607:f8b0:4023:c0b::1b # mx:google.xpg8.tk=>aaaa:alt2.aspmx.l.google.com.
+2607:f8b0:400e:c00::1b # mx:google.xpg8.tk=>aaaa:alt1.aspmx.l.google.com.
+2404:6800:4003:c11::1b # mx:google.xpg8.tk=>aaaa:aspmx.l.google.com.
 2607:f8b0:4023:1004::1b # mx:google.xpg8.tk=>aaaa:alt3.aspmx.l.google.com.
 2607:f8b0:4003:c15::1b # mx:google.xpg8.tk=>aaaa:alt4.aspmx.l.google.com.
-2404:6800:4003:c04::1b # mx:google.xpg8.tk=>aaaa:aspmx.l.google.com.
+2607:f8b0:4023:c0b::1a # mx:google.xpg8.tk=>aaaa:alt2.aspmx.l.google.com.
 2607:f8b0:4023:1004::1b # mx:google1.xpg8.tk=>aaaa:alt3.aspmx.l.google.com.
 :99:v=spf1 -all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_spf.google.com @ 2023-06-02 16:19:06.774008
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_spf.google.com @ 2023-06-22 21:00:34.459280
 # Source of truth:  _spf.google.com - Will not work in production unless you replace a single record. e.g. include:_spf.google.com with include:%{ir}._spf.google.com._spf.yourdomain.com
 # ^ _spf.google.com
 # ^ v=spf1 include:_netblocks.google.com include:_netblocks2.google.com include:_netblocks3.google.com ~all
@@ -68,41 +68,41 @@ $DATASET ip6trie:google.xpg8.tk google.xpg8.tk
 # IP & Subnet: 27
 $DATASET ip4set:_spf.google.com _spf.google.com
 :3:v=spf1 ip4:$ ~all
-35.190.247.0/24 # subnet:_netblocks.google.com
 64.233.160.0/19 # subnet:_netblocks.google.com
-66.102.0.0/20 # subnet:_netblocks.google.com
-66.249.80.0/20 # subnet:_netblocks.google.com
-72.14.192.0/18 # subnet:_netblocks.google.com
-74.125.0.0/16 # subnet:_netblocks.google.com
-108.177.8.0/21 # subnet:_netblocks.google.com
-173.194.0.0/16 # subnet:_netblocks.google.com
-209.85.128.0/17 # subnet:_netblocks.google.com
-216.58.192.0/19 # subnet:_netblocks.google.com
-216.239.32.0/19 # subnet:_netblocks.google.com
-172.217.0.0/19 # subnet:_netblocks3.google.com
 172.217.32.0/20 # subnet:_netblocks3.google.com
+173.194.0.0/16 # subnet:_netblocks.google.com
 172.217.128.0/19 # subnet:_netblocks3.google.com
-172.217.160.0/20 # subnet:_netblocks3.google.com
-172.217.192.0/19 # subnet:_netblocks3.google.com
-172.253.56.0/21 # subnet:_netblocks3.google.com
-172.253.112.0/20 # subnet:_netblocks3.google.com
 108.177.96.0/19 # subnet:_netblocks3.google.com
-35.191.0.0/16 # subnet:_netblocks3.google.com
+172.217.160.0/20 # subnet:_netblocks3.google.com
 130.211.0.0/22 # subnet:_netblocks3.google.com
+74.125.0.0/16 # subnet:_netblocks.google.com
+216.58.192.0/19 # subnet:_netblocks.google.com
+209.85.128.0/17 # subnet:_netblocks.google.com
+35.191.0.0/16 # subnet:_netblocks3.google.com
+216.239.32.0/19 # subnet:_netblocks.google.com
+172.217.192.0/19 # subnet:_netblocks3.google.com
+35.190.247.0/24 # subnet:_netblocks.google.com
+108.177.8.0/21 # subnet:_netblocks.google.com
+66.249.80.0/20 # subnet:_netblocks.google.com
+172.253.112.0/20 # subnet:_netblocks3.google.com
+172.217.0.0/19 # subnet:_netblocks3.google.com
+172.253.56.0/21 # subnet:_netblocks3.google.com
+72.14.192.0/18 # subnet:_netblocks.google.com
+66.102.0.0/20 # subnet:_netblocks.google.com
 :99:v=spf1 ~all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
 $DATASET ip6trie:_spf.google.com _spf.google.com
 :3:v=spf1 ip6:$ ~all
-2001:4860:4000::/36 # _netblocks2.google.com
 2404:6800:4000::/36 # _netblocks2.google.com
-2607:f8b0:4000::/36 # _netblocks2.google.com
-2800:3f0:4000::/36 # _netblocks2.google.com
-2a00:1450:4000::/36 # _netblocks2.google.com
 2c0f:fb50:4000::/36 # _netblocks2.google.com
+2800:3f0:4000::/36 # _netblocks2.google.com
+2001:4860:4000::/36 # _netblocks2.google.com
+2a00:1450:4000::/36 # _netblocks2.google.com
+2607:f8b0:4000::/36 # _netblocks2.google.com
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_netblocks.mimecast.com @ 2023-06-02 16:19:07.038896
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:_netblocks.mimecast.com @ 2023-06-22 21:00:34.529028
 # Source of truth:  _netblocks.mimecast.com - Will not work in production unless you replace a single record. e.g. include:_netblocks.mimecast.com with include:%{ir}._netblocks.mimecast.com._spf.yourdomain.com
 # ^ _netblocks.mimecast.com
 # ^ v=spf1 include:eu._netblocks.mimecast.com include:us._netblocks.mimecast.com include:za._netblocks.mimecast.com include:de._netblocks.mimecast.com include:au._netblocks.mimecast.com ~all
@@ -120,49 +120,49 @@ $DATASET ip6trie:_spf.google.com _spf.google.com
 # IP & Subnet: 43
 $DATASET ip4set:_netblocks.mimecast.com _netblocks.mimecast.com
 :3:v=spf1 ip4:$ ~all
-195.130.217.0/24 # subnet:eu._netblocks.mimecast.com
-91.220.42.0/24 # subnet:eu._netblocks.mimecast.com
-146.101.78.0/24 # subnet:eu._netblocks.mimecast.com
-207.82.80.0/24 # subnet:eu._netblocks.mimecast.com
-213.167.81.0/25 # subnet:eu._netblocks.mimecast.com
-193.7.207.0/25 # subnet:eu._netblocks.mimecast.com
-213.167.75.0/25 # subnet:eu._netblocks.mimecast.com
-185.58.85.0/24 # subnet:eu._netblocks.mimecast.com
-185.58.86.0/24 # subnet:eu._netblocks.mimecast.com
-193.7.206.0/25 # subnet:eu._netblocks.mimecast.com
-147.28.36.0/24 # subnet:eu._netblocks.mimecast.com
-207.211.31.0/25 # subnet:us._netblocks.mimecast.com
-205.139.110.0/24 # subnet:us._netblocks.mimecast.com
+216.145.217.0/24 # subnet:au._netblocks.mimecast.com
 216.205.24.0/24 # subnet:us._netblocks.mimecast.com
-170.10.129.0/24 # subnet:us._netblocks.mimecast.com
-63.128.21.0/24 # subnet:us._netblocks.mimecast.com
 170.10.133.0/24 # subnet:us._netblocks.mimecast.com
-185.58.84.93/32 # ip:us._netblocks.mimecast.com
-207.211.41.113/32 # ip:us._netblocks.mimecast.com
-207.211.30.64/26 # subnet:us._netblocks.mimecast.com
-207.211.30.128/25 # subnet:us._netblocks.mimecast.com
-216.145.221.0/24 # subnet:us._netblocks.mimecast.com
-170.10.128.0/24 # subnet:us._netblocks.mimecast.com
-41.74.192.0/22 # subnet:za._netblocks.mimecast.com
-41.74.200.0/23 # subnet:za._netblocks.mimecast.com
-41.74.196.0/22 # subnet:za._netblocks.mimecast.com
 41.74.204.0/23 # subnet:za._netblocks.mimecast.com
-41.74.206.0/24 # subnet:za._netblocks.mimecast.com
-51.163.158.0/24 # subnet:de._netblocks.mimecast.com
+207.211.31.0/25 # subnet:us._netblocks.mimecast.com
+207.82.80.0/24 # subnet:eu._netblocks.mimecast.com
+195.130.217.0/24 # subnet:eu._netblocks.mimecast.com
+205.139.110.0/24 # subnet:us._netblocks.mimecast.com
+216.145.221.0/24 # subnet:us._netblocks.mimecast.com
+185.58.86.0/24 # subnet:eu._netblocks.mimecast.com
+91.220.42.0/24 # subnet:eu._netblocks.mimecast.com
 194.104.109.0/24 # subnet:de._netblocks.mimecast.com
 62.140.7.0/24 # subnet:de._netblocks.mimecast.com
-194.104.111.0/24 # subnet:de._netblocks.mimecast.com
-51.163.159.21/32 # ip:de._netblocks.mimecast.com
-62.140.10.21/32 # ip:de._netblocks.mimecast.com
+185.58.84.93/32 # ip:us._netblocks.mimecast.com
 194.104.110.0/24 # subnet:de._netblocks.mimecast.com
-103.13.69.0/24 # subnet:au._netblocks.mimecast.com
-124.47.150.0/24 # subnet:au._netblocks.mimecast.com
+207.211.30.64/26 # subnet:us._netblocks.mimecast.com
+41.74.192.0/22 # subnet:za._netblocks.mimecast.com
+193.7.206.0/25 # subnet:eu._netblocks.mimecast.com
+51.163.159.21/32 # ip:de._netblocks.mimecast.com
 124.47.189.0/24 # subnet:au._netblocks.mimecast.com
-103.96.23.0/24 # subnet:au._netblocks.mimecast.com
+62.140.10.21/32 # ip:de._netblocks.mimecast.com
+170.10.129.0/24 # subnet:us._netblocks.mimecast.com
+170.10.128.0/24 # subnet:us._netblocks.mimecast.com
 103.96.21.0/24 # subnet:au._netblocks.mimecast.com
 180.189.28.0/24 # subnet:au._netblocks.mimecast.com
-216.145.217.0/24 # subnet:au._netblocks.mimecast.com
+185.58.85.0/24 # subnet:eu._netblocks.mimecast.com
+124.47.150.0/24 # subnet:au._netblocks.mimecast.com
+147.28.36.0/24 # subnet:eu._netblocks.mimecast.com
+103.96.23.0/24 # subnet:au._netblocks.mimecast.com
+213.167.81.0/25 # subnet:eu._netblocks.mimecast.com
+41.74.196.0/22 # subnet:za._netblocks.mimecast.com
+207.211.30.128/25 # subnet:us._netblocks.mimecast.com
+146.101.78.0/24 # subnet:eu._netblocks.mimecast.com
+41.74.206.0/24 # subnet:za._netblocks.mimecast.com
+51.163.158.0/24 # subnet:de._netblocks.mimecast.com
+63.128.21.0/24 # subnet:us._netblocks.mimecast.com
+193.7.207.0/25 # subnet:eu._netblocks.mimecast.com
+41.74.200.0/23 # subnet:za._netblocks.mimecast.com
+103.13.69.0/24 # subnet:au._netblocks.mimecast.com
 103.96.22.0/24 # subnet:au._netblocks.mimecast.com
+213.167.75.0/25 # subnet:eu._netblocks.mimecast.com
+194.104.111.0/24 # subnet:de._netblocks.mimecast.com
+207.211.41.113/32 # ip:us._netblocks.mimecast.com
 :99:v=spf1 ~all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
@@ -170,7 +170,7 @@ $DATASET ip6trie:_netblocks.mimecast.com _netblocks.mimecast.com
 :3:v=spf1 ip6:$ ~all
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.protection.outlook.com @ 2023-06-02 16:19:07.797887
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.protection.outlook.com @ 2023-06-22 21:00:35.961830
 # Source of truth:  spf.protection.outlook.com - Will not work in production unless you replace a single record. e.g. include:spf.protection.outlook.com with include:%{ir}.spf.protection.outlook.com._spf.yourdomain.com
 # ^ spf.protection.outlook.com
 # ^ v=spf1 ip4:40.92.0.0/15 ip4:40.107.0.0/16 ip4:52.100.0.0/14 ip4:104.47.0.0/17 ip6:2a01:111:f400::/48 ip6:2a01:111:f403::/49 ip6:2a01:111:f403:8000::/50 ip6:2a01:111:f403:c000::/51 ip6:2a01:111:f403:f000::/52 -all
@@ -187,14 +187,14 @@ $DATASET ip4set:spf.protection.outlook.com spf.protection.outlook.com
 128.0.0.0/1 # all other IP IPv4 addresses
 $DATASET ip6trie:spf.protection.outlook.com spf.protection.outlook.com
 :3:v=spf1 ip6:$ -all
-2a01:111:f400::/48 # spf.protection.outlook.com
-2a01:111:f403::/49 # spf.protection.outlook.com
 2a01:111:f403:8000::/50 # spf.protection.outlook.com
+2a01:111:f403::/49 # spf.protection.outlook.com
 2a01:111:f403:c000::/51 # spf.protection.outlook.com
 2a01:111:f403:f000::/52 # spf.protection.outlook.com
+2a01:111:f400::/48 # spf.protection.outlook.com
 :99:v=spf1 -all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:outbound.mailhop.org @ 2023-06-02 16:19:07.811998
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:outbound.mailhop.org @ 2023-06-22 21:00:35.976572
 # Source of truth:  outbound.mailhop.org - Will not work in production unless you replace a single record. e.g. include:outbound.mailhop.org with include:%{ir}.outbound.mailhop.org._spf.yourdomain.com
 # ^ outbound.mailhop.org
 # ^ v=spf1 ip4:52.26.49.97 ip4:52.10.99.51 ip4:52.28.59.28 ip4:52.28.6.212 ip4:3.127.8.113 ip4:54.186.27.61 ip4:52.28.168.19 ip4:52.58.19.153 ip4:52.58.96.151 ip4:52.58.97.209 ip4:52.88.73.233 ip4:54.187.71.48 ip4:54.149.36.10 ip4:54.68.34.165 ip4:54.186.22.84 ip4:54.191.214.3 ip4:3.125.66.160 ip4:54.213.22.21 ip4:52.29.21.168 ip4:100.20.105.3 ip4:44.233.67.66 ip4:54.185.97.28 include:_s0.outbound.mailhop.org -all
@@ -210,90 +210,90 @@ $DATASET ip6trie:spf.protection.outlook.com spf.protection.outlook.com
 # IP & Subnet: 84
 $DATASET ip4set:outbound.mailhop.org outbound.mailhop.org
 :3:v=spf1 ip4:$ -all
-52.26.49.97 # ip:outbound.mailhop.org
-52.10.99.51 # ip:outbound.mailhop.org
-52.28.59.28 # ip:outbound.mailhop.org
-52.28.6.212 # ip:outbound.mailhop.org
-3.127.8.113 # ip:outbound.mailhop.org
-54.186.27.61 # ip:outbound.mailhop.org
-52.28.168.19 # ip:outbound.mailhop.org
-52.58.19.153 # ip:outbound.mailhop.org
-52.58.96.151 # ip:outbound.mailhop.org
-52.58.97.209 # ip:outbound.mailhop.org
-52.88.73.233 # ip:outbound.mailhop.org
-54.187.71.48 # ip:outbound.mailhop.org
-54.149.36.10 # ip:outbound.mailhop.org
-54.68.34.165 # ip:outbound.mailhop.org
-54.186.22.84 # ip:outbound.mailhop.org
-54.191.214.3 # ip:outbound.mailhop.org
-3.125.66.160 # ip:outbound.mailhop.org
-54.213.22.21 # ip:outbound.mailhop.org
-52.29.21.168 # ip:outbound.mailhop.org
-100.20.105.3 # ip:outbound.mailhop.org
-44.233.67.66 # ip:outbound.mailhop.org
-54.185.97.28 # ip:outbound.mailhop.org
-54.190.72.79 # ip:_s0.outbound.mailhop.org
-18.156.67.42 # ip:_s0.outbound.mailhop.org
-54.69.130.42 # ip:_s0.outbound.mailhop.org
-3.124.88.253 # ip:_s0.outbound.mailhop.org
-52.29.156.81 # ip:_s0.outbound.mailhop.org
-52.28.246.64 # ip:_s0.outbound.mailhop.org
-54.68.138.64 # ip:_s0.outbound.mailhop.org
-3.121.156.226 # ip:_s0.outbound.mailhop.org
-54.191.214.36 # ip:_s0.outbound.mailhop.org
-44.233.38.249 # ip:_s0.outbound.mailhop.org
-44.233.99.129 # ip:_s0.outbound.mailhop.org
-54.149.240.58 # ip:_s0.outbound.mailhop.org
-18.156.94.234 # ip:_s0.outbound.mailhop.org
-54.186.10.118 # ip:_s0.outbound.mailhop.org
-3.125.148.246 # ip:_s0.outbound.mailhop.org
-54.187.63.214 # ip:_s0.outbound.mailhop.org
-54.149.35.133 # ip:_s0.outbound.mailhop.org
-52.10.130.167 # ip:_s0.outbound.mailhop.org
-54.148.38.162 # ip:_s0.outbound.mailhop.org
-54.187.206.49 # ip:_s0.outbound.mailhop.org
-44.233.143.45 # ip:_s0.outbound.mailhop.org
-35.157.29.171 # ip:_s1.outbound.mailhop.org
-54.191.158.99 # ip:_s1.outbound.mailhop.org
-54.186.172.23 # ip:_s1.outbound.mailhop.org
-54.186.57.195 # ip:_s1.outbound.mailhop.org
-54.148.219.64 # ip:_s1.outbound.mailhop.org
-54.148.153.48 # ip:_s1.outbound.mailhop.org
-54.148.30.215 # ip:_s1.outbound.mailhop.org
-54.148.222.11 # ip:_s1.outbound.mailhop.org
-54.186.218.12 # ip:_s1.outbound.mailhop.org
-52.28.251.132 # ip:_s1.outbound.mailhop.org
-52.28.147.211 # ip:_s1.outbound.mailhop.org
-52.58.109.202 # ip:_s1.outbound.mailhop.org
-54.187.218.212 # ip:_s1.outbound.mailhop.org
-54.187.213.119 # ip:_s1.outbound.mailhop.org
-54.149.210.130 # ip:_s1.outbound.mailhop.org
-54.148.165.188 # ip:_s1.outbound.mailhop.org
-54.149.155.156 # ip:_s1.outbound.mailhop.org
-54.148.113.140 # ip:_s1.outbound.mailhop.org
-35.156.234.212 # ip:_s1.outbound.mailhop.org
-54.149.205.143 # ip:_s1.outbound.mailhop.org
-54.149.206.185 # ip:_s2.outbound.mailhop.org
-54.244.192.240 # ip:_s2.outbound.mailhop.org
-54.191.151.194 # ip:_s2.outbound.mailhop.org
-54.200.247.200 # ip:_s2.outbound.mailhop.org
-54.200.129.228 # ip:_s2.outbound.mailhop.org
-35.160.111.225 # ip:_s2.outbound.mailhop.org
-23.83.208.0/20 # subnet:_s2.outbound.mailhop.org
-191.252.57.0/25 # subnet:_s2.outbound.mailhop.org
-34.219.98.66/32 # ip:_s2.outbound.mailhop.org
-52.34.31.144/32 # ip:_s2.outbound.mailhop.org
-46.232.183.0/24 # subnet:_s2.outbound.mailhop.org
-104.232.45.0/24 # subnet:_s2.outbound.mailhop.org
-199.10.31.235/32 # ip:_s2.outbound.mailhop.org
-54.245.125.39/32 # ip:_s2.outbound.mailhop.org
-172.255.62.10/32 # ip:_s2.outbound.mailhop.org
-172.255.62.11/32 # ip:_s2.outbound.mailhop.org
-177.153.0.128/25 # subnet:_s2.outbound.mailhop.org
-177.153.0.130/32 # ip:_s2.outbound.mailhop.org
 199.10.31.236/32 # ip:_s2.outbound.mailhop.org
-54.214.232.113/32 # ip:_s2.outbound.mailhop.org
+54.149.205.143 # ip:_s1.outbound.mailhop.org
+54.68.34.165 # ip:outbound.mailhop.org
+18.156.94.234 # ip:_s0.outbound.mailhop.org
+54.186.172.23 # ip:_s1.outbound.mailhop.org
+54.187.71.48 # ip:outbound.mailhop.org
 103.18.109.138/32 # ip:_s3.outbound.mailhop.org
+52.58.96.151 # ip:outbound.mailhop.org
+52.28.59.28 # ip:outbound.mailhop.org
+54.190.72.79 # ip:_s0.outbound.mailhop.org
+52.58.109.202 # ip:_s1.outbound.mailhop.org
+54.214.232.113/32 # ip:_s2.outbound.mailhop.org
+54.148.113.140 # ip:_s1.outbound.mailhop.org
+52.28.168.19 # ip:outbound.mailhop.org
+54.244.192.240 # ip:_s2.outbound.mailhop.org
+54.186.22.84 # ip:outbound.mailhop.org
+191.252.57.0/25 # subnet:_s2.outbound.mailhop.org
+54.149.206.185 # ip:_s2.outbound.mailhop.org
+54.148.153.48 # ip:_s1.outbound.mailhop.org
+199.10.31.235/32 # ip:_s2.outbound.mailhop.org
+54.148.30.215 # ip:_s1.outbound.mailhop.org
+54.185.97.28 # ip:outbound.mailhop.org
+52.28.246.64 # ip:_s0.outbound.mailhop.org
+3.127.8.113 # ip:outbound.mailhop.org
+54.148.219.64 # ip:_s1.outbound.mailhop.org
+54.149.35.133 # ip:_s0.outbound.mailhop.org
+3.121.156.226 # ip:_s0.outbound.mailhop.org
+35.156.234.212 # ip:_s1.outbound.mailhop.org
+23.83.208.0/20 # subnet:_s2.outbound.mailhop.org
+54.149.240.58 # ip:_s0.outbound.mailhop.org
+52.88.73.233 # ip:outbound.mailhop.org
+52.28.251.132 # ip:_s1.outbound.mailhop.org
+3.125.66.160 # ip:outbound.mailhop.org
+54.149.36.10 # ip:outbound.mailhop.org
+54.68.138.64 # ip:_s0.outbound.mailhop.org
+54.191.151.194 # ip:_s2.outbound.mailhop.org
+54.69.130.42 # ip:_s0.outbound.mailhop.org
+52.34.31.144/32 # ip:_s2.outbound.mailhop.org
+172.255.62.11/32 # ip:_s2.outbound.mailhop.org
+54.191.214.3 # ip:outbound.mailhop.org
+44.233.99.129 # ip:_s0.outbound.mailhop.org
+52.28.147.211 # ip:_s1.outbound.mailhop.org
+52.58.19.153 # ip:outbound.mailhop.org
+3.125.148.246 # ip:_s0.outbound.mailhop.org
+44.233.67.66 # ip:outbound.mailhop.org
+44.233.143.45 # ip:_s0.outbound.mailhop.org
+104.232.45.0/24 # subnet:_s2.outbound.mailhop.org
+18.156.67.42 # ip:_s0.outbound.mailhop.org
+52.28.6.212 # ip:outbound.mailhop.org
+54.191.158.99 # ip:_s1.outbound.mailhop.org
+35.157.29.171 # ip:_s1.outbound.mailhop.org
+54.200.129.228 # ip:_s2.outbound.mailhop.org
+44.233.38.249 # ip:_s0.outbound.mailhop.org
+54.187.218.212 # ip:_s1.outbound.mailhop.org
+54.186.218.12 # ip:_s1.outbound.mailhop.org
+54.187.213.119 # ip:_s1.outbound.mailhop.org
+54.148.222.11 # ip:_s1.outbound.mailhop.org
+52.29.156.81 # ip:_s0.outbound.mailhop.org
+52.29.21.168 # ip:outbound.mailhop.org
+54.186.10.118 # ip:_s0.outbound.mailhop.org
+52.58.97.209 # ip:outbound.mailhop.org
+35.160.111.225 # ip:_s2.outbound.mailhop.org
+54.245.125.39/32 # ip:_s2.outbound.mailhop.org
+54.191.214.36 # ip:_s0.outbound.mailhop.org
+177.153.0.130/32 # ip:_s2.outbound.mailhop.org
+172.255.62.10/32 # ip:_s2.outbound.mailhop.org
+54.187.206.49 # ip:_s0.outbound.mailhop.org
+52.10.99.51 # ip:outbound.mailhop.org
+54.186.57.195 # ip:_s1.outbound.mailhop.org
+3.124.88.253 # ip:_s0.outbound.mailhop.org
+54.149.210.130 # ip:_s1.outbound.mailhop.org
+34.219.98.66/32 # ip:_s2.outbound.mailhop.org
+54.186.27.61 # ip:outbound.mailhop.org
+54.213.22.21 # ip:outbound.mailhop.org
+54.149.155.156 # ip:_s1.outbound.mailhop.org
+100.20.105.3 # ip:outbound.mailhop.org
+54.148.38.162 # ip:_s0.outbound.mailhop.org
+54.148.165.188 # ip:_s1.outbound.mailhop.org
+52.26.49.97 # ip:outbound.mailhop.org
+54.200.247.200 # ip:_s2.outbound.mailhop.org
+54.187.63.214 # ip:_s0.outbound.mailhop.org
+177.153.0.128/25 # subnet:_s2.outbound.mailhop.org
+46.232.183.0/24 # subnet:_s2.outbound.mailhop.org
+52.10.130.167 # ip:_s0.outbound.mailhop.org
 :99:v=spf1 -all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
@@ -301,7 +301,7 @@ $DATASET ip6trie:outbound.mailhop.org outbound.mailhop.org
 :3:v=spf1 ip6:$ -all
 :99:v=spf1 -all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.messagelabs.com @ 2023-06-02 16:19:07.909621
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:spf.messagelabs.com @ 2023-06-22 21:00:36.175827
 # Source of truth:  spf.messagelabs.com - Will not work in production unless you replace a single record. e.g. include:spf.messagelabs.com with include:%{ir}.spf.messagelabs.com._spf.yourdomain.com
 # ^ spf.messagelabs.com
 # ^ v=spf1 include:nets1.spf.messagelabs.com include:nets2.spf.messagelabs.com ~all
@@ -313,15 +313,15 @@ $DATASET ip6trie:outbound.mailhop.org outbound.mailhop.org
 # IP & Subnet: 10
 $DATASET ip4set:spf.messagelabs.com spf.messagelabs.com
 :3:v=spf1 ip4:$ ~all
-85.158.136.0/21 # subnet:nets1.spf.messagelabs.com
-193.109.254.0/23 # subnet:nets1.spf.messagelabs.com
-194.106.220.0/23 # subnet:nets1.spf.messagelabs.com
-195.245.230.0/23 # subnet:nets1.spf.messagelabs.com
-95.131.104.0/21 # subnet:nets1.spf.messagelabs.com
-46.226.48.0/21 # subnet:nets1.spf.messagelabs.com
-216.82.240.0/20 # subnet:nets2.spf.messagelabs.com
 67.219.240.0/20 # subnet:nets2.spf.messagelabs.com
 117.120.16.0/21 # subnet:nets2.spf.messagelabs.com
+95.131.104.0/21 # subnet:nets1.spf.messagelabs.com
+194.106.220.0/23 # subnet:nets1.spf.messagelabs.com
+46.226.48.0/21 # subnet:nets1.spf.messagelabs.com
+195.245.230.0/23 # subnet:nets1.spf.messagelabs.com
+216.82.240.0/20 # subnet:nets2.spf.messagelabs.com
+193.109.254.0/23 # subnet:nets1.spf.messagelabs.com
+85.158.136.0/21 # subnet:nets1.spf.messagelabs.com
 103.9.96.0/22 # subnet:nets2.spf.messagelabs.com
 :99:v=spf1 ~all
 0.0.0.0/1 # all other IPv4 addresses
@@ -330,7 +330,7 @@ $DATASET ip6trie:spf.messagelabs.com spf.messagelabs.com
 :3:v=spf1 ip6:$ ~all
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:mailgun.org @ 2023-06-02 16:19:07.950329
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:mailgun.org @ 2023-06-22 21:00:36.222695
 # Source of truth:  mailgun.org - Will not work in production unless you replace a single record. e.g. include:mailgun.org with include:%{ir}.mailgun.org._spf.yourdomain.com
 # ^ mailgun.org
 # ^ v=spf1 include:_spf.mailgun.org include:_spf.eu.mailgun.org -all
@@ -342,33 +342,33 @@ $DATASET ip6trie:spf.messagelabs.com spf.messagelabs.com
 # IP & Subnet: 27
 $DATASET ip4set:mailgun.org mailgun.org
 :3:v=spf1 ip4:$ ~all
-209.61.151.0/24 # subnet:_spf.mailgun.org
-166.78.68.0/22 # subnet:_spf.mailgun.org
-198.61.254.0/23 # subnet:_spf.mailgun.org
-192.237.158.0/23 # subnet:_spf.mailgun.org
-23.253.182.0/23 # subnet:_spf.mailgun.org
-104.130.96.0/28 # subnet:_spf.mailgun.org
 146.20.113.0/24 # subnet:_spf.mailgun.org
-146.20.191.0/24 # subnet:_spf.mailgun.org
-159.135.224.0/20 # subnet:_spf.mailgun.org
 69.72.32.0/20 # subnet:_spf.mailgun.org
-104.130.122.0/23 # subnet:_spf.mailgun.org
-146.20.112.0/26 # subnet:_spf.mailgun.org
+146.20.191.0/24 # subnet:_spf.mailgun.org
 161.38.192.0/20 # subnet:_spf.mailgun.org
+104.130.122.0/23 # subnet:_spf.mailgun.org
 143.55.224.0/21 # subnet:_spf.mailgun.org
+198.244.60.0/22 # subnet:_spf.eu.mailgun.org
 143.55.232.0/22 # subnet:_spf.mailgun.org
-159.112.240.0/20 # subnet:_spf.mailgun.org
 198.244.48.0/20 # subnet:_spf.mailgun.org
-141.193.32.0/23 # subnet:_spf.eu.mailgun.org
-159.135.140.80/29 # subnet:_spf.eu.mailgun.org
-159.135.132.128/25 # subnet:_spf.eu.mailgun.org
+185.250.236.0/22 # subnet:_spf.eu.mailgun.org
+104.130.96.0/28 # subnet:_spf.mailgun.org
 161.38.204.0/22 # subnet:_spf.eu.mailgun.org
+159.112.240.0/20 # subnet:_spf.mailgun.org
+23.253.182.0/23 # subnet:_spf.mailgun.org
+198.61.254.0/23 # subnet:_spf.mailgun.org
+159.135.132.128/25 # subnet:_spf.eu.mailgun.org
+185.211.120.0/22 # subnet:_spf.eu.mailgun.org
 87.253.232.0/21 # subnet:_spf.eu.mailgun.org
 185.189.236.0/22 # subnet:_spf.eu.mailgun.org
-185.211.120.0/22 # subnet:_spf.eu.mailgun.org
-185.250.236.0/22 # subnet:_spf.eu.mailgun.org
+159.135.224.0/20 # subnet:_spf.mailgun.org
+146.20.112.0/26 # subnet:_spf.mailgun.org
+166.78.68.0/22 # subnet:_spf.mailgun.org
+141.193.32.0/23 # subnet:_spf.eu.mailgun.org
+209.61.151.0/24 # subnet:_spf.mailgun.org
 143.55.236.0/22 # subnet:_spf.eu.mailgun.org
-198.244.60.0/22 # subnet:_spf.eu.mailgun.org
+192.237.158.0/23 # subnet:_spf.mailgun.org
+159.135.140.80/29 # subnet:_spf.eu.mailgun.org
 :99:v=spf1 ~all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
@@ -376,7 +376,7 @@ $DATASET ip6trie:mailgun.org mailgun.org
 :3:v=spf1 ip6:$ ~all
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:sendgrid.net @ 2023-06-02 16:19:08.011462
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:sendgrid.net @ 2023-06-22 21:00:36.464261
 # Source of truth:  sendgrid.net - Will not work in production unless you replace a single record. e.g. include:sendgrid.net with include:%{ir}.sendgrid.net._spf.yourdomain.com
 # ^ sendgrid.net
 # ^ v=spf1 ip4:167.89.0.0/17 ip4:208.117.48.0/20 ip4:50.31.32.0/19 ip4:198.37.144.0/20 ip4:198.21.0.0/21 ip4:192.254.112.0/20 ip4:168.245.0.0/17 ip4:149.72.0.0/16 ip4:159.183.0.0/16 include:ab.sendgrid.net ~all
@@ -386,19 +386,19 @@ $DATASET ip6trie:mailgun.org mailgun.org
 # IP & Subnet: 13
 $DATASET ip4set:sendgrid.net sendgrid.net
 :3:v=spf1 ip4:$ ~all
-167.89.0.0/17 # subnet:sendgrid.net
-208.117.48.0/20 # subnet:sendgrid.net
-50.31.32.0/19 # subnet:sendgrid.net
-198.37.144.0/20 # subnet:sendgrid.net
-198.21.0.0/21 # subnet:sendgrid.net
 192.254.112.0/20 # subnet:sendgrid.net
-168.245.0.0/17 # subnet:sendgrid.net
-149.72.0.0/16 # subnet:sendgrid.net
-159.183.0.0/16 # subnet:sendgrid.net
 223.165.113.0/24 # subnet:ab.sendgrid.net
-223.165.115.0/24 # subnet:ab.sendgrid.net
-223.165.118.0/23 # subnet:ab.sendgrid.net
+167.89.0.0/17 # subnet:sendgrid.net
+149.72.0.0/16 # subnet:sendgrid.net
+50.31.32.0/19 # subnet:sendgrid.net
+208.117.48.0/20 # subnet:sendgrid.net
 223.165.120.0/23 # subnet:ab.sendgrid.net
+198.37.144.0/20 # subnet:sendgrid.net
+168.245.0.0/17 # subnet:sendgrid.net
+223.165.115.0/24 # subnet:ab.sendgrid.net
+198.21.0.0/21 # subnet:sendgrid.net
+223.165.118.0/23 # subnet:ab.sendgrid.net
+159.183.0.0/16 # subnet:sendgrid.net
 :99:v=spf1 ~all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses
@@ -406,7 +406,7 @@ $DATASET ip6trie:sendgrid.net sendgrid.net
 :3:v=spf1 ip6:$ ~all
 :99:v=spf1 ~all
 0:0:0:0:0:0:0:0/0 # all other IPv6 addresses
-# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:service-now.com @ 2023-06-02 16:19:08.036081
+# Automatically generated rbldnsd config by Expurgate[xpg8.tk] for:service-now.com @ 2023-06-22 21:00:36.497972
 # Source of truth:  service-now.com - Will not work in production unless you replace a single record. e.g. include:service-now.com with include:%{ir}.service-now.com._spf.yourdomain.com
 # ^ service-now.com
 # ^ v=spf1 a:b.spf.service-now.com a:c.spf.service-now.com a:d.spf.service-now.com ~all
@@ -420,63 +420,63 @@ $DATASET ip6trie:sendgrid.net sendgrid.net
 # IP & Subnet: 57
 $DATASET ip4set:service-now.com service-now.com
 :3:v=spf1 ip4:$ ~all
-149.96.5.2 # a:b.spf.service-now.com
-149.96.5.209 # a:b.spf.service-now.com
-149.96.5.3 # a:b.spf.service-now.com
-149.96.5.6 # a:b.spf.service-now.com
-149.96.5.7 # a:b.spf.service-now.com
-149.96.6.2 # a:b.spf.service-now.com
-149.96.6.209 # a:b.spf.service-now.com
-149.96.6.3 # a:b.spf.service-now.com
-149.96.6.6 # a:b.spf.service-now.com
-149.96.6.7 # a:b.spf.service-now.com
-199.91.136.28 # a:b.spf.service-now.com
-199.91.140.28 # a:b.spf.service-now.com
-148.139.0.2 # a:c.spf.service-now.com
-148.139.0.31 # a:c.spf.service-now.com
-148.139.1.2 # a:c.spf.service-now.com
-148.139.1.31 # a:c.spf.service-now.com
-148.139.2.2 # a:c.spf.service-now.com
-148.139.3.2 # a:c.spf.service-now.com
-149.96.13.2 # a:c.spf.service-now.com
-149.96.14.2 # a:c.spf.service-now.com
-199.91.136.26 # a:c.spf.service-now.com
-199.91.136.28 # a:c.spf.service-now.com
-199.91.137.2 # a:c.spf.service-now.com
 199.91.137.26 # a:c.spf.service-now.com
-199.91.139.145 # a:c.spf.service-now.com
-199.91.139.22 # a:c.spf.service-now.com
-199.91.139.23 # a:c.spf.service-now.com
-199.91.139.24 # a:c.spf.service-now.com
-199.91.140.26 # a:c.spf.service-now.com
-199.91.140.28 # a:c.spf.service-now.com
+149.96.132.2 # a:d.spf.service-now.com
+148.139.1.2 # a:c.spf.service-now.com
 199.91.141.145 # a:c.spf.service-now.com
-199.91.141.22 # a:c.spf.service-now.com
-199.91.141.23 # a:c.spf.service-now.com
-199.91.141.24 # a:c.spf.service-now.com
+149.96.14.2 # a:c.spf.service-now.com
+199.91.140.28 # a:b.spf.service-now.com
+148.139.104.17 # a:d.spf.service-now.com
+199.91.136.28 # a:b.spf.service-now.com
+149.96.220.2 # a:d.spf.service-now.com
+149.96.1.26 # a:d.spf.service-now.com
+148.139.0.31 # a:c.spf.service-now.com
 37.98.232.12 # a:c.spf.service-now.com
-37.98.232.2 # a:c.spf.service-now.com
-37.98.232.26 # a:c.spf.service-now.com
+148.139.105.17 # a:d.spf.service-now.com
+199.91.139.23 # a:c.spf.service-now.com
+149.96.5.3 # a:b.spf.service-now.com
+199.91.139.24 # a:c.spf.service-now.com
+103.23.67.26 # a:d.spf.service-now.com
+149.96.5.2 # a:b.spf.service-now.com
+148.139.0.2 # a:c.spf.service-now.com
 37.98.234.2 # a:c.spf.service-now.com
+148.139.2.2 # a:c.spf.service-now.com
+199.91.141.24 # a:c.spf.service-now.com
+199.91.136.26 # a:c.spf.service-now.com
+149.96.194.2 # a:d.spf.service-now.com
+148.139.1.31 # a:c.spf.service-now.com
+149.96.195.2 # a:d.spf.service-now.com
+37.98.232.2 # a:c.spf.service-now.com
+149.96.6.6 # a:b.spf.service-now.com
 37.98.235.2 # a:c.spf.service-now.com
+149.96.5.7 # a:b.spf.service-now.com
+37.98.232.26 # a:c.spf.service-now.com
+149.96.133.2 # a:d.spf.service-now.com
+149.96.6.209 # a:b.spf.service-now.com
+199.91.136.28 # a:d.spf.service-now.com
+149.96.13.2 # a:c.spf.service-now.com
+149.96.6.3 # a:b.spf.service-now.com
+149.96.6.7 # a:b.spf.service-now.com
+199.91.139.145 # a:c.spf.service-now.com
+199.91.141.23 # a:c.spf.service-now.com
+149.96.221.2 # a:d.spf.service-now.com
+149.96.5.6 # a:b.spf.service-now.com
+199.91.140.28 # a:c.spf.service-now.com
+199.91.136.28 # a:c.spf.service-now.com
+199.91.139.22 # a:c.spf.service-now.com
+199.91.140.28 # a:d.spf.service-now.com
+199.91.141.22 # a:c.spf.service-now.com
+199.91.137.2 # a:c.spf.service-now.com
 103.23.64.2 # a:d.spf.service-now.com
 103.23.65.2 # a:d.spf.service-now.com
 103.23.66.26 # a:d.spf.service-now.com
-103.23.67.26 # a:d.spf.service-now.com
-148.139.104.16 # a:d.spf.service-now.com
-148.139.104.17 # a:d.spf.service-now.com
-148.139.105.16 # a:d.spf.service-now.com
-148.139.105.17 # a:d.spf.service-now.com
-149.96.1.26 # a:d.spf.service-now.com
-149.96.132.2 # a:d.spf.service-now.com
-149.96.133.2 # a:d.spf.service-now.com
-149.96.194.2 # a:d.spf.service-now.com
-149.96.195.2 # a:d.spf.service-now.com
+148.139.3.2 # a:c.spf.service-now.com
 149.96.2.26 # a:d.spf.service-now.com
-149.96.220.2 # a:d.spf.service-now.com
-149.96.221.2 # a:d.spf.service-now.com
-199.91.136.28 # a:d.spf.service-now.com
-199.91.140.28 # a:d.spf.service-now.com
+199.91.140.26 # a:c.spf.service-now.com
+148.139.104.16 # a:d.spf.service-now.com
+149.96.6.2 # a:b.spf.service-now.com
+149.96.5.209 # a:b.spf.service-now.com
+148.139.105.16 # a:d.spf.service-now.com
 :99:v=spf1 ~all
 0.0.0.0/1 # all other IPv4 addresses
 128.0.0.0/1 # all other IP IPv4 addresses

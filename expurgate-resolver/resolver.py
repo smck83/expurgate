@@ -154,6 +154,17 @@ def dnsLookup(domain,type,countDepth="on"):
             return lookup 
     else:
         lookup = dnsCache[lookupKey]
+        if depth == 0 and type=="TXT":
+                        for record in lookup:
+                            if record != None and re.match('^"v=spf1 ', record, re.IGNORECASE): # check if the first lookup record has a TXT SPF record.
+                                mydomains_source_success_status = True
+
+                        if mydomains_source_success_status == True: # using boolean, so as to only add 1 record (incase a domain has multiple v=spf1 records)
+                            mydomains_source_success.append(domain)
+                        else:
+                            mydomains_source_failure.append(domain) # has TXT record, but no SPF records.
+                            print(domain,lookup)
+                            time.sleep(1)
         if countDepth == "on":
             depth += 1 
         cacheHit += 1
