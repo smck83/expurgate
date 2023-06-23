@@ -101,7 +101,7 @@ Copy your current domains SPF record to an unused subdomain which will be set in
 | expurgate-resolver  | SOURCE_PREFIX= | This is where you will publish your 'hidden' SPF record; the source of truth e.g. you might host it at _sd3fdsfd.yourdomain.com( so will be SOURCE_PREFIX=_sd3fdsfd) Default: `_xpg8` | N |
 | expurgate-resolver  | SOURCE_PREFIX_OFF= | Only change for testing DEFAULT: `False` | N |
 | expurgate-resolver  | UPTIMEKUMA_PUSH_URL= | Monitor expurgate-resolver health (uptime and time per loop) with an [Uptime Kuma](https://github.com/louislam/uptime-kuma) 'push' monitor. URL should end in ping= Example: `https://status.yourdomain.com/api/push/D0A90al0HA?status=up&msg=OK&ping=` | N |
-| expurgate-resolver  | RUNNING_CONFIG_ON= | When set to: `1`, resolver will generate a single conf file called `running-config` for all domains in `MY_DOMAINS`, instead of one config file per domain. The main benefit is expurgate-rbldnsd doesnt need to be restarted to learn about new files and deleted domains.  | N |
+| expurgate-resolver  | RUNNING_CONFIG_ON= | When set to: `1`, resolver will generate a single conf file called `running-config` for all domains in `MY_DOMAINS`, instead of one config file per domain. The main benefit is expurgate-rbldnsd doesnt need to be restarted to learn about new files and deleted domains. Default is on `RUNNING_CONFIG_ON=1` | N |
 | expurgate-rbldnsd  | OPTIONS= | These are rbldnsd run [options - more here](https://linux.die.net/man/8/rbldnsd) Recommend: `-e -t 5m -l -` <br/> `-e` = Allow non-network addresses to be used in CIDR ranges.<br/> `-t 5m` = Set TTL <br/>`l -` = Set Logfile to standard output | Y |
 | expurgate-rbldnsd  | TYPE= | These are rbldnsd zone types [options - more here](https://linux.die.net/man/8/rbldnsd) Recommend: `combined`  | Y |
 | expurgate-rbldnsd  | ZONE= | The last part of your SPF record (where rbldnsd is hosted), from step 1(2) EXAMPLE: `_spf.yourdomain.com`  | Y |
@@ -173,6 +173,7 @@ My testing has proven performance with over 570 domains in `MY_DOMAINS`, running
 ![image](https://github.com/smck83/expurgate/blob/main/python-vs-pypy.png)
 
 # Recent enhancements
+- Running config is on by default and is recommended. The benefit of a single `running-config` file versus 1 file per domain is that when domains are added and removed no file level cleanup or service restart of rbldnsd is required.
 - Improved reliability: MY_DOMAINS must have a valid DNS response, be a TXT record and have a record starting with '\"v=spf1 ' or no config files will be written to disk, until resolved (19/06/2023).
 - pypy : Docker image is using pypy to run the Expurgate Resolver script. This increases performance of DNS record generation by 2-5x's (19/03/2023)
 - AAAA Support: References to hostnames via A\A: or MX\MX: now perform a AAAA lookup to handle ip6 addresses.
