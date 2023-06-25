@@ -457,7 +457,7 @@ while totaldomaincount > 0:
             print("ERROR: SPF TXT records requiring attention:",len(mydomains_source_failure),"-", str(mydomains_source_failure)) 
         else:
             print("Changes:",changeDetected,"mydomains:",len(mydomains),"mydomains_source_success:",len(mydomains_source_success),'mydomains_source_failure',mydomains_source_failure)
-            print("No issues & no changes detected - No file written. Last change: {lastChangeTime}")
+            print(f"No issues & no changes detected - No file written. Last change: {lastChangeTime}")
             print("MODE: Running Config")
     else:
         print("MODE: Per Domain Config")
