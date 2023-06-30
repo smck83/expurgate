@@ -109,6 +109,15 @@ Copy your current domains SPF record to an unused subdomain which will be set in
 
 NOTE: Because one container is generating config files for the other container, it is IMPORTANT that both containers have their respective volumes mapped to the same path e.g. /xpg8/rbldnsd-config
 
+# Amazon Lightsail install script
+
+````
+wget https://raw.githubusercontent.com/smck83/expurgate/main/install.sh && chmod 755 install.sh && ./install.sh && \
+docker run -d -v /opt/expurgate/:/spf-resolver/output/ -e DELAY=300 -e MY_DOMAINS='microsoft.com sendgrid.net mailgun.org' -e SOURCE_PREFIX_OFF=True --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver && \
+docker run -d -p 53:53/udp -v /opt/expurgate/:/var/lib/rbldnsd/:ro -e OPTIONS='-e -t 5m -l -' -e TYPE=combined -e ZONE=_spf.yourdomain.com smck83/expurgate-rbldnsd
+
+````
+
 # Sample Requests & Responses
 ## An SPF pass checking 66.249.80.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.80.249.66.ehlo.email._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
 
