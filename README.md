@@ -17,6 +17,10 @@ NOTE: SPF(Sender Policy Framework) records are DNS TXT records published by a do
 You can read more on SPF here:
 https://en.wikipedia.org/wiki/Sender_Policy_Framework#Principles_of_operation
 
+# Try it without any setup
+I have setup a live demo, running that can be used or tested. Please note this is being hosted on a single AWS Lightsail Debian instance and comes without GUARANTEE or WARRANTY.
+https://xpg8.tk/
+
 # The problem
 SPF records are publicly visible, prone to misconfiguration and limited to include 10 host DNS resolutions which could be A records, MX records or other TXT records called INCLUDE's. While you may only `INCLUDE` one other domain e.g. _spf.google.com this may very well link to 2 or 3 other hostnames which all count toward the RFC limit of 10. Further risk is that 3rd party providers in your SPF record may add a new host without communicating the specifics and while you have been keeping on top of your record, this could unknowingly push you over the limit.
 
