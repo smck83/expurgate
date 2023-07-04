@@ -125,7 +125,8 @@ Copy your current domains SPF record to an unused subdomain which will be set in
       docker run -t -p 53:53/udp -v /xpg8/rbldnsd-configs:/var/lib/rbldnsd/:ro -e OPTIONS='-e -t 5m -l -' -e TYPE=combined -e ZONE=_spf.yourdomain.com smck83/expurgate-rbldnsd
 ### Step 5 - Replace your old SPF record with a macro pointing to expurgate-rbldsnd
     "v=spf1 include:%{ir}.%{d}._spf.yourdomain.com -all"
-## Environment Variables
+
+# Environment Variables
 | Container  | Variable | Description | Required? |
 | ------------- | ------------- | ------------- | ------------- |
 | expurgate-resolver  | DELAY | This is the delay in seconds between running the script to generate new RBLDNSD config files for RBLDNSD to pickup. `DEFAULT: 300` | N |
