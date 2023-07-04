@@ -64,20 +64,44 @@ To keep the solution lightweight, no database or frontend UI is used, although t
 
 # How do I run it?
 
-## Try it without any setup
-I have setup a live demo, running that can be used or tested. Please note this is being hosted on a single AWS Lightsail Debian instance and comes without GUARANTEE or WARRANTY.
+## (OPTION 1) - Try it without any setup
+A live demo, is setup and running that can be used or tested. Please note this is being hosted on a single AWS Lightsail Debian instance and comes without GUARANTEE or WARRANTY.
 https://xpg8.tk/
 
-## Amazon Lightsail install script
+A list of common SPF records are being hosted here, allowing you to test or switchout your records that are pushing you over with these. 
+
+NOTE: This comes without warrantee or guarantee and is best effort.
+
+## (OPTION 2) - Amazon Lightsail install script
 Run the below, as a launch script to simplify the configuration:
+
+### Step 1 - Create A + NS records
+1)Create an A record e.g. spf-ns.yourdomain.com and point it to the public IP that will be hosting your expurgate-rbldnsd container on UDP/53 - you may wish to use [dnsdist](https://dnsdist.org/) in front of RBLDNSD to serve both TCP and UDP but also deal with DDoS.
+
+    spf-ns.yourdomain.com. IN A 192.0.2.1
+   
+2)Then point your NS records of _spf.yourdomain.com to the A record, this will be what you set for `ZONE=` for expurgate-rbldnsd e.g.
+
+    _spf.yourdomain.com. IN NS spf-ns.yourdomain.com
+
+### Step 2 - Setup your source SPF record
+Copy your current domains SPF record to an unused subdomain which will be set in `SOURCE_PREFIX=` e.g. _sd6sdyfn
+
+    _sd6sdyfn.yourdomain.com.  IN  TXT "v=spf1 include:sendgrid.net include:mailgun.org -all"
+
+### Step 3 - Amazon Lightsail install script
 ````
 wget https://raw.githubusercontent.com/smck83/expurgate/main/install.sh && chmod 755 install.sh && ./install.sh && \
 docker run -d -v /opt/expurgate/:/spf-resolver/output/ -e DELAY=300 -e MY_DOMAINS='microsoft.com sendgrid.net mailgun.org' -e SOURCE_PREFIX_OFF=True --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver && \
 docker run -d -p 53:53/udp -v /opt/expurgate/:/var/lib/rbldnsd/:ro -e OPTIONS='-e -t 5m -l -' -e TYPE=combined -e ZONE=_spf.yourdomain.com smck83/expurgate-rbldnsd
 
 ````
+Set a static IP for your Lightsail instance, and open UDP/53.
 
-
+### Step 4 - Replace your old SPF record with a macro pointing to expurgate-rbldsnd
+    "v=spf1 include:%{ir}.%{d}._spf.yourdomain.com -all"
+    
+## (OPTION 3) - End to end configuration
 For Step 3 & 4 use CLI or [Docker-compose.yaml](https://github.com/smck83/expurgate/blob/main/docker-compose.yaml)
 
 ### Step 1 - Create A + NS records
