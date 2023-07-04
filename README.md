@@ -53,6 +53,8 @@ Expurgate resolves hostnames to IP address and subnets every `DELAY=` seconds an
 
 # How does it work?
 
+The Expurgate Resolver service collects IP addresses and subnets from your source DNS TXT record and from this, generates config files for DNS server rbldnsd. 
+
 ![image](https://github.com/smck83/expurgate/blob/main/expurgate-diagram.png)
 
 There are two seperate services running, with a third service being optional:
