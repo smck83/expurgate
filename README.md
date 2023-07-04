@@ -68,6 +68,16 @@ To keep the solution lightweight, no database or frontend UI is used, although t
 I have setup a live demo, running that can be used or tested. Please note this is being hosted on a single AWS Lightsail Debian instance and comes without GUARANTEE or WARRANTY.
 https://xpg8.tk/
 
+## Amazon Lightsail install script
+Run the below, as a launch script to simplify the configuration:
+````
+wget https://raw.githubusercontent.com/smck83/expurgate/main/install.sh && chmod 755 install.sh && ./install.sh && \
+docker run -d -v /opt/expurgate/:/spf-resolver/output/ -e DELAY=300 -e MY_DOMAINS='microsoft.com sendgrid.net mailgun.org' -e SOURCE_PREFIX_OFF=True --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver && \
+docker run -d -p 53:53/udp -v /opt/expurgate/:/var/lib/rbldnsd/:ro -e OPTIONS='-e -t 5m -l -' -e TYPE=combined -e ZONE=_spf.yourdomain.com smck83/expurgate-rbldnsd
+
+````
+
+
 For Step 3 & 4 use CLI or [Docker-compose.yaml](https://github.com/smck83/expurgate/blob/main/docker-compose.yaml)
 
 ### Step 1 - Create A + NS records
@@ -108,15 +118,6 @@ Copy your current domains SPF record to an unused subdomain which will be set in
 ^ If left blank `SOURCE_PREFIX_OFF` will be set to true and container will run in demo mode using microsoft.com, mimecast.com and google.com
 
 NOTE: Because one container is generating config files for the other container, it is IMPORTANT that both containers have their respective volumes mapped to the same path e.g. /xpg8/rbldnsd-config
-
-# Amazon Lightsail install script
-
-````
-wget https://raw.githubusercontent.com/smck83/expurgate/main/install.sh && chmod 755 install.sh && ./install.sh && \
-docker run -d -v /opt/expurgate/:/spf-resolver/output/ -e DELAY=300 -e MY_DOMAINS='microsoft.com sendgrid.net mailgun.org' -e SOURCE_PREFIX_OFF=True --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver && \
-docker run -d -p 53:53/udp -v /opt/expurgate/:/var/lib/rbldnsd/:ro -e OPTIONS='-e -t 5m -l -' -e TYPE=combined -e ZONE=_spf.yourdomain.com smck83/expurgate-rbldnsd
-
-````
 
 # Sample Requests & Responses
 ## An SPF pass checking 66.249.80.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.80.249.66.ehlo.email._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
