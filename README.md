@@ -70,8 +70,6 @@ https://xpg8.tk/
 
 A list of common SPF records are being hosted here, allowing you to test or switchout your records that are pushing you over with these. 
 
-NOTE: This comes without warrantee or guarantee and is best effort.
-
 ## (OPTION 2) - Amazon Lightsail install script
 
 
