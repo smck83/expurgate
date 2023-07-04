@@ -135,7 +135,7 @@ Copy your current domains SPF record to an unused subdomain which will be set in
 | expurgate-resolver  | SOURCE_PREFIX_OFF | Only change for testing DEFAULT: `False` | N |
 | expurgate-resolver  | UPTIMEKUMA_PUSH_URL | Monitor expurgate-resolver health (uptime and time per loop) with an [Uptime Kuma](https://github.com/louislam/uptime-kuma) 'push' monitor. URL should end in ping= Example: `https://status.yourdomain.com/api/push/D0A90al0HA?status=up&msg=OK&ping=` | N |
 | expurgate-resolver  | RUNNING_CONFIG_ON | When set to: `1`, resolver will generate a single conf file called `running-config` for all domains in `MY_DOMAINS`, instead of one config file per domain. The main benefit is expurgate-rbldnsd doesnt need to be restarted to learn about new files and deleted domains. Default is on `RUNNING_CONFIG_ON=1` | N |
-| expurgate-resolver | TZ | Set the timezone [more here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)| | N |
+| expurgate-resolver | TZ | Set the timezone [more here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)| N |
 | expurgate-rbldnsd  | OPTIONS | These are rbldnsd run [options - more here](https://linux.die.net/man/8/rbldnsd) Recommend: `-e -t 5m -l -` <br/> `-e` = Allow non-network addresses to be used in CIDR ranges.<br/> `-t 5m` = Set TTL <br/>`l -` = Set Logfile to standard output | Y |
 | expurgate-rbldnsd  | TYPE | These are rbldnsd zone types [options - more here](https://linux.die.net/man/8/rbldnsd) Recommend: `combined`  | Y |
 | expurgate-rbldnsd  | ZONE | The last part of your SPF record (where rbldnsd is hosted), from step 1(2) EXAMPLE: `_spf.yourdomain.com`  | Y |
