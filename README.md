@@ -73,7 +73,7 @@ A list of common SPF records are being hosted here, allowing you to test or swit
 NOTE: This comes without warrantee or guarantee and is best effort.
 
 ## (OPTION 2) - Amazon Lightsail install script
-Run the below, as a launch script to simplify the configuration:
+
 
 ### Step 1 - Create A + NS records
 1)Create an A record e.g. spf-ns.yourdomain.com and point it to the public IP that will be hosting your expurgate-rbldnsd container on UDP/53 - you may wish to use [dnsdist](https://dnsdist.org/) in front of RBLDNSD to serve both TCP and UDP but also deal with DDoS.
@@ -90,6 +90,8 @@ Copy your current domains SPF record to an unused subdomain which will be set in
     _sd6sdyfn.yourdomain.com.  IN  TXT "v=spf1 include:sendgrid.net include:mailgun.org -all"
 
 ### Step 3 - Amazon Lightsail install script
+Run the below, as a launch script to simplify the configuration:
+
 ````
 wget https://raw.githubusercontent.com/smck83/expurgate/main/install.sh && chmod 755 install.sh && ./install.sh && \
 docker run -d -v /opt/expurgate/:/spf-resolver/output/ -e DELAY=300 -e MY_DOMAINS='microsoft.com sendgrid.net mailgun.org' -e SOURCE_PREFIX_OFF=True --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver && \
