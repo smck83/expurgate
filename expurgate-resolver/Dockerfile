@@ -1,4 +1,4 @@
-FROM pypy:3
+FROM pypy:3.9
 LABEL maintainer="expurgate@mck.la"
 RUN pip install dnspython requests jsonpath-ng \
 && mkdir -p /spf-resolver/output
