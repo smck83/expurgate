@@ -17,10 +17,6 @@ NOTE: SPF(Sender Policy Framework) records are DNS TXT records published by a do
 You can read more on SPF here:
 https://en.wikipedia.org/wiki/Sender_Policy_Framework#Principles_of_operation
 
-# Try it without any setup
-I have setup a live demo, running that can be used or tested. Please note this is being hosted on a single AWS Lightsail Debian instance and comes without GUARANTEE or WARRANTY.
-https://xpg8.tk/
-
 # The problem
 SPF records are publicly visible, prone to misconfiguration and limited to include 10 host DNS resolutions which could be A records, MX records or other TXT records called INCLUDE's. While you may only `INCLUDE` one other domain e.g. _spf.google.com this may very well link to 2 or 3 other hostnames which all count toward the RFC limit of 10. Further risk is that 3rd party providers in your SPF record may add a new host without communicating the specifics and while you have been keeping on top of your record, this could unknowingly push you over the limit.
 
@@ -57,6 +53,8 @@ Expurgate resolves hostnames to IP address and subnets every `DELAY=` seconds an
 
 # How does it work?
 
+The Expurgate Resolver service collects IP addresses and subnets from your source DNS TXT record and from this, generates config files for DNS server rbldnsd. 
+
 ![image](https://github.com/smck83/expurgate/blob/main/expurgate-diagram.png)
 
 There are two seperate services running, with a third service being optional:
@@ -68,6 +66,44 @@ To keep the solution lightweight, no database or frontend UI is used, although t
 
 # How do I run it?
 
+## (OPTION 1) - Try it without any setup
+A live demo, is setup and running that can be used or tested. Please note this is being hosted on a single AWS Lightsail Debian instance and comes without GUARANTEE or WARRANTY.
+https://xpg8.tk/
+
+A list of common SPF records are being hosted here, allowing you to test or switchout your records that are pushing you over with these. 
+
+## (OPTION 2) - Amazon Lightsail install script
+
+
+### Step 1 - Create A + NS records
+1)Create an A record e.g. spf-ns.yourdomain.com and point it to the public IP that will be hosting your expurgate-rbldnsd container on UDP/53 - you may wish to use [dnsdist](https://dnsdist.org/) in front of RBLDNSD to serve both TCP and UDP but also deal with DDoS.
+
+    spf-ns.yourdomain.com. IN A 192.0.2.1
+   
+2)Then point your NS records of _spf.yourdomain.com to the A record, this will be what you set for `ZONE=` for expurgate-rbldnsd e.g.
+
+    _spf.yourdomain.com. IN NS spf-ns.yourdomain.com
+
+### Step 2 - Setup your source SPF record
+Copy your current domains SPF record to an unused subdomain which will be set in `SOURCE_PREFIX=` e.g. _sd6sdyfn
+
+    _sd6sdyfn.yourdomain.com.  IN  TXT "v=spf1 include:sendgrid.net include:mailgun.org -all"
+
+### Step 3 - Amazon Lightsail install script
+Run the below, as a launch script to simplify the configuration:
+
+````
+wget https://raw.githubusercontent.com/smck83/expurgate/main/install.sh && chmod 755 install.sh && ./install.sh && \
+docker run -d -v /opt/expurgate/:/spf-resolver/output/ -e DELAY=300 -e MY_DOMAINS='microsoft.com sendgrid.net mailgun.org' -e SOURCE_PREFIX_OFF=True --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver && \
+docker run -d -p 53:53/udp -v /opt/expurgate/:/var/lib/rbldnsd/:ro -e OPTIONS='-e -t 5m -l -' -e TYPE=combined -e ZONE=_spf.yourdomain.com smck83/expurgate-rbldnsd
+
+````
+Set a static IP for your Lightsail instance, and open UDP/53.
+
+### Step 4 - Replace your old SPF record with a macro pointing to expurgate-rbldsnd
+    "v=spf1 include:%{ir}.%{d}._spf.yourdomain.com -all"
+    
+## (OPTION 3) - End to end configuration
 For Step 3 & 4 use CLI or [Docker-compose.yaml](https://github.com/smck83/expurgate/blob/main/docker-compose.yaml)
 
 ### Step 1 - Create A + NS records
@@ -91,7 +127,8 @@ Copy your current domains SPF record to an unused subdomain which will be set in
       docker run -t -p 53:53/udp -v /xpg8/rbldnsd-configs:/var/lib/rbldnsd/:ro -e OPTIONS='-e -t 5m -l -' -e TYPE=combined -e ZONE=_spf.yourdomain.com smck83/expurgate-rbldnsd
 ### Step 5 - Replace your old SPF record with a macro pointing to expurgate-rbldsnd
     "v=spf1 include:%{ir}.%{d}._spf.yourdomain.com -all"
-## Environment Variables
+
+# Environment Variables
 | Container  | Variable | Description | Required? |
 | ------------- | ------------- | ------------- | ------------- |
 | expurgate-resolver  | DELAY | This is the delay in seconds between running the script to generate new RBLDNSD config files for RBLDNSD to pickup. `DEFAULT: 300` | N |
@@ -100,7 +137,7 @@ Copy your current domains SPF record to an unused subdomain which will be set in
 | expurgate-resolver  | SOURCE_PREFIX_OFF | Only change for testing DEFAULT: `False` | N |
 | expurgate-resolver  | UPTIMEKUMA_PUSH_URL | Monitor expurgate-resolver health (uptime and time per loop) with an [Uptime Kuma](https://github.com/louislam/uptime-kuma) 'push' monitor. URL should end in ping= Example: `https://status.yourdomain.com/api/push/D0A90al0HA?status=up&msg=OK&ping=` | N |
 | expurgate-resolver  | RUNNING_CONFIG_ON | When set to: `1`, resolver will generate a single conf file called `running-config` for all domains in `MY_DOMAINS`, instead of one config file per domain. The main benefit is expurgate-rbldnsd doesnt need to be restarted to learn about new files and deleted domains. Default is on `RUNNING_CONFIG_ON=1` | N |
-| expurgate-resolver | TZ | Set the timezone [more here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)| | N |
+| expurgate-resolver | TZ | Set the timezone [more here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)| N |
 | expurgate-rbldnsd  | OPTIONS | These are rbldnsd run [options - more here](https://linux.die.net/man/8/rbldnsd) Recommend: `-e -t 5m -l -` <br/> `-e` = Allow non-network addresses to be used in CIDR ranges.<br/> `-t 5m` = Set TTL <br/>`l -` = Set Logfile to standard output | Y |
 | expurgate-rbldnsd  | TYPE | These are rbldnsd zone types [options - more here](https://linux.die.net/man/8/rbldnsd) Recommend: `combined`  | Y |
 | expurgate-rbldnsd  | ZONE | The last part of your SPF record (where rbldnsd is hosted), from step 1(2) EXAMPLE: `_spf.yourdomain.com`  | Y |
@@ -108,15 +145,6 @@ Copy your current domains SPF record to an unused subdomain which will be set in
 ^ If left blank `SOURCE_PREFIX_OFF` will be set to true and container will run in demo mode using microsoft.com, mimecast.com and google.com
 
 NOTE: Because one container is generating config files for the other container, it is IMPORTANT that both containers have their respective volumes mapped to the same path e.g. /xpg8/rbldnsd-config
-
-# Amazon Lightsail install script
-
-````
-wget https://raw.githubusercontent.com/smck83/expurgate/main/install.sh && chmod 755 install.sh && ./install.sh && \
-docker run -d -v /opt/expurgate/:/spf-resolver/output/ -e DELAY=300 -e MY_DOMAINS='microsoft.com sendgrid.net mailgun.org' -e SOURCE_PREFIX_OFF=True --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver && \
-docker run -d -p 53:53/udp -v /opt/expurgate/:/var/lib/rbldnsd/:ro -e OPTIONS='-e -t 5m -l -' -e TYPE=combined -e ZONE=_spf.yourdomain.com smck83/expurgate-rbldnsd
-
-````
 
 # Sample Requests & Responses
 ## An SPF pass checking 66.249.80.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.80.249.66.ehlo.email._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
