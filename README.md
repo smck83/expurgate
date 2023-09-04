@@ -53,7 +53,7 @@ The old SPF record not only gives away the names of all the service providers yo
 > DISCLAIMER: Security through obscurity (or security by obscurity) is the reliance in security engineering on design or implementation secrecy as the main method of providing security to a system or component. While hiding SPF records may be beneficial, anyone on the internet can still check an IP against the record and whether it receives a PASS or FAIL. Technically brute force methods could be used against an SPF macro record; or targetted checks, e.g. lookup sengrid, microsoft, mailgun IP addresses to determine if a domain uses one of these vendors (or any others) - BGP prefix data could also be used to determine which IP within an enterprises subnets can e-mail on their behalf.
 
 ### Exceed SPF Limits
-Expurgate resolves hostnames to IP address and subnets every `DELAY=` seconds and generates an RBLSDND configuration file. With only 1 INCLUDE: in your new SPF record you never need to worry about exceeding the 10 lookup limit or the 255 byte/character limit per line.
+Expurgate resolves hostnames to IP address and subnets every `DELAY=` seconds and generates an RBLDNSD configuration file. With only 1 INCLUDE: in your new SPF record you never need to worry about exceeding the 10 lookup limit or the 255 byte/character limit per line.
 
 # How does it work?
 
