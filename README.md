@@ -78,22 +78,12 @@ A list of common SPF records are being hosted here, allowing you to test or swit
 
 ## (OPTION 2) - Amazon Lightsail install script
 
-
-### Step 1 - Create A + NS records
-1)Create an A record e.g. spf-ns.yourdomain.com and point it to the public IP that will be hosting your expurgate-rbldnsd container on UDP/53 - you may wish to use [dnsdist](https://dnsdist.org/) in front of RBLDNSD to serve both TCP and UDP but also deal with DDoS.
-
-    spf-ns.yourdomain.com. IN A 192.0.2.1
-   
-2)Then point your NS records of _spf.yourdomain.com to the A record, this will be what you set for `ZONE=` for expurgate-rbldnsd e.g.
-
-    _spf.yourdomain.com. IN NS spf-ns.yourdomain.com
-
-### Step 2 - Setup your source SPF record
+### Step 1 - Setup your source SPF record
 Copy your current domains SPF record to an unused subdomain which will be set in `SOURCE_PREFIX=` e.g. _sd6sdyfn
 
     _sd6sdyfn.yourdomain.com.  IN  TXT "v=spf1 include:sendgrid.net include:mailgun.org -all"
 
-### Step 3 - Amazon Lightsail install script
+### Step 2 - Amazon Lightsail install script
 Run the below, as a launch script to simplify the configuration:
 
 ````
@@ -102,7 +92,16 @@ docker run -d -v /opt/expurgate/:/spf-resolver/output/ -e DELAY=300 -e MY_DOMAIN
 docker run -d -p 53:53/udp -v /opt/expurgate/:/var/lib/rbldnsd/:ro -e OPTIONS='-e -t 5m -l -' -e TYPE=combined -e ZONE=_spf.yourdomain.com smck83/expurgate-rbldnsd
 
 ````
-Set a static IP for your Lightsail instance, and open UDP/53.
+Set a static IP for your Lightsail instance, and open UDP port: 53.
+
+### Step 3 - Create A + NS records
+1) Create an A record e.g. spf-ns.yourdomain.com and point it to the AWS Lightsail public IP that will be hosting your expurgate-rbldnsd container on UDP/53 -
+    spf-ns.yourdomain.com. IN A 192.0.2.1
+   
+2)Then point your NS records of _spf.yourdomain.com to the A record, this will be what you set for `ZONE=` for expurgate-rbldnsd e.g.
+
+    _spf.yourdomain.com. IN NS spf-ns.yourdomain.com
+
 
 ### Step 4 - Replace your old SPF record with a macro pointing to expurgate-rbldsnd
     "v=spf1 include:%{ir}.%{d}._spf.yourdomain.com -all"
