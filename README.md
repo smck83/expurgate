@@ -36,11 +36,15 @@ Expurgate simplifies DNS management for SPF by using a single record with variab
 ### Hide
 Copy your old SPF record to unused subdomain defined in `SOURCE_PREFIX=`. Your old SPF record might look something like this:
 
+#### BEFORE
+
     "v=spf1 include:sendgrid.net include:_spf.google.com include:mailgun.org include:spf.protection.outlook.com include:_netblocks.mimecast.com -all"
 
 By using an SPF Macro in place of your old SPF record, the hostnames and IP addresses are hidden from opportunistic threat actors prying eyes that could use this information against you (e.g. Targetted phishing e-mails using sendgrid branding based on include:sendgrid.net being present:
 
 https://emailstuff.org/spf/check/macro.xpg8.tk
+
+#### AFTER
 
     "v=spf1 include:%{ir}.%{d}._spf.yourdomain.com -all"
 
