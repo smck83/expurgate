@@ -72,7 +72,7 @@ To keep the solution lightweight, no database or frontend UI is used, although t
 
 ## (OPTION 1) - Try it without any setup
 A live demo, is setup and running that can be used or tested. Please note this is being hosted on a single AWS Lightsail Debian instance and comes without GUARANTEE or WARRANTY.
-https://xpg8.tk/
+https://xpg8.ehlo.email/ ~~https://xpg8.tk~~
 
 A list of common SPF records are being hosted here, allowing you to test or switchout your records that are pushing you over with these. 
 
