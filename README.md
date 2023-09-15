@@ -40,15 +40,13 @@ Copy your old SPF record to unused subdomain defined in `SOURCE_PREFIX=`. Your o
 
     "v=spf1 include:sendgrid.net include:_spf.google.com include:mailgun.org include:spf.protection.outlook.com include:_netblocks.mimecast.com -all"
 
-By using an SPF Macro in place of your old SPF record, the hostnames and IP addresses are hidden from opportunistic threat actors prying eyes that could use this information against you (e.g. Targetted phishing e-mails using sendgrid branding based on include:sendgrid.net being present:
-
-https://emailstuff.org/spf/check/macro.xpg8.tk
+By using an SPF Macro in place of your old SPF record, the hostnames and IP addresses are hidden from opportunistic threat actors prying eyes that could use this information against you (e.g. Targetted phishing e-mails using sendgrid branding based on `include:sendgrid.net` being visible in your SPF records).
 
 #### AFTER
 
     "v=spf1 include:%{ir}.%{d}._spf.yourdomain.com -all"
 
-The old SPF record not only gives away the names of all the service providers you use that need to legitimately spoof your domain, but this sample record [exceeds the 10 lookup limit](https://emailstuff.org/spf/check/10plus.xpg8.tk).
+The old SPF record not only gives away the names of all the service providers you use that need to legitimately spoof your domain, but could also exceed the lookup limit.
 
 > DISCLAIMER: Security through obscurity (or security by obscurity) is the reliance in security engineering on design or implementation secrecy as the main method of providing security to a system or component. While hiding SPF records may be beneficial, anyone on the internet can still check an IP against the record and whether it receives a PASS or FAIL. Technically brute force methods could be used against an SPF macro record; or targetted checks, e.g. lookup sengrid, microsoft, mailgun IP addresses to determine if a domain uses one of these vendors (or any others) - BGP prefix data could also be used to determine which IP within an enterprises subnets can e-mail on their behalf.
 
@@ -108,6 +106,7 @@ Set a static IP for your Lightsail instance, and open UDP port: 53.
 
 ### Step 4 - Replace your old SPF record with a macro pointing to expurgate-rbldsnd
 NOTE: Many domains (e.g. yourdomain.com, yourdomain2.com and yourdomain3.com) should all point to the same location below, i.e. in a single deployment there is a single `_spf.yourdomain.com` rbldnsd name server:
+
     "v=spf1 include:%{ir}.%{d}._spf.yourdomain.com -all"
     
 ## (OPTION 3) - End to end configuration
