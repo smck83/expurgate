@@ -4,7 +4,7 @@ services:
     image: smck83/expurgate-resolver
     environment:
       DELAY: '300'
-      MY_DOMAINS: xpg8.tk
+      MY_DOMAINS: yourdomain.com yourdomain2.com yourdomain3.com
       SOURCE_PREFIX: _sd6sdyfn
       RUNNING_CONFIG_ON: 1
     stdin_open: true
@@ -20,7 +20,7 @@ services:
     environment:
       OPTIONS: -e -t 5m -l -
       TYPE: combined
-      ZONE: _spf.xpg8.tk
+      ZONE: _spf.yourdomain.com
     stdin_open: true
     restart: always
     volumes:
