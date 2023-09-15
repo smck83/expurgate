@@ -107,6 +107,7 @@ Set a static IP for your Lightsail instance, and open UDP port: 53.
 
 
 ### Step 4 - Replace your old SPF record with a macro pointing to expurgate-rbldsnd
+NOTE: Many domains (e.g. yourdomain.com, yourdomain2.com and yourdomain3.com) should all point to the same location below, i.e. in a single deployment there is a single `_spf.yourdomain.com` rbldnsd name server:
     "v=spf1 include:%{ir}.%{d}._spf.yourdomain.com -all"
     
 ## (OPTION 3) - End to end configuration
