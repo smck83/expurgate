@@ -82,13 +82,16 @@ A list of common SPF records are being hosted here, allowing you to test or swit
 Copy your current domains SPF record to an unused subdomain which will be set in `SOURCE_PREFIX=` e.g. _sd6sdyfn
 
     _sd6sdyfn.yourdomain.com.  IN  TXT "v=spf1 include:sendgrid.net include:mailgun.org -all"
+    _sd6sdyfn.yourdomain2.com.  IN  TXT "v=spf1 include:mailgun.org -all"
+    _sd6sdyfn.yourdomain3.com.  IN  TXT "v=spf1 ip4:192.0.2.1 include:email.freshdesk.com include:sendgrid.net ~all"
+
 
 ### Step 2 - Amazon Lightsail install script
 Run the below, as a launch script to simplify the configuration:
 
 ````
 wget https://raw.githubusercontent.com/smck83/expurgate/main/install.sh && chmod 755 install.sh && ./install.sh && \
-docker run -d -v /opt/expurgate/:/spf-resolver/output/ -e DELAY=300 -e MY_DOMAINS='microsoft.com sendgrid.net mailgun.org' -e SOURCE_PREFIX_OFF=True --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver && \
+docker run -d -v /opt/expurgate/:/spf-resolver/output/ -e DELAY=300 -e MY_DOMAINS='yourdomain.com yourdomain2.com yourdomain3.com' -e SOURCE_PREFIX='_sd6sdyfn' --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver && \
 docker run -d -p 53:53/udp -v /opt/expurgate/:/var/lib/rbldnsd/:ro -e OPTIONS='-e -t 5m -l -' -e TYPE=combined -e ZONE=_spf.yourdomain.com smck83/expurgate-rbldnsd
 
 ````
@@ -122,9 +125,11 @@ For Step 3 & 4 use CLI or [Docker-compose.yaml](https://github.com/smck83/expurg
 Copy your current domains SPF record to an unused subdomain which will be set in `SOURCE_PREFIX=` e.g. _sd6sdyfn
 
     _sd6sdyfn.yourdomain.com.  IN  TXT "v=spf1 include:sendgrid.net include:mailgun.org -all"
+    _sd6sdyfn.yourdomain2.com.  IN  TXT "v=spf1 include:mailgun.org -all"
+    _sd6sdyfn.yourdomain3.com.  IN  TXT "v=spf1 ip4:192.0.2.1 include:email.freshdesk.com include:sendgrid.net ~all"
 
 ### Step 3 - Run the expurgate-resolver first, so your RBLDNSD config is ready for the next step
-    docker run -t -v /xpg8/rbldnsd-configs:/spf-resolver/output -e DELAY=300 -e MY_DOMAINS='xpg8.tk' -e RUNNING_CONFIG_ON=1 -e SOURCE_PREFIX="_sd6sdyfn" --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver
+    docker run -t -v /xpg8/rbldnsd-configs:/spf-resolver/output -e DELAY=300 -e MY_DOMAINS='yourdomain.com yourdomain2.com yourdomain3.com' -e RUNNING_CONFIG_ON=1 -e SOURCE_PREFIX="_sd6sdyfn" --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver
 
 ### Step 4 - Run expurgate-rbldnsd
       docker run -t -p 53:53/udp -v /xpg8/rbldnsd-configs:/var/lib/rbldnsd/:ro -e OPTIONS='-e -t 5m -l -' -e TYPE=combined -e ZONE=_spf.yourdomain.com smck83/expurgate-rbldnsd
