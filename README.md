@@ -64,7 +64,7 @@ The Expurgate Resolver service collects IP addresses and subnets from your sourc
 There are two seperate services running, with a third service being optional:
  1. The expurgate-resolver container is responsible for dynamically generating the rbldsnd config files
  2. The expurgate-rblsdnsd container is the DNS server listening on UDP/53
- 3. \(OPTIONAL\) Use [dnsdist](https://dnsdist.org/) as a load balancer in front of rbldnsd to handle DDoS and support both UDP/53 + TCP/53
+ 3. \(OPTIONAL\) Use [dnsdist](https://dnsdist.org/) as a load balancer in front of rbldnsd to handle DDoS and support both UDP/53 + TCP/53, NOTE: All traffic to rbldnsd will appear to come from dnsdist
 
 To keep the solution lightweight, no database or frontend UI is used, although these could be added to future version. Source records are stored in another obfuscated or hidden TXT record using a subdomain. This also means when the expurgate-resolver script runs it will regenerate config files when changes are detected which rbldnsd will automatically pickup.
 
@@ -101,7 +101,7 @@ Set a static IP for your Lightsail instance, and open UDP port: 53.
 1) Create an A record e.g. spf-ns.yourdomain.com and point it to the AWS Lightsail public IP that will be hosting your expurgate-rbldnsd container on UDP/53 -
     spf-ns.yourdomain.com. IN A 192.0.2.1
    
-2)Then point your NS records of _spf.yourdomain.com to the A record, this will be what you set for `ZONE=` for expurgate-rbldnsd e.g.
+2) Then point your NS records of _spf.yourdomain.com to the A record, this will be what you set for `ZONE=` for expurgate-rbldnsd e.g.
 
     _spf.yourdomain.com. IN NS spf-ns.yourdomain.com
 
@@ -129,7 +129,7 @@ Copy your current domains SPF record to an unused subdomain which will be set in
     _sd6sdyfn.yourdomain3.com.  IN  TXT "v=spf1 ip4:192.0.2.1 include:email.freshdesk.com include:sendgrid.net ~all"
 
 ### Step 3 - Run the expurgate-resolver first, so your RBLDNSD config is ready for the next step
-    docker run -t -v /xpg8/rbldnsd-configs:/spf-resolver/output -e DELAY=300 -e MY_DOMAINS='yourdomain.com yourdomain2.com yourdomain3.com' -e RUNNING_CONFIG_ON=1 -e SOURCE_PREFIX="_sd6sdyfn" --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver
+    docker run -t -v /xpg8/rbldnsd-configs:/spf-resolver/output -e DELAY=300 -e MY_DOMAINS="yourdomain.com yourdomain2.com yourdomain3.com" -e RUNNING_CONFIG_ON=1 -e SOURCE_PREFIX="_sd6sdyfn" --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver
     NOTE: It would be recommended to use a [local DNS recursor](https://doc.powerdns.com/recursor/) instead of public ones like 1.1.1.1 or 8.8.8.8 - particularly if you have a large volume of domains.
 ### Step 4 - Run expurgate-rbldnsd
       docker run -t -p 53:53/udp -v /xpg8/rbldnsd-configs:/var/lib/rbldnsd/:ro -e OPTIONS='-e -t 5m -l -' -e TYPE=combined -e ZONE=_spf.yourdomain.com smck83/expurgate-rbldnsd
