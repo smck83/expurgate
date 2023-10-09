@@ -5,4 +5,5 @@ RUN pip install dnspython requests jsonpath-ng \
 WORKDIR /spf-resolver
 COPY resolver.py /spf-resolver
 
+
 CMD ["pypy3","./resolver.py"]
