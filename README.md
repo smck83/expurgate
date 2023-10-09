@@ -36,20 +36,22 @@ Expurgate simplifies DNS management for SPF by using a single record with variab
 ### Hide
 Copy your old SPF record to unused subdomain defined in `SOURCE_PREFIX=`. Your old SPF record might look something like this:
 
+#### BEFORE
+
     "v=spf1 include:sendgrid.net include:_spf.google.com include:mailgun.org include:spf.protection.outlook.com include:_netblocks.mimecast.com -all"
 
-By using an SPF Macro in place of your old SPF record, the hostnames and IP addresses are hidden from opportunistic threat actors prying eyes that could use this information against you (e.g. Targetted phishing e-mails using sendgrid branding based on include:sendgrid.net being present:
+By using an SPF Macro in place of your old SPF record, the hostnames and IP addresses are hidden from opportunistic threat actors prying eyes that could use this information against you (e.g. Targetted phishing e-mails using sendgrid branding based on `include:sendgrid.net` being visible in your SPF records).
 
-https://emailstuff.org/spf/check/macro.xpg8.tk
+#### AFTER
 
     "v=spf1 include:%{ir}.%{d}._spf.yourdomain.com -all"
 
-The old SPF record not only gives away the names of all the service providers you use that need to legitimately spoof your domain, but this sample record [exceeds the 10 lookup limit](https://emailstuff.org/spf/check/10plus.xpg8.tk).
+The old SPF record not only gives away the names of all the service providers you use that need to legitimately spoof your domain, but could also exceed the lookup limit.
 
 > DISCLAIMER: Security through obscurity (or security by obscurity) is the reliance in security engineering on design or implementation secrecy as the main method of providing security to a system or component. While hiding SPF records may be beneficial, anyone on the internet can still check an IP against the record and whether it receives a PASS or FAIL. Technically brute force methods could be used against an SPF macro record; or targetted checks, e.g. lookup sengrid, microsoft, mailgun IP addresses to determine if a domain uses one of these vendors (or any others) - BGP prefix data could also be used to determine which IP within an enterprises subnets can e-mail on their behalf.
 
 ### Exceed SPF Limits
-Expurgate resolves hostnames to IP address and subnets every `DELAY=` seconds and generates an RBLSDND configuration file. With only 1 INCLUDE: in your new SPF record you never need to worry about exceeding the 10 lookup limit or the 255 byte/character limit per line.
+Expurgate resolves hostnames to IP address and subnets every `DELAY=` seconds and generates an RBLDNSD configuration file. With only 1 INCLUDE: in your new SPF record you never need to worry about exceeding the 10 lookup limit or the 255 byte/character limit per line.
 
 # How does it work?
 
@@ -60,7 +62,7 @@ The Expurgate Resolver service collects IP addresses and subnets from your sourc
 There are two seperate services running, with a third service being optional:
  1. The expurgate-resolver container is responsible for dynamically generating the rbldsnd config files
  2. The expurgate-rblsdnsd container is the DNS server listening on UDP/53
- 3. \(OPTIONAL\) Use [dnsdist](https://dnsdist.org/) as a load balancer in front of rbldnsd to handle DDoS and support both UDP/53 + TCP/53
+ 3. \(OPTIONAL\) Use [dnsdist](https://dnsdist.org/) as a load balancer in front of rbldnsd to handle DDoS and support both UDP/53 + TCP/53, NOTE: All traffic to rbldnsd will appear to come from dnsdist
 
 To keep the solution lightweight, no database or frontend UI is used, although these could be added to future version. Source records are stored in another obfuscated or hidden TXT record using a subdomain. This also means when the expurgate-resolver script runs it will regenerate config files when changes are detected which rbldnsd will automatically pickup.
 
@@ -68,39 +70,43 @@ To keep the solution lightweight, no database or frontend UI is used, although t
 
 ## (OPTION 1) - Try it without any setup
 A live demo, is setup and running that can be used or tested. Please note this is being hosted on a single AWS Lightsail Debian instance and comes without GUARANTEE or WARRANTY.
-https://xpg8.tk/
+https://xpg8.ehlo.email/ ~~https://xpg8.tk~~
 
 A list of common SPF records are being hosted here, allowing you to test or switchout your records that are pushing you over with these. 
 
 ## (OPTION 2) - Amazon Lightsail install script
 
-
-### Step 1 - Create A + NS records
-1)Create an A record e.g. spf-ns.yourdomain.com and point it to the public IP that will be hosting your expurgate-rbldnsd container on UDP/53 - you may wish to use [dnsdist](https://dnsdist.org/) in front of RBLDNSD to serve both TCP and UDP but also deal with DDoS.
-
-    spf-ns.yourdomain.com. IN A 192.0.2.1
-   
-2)Then point your NS records of _spf.yourdomain.com to the A record, this will be what you set for `ZONE=` for expurgate-rbldnsd e.g.
-
-    _spf.yourdomain.com. IN NS spf-ns.yourdomain.com
-
-### Step 2 - Setup your source SPF record
+### Step 1 - Setup your source SPF record
 Copy your current domains SPF record to an unused subdomain which will be set in `SOURCE_PREFIX=` e.g. _sd6sdyfn
 
-    _sd6sdyfn.yourdomain.com.  IN  TXT "v=spf1 include:sendgrid.net include:mailgun.org -all"
+    _sd6sdyfn.yourdomain.com.   IN  TXT "v=spf1 include:sendgrid.net include:mailgun.org -all"
+    _sd6sdyfn.yourdomain2.com.  IN  TXT "v=spf1 include:mailgun.org -all"
+    _sd6sdyfn.yourdomain3.com.  IN  TXT "v=spf1 ip4:192.0.2.1 include:email.freshdesk.com include:sendgrid.net ~all"
 
-### Step 3 - Amazon Lightsail install script
+
+### Step 2 - Amazon Lightsail install script
 Run the below, as a launch script to simplify the configuration:
 
 ````
 wget https://raw.githubusercontent.com/smck83/expurgate/main/install.sh && chmod 755 install.sh && ./install.sh && \
-docker run -d -v /opt/expurgate/:/spf-resolver/output/ -e DELAY=300 -e MY_DOMAINS='microsoft.com sendgrid.net mailgun.org' -e SOURCE_PREFIX_OFF=True --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver && \
+docker run -d -v /opt/expurgate/:/spf-resolver/output/ -e DELAY=300 -e MY_DOMAINS='yourdomain.com yourdomain2.com yourdomain3.com' -e SOURCE_PREFIX='_sd6sdyfn' --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver && \
 docker run -d -p 53:53/udp -v /opt/expurgate/:/var/lib/rbldnsd/:ro -e OPTIONS='-e -t 5m -l -' -e TYPE=combined -e ZONE=_spf.yourdomain.com smck83/expurgate-rbldnsd
 
 ````
-Set a static IP for your Lightsail instance, and open UDP/53.
+Set a static IP for your Lightsail instance, and open UDP port: 53.
+
+### Step 3 - Create A + NS records
+1) Create an A record e.g. spf-ns.yourdomain.com and point it to the AWS Lightsail public IP that will be hosting your expurgate-rbldnsd container on UDP/53 -
+    spf-ns.yourdomain.com. IN A 192.0.2.1
+   
+2) Then point your NS records of _spf.yourdomain.com to the A record, this will be what you set for `ZONE=` for expurgate-rbldnsd e.g.
+
+    _spf.yourdomain.com. IN NS spf-ns.yourdomain.com
+
 
 ### Step 4 - Replace your old SPF record with a macro pointing to expurgate-rbldsnd
+NOTE: Many domains (e.g. yourdomain.com, yourdomain2.com and yourdomain3.com) should all point to the same location below, i.e. in a single deployment there is a single `_spf.yourdomain.com` rbldnsd name server:
+
     "v=spf1 include:%{ir}.%{d}._spf.yourdomain.com -all"
     
 ## (OPTION 3) - End to end configuration
@@ -118,11 +124,13 @@ For Step 3 & 4 use CLI or [Docker-compose.yaml](https://github.com/smck83/expurg
 ### Step 2 - Setup your source SPF record
 Copy your current domains SPF record to an unused subdomain which will be set in `SOURCE_PREFIX=` e.g. _sd6sdyfn
 
-    _sd6sdyfn.yourdomain.com.  IN  TXT "v=spf1 include:sendgrid.net include:mailgun.org -all"
+    _sd6sdyfn.yourdomain.com.  IN   TXT "v=spf1 include:sendgrid.net include:mailgun.org -all"
+    _sd6sdyfn.yourdomain2.com.  IN  TXT "v=spf1 include:mailgun.org -all"
+    _sd6sdyfn.yourdomain3.com.  IN  TXT "v=spf1 ip4:192.0.2.1 include:email.freshdesk.com include:sendgrid.net ~all"
 
 ### Step 3 - Run the expurgate-resolver first, so your RBLDNSD config is ready for the next step
-    docker run -t -v /xpg8/rbldnsd-configs:/spf-resolver/output -e DELAY=300 -e MY_DOMAINS='xpg8.tk' -e RUNNING_CONFIG_ON=1 -e SOURCE_PREFIX="_sd6sdyfn" --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver
-
+    docker run -t -v /xpg8/rbldnsd-configs:/spf-resolver/output -e DELAY=300 -e MY_DOMAINS="yourdomain.com yourdomain2.com yourdomain3.com" -e RUNNING_CONFIG_ON=1 -e SOURCE_PREFIX="_sd6sdyfn" --dns 1.1.1.1 --dns 8.8.8.8 smck83/expurgate-resolver
+    NOTE: It would be recommended to use a [local DNS recursor](https://doc.powerdns.com/recursor/) instead of public ones like 1.1.1.1 or 8.8.8.8 - particularly if you have a large volume of domains.
 ### Step 4 - Run expurgate-rbldnsd
       docker run -t -p 53:53/udp -v /xpg8/rbldnsd-configs:/var/lib/rbldnsd/:ro -e OPTIONS='-e -t 5m -l -' -e TYPE=combined -e ZONE=_spf.yourdomain.com smck83/expurgate-rbldnsd
 ### Step 5 - Replace your old SPF record with a macro pointing to expurgate-rbldsnd
@@ -147,27 +155,27 @@ Copy your current domains SPF record to an unused subdomain which will be set in
 NOTE: Because one container is generating config files for the other container, it is IMPORTANT that both containers have their respective volumes mapped to the same path e.g. /xpg8/rbldnsd-config
 
 # Sample Requests & Responses
-## An SPF pass checking 66.249.80.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.80.249.66.ehlo.email._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
+## An SPF pass checking 66.249.80.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.80.249.66._spf.google.com.s.ehlo.email&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
 
-Suppose an e-mail was sent using the ENVELOPE FROM: domain ehlo.email from the IPv4 address `66.249.80.1`
+Suppose an e-mail was sent using the ENVELOPE FROM: domain _spf.google.com from the IPv4 address `66.249.80.1`
 The recieving e-mail server will respond to the macro in your domains SPF record and interpret the below:
 
 ${ir} - the sending servers IP address in reverse. So `66.249.80.1` will be `1.80.249.66`
 
-${d} - the sending servers domain name (in `ENVELOPE FROM:` field) is `ehlo.email`
+${d} - the sending servers domain name (in `ENVELOPE FROM:` field) is `_spf.google.com`
 
     The request: 
     
-    1.80.249.66.ehlo.email_spf.xpg8.tk
+    1.80.249.66._spf.google.com.s.ehlo.email
     
     The response from expurgate-rbldnsd:
     
-    1.80.249.66.ehlo.email._spf.xpg8.tk. 300 IN	TXT "v=spf1 ip4:66.249.80.1 -all"
+    1.80.249.66._spf.google.com.s.ehlo.email. 300 IN	TXT "v=spf1 ip4:66.249.80.1 -all"
 
 
 NOTE(above): The response only includes the IP checked, and not every other vendor or provider in your `{SOURCE_PREFIX}.yourdomain.com` DNS TXT record.
 
-## An SPF pass checking 2607:f8b0:4000:0000:0000:0000:0000:0001 - [Test here](https://www.digwebinterface.com/?hostnames=1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2.ehlo.email._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
+## An SPF pass checking 2607:f8b0:4000:0000:0000:0000:0000:0001 - [Test here](https://www.digwebinterface.com/?hostnames=1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2._spf.google.com.s.ehlo.email&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
 
 Suppose an e-mail was sent using the ENVELOPE FROM: domain ehlo.email from the IPv6 address `2607:f8b0:4000:0000:0000:0000:0000:0001`
 The recieving e-mail server will respond to the macro in your domains SPF record and interpret the below:
@@ -178,25 +186,25 @@ ${d} - the sending servers domain name (in ENVELOPE FROM: field) is `ehlo.email`
 
     The request: 
     
-    1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2.ehlo.email._spf.xpg8.tk
+    1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2._spf.google.com.s.ehlo.email
     
     The response from expurgate-rbldnsd:
     
-    1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2.ehlo.email._spf.xpg8.tk. 300 IN	TXT "v=spf1 ip6:2607:f8b0:4000::1 ~all"
+    1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2._spf.google.com.s.ehlo.email. 300 IN	TXT "v=spf1 ip6:2607:f8b0:4000::1 ~all"
 
-## An SPF fail checking 127.0.0.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.0.0.127.ehlo.email._spf.xpg8.tk&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
+## An SPF fail checking 127.0.0.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.0.0.127._spf.google.com.s.ehlo.email&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
 
 ${ir} - the sending servers IP address in reverse. So `127.0.0.1` will be `1.0.0.127`
 
-${d} - the sending servers domain name (in ENVELOPE FROM: field) is `ehlo.email`
+${d} - the sending servers domain name (in ENVELOPE FROM: field) is `_spf.google.com`
 
     The request: 
     
-    1.0.0.127.ehlo.email._spf.xpg8.tk
+    1.0.0.127._spf.google.com.s.ehlo.email.
     
     The response from expurgate-rbldnsd:
     
-    1.0.0.127.ehlo.email._spf.xpg8.tk. 300 IN	TXT "v=spf1 -all"
+    1.0.0.127._spf.google.com.s.ehlo.email. 300 IN	TXT "v=spf1 -all"
 
 
 
@@ -218,7 +226,7 @@ My testing has proven performance with over 570 domains in `MY_DOMAINS`, running
 - Write2Disk on Change: Instead of regenerating config files every time the script runs, the rbldnsd config will only be written should a record change since last run. A python dictionary is used to track this, however if scale is required REDIS or something similiar could be used.
 - RestDB: RestDB capability has been added to manage MY_DOMAINS from restDB instead of via ENV.
 - Running Config : Running config means a single rbldnsd config file is generated for ALL domains which means the expurgate-rbldnsd container doesnt need to restart if domains are added or removed from MY_DOMAINS or in RestDB
-- Cache added : Given many INCLUDE: tend to be the same per source, e.g. mailgun.org, sendgrid.net, \_spf.google.com etc. A python disctionary has been added called dnsCache. If the record has already been looked up by another domain the respoonse the second or third+ time will come from memory, saving a DNS request.
+- Cache added : Given many INCLUDE: tend to be the same per source, e.g. mailgun.org, sendgrid.net, \_spf.google.com etc. A python disctionary has been added called dnsCache. If the record has already been looked up by another domain the response the second or third+ time will come from memory, saving a DNS request.
 
 # Buy me a coffee
 If this was useful, feel free to [Buy me a coffee](https://www.buymeacoffee.com/smc83)
