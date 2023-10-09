@@ -8,7 +8,7 @@ xpg8logo.append("# | |____ >  <| |_) | |_| | | | (_| | (_| | ||  __/")
 xpg8logo.append("# |______/_/\_\ .__/ \__,_|_|  \__, |\__,_|\__\___|")
 xpg8logo.append("#             | |               __/ |              ")
 xpg8logo.append("#             |_|              |___/               \n#")
-xpg8logo.append("# https://xpg8.tk | https://github.com/smck83/expurgate ")
+xpg8logo.append("# https://xpg8.ehlo.email | https://github.com/smck83/expurgate ")
 from sys import stdout
 from time import sleep
 from time import strftime
@@ -89,7 +89,7 @@ elif restdb_url != None:
 else:
     source_prefix_off = True
     
-    mydomains = ['google.xpg8.tk','_spf.google.com','_netblocks.mimecast.com','spf.protection.outlook.com','outbound.mailhop.org','spf.messagelabs.com','mailgun.org','sendgrid.net','service-now.com'] # demo mode
+    mydomains = ['_spf.google.com','_netblocks.mimecast.com','spf.protection.outlook.com','outbound.mailhop.org','spf.messagelabs.com','mailgun.org','sendgrid.net','service-now.com'] # demo mode
     print("MY_DOMAIN not set, running in demo mode using " + str(mydomains))
 
 totaldomaincount = len(mydomains)
@@ -130,9 +130,10 @@ def dnsLookup(domain,type,countDepth="on"):
             lookup = [dns_record.to_text() for dns_record in dns.resolver.resolve(domain, type).rrset]    
         except Exception as e:
             error = "DNS Resolution Error - " + type + ":" + domain
-            print(error)
-            print(e)
-            header.append("# " + error)
+            if type != "AAAA":
+                header.append("# " + error)
+                print(error)
+            print(e)           
             if depth == 0 and type=="TXT":
                 mydomains_source_failure.append(domain)
         else:
