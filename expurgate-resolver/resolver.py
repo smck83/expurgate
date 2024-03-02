@@ -1,13 +1,14 @@
 # author: https://github.com/smck83/
 xpg8logo = ["# "]
-xpg8logo.append("#  ______                                  _       ")
-xpg8logo.append("# |  ____|                                | |      ")
-xpg8logo.append("# | |__  __  ___ __  _   _ _ __ __ _  __ _| |_ ___ ")
+xpg8logo.append(r"#  ______                                  _       ")
+xpg8logo.append(r"# |  ____|                                | |      ")
+xpg8logo.append(r"# | |__  __  ___ __  _   _ _ __ __ _  __ _| |_ ___ ")
 xpg8logo.append("# |  __| \ \/ / '_ \| | | | '__/ _` |/ _` | __/ _ \\")
-xpg8logo.append("# | |____ >  <| |_) | |_| | | | (_| | (_| | ||  __/")
-xpg8logo.append("# |______/_/\_\ .__/ \__,_|_|  \__, |\__,_|\__\___|")
-xpg8logo.append("#             | |               __/ |              ")
-xpg8logo.append("#             |_|              |___/               \n#")
+xpg8logo.append(r"# | |____ >  <| |_) | |_| | | | (_| | (_| | ||  __/")
+xpg8logo.append(r"# |______/_/\_\ .__/ \__,_|_|  \__, |\__,_|\__\___|")
+xpg8logo.append(r"#             | |               __/ |              ")
+xpg8logo.append(r"#             |_|              |___/               ")
+xpg8logo.append(r"#")
 xpg8logo.append("# https://xpg8.ehlo.email | https://github.com/smck83/expurgate ")
 from sys import stdout
 from time import sleep
