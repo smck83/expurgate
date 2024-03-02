@@ -155,7 +155,7 @@ Copy your current domains SPF record to an unused subdomain which will be set in
 NOTE: Because one container is generating config files for the other container, it is IMPORTANT that both containers have their respective volumes mapped to the same path e.g. /xpg8/rbldnsd-config
 
 # Sample Requests & Responses
-## An SPF pass checking 66.249.80.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.80.249.66._spf.google.com.s.ehlo.email&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
+## An SPF pass checking 66.249.80.1 - [Test here](https://ehlo.email/?domain=1.80.249.66._spf.google.com.s.ehlo.email#spf)
 
 Suppose an e-mail was sent using the ENVELOPE FROM: domain _spf.google.com from the IPv4 address `66.249.80.1`
 The recieving e-mail server will respond to the macro in your domains SPF record and interpret the below:
@@ -175,7 +175,7 @@ ${d} - the sending servers domain name (in `ENVELOPE FROM:` field) is `_spf.goog
 
 NOTE(above): The response only includes the IP checked, and not every other vendor or provider in your `{SOURCE_PREFIX}.yourdomain.com` DNS TXT record.
 
-## An SPF pass checking 2607:f8b0:4000:0000:0000:0000:0000:0001 - [Test here](https://www.digwebinterface.com/?hostnames=1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2._spf.google.com.s.ehlo.email&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
+## An SPF pass checking 2607:f8b0:4000:0000:0000:0000:0000:0001 - [Test here](https://ehlo.email/?domain=1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2._spf.google.com.s.ehlo.email&ref=1.80.249.66._spf.google.com.s.ehlo.email#spf)
 
 Suppose an e-mail was sent using the ENVELOPE FROM: domain ehlo.email from the IPv6 address `2607:f8b0:4000:0000:0000:0000:0000:0001`
 The recieving e-mail server will respond to the macro in your domains SPF record and interpret the below:
@@ -192,7 +192,7 @@ ${d} - the sending servers domain name (in ENVELOPE FROM: field) is `ehlo.email`
     
     1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2._spf.google.com.s.ehlo.email. 300 IN	TXT "v=spf1 ip6:2607:f8b0:4000::1 ~all"
 
-## An SPF fail checking 127.0.0.1 - [Test here](https://www.digwebinterface.com/?hostnames=1.0.0.127._spf.google.com.s.ehlo.email&type=TXT&ns=resolver&useresolver=8.8.4.4&nameservers=)
+## An SPF fail checking 127.0.0.1 - [Test here](https://ehlo.email/?domain=1.0.0.127._spf.google.com.s.ehlo.email&ref=1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.4.0.b.8.f.7.0.6.2._spf.google.com.s.ehlo.email#spf)
 
 ${ir} - the sending servers IP address in reverse. So `127.0.0.1` will be `1.0.0.127`
 
@@ -219,7 +219,7 @@ My testing has proven performance with over 570 domains in `MY_DOMAINS`, running
 # Recent enhancements
 - Running config is on by default and is recommended. The benefit of a single `running-config` file versus 1 file per domain is that when domains are added and removed no file level cleanup or service restart of rbldnsd is required.
 - Improved reliability: MY_DOMAINS must have a valid DNS response, be a TXT record and have a record starting with '\"v=spf1 ' or no config files will be written to disk, until resolved (19/06/2023).
-- pypy : Docker image is using pypy to run the Expurgate Resolver script. This increases performance of DNS record generation by 2-5x's (19/03/2023)
+- pypy : Docker image is using pypy to run the Expurgate Resolver script. This increases performance of DNS record generation by 2-5x's (19/03/2023) `UPDATE(24-Oct-23); pypy is more memory intensive than python3. It has been observed after running on a low spec machine (e.g. AWS lighstail $3.50/month) for several days the resolver script stops without error, and restarts.`
 - AAAA Support: References to hostnames via A\A: or MX\MX: now perform a AAAA lookup to handle ip6 addresses.
 - Expurgate Solo : an updated version where both rbldnsd and resolver are in a single docker container using supervisord https://github.com/smck83/expurgate-solo/
 - Dedupe : If record already exists in 'list', do not add it again
