@@ -23,7 +23,7 @@ SPF records are publicly visible, prone to misconfiguration and limited to inclu
 Like most DNS records; TXT records are limited to 255 chars per line meaning if you attempt to juggle and manage SPF yourself, you not only have to count hostname lookups but the length of each line in your TXT record.
 
 
-With DMARC being listed in Gartner's top project list in 2021, more and more organasations are protecting their brand by preeventing e-mail domain spoofing that relies on SPF and DKIM. So, the requirement to exceed the SPF host lookup limit of 10 for a mid to large+ size organisation has never been greater. Expurgate makes the whole process easy, and means you don't have to juggle SPF on 10's or 100's of subdomains, deal with 255 byte/character limit per line in TXT records or worry about the 10 SPF host resolution lookup limit.
+With DMARC being listed in Gartner's top project list in 2021, more and more organasations are protecting their brand by preventing e-mail domain spoofing that relies on SPF and DKIM. So, the requirement to exceed the SPF host lookup limit of 10 for a mid to large+ size organisation has never been greater. Expurgate makes the whole process easy, and means you don't have to juggle SPF on subdomains, deal with 255 byte/character limit per line in TXT records or worry about the 10 SPF host resolution lookup limit.
 
 # The solution
 
