@@ -1,3 +1,6 @@
+If you're interested in hosting Expurgate ot Expurgate-Solo on Bunny's Magic Container Anycast edge computing solution [Signup with my bunny affiliate code here](https://bunny.net?ref=ndyy4946y2)
+
+
 ![expurgate - simplify, hide and exceed SPF lookup limits](https://github.com/smck83/expurgate/blob/main/expurgate.png?raw=true)
 
 A dockerized multi-domain SPF hosting solution leveraging rbldnsd as the DNS server to simplify, hide and exceed SPF lookup limits. The resolver script runs periodically to generate SPF Macro friendly configuration files for rbldnsd. 
