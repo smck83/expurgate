@@ -7,7 +7,7 @@ A dockerized multi-domain SPF hosting solution leveraging rbldnsd as the DNS ser
 
  # What is Expurgate?
     expurgate
-    /EK-spur-gayt/
+     EK-spur-gayt
     verb
     remove matter thought to be objectionable or unsuitable
     
