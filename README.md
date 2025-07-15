@@ -1,5 +1,7 @@
 get 14 days free with bunny hosting Expurgate or Expurgate-Solo on Bunny's Magic Container Anycast edge computing solution [Signup with my bunny affiliate code here](https://bunny.net?ref=ndyy4946y2)
 
+see the single container version here [Expurgate Solo](https://github.com/smck83/expurgate-solo)
+
 
 ![expurgate - simplify, hide and exceed SPF lookup limits](https://github.com/smck83/expurgate/blob/main/expurgate.png?raw=true)
 
