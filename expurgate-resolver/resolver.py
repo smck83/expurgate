@@ -67,11 +67,6 @@ if 'SOA_HOSTMASTER' in os.environ:
 else:
     soa_hostmaster = None
 
-if 'ZONE' in os.environ:
-    zone = os.environ['ZONE']
-else:
-    zone = None
-
 if 'RUNNING_CONFIG_ON' in os.environ:
     runningconfigon  = int(os.environ['RUNNING_CONFIG_ON'])
 else:
@@ -424,13 +419,12 @@ while totaldomaincount > 0:
         ip6block.append("0:0:0:0:0:0:0:0/0 # all other IPv6 addresses")
         allIp = ip4 + ip6
 
-        if soa_hostmaster != None and zone != None:
-            # Replace the first occurrence of '@' with '.' in soa_hostmaster
-            soa_hostmaster_mod = soa_hostmaster.replace('@', '.', 1)
-            header.append("$SOA 3600 " + zone + ". " + soa_hostmaster_mod + ". 1 10800 3600 604800 3600")
-
         if ns_record != None:
             header.append("$NS 3600 " + ns_record + ".")
+            if soa_hostmaster != None:
+            # Replace the first occurrence of '@' with '.' in soa_hostmaster
+                soa_hostmaster_mod = soa_hostmaster.replace('@', '.', 1)
+                header.append("$SOA 3600 " + ns_record + ". " + soa_hostmaster_mod + ". 1 10800 3600 604800 3600")
 
         header.append("# IP & Subnet: " + str(len(allIp)))
         ipmonitor.sort() # sort for comparison
