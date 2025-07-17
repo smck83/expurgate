@@ -167,17 +167,17 @@ NOTE: Because one container is generating config files for the other container, 
 Suppose an e-mail was sent using the ENVELOPE FROM: domain _spf.google.com from the IPv4 address `209.85.128.0`
 The recieving e-mail server will respond to the macro in your domains SPF record and interpret the below:
 
-${ir} - the sending servers IP address in reverse. So `209.85.128.0` will be `0.128.85.209`
+${ir} - the sending servers IP address in reverse. So `209.85.128.1` will be `1.128.85.209`
 
 ${d} - the sending servers domain name (in `ENVELOPE FROM:` field) is `_spf.google.com`
 
     The request: 
     
-    0.128.85.209._spf.google.com.s.ehlo.email
+    1.128.85.209._spf.google.com.s.ehlo.email
     
     The response from expurgate-rbldnsd:
     
-    0.128.85.209._spf.google.com.s.ehlo.email. 300 IN	TXT "v=spf1 ip4:209.85.128.0 -all"
+    1.128.85.209._spf.google.com.s.ehlo.email. 300 IN	TXT "v=spf1 ip4:209.85.128.1 -all"
 
 
 NOTE(above): The response only includes the IP checked, and not every other vendor or provider in your `{SOURCE_PREFIX}.yourdomain.com` DNS TXT record.
