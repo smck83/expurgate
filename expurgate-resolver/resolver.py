@@ -57,6 +57,16 @@ if 'SOURCE_PREFIX' in os.environ:
 else:
     source_prefix = "_xpg8"
 
+if 'NS_RECORD' in os.environ:
+    ns_record = os.environ['NS_RECORD']
+else:
+    ns_record = None
+
+if 'SOA_HOSTMASTER' in os.environ:
+    soa_hostmaster = os.environ['SOA_HOSTMASTER']
+else:
+    soa_hostmaster = None
+
 if 'RUNNING_CONFIG_ON' in os.environ:
     runningconfigon  = int(os.environ['RUNNING_CONFIG_ON'])
 else:
@@ -408,6 +418,14 @@ while totaldomaincount > 0:
         ip6header.append(":3:v=spf1 ip6:$ " + spfActionValue)
         ip6block.append("0:0:0:0:0:0:0:0/0 # all other IPv6 addresses")
         allIp = ip4 + ip6
+
+        if ns_record != None:
+            header.append("$NS 3600 " + ns_record + ".")
+            if soa_hostmaster != None:
+            # Replace the first occurrence of '@' with '.' in soa_hostmaster
+                soa_hostmaster_mod = soa_hostmaster.replace('@', '.', 1)
+                header.append("$SOA 3600 " + ns_record + ". " + soa_hostmaster_mod + ". 1 10800 3600 604800 3600")
+
         header.append("# IP & Subnet: " + str(len(allIp)))
         ipmonitor.sort() # sort for comparison
         print(stdoutprefix + 'Comparing CURRENT and PREVIOUS record for changes :' + domain)

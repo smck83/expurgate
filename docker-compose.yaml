@@ -7,6 +7,8 @@ services:
       MY_DOMAINS: yourdomain.com yourdomain2.com yourdomain3.com
       SOURCE_PREFIX: _sd6sdyfn
       RUNNING_CONFIG_ON: 1
+      NS_RECORD: spf-ns.yourdomain.com
+      SOA_HOSTMASTER: hostmaster@yourdomain.com
     stdin_open: true
     restart: always
     volumes:
