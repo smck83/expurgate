@@ -151,6 +151,8 @@ Copy your current domains SPF record to an unused subdomain which will be set in
 | expurgate-resolver  | UPTIMEKUMA_PUSH_URL | Monitor expurgate-resolver health (uptime and time per loop) with an [Uptime Kuma](https://github.com/louislam/uptime-kuma) 'push' monitor. URL should end in ping= Example: `https://status.yourdomain.com/api/push/D0A90al0HA?status=up&msg=OK&ping=` | N |
 | expurgate-resolver  | RUNNING_CONFIG_ON | When set to: `1`, resolver will generate a single conf file called `running-config` for all domains in `MY_DOMAINS`, instead of one config file per domain. The main benefit is expurgate-rbldnsd doesnt need to be restarted to learn about new files and deleted domains. Default is on `RUNNING_CONFIG_ON=1` | N |
 | expurgate-resolver | TZ | Set the timezone [more here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)| N |
+| expurgate-resolver | SOA_HOSTMASTER | Define the e-mail address to use in `SOA` response record. This is not required for Expurgate to function, however helps comply with DNS standards. `DEFAULT: None`| N |
+| expurgate-resolver | NS_RECORD | Define the hostname you use for your A record. This is not required for Expurgate to function, however helps comply with DNS standards.`DEFAULT: None` | N |
 | expurgate-rbldnsd  | OPTIONS | These are rbldnsd run [options - more here](https://linux.die.net/man/8/rbldnsd) Recommend: `-e -t 5m -l -` <br/> `-e` = Allow non-network addresses to be used in CIDR ranges.<br/> `-t 5m` = Set TTL <br/>`l -` = Set Logfile to standard output | Y |
 | expurgate-rbldnsd  | TYPE | These are rbldnsd zone types [options - more here](https://linux.die.net/man/8/rbldnsd) Recommend: `combined`  | Y |
 | expurgate-rbldnsd  | ZONE | The last part of your SPF record (where rbldnsd is hosted), from step 1(2) EXAMPLE: `_spf.yourdomain.com`  | Y |
@@ -160,22 +162,22 @@ Copy your current domains SPF record to an unused subdomain which will be set in
 NOTE: Because one container is generating config files for the other container, it is IMPORTANT that both containers have their respective volumes mapped to the same path e.g. /xpg8/rbldnsd-config
 
 # Sample Requests & Responses
-## An SPF pass checking 66.249.80.1 - [Test here](https://ehlo.email/?domain=1.80.249.66._spf.google.com.s.ehlo.email#spf)
+## An SPF pass checking 209.85.128.1 - [Test here](https://ehlo.email/?domain=1.128.85.209._spf.google.com.s.ehlo.email#spf)
 
-Suppose an e-mail was sent using the ENVELOPE FROM: domain _spf.google.com from the IPv4 address `66.249.80.1`
+Suppose an e-mail was sent using the ENVELOPE FROM: domain _spf.google.com from the IPv4 address `209.85.128.0`
 The recieving e-mail server will respond to the macro in your domains SPF record and interpret the below:
 
-${ir} - the sending servers IP address in reverse. So `66.249.80.1` will be `1.80.249.66`
+${ir} - the sending servers IP address in reverse. So `209.85.128.0` will be `0.128.85.209`
 
 ${d} - the sending servers domain name (in `ENVELOPE FROM:` field) is `_spf.google.com`
 
     The request: 
     
-    1.80.249.66._spf.google.com.s.ehlo.email
+    0.128.85.209._spf.google.com.s.ehlo.email
     
     The response from expurgate-rbldnsd:
     
-    1.80.249.66._spf.google.com.s.ehlo.email. 300 IN	TXT "v=spf1 ip4:66.249.80.1 -all"
+    0.128.85.209._spf.google.com.s.ehlo.email. 300 IN	TXT "v=spf1 ip4:209.85.128.0 -all"
 
 
 NOTE(above): The response only includes the IP checked, and not every other vendor or provider in your `{SOURCE_PREFIX}.yourdomain.com` DNS TXT record.
