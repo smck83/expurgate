@@ -421,10 +421,11 @@ while totaldomaincount > 0:
 
         if ns_record != None:
             header.append("$NS 3600 " + ns_record + ".")
-            if soa_hostmaster != None:
-            # Replace the first occurrence of '@' with '.' in soa_hostmaster
-                soa_hostmaster_mod = soa_hostmaster.replace('@', '.', 1)
-                header.append("$SOA 3600 " + ns_record + ". " + soa_hostmaster_mod + ". 1 10800 3600 604800 3600")
+            # removing $SOA - per https://github.com/smck83/expurgate/issues/9
+            # if soa_hostmaster != None:
+            ## Replace the first occurrence of '@' with '.' in soa_hostmaster
+            #    soa_hostmaster_mod = soa_hostmaster.replace('@', '.', 1)
+            #    header.append("$SOA 3600 " + ns_record + ". " + soa_hostmaster_mod + ". 1 10800 3600 604800 3600")
 
         header.append("# IP & Subnet: " + str(len(allIp)))
         ipmonitor.sort() # sort for comparison
