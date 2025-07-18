@@ -9,6 +9,8 @@ COPY running-config /var/lib/rbldnsd/running-config
 VOLUME ["/var/lib/rbldnsd"]
 WORKDIR /var/lib/rbldnsd
 
-ENTRYPOINT /usr/sbin/rbldnsd -b 0.0.0.0 -n ${OPTIONS} ${ZONE}:${TYPE}:$(ls /var/lib/rbldnsd/| grep - | tr -s '\n' ',' | rev | cut -c 2- | rev)
+ENTRYPOINT ["sh", "-c", "/usr/sbin/rbldnsd -b 0.0.0.0 -n ${OPTIONS} ${ZONE}:${TYPE}:$(ls /var/lib/rbldnsd/ | grep - | tr -s '\\n' ',' | rev | cut -c 2- | rev)"]
+
+#ENTRYPOINT /usr/sbin/rbldnsd -b 0.0.0.0 -n ${OPTIONS} ${ZONE}:${TYPE}:$(ls /var/lib/rbldnsd/| grep - | tr -s '\n' ',' | rev | cut -c 2- | rev)
 
 EXPOSE 53/udp

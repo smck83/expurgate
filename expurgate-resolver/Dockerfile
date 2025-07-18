@@ -1,4 +1,4 @@
-FROM python:3.11
+FROM python:3-slim
 #FROM pypy:3.9
 LABEL maintainer="expurgate@mck.la"
 RUN pip install dnspython requests jsonpath-ng \

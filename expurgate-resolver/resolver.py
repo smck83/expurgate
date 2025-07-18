@@ -357,6 +357,12 @@ while totaldomaincount > 0:
             print("Error: restdb connection")
         else:
             totaldomaincount = len(mydomains)
+    if ns_record != None:
+        xpg8logo.append("$NS 3600 " + ns_record + ".")
+        if soa_hostmaster != None:
+        # Replace the first occurrence of '@' with '.' in soa_hostmaster
+            soa_hostmaster_mod = soa_hostmaster.replace('@', '.', 1)
+            xpg8logo.append("$SOA 0 " + ns_record + ". " + soa_hostmaster_mod + ". 0 10800 3600 604800 3600")
     if runningconfigon == 1:
         runningconfig = []
         runningconfig = runningconfig + xpg8logo
@@ -418,6 +424,7 @@ while totaldomaincount > 0:
         ip6header.append(":3:v=spf1 ip6:$ " + spfActionValue)
         ip6block.append("0:0:0:0:0:0:0:0/0 # all other IPv6 addresses")
         allIp = ip4 + ip6
+<<<<<<< Updated upstream
 
         if ns_record != None:
             header.append("$NS 3600 " + ns_record + ".")
@@ -427,6 +434,8 @@ while totaldomaincount > 0:
             #    soa_hostmaster_mod = soa_hostmaster.replace('@', '.', 1)
             #    header.append("$SOA 3600 " + ns_record + ". " + soa_hostmaster_mod + ". 1 10800 3600 604800 3600")
 
+=======
+>>>>>>> Stashed changes
         header.append("# IP & Subnet: " + str(len(allIp)))
         ipmonitor.sort() # sort for comparison
         print(stdoutprefix + 'Comparing CURRENT and PREVIOUS record for changes :' + domain)
