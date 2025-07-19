@@ -62,7 +62,7 @@ if 'NS_RECORD' in os.environ:
 else:
     ns_record = None
 
-if 'SOA_HOSTMASTER' in os.environ:
+if 'SOA_HOSTMASTER' in os.environ and "@" in os.environ['SOA_HOSTMASTER']:
     soa_hostmaster = os.environ['SOA_HOSTMASTER']
 else:
     soa_hostmaster = None
@@ -357,10 +357,9 @@ while totaldomaincount > 0:
             print("Error: restdb connection")
         else:
             totaldomaincount = len(mydomains)
-    if ns_record != None:
-        xpg8logo.append("$NS 3600 " + ns_record + ".")
-    if soa_hostmaster != None:
-    # Replace the first occurrence of '@' with '.' in soa_hostmaster
+    if ns_record != None and soa_hostmaster != None:
+        xpg8logo.append("$NS 0 " + ns_record + ".")
+        # Replace the first occurrence of '@' with '.' in soa_hostmaster
         soa_hostmaster_mod = soa_hostmaster.replace('@', '.', 1)
         xpg8logo.append("$SOA 0 " + ns_record + ". " + soa_hostmaster_mod + ". 0 10800 3600 604800 3600")
 
