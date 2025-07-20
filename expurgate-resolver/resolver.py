@@ -342,6 +342,12 @@ def getSPF(domain):
                         ipmonitor.append(spfPart)
                     #else: drop everything else
 
+if ns_record != None and soa_hostmaster != None:
+    xpg8logo.append("$NS 0 " + ns_record + ".")
+    # Replace the first occurrence of '@' with '.' in soa_hostmaster
+    soa_hostmaster_mod = soa_hostmaster.replace('@', '.', 1)
+    xpg8logo.append("$SOA 0 " + ns_record + ". " + soa_hostmaster_mod + ". 0 10800 3600 604800 3600")
+
 
 while totaldomaincount > 0:
     mydomains_source_success = []
@@ -357,12 +363,6 @@ while totaldomaincount > 0:
             print("Error: restdb connection")
         else:
             totaldomaincount = len(mydomains)
-    if ns_record != None and soa_hostmaster != None:
-        xpg8logo.append("$NS 0 " + ns_record + ".")
-        # Replace the first occurrence of '@' with '.' in soa_hostmaster
-        soa_hostmaster_mod = soa_hostmaster.replace('@', '.', 1)
-        xpg8logo.append("$SOA 0 " + ns_record + ". " + soa_hostmaster_mod + ". 0 10800 3600 604800 3600")
-
     if runningconfigon == 1:
         runningconfig = []
         runningconfig = runningconfig + xpg8logo
