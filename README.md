@@ -1,5 +1,3 @@
- - Don't want to self host? try out https://spf.guru
- - Single container version here [Expurgate Solo](https://github.com/smck83/expurgate-solo)
 
 ![expurgate - simplify, hide and exceed SPF lookup limits](https://github.com/smck83/expurgate/blob/main/expurgate.png?raw=true)
 
@@ -11,6 +9,9 @@ A dockerized multi-domain SPF hosting solution leveraging rbldnsd as the DNS ser
     verb
     remove matter thought to be objectionable or unsuitable
     
+ - Don't want to self host? try out https://spf.guru
+ - Single container version here [Expurgate Solo](https://github.com/smck83/expurgate-solo)
+
 Expurgate is a passion project that provides the capability to host your own SPF flattening (aka compression) management solution. There is no webUI and no database. With the exception of copying your existing SPF record to a subdomain, the entire configuration is completed using ENV variables parsed at runtime. This solution will resolve your SPF records hosted on an unused subdomain that will act as the source of truth for expurgate-resolver and is how you will make changes when you need to add or remove IP, subnets and hostnames. Expurgate-resolver will detect the changes on the subdomain and publish the new rbldnsd configuration for expurgate-rbldnsd. In the example below the subdomain `_sd6sdyfn.yourdomain.com` is used. The Expurgate SPF macro is then published on the root domain in place of the old record. A script running on the spf-resolver container will loop through the records hosted on the subdomain (no issues if they exceed 10 lookups or are duplicates) and generate an rbldnsd configuration file of IP addressess and subnets that rbldnsd will use..
 
 Expurgate supports both IPv4 and IPv6 addresses.
